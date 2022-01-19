@@ -52,6 +52,7 @@ module.exports = {
         yellow: '#FFFAF1',
         peach: '#FCE8E6',
         smoke: '#F8F8F8',
+        border: '#E5E5E5',
         white: '#ffffff',
         black: '#000000',
         code: {
