@@ -41,7 +41,19 @@ module.exports = {
     },
     extend: {
       colors: {
+        gray: '#000E1A',
+        blue: '#01579B',
+        nordic: '#002D39',
+        orange: '#FA5A28',
+        purple: '#F3F6FF',
+        'dark-purple': '#696F8C',
+        'gray-purple': '#798099',
+        green: '#DFF1F1',
+        yellow: '#FFFAF1',
+        peach: '#FCE8E6',
         smoke: '#F8F8F8',
+        white: '#ffffff',
+        black: '#000000',
         code: {
           highlight: 'rgb(125 211 252 / 0.1)',
         },

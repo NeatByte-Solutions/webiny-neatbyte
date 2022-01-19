@@ -175,7 +175,7 @@ export function ContentsLayout({ children, meta, classes, tableOfContents, secti
   let { prev, next } = usePrevNext()
 
   return (
-    <div className="max-w-3xl mx-auto pt-10 xl:max-w-none xl:ml-0 xl:mr-[15.5rem] xl:pr-16">
+    <div className="max-w-3xl mx-auto mt-[1.875rem] xl:pt-10 xl:max-w-[53.6875rem] xl:ml-0 xl:mr-[15.5rem] xl:px-10">
       <PageHeader
         title={meta.title}
         description={meta.description}
@@ -205,7 +205,7 @@ export function ContentsLayout({ children, meta, classes, tableOfContents, secti
         </Link>
       </Footer>
 
-      <div className="fixed z-20 top-[3.8125rem] bottom-0 right-[max(0px,calc(50%-45rem))] w-[19.5rem] py-10 px-8 overflow-y-auto hidden xl:block">
+      <div className="fixed z-20 top-[5,875rem] bottom-0 right-[max(0px,calc(50%-48.5rem))] w-[19.5rem] py-[1.875rem] pl-[4.3125rem] pr-[1.8125rem] overflow-y-auto hidden xl:block">
         {toc.length > 0 && (
           <TableOfContents tableOfContents={toc} currentSection={currentSection} />
         )}
