@@ -50,7 +50,7 @@ module.exports = {
         'gray-purple': '#798099',
         green: '#DFF1F1',
         yellow: '#FFFAF1',
-        pink: '#FCE8E6',
+        peach: '#FCE8E6',
         smoke: '#F8F8F8',
         white: '#ffffff',
         black: '#000000',
