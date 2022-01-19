@@ -41,6 +41,7 @@ module.exports = {
     },
     extend: {
       colors: {
+        smoke: '#F8F8F8',
         code: {
           highlight: 'rgb(125 211 252 / 0.1)',
         },
