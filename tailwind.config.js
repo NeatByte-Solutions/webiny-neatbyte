@@ -41,16 +41,16 @@ module.exports = {
     },
     extend: {
       colors: {
-        'black-gray': '#000E1A',
+        gray: '#000E1A',
         nordic: '#002D39',
         orange: '#FA5A28',
-        'lite-purple': '#F3F6FF',
-        'ship-cove': '#798099',
+        purple: '#F3F6FF',
         'dark-purple': '#696F8C',
-        'lite-green': '#DFF1F1',
-        'lite-yellow': '#FFFAF1',
-        'lite-pink': '#FCE8E6',
-        'white-smoke': '#F8F8F8',
+        'gray-purple': '#798099',
+        green: '#DFF1F1',
+        yellow: '#FFFAF1',
+        pink: '#FCE8E6',
+        smoke: '#F8F8F8',
         white: '#ffffff',
         black: '#000000',
         code: {
