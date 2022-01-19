@@ -10,21 +10,21 @@ import { ThemeSelect, ThemeToggle } from './ThemeToggle'
 function Featured() {
   return (
     <Link href="/blog/tailwindcss-v3">
-      <a className="ml-9 text-xs leading-5 font-medium text-sky-600 dark:text-sky-400 bg-white rounded-full py-1 px-3 hidden xl:flex items-center hover:bg-sky-400/20">
+      <a className="ml-9 text-xs leading-5 font-medium bg-white rounded-full py-1 px-3 hidden xl:flex items-center">
         <span className="ml-2">⭐️ If you like Webiny, give it a star on GitHub! ⭐</span>
         <svg
-          width="3"
-          height="6"
-          className="ml-3 overflow-visible text-sky-300 dark:text-sky-400"
-          aria-hidden="true"
+          width="6"
+          height="12"
+          viewBox="0 0 6 12"
+          className="ml-2"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
         >
           <path
-            d="M0 0L3 3L0 6"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="1.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
+            d="M1 10.748L5.36872 5.95182L1.03281 0.999808"
+            stroke="#334155"
+            stroke-linecap="round"
+            stroke-linejoin="round"
           />
         </svg>
       </a>
@@ -50,17 +50,22 @@ export function NavPopover({ display = 'md:hidden', className, ...props }) {
     <div className={clsx(className, display)} {...props}>
       <button
         type="button"
-        className="text-slate-500 w-8 h-8 flex items-center justify-center hover:text-slate-600 dark:text-slate-400 dark:hover:text-slate-300"
+        className="flex items-center justify-center mr-[1.6875rem] md:mr-0 hover:text-slate-600 dark:text-slate-400 dark:hover:text-slate-300"
         onClick={() => setIsOpen(true)}
       >
         <span className="sr-only">Navigation</span>
-        <svg width="24" height="24" fill="none" aria-hidden="true">
+        <svg
+          width="4"
+          height="17"
+          viewBox="0 0 4 17"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
           <path
-            d="M12 6v.01M12 12v.01M12 18v.01M12 7a1 1 0 1 1 0-2 1 1 0 0 1 0 2Zm0 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Zm0 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"
-            stroke="currentColor"
-            strokeWidth="1.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
+            fill-rule="evenodd"
+            clip-rule="evenodd"
+            d="M2 4.99725C3.1 4.99725 4 4.09725 4 2.99725C4 1.89725 3.1 0.997253 2 0.997253C0.9 0.997253 0 1.89725 0 2.99725C0 4.09725 0.9 4.99725 2 4.99725ZM2 6.99639C0.9 6.99639 0 7.89639 0 8.99639C0 10.0964 0.9 10.9964 2 10.9964C3.1 10.9964 4 10.0964 4 8.99639C4 7.89639 3.1 6.99639 2 6.99639ZM2 12.9955C0.9 12.9955 0 13.8955 0 14.9955C0 16.0955 0.9 16.9955 2 16.9955C3.1 16.9955 4 16.0955 4 14.9955C4 13.8955 3.1 12.9955 2 12.9955Z"
+            fill="#334155"
           />
         </svg>
       </button>
@@ -90,14 +95,6 @@ export function NavPopover({ display = 'md:hidden', className, ...props }) {
           </button>
           <ul className="space-y-6">
             <NavItems />
-            <li>
-              <a
-                href="https://github.com/tailwindlabs/tailwindcss"
-                className="hover:text-sky-500 dark:hover:text-sky-400"
-              >
-                GitHub
-              </a>
-            </li>
           </ul>
           <div className="mt-6 pt-6 border-t border-slate-200 dark:border-slate-200/10">
             <ThemeSelect />
@@ -158,10 +155,10 @@ export function Header({ hasNav = false, navIsOpen, onNavToggle, title, section 
         </div>
       </div>
       <div className="sticky top-0 z-40 w-full backdrop-blur flex-none transition-colors duration-500 lg:z-50 lg:border-b lg:border-slate-900/10 dark:border-slate-50/[0.06] bg-smoke">
-        <div className="relative flex items-center h-[3.375rem] lg:h-16 border-b border-slate-900/10 px-8 lg:border-0 dark:border-slate-300/10">
+        <div className="relative flex items-center h-[3.375rem] lg:h-16 border-b border-slate-900/10 pl-[0.875rem] md:pl-8 pr-[] md:pr-8 lg:border-0 dark:border-slate-300/10">
           <Link href="/">
             <a
-              className="flex-none w-[1.5925rem] pr-[8.1875rem] lg:border-r border-border overflow-hidden md:w-auto"
+              className="flex-none w-[1.5925rem] md:pr-[8.1875rem] lg:border-r border-border overflow-hidden md:w-auto"
               onContextMenu={(e) => {
                 e.preventDefault()
                 Router.push('/brand')
@@ -250,7 +247,7 @@ export function Header({ hasNav = false, navIsOpen, onNavToggle, title, section 
               </a>
             </div>
           </div>
-          <SearchButton className="ml-auto text-slate-500 w-8 h-8 -my-1 flex items-center justify-center hover:text-slate-600 lg:hidden dark:text-slate-400 dark:hover:text-slate-300">
+          <SearchButton className="ml-auto text-slate-500 -my-1 flex items-center justify-center hover:text-slate-600 lg:hidden dark:text-slate-400 dark:hover:text-slate-300">
             <span className="sr-only">Search</span>
             <svg
               width="19"
@@ -270,7 +267,7 @@ export function Header({ hasNav = false, navIsOpen, onNavToggle, title, section 
               />
             </svg>
           </SearchButton>
-          <NavPopover className="ml-2 -my-1" display="lg:hidden" />
+          <NavPopover className="ml-[1.3781rem] -my-1" display="lg:hidden" />
         </div>
       </div>
       {/* {hasNav && (
