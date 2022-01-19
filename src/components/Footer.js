@@ -5,10 +5,10 @@ export function Footer({ children, previous, next }) {
   return (
     <footer className={clsx('text-sm leading-6', previous || next ? 'mt-12' : 'mt-16')}>
       {(previous || next) && (
-        <div className="mb-10 text-slate-700 font-semibold flex items-center dark:text-slate-200">
+        <div className="mb-10 text-slate-700 font-semibold md:grid grid-cols-2 items-center justify-center dark:text-slate-200">
           {previous && (
             <Link href={previous.href}>
-              <a className="group flex items-center hover:text-slate-900 dark:hover:text-white">
+              <a className="group flex items-center hover:text-slate-900 dark:hover:text-white mr-[2.1875rem]">
                 <svg
                   viewBox="0 0 3 6"
                   className="mr-3 w-auto h-1.5 text-slate-400 overflow-visible group-hover:text-slate-600 dark:group-hover:text-slate-300"
@@ -26,9 +26,10 @@ export function Footer({ children, previous, next }) {
               </a>
             </Link>
           )}
+          <div className="h-[1.8125rem] border border-neutral-200" />
           {next && (
             <Link href={next.href}>
-              <a className="group ml-auto flex items-center hover:text-slate-900 dark:hover:text-white">
+              <a className="group ml-[2.1875rem] flex items-center hover:text-slate-900 dark:hover:text-white">
                 {next.shortTitle || next.title}
                 <svg
                   viewBox="0 0 3 6"

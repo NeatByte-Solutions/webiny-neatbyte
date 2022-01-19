@@ -175,7 +175,7 @@ export function ContentsLayout({ children, meta, classes, tableOfContents, secti
   let { prev, next } = usePrevNext()
 
   return (
-    <div className="max-w-3xl mx-auto mt-[1.875rem] xl:pt-10 xl:max-w-[53.6875rem] xl:ml-0 xl:mr-[15.5rem] xl:px-10">
+    <div className="max-w-3xl mx-auto mt-[1.875rem] xl:pt-10 xl:max-w-[53.6875rem] xl:ml-0 xl:mr-[15.5rem] xl:px-10 xl:border border-neutral-200 rounded-[0.625rem]">
       <PageHeader
         title={meta.title}
         description={meta.description}
