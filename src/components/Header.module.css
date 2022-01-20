@@ -23,3 +23,12 @@
   background-color: #fff;
   transform: rotateY(0deg) rotate(45deg);
 }
+
+.verticalLine {
+  bottom: 0;
+  left: 131px;
+  position: absolute;
+  border: 1px solid #e5e5e5;
+  /* transform: rotate(90deg); */
+  height: 62px;
+}

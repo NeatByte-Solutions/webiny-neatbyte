@@ -83,16 +83,16 @@ export function NavPopover({ display = 'md:hidden', className, ...props }) {
         <Dialog.Overlay className="fixed top-[3.375rem] inset-0 bg-black/20 backdrop-blur-sm dark:bg-slate-900/80" />
         <div
           className={clsx(
-            'fixed top-[4.3125rem] right-[0.875rem] w-full max-w-[16.4375rem] bg-white rounded-lg p-6 text-base font-semibold text-slate-900 dark:text-slate-400 dark:highlight-white/5',
+            'fixed top-[4.3125rem] right-[0.875rem] w-full max-w-[16.4375rem] bg-white rounded-lg pt-5 text-base font-semibold text-slate-900 dark:text-slate-400 dark:highlight-white/5',
             styles.headerDialog
           )}
         >
           <div className={styles.whiteCorner}></div>
-          <ul className="space-y-6">
+          <ul className="space-y-5 px-5">
             <NavItems />
           </ul>
-          <div className="flex justify-between mt-6 pt-6 border-t border-slate-200 dark:border-slate-200/10">
-            <button>
+          <div className="flex justify-between mt-5 py-2 px-11 border-t border-slate-200 dark:border-slate-200/10">
+            <a>
               <svg
                 width="51"
                 height="46"
@@ -113,8 +113,9 @@ export function NavPopover({ display = 'md:hidden', className, ...props }) {
                   fill="#334155"
                 />
               </svg>
-            </button>
-            <button>
+            </a>
+            <hr className={styles.verticalLine}></hr>
+            <a>
               <svg
                 width="44"
                 height="46"
@@ -131,7 +132,7 @@ export function NavPopover({ display = 'md:hidden', className, ...props }) {
                   fill="#334155"
                 />
               </svg>
-            </button>
+            </a>
           </div>
         </div>
       </Dialog>
