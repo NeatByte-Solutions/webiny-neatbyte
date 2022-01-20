@@ -234,6 +234,7 @@ module.exports = {
         mono: ['Fira Code VF', ...defaultTheme.fontFamily.mono],
         source: ['Source Sans Pro', ...defaultTheme.fontFamily.sans],
         'ubuntu-mono': ['Ubuntu Mono', ...defaultTheme.fontFamily.mono],
+        roboto: ["Roboto", "sans-serif"],
       },
       spacing: {
         18: '4.5rem',
