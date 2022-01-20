@@ -196,7 +196,7 @@ export function Header({ navIsOpen, onNavToggle, title, section }) {
         )}
       >
         <div className="relative flex items-center h-[3.375rem] lg:h-16 pl-[0.875rem] md:pl-8 pr-[] md:pr-8">
-          <button className="lg:hidden mr-5">
+          <button className="lg:hidden mr-5" onClick={() => onNavToggle(!navIsOpen)}>
             <svg
               width="22"
               height="17"
