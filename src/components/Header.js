@@ -28,8 +28,8 @@ function Featured() {
           <path
             d="M1 10.748L5.36872 5.95182L1.03281 0.999808"
             stroke="#334155"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            strokeLinecap="round"
+            strokeLinejoin="round"
           />
         </svg>
       </a>
@@ -67,8 +67,8 @@ export function NavPopover({ display = 'md:hidden', className, ...props }) {
           xmlns="http://www.w3.org/2000/svg"
         >
           <path
-            fill-rule="evenodd"
-            clip-rule="evenodd"
+            fillRule="evenodd"
+            clipRule="evenodd"
             d="M2 4.99725C3.1 4.99725 4 4.09725 4 2.99725C4 1.89725 3.1 0.997253 2 0.997253C0.9 0.997253 0 1.89725 0 2.99725C0 4.09725 0.9 4.99725 2 4.99725ZM2 6.99639C0.9 6.99639 0 7.89639 0 8.99639C0 10.0964 0.9 10.9964 2 10.9964C3.1 10.9964 4 10.0964 4 8.99639C4 7.89639 3.1 6.99639 2 6.99639ZM2 12.9955C0.9 12.9955 0 13.8955 0 14.9955C0 16.0955 0.9 16.9955 2 16.9955C3.1 16.9955 4 16.0955 4 14.9955C4 13.8955 3.1 12.9955 2 12.9955Z"
             fill="#334155"
           />
@@ -204,8 +204,8 @@ export function Header({ navIsOpen, onNavToggle, title, section }) {
               xmlns="http://www.w3.org/2000/svg"
             >
               <path
-                fill-rule="evenodd"
-                clip-rule="evenodd"
+                fillRule="evenodd"
+                clipRule="evenodd"
                 d="M1.33344 3.66413C0.597 3.66413 0 3.06713 0 2.33069C0 1.59425 0.597 0.997253 1.33344 0.997253H20.6666C21.403 0.997253 22 1.59425 22 2.33069C22 3.06713 21.403 3.66413 20.6666 3.66413H1.33344ZM0 8.9963C0 9.73256 0.596861 10.3294 1.33313 10.3294H20.6669C21.4031 10.3294 22 9.73256 22 8.9963C22 8.26003 21.4031 7.66317 20.6669 7.66317H1.33313C0.596861 7.66317 0 8.26003 0 8.9963ZM0 15.6619C0 16.3983 0.597 16.9953 1.33344 16.9953H20.6666C21.403 16.9953 22 16.3983 22 15.6619C22 14.9255 21.403 14.3285 20.6666 14.3285H1.33344C0.597 14.3285 0 14.9255 0 15.6619Z"
                 fill="#334155"
               />
@@ -235,13 +235,13 @@ export function Header({ navIsOpen, onNavToggle, title, section }) {
                   xmlns="http://www.w3.org/2000/svg"
                 >
                   <path
-                    fill-rule="evenodd"
-                    clip-rule="evenodd"
+                    fillRule="evenodd"
+                    clipRule="evenodd"
                     d="M13.8597 14.386L17.9474 18.4737L13.8597 14.386C10.9179 17.3279 6.14823 17.3279 3.20642 14.386C0.264525 11.4442 0.264525 6.6745 3.20642 3.7327C6.14823 0.790801 10.9179 0.790801 13.8597 3.7327C16.8016 6.6745 16.8016 11.4442 13.8597 14.386V14.386Z"
                     stroke="#334155"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                   />
                 </svg>
               ) : (
@@ -252,8 +252,8 @@ export function Header({ navIsOpen, onNavToggle, title, section }) {
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
                 >
-                  <path d="M17 1L1 17" stroke="#334155" stroke-width="2" stroke-linecap="round" />
-                  <path d="M1 1L17 17" stroke="#334155" stroke-width="2" stroke-linecap="round" />
+                  <path d="M17 1L1 17" stroke="#334155" strokeWidth="2" strokeLinecap="round" />
+                  <path d="M1 1L17 17" stroke="#334155" strokeWidth="2" strokeLinecap="round" />
                 </svg>
               )}
             </button>
@@ -309,13 +309,13 @@ export function Header({ navIsOpen, onNavToggle, title, section }) {
               xmlns="http://www.w3.org/2000/svg"
             >
               <path
-                fill-rule="evenodd"
-                clip-rule="evenodd"
+                fillRule="evenodd"
+                clipRule="evenodd"
                 d="M13.8597 14.386L17.9474 18.4737L13.8597 14.386C10.9179 17.3279 6.14823 17.3279 3.20642 14.386C0.264525 11.4442 0.264525 6.6745 3.20642 3.7327C6.14823 0.790801 10.9179 0.790801 13.8597 3.7327C16.8016 6.6745 16.8016 11.4442 13.8597 14.386V14.386Z"
                 stroke="#334155"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
               />
             </svg>
           </SearchButton>
@@ -343,13 +343,13 @@ export function Header({ navIsOpen, onNavToggle, title, section }) {
               xmlns="http://www.w3.org/2000/svg"
             >
               <path
-                fill-rule="evenodd"
-                clip-rule="evenodd"
+                fillRule="evenodd"
+                clipRule="evenodd"
                 d="M13.8597 14.386L17.9474 18.4737L13.8597 14.386C10.9179 17.3279 6.14823 17.3279 3.20642 14.386C0.264525 11.4442 0.264525 6.6745 3.20642 3.7327C6.14823 0.790801 10.9179 0.790801 13.8597 3.7327C16.8016 6.6745 16.8016 11.4442 13.8597 14.386V14.386Z"
                 stroke="#334155"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
               />
             </svg>
           </button>
@@ -377,8 +377,8 @@ export function Header({ navIsOpen, onNavToggle, title, section }) {
                     opacity="0.5"
                     d="M18.8236 8.15686C18.3244 8.15686 17.8456 8.35518 17.4926 8.70819C17.1396 9.0612 16.9413 9.53998 16.9413 10.0392V17.5686C16.9413 18.0679 17.1396 18.5466 17.4926 18.8996C17.8456 19.2527 18.3244 19.451 18.8236 19.451C19.3229 19.451 19.8016 19.2527 20.1547 18.8996C20.5077 18.5466 20.706 18.0679 20.706 17.5686C20.706 17.0694 20.5077 16.5906 20.1547 16.2376C19.8016 15.8846 19.3229 15.6863 18.8236 15.6863H11.2942C10.795 15.6863 10.3162 15.8846 9.96319 16.2376C9.61018 16.5906 9.41187 17.0694 9.41187 17.5686C9.41187 18.0679 9.61018 18.5466 9.96319 18.8996C10.3162 19.2527 10.795 19.451 11.2942 19.451C11.7934 19.451 12.2722 19.2527 12.6252 18.8996C12.9783 18.5466 13.1766 18.0679 13.1766 17.5686V10.0392C13.1766 9.53998 12.9783 9.0612 12.6252 8.70819C12.2722 8.35518 11.7934 8.15686 11.2942 8.15686C10.795 8.15686 10.3162 8.35518 9.96319 8.70819C9.61018 9.0612 9.41187 9.53998 9.41187 10.0392C9.41187 10.5384 9.61018 11.0172 9.96319 11.3702C10.3162 11.7232 10.795 11.9216 11.2942 11.9216H18.8236C19.3229 11.9216 19.8016 11.7232 20.1547 11.3702C20.5077 11.0172 20.706 10.5384 20.706 10.0392C20.706 9.53998 20.5077 9.0612 20.1547 8.70819C19.8016 8.35518 19.3229 8.15686 18.8236 8.15686Z"
                     stroke="#000E1A"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                   />
                 </g>
                 <defs>
