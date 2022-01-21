@@ -328,10 +328,16 @@ module.exports = {
             lineHeight: '1.5rem',
           },
         ],
-        "sidebar-right-title": [
+        'sidebar-right-title': [
           '1.375rem',
           {
             lineHeight: '1.5rem',
+          },
+        ],
+        'burger-menu-link': [
+          '0.75rem',
+          {
+            lineHeight: '1.625rem',
           },
         ],
       },
