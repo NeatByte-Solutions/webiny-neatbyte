@@ -1,6 +1,12 @@
+import { createPageList } from '@/utils/createPageList'
+
 const page = (mdxName) => {
-  // link and title from mdx (look old code implementation)
-  return { type: 'page', link: 'https://some-resolved-link', title: 'Some resolved title' }
+  const page = createPageList(
+    require.context(`../pages/docs/?meta=title,shortTitle,published`, false, /\.mdx$/),
+    'docs'
+  )
+  return page[mdxName]
+  // return { type: 'page', link: 'https://some-resolved-link', title: 'Some resolved title' }
 }
 
 // const link = (title, externalLink) => {

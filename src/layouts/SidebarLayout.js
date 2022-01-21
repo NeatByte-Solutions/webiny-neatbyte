@@ -3,8 +3,8 @@ import { useRouter } from 'next/router'
 import { createContext, forwardRef, useRef } from 'react'
 import { useIsomorphicLayoutEffect } from '@/hooks/useIsomorphicLayoutEffect'
 import clsx from 'clsx'
-import { SearchButton } from '@/components/Search'
 import { Dialog } from '@headlessui/react'
+import { documentationNav2 } from '@/navs/docjson'
 
 export const SidebarContext = createContext()
 
@@ -62,6 +62,14 @@ function nearestScrollableContainer(el) {
   return el
 }
 
+const Page = ({ title, link, type }) => {
+  return (
+    <div>
+      <Link href="here must be a link">{title}</Link>
+    </div>
+  )
+}
+
 function Nav({ nav, children, fallbackHref, mobile = false }) {
   const router = useRouter()
   const activeItemRef = useRef()
@@ -97,52 +105,14 @@ function Nav({ nav, children, fallbackHref, mobile = false }) {
 
   return (
     <nav ref={scrollRef} id="nav" className="lg:text-sm lg:leading-6 relative">
-      <div className="sticky top-0 -ml-0.5 pointer-events-none">
-        {!mobile && <div className="h-10 bg-white dark:bg-slate-900" />}
-        <div className="bg-white dark:bg-slate-900 relative pointer-events-auto">
-          <SearchButton className="hidden w-full lg:flex items-center text-sm leading-6 text-slate-400 rounded-md ring-1 ring-slate-900/10 shadow-sm py-1.5 pl-2 pr-3 hover:ring-slate-300 dark:bg-slate-800 dark:highlight-white/5 dark:hover:bg-slate-700">
-            {({ actionKey }) => (
-              <>
-                <svg
-                  width="24"
-                  height="24"
-                  fill="none"
-                  aria-hidden="true"
-                  className="mr-3 flex-none"
-                >
-                  <path
-                    d="m19 19-3.5-3.5"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                  <circle
-                    cx="11"
-                    cy="11"
-                    r="6"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-                Quick search...
-                {actionKey && (
-                  <span className="ml-auto pl-3 flex-none text-xs font-semibold">
-                    {actionKey[0]}K
-                  </span>
-                )}
-              </>
-            )}
-          </SearchButton>
-        </div>
-        {!mobile && <div className="h-8 bg-gradient-to-b from-white dark:from-slate-900" />}
-      </div>
       <ul>
-        <TopLevelNav mobile={mobile} />
+        {nav[0].links.map((el, index) => {
+          return <Page title={el.title} link={el.link} type={el.type} />
+        })}
+
+        {console.log(nav)}
         {children}
-        {nav &&
+        {/* {nav &&
           Object.keys(nav)
             .map((category) => {
               let publishedItems = nav[category].filter((item) => item.published !== false)
@@ -184,7 +154,7 @@ function Nav({ nav, children, fallbackHref, mobile = false }) {
                 </li>
               )
             })
-            .filter(Boolean)}
+            .filter(Boolean)} */}
       </ul>
     </nav>
   )
@@ -243,246 +213,6 @@ function TopLevelLink({ href, as, ...props }) {
   )
 }
 
-function TopLevelNav({ mobile }) {
-  let { pathname } = useRouter()
-
-  return (
-    <>
-      <TopLevelLink
-        mobile={mobile}
-        href="/docs/installation"
-        isActive={pathname.startsWith('/docs')}
-        className="mb-4"
-        shadow="group-hover:shadow-sky-200 dark:group-hover:bg-sky-500"
-        activeBackground="dark:bg-sky-500"
-        icon={
-          <>
-            <path
-              fillRule="evenodd"
-              clipRule="evenodd"
-              d="M8.5 7c1.093 0 2.117.27 3 .743V17a6.345 6.345 0 0 0-3-.743c-1.093 0-2.617.27-3.5.743V7.743C5.883 7.27 7.407 7 8.5 7Z"
-              className={clsx(
-                'fill-sky-200 group-hover:fill-sky-500',
-                pathname.startsWith('/docs')
-                  ? 'dark:fill-sky-300 dark:group-hover:fill-sky-300'
-                  : 'dark:fill-slate-400 dark:group-hover:fill-sky-300'
-              )}
-            />
-            <path
-              fillRule="evenodd"
-              clipRule="evenodd"
-              d="M15.5 7c1.093 0 2.617.27 3.5.743V17c-.883-.473-2.407-.743-3.5-.743s-2.117.27-3 .743V7.743a6.344 6.344 0 0 1 3-.743Z"
-              className={clsx(
-                'fill-sky-400 group-hover:fill-sky-500',
-                pathname.startsWith('/docs')
-                  ? 'dark:fill-sky-200 dark:group-hover:fill-sky-200'
-                  : 'dark:fill-slate-600 dark:group-hover:fill-sky-200'
-              )}
-            />
-          </>
-        }
-      >
-        Documentation
-      </TopLevelLink>
-      <TopLevelLink
-        mobile={mobile}
-        href="https://tailwindui.com/components?utm_source=tailwindcss&utm_medium=navigation"
-        className="mb-4"
-        shadow="group-hover:shadow-indigo-200 dark:group-hover:bg-indigo-500"
-        icon={
-          <>
-            <path
-              d="m6 9 6-3 6 3v6l-6 3-6-3V9Z"
-              className={clsx(
-                'fill-indigo-100 group-hover:fill-indigo-200',
-                mobile ? 'dark:fill-slate-300' : 'dark:fill-slate-400'
-              )}
-            />
-            <path
-              d="m6 9 6 3v7l-6-3V9Z"
-              className={clsx(
-                'fill-indigo-300 group-hover:fill-indigo-400 dark:group-hover:fill-indigo-300',
-                mobile ? 'dark:fill-slate-400' : 'dark:fill-slate-500'
-              )}
-            />
-            <path
-              d="m18 9-6 3v7l6-3V9Z"
-              className={clsx(
-                'fill-indigo-400 group-hover:fill-indigo-500 dark:group-hover:fill-indigo-400',
-                mobile ? 'dark:fill-slate-500' : 'dark:fill-slate-600'
-              )}
-            />
-          </>
-        }
-      >
-        Components
-      </TopLevelLink>
-      <TopLevelLink
-        mobile={mobile}
-        href="https://www.youtube.com/tailwindlabs"
-        className="mb-4"
-        shadow="group-hover:shadow-pink-200 dark:group-hover:bg-pink-500"
-        icon={
-          <>
-            <path
-              fillRule="evenodd"
-              clipRule="evenodd"
-              d="M19 12a7 7 0 1 1-14 0 7 7 0 0 1 14 0Z"
-              className={clsx(
-                'fill-pink-400 group-hover:fill-pink-500 dark:group-hover:fill-pink-300',
-                mobile ? 'dark:fill-slate-500' : 'dark:fill-slate-600'
-              )}
-            />
-            <path
-              d="M11.082 9.107a.685.685 0 0 0-.72-.01.757.757 0 0 0-.362.653v4.5c0 .27.138.52.362.653.224.133.5.13.72-.01l3.571-2.25A.758.758 0 0 0 15 12a.758.758 0 0 0-.347-.643l-3.571-2.25Z"
-              className={clsx(
-                'fill-pink-50 group-hover:fill-pink-100 dark:group-hover:fill-white',
-                mobile ? 'dark:fill-slate-300' : 'dark:fill-slate-400'
-              )}
-            />
-          </>
-        }
-      >
-        Screencasts
-      </TopLevelLink>
-      <TopLevelLink
-        mobile={mobile}
-        href="https://play.tailwindcss.com"
-        className="mb-4"
-        shadow="group-hover:shadow-blue-200 dark:group-hover:bg-blue-500"
-        icon={
-          <>
-            <path
-              d="M4 12a7 7 0 0 1 7-7h2a7 7 0 1 1 0 14h-2a7 7 0 0 1-7-7Z"
-              className={clsx(
-                'fill-blue-400 group-hover:fill-blue-500 dark:group-hover:fill-blue-400',
-                mobile ? 'dark:fill-slate-500' : 'dark:fill-slate-600'
-              )}
-            />
-            <path
-              d="M10.25 9.75 7.75 12l2.5 2.25"
-              strokeWidth="1.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              className={clsx(
-                'stroke-blue-50 dark:stroke-slate-400 dark:group-hover:stroke-white',
-                mobile ? 'dark:stroke-slate-300' : 'dark:stroke-slate-400'
-              )}
-            />
-            <path
-              d="m13.75 9.75 2.5 2.25-2.5 2.25"
-              strokeWidth="1.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              className={clsx(
-                'stroke-blue-200 dark:group-hover:stroke-white',
-                mobile ? 'dark:stroke-slate-300' : 'dark:stroke-slate-400'
-              )}
-            />
-          </>
-        }
-      >
-        Playground
-      </TopLevelLink>
-      <TopLevelLink
-        mobile={mobile}
-        href="/resources"
-        isActive={pathname === '/resources'}
-        className="mb-4"
-        shadow="group-hover:shadow-purple-200 dark:group-hover:bg-purple-400"
-        activeBackground="dark:bg-purple-400"
-        icon={
-          <>
-            <path
-              d="M6 8a2 2 0 0 1 2-2h1a2 2 0 0 1 2 2v1a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V8ZM6 15a2 2 0 0 1 2-2h1a2 2 0 0 1 2 2v1a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2v-1Z"
-              className={clsx(
-                'fill-purple-400 group-hover:fill-purple-500 dark:group-hover:fill-purple-300',
-                pathname === '/resources'
-                  ? 'dark:fill-purple-300 dark:group-hover:fill-purple-300'
-                  : mobile
-                  ? 'dark:fill-slate-500'
-                  : 'dark:fill-slate-600'
-              )}
-            />
-            <path
-              d="M13 8a2 2 0 0 1 2-2h1a2 2 0 0 1 2 2v1a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2V8Z"
-              className={clsx(
-                'fill-purple-200 group-hover:fill-purple-300 dark:group-hover:fill-white',
-                pathname === '/resources'
-                  ? 'dark:fill-white dark:group-hover:fill-white'
-                  : mobile
-                  ? 'dark:fill-slate-300'
-                  : 'dark:fill-slate-400'
-              )}
-            />
-            <path
-              d="M13 15a2 2 0 0 1 2-2h1a2 2 0 0 1 2 2v1a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-1Z"
-              className={clsx(
-                'fill-purple-400 group-hover:fill-purple-500 dark:group-hover:fill-purple-300',
-                pathname === '/resources'
-                  ? 'dark:fill-purple-300 dark:group-hover:fill-purple-300'
-                  : mobile
-                  ? 'dark:fill-slate-500'
-                  : 'dark:fill-slate-600'
-              )}
-            />
-          </>
-        }
-      >
-        <span className={pathname === '/resources' ? 'dark:text-purple-400' : ''}>Resources</span>
-      </TopLevelLink>
-      <TopLevelLink
-        mobile={mobile}
-        href="https://github.com/tailwindlabs/tailwindcss/discussions"
-        className="mb-8"
-        shadow="group-hover:shadow-violet-200 dark:group-hover:bg-violet-500"
-        icon={
-          <>
-            <path
-              fillRule="evenodd"
-              clipRule="evenodd"
-              d="M11 5a6 6 0 0 0-4.687 9.746c.215.27.315.62.231.954l-.514 2.058a1 1 0 0 0 1.485 1.1l2.848-1.71c.174-.104.374-.15.576-.148H13a6 6 0 0 0 0-12h-2Z"
-              className={clsx(
-                'fill-violet-400 group-hover:fill-violet-500 dark:group-hover:fill-violet-300',
-                mobile ? 'dark:fill-slate-500' : 'dark:fill-slate-600'
-              )}
-            />
-            <circle
-              cx="12"
-              cy="11"
-              r="1"
-              className={clsx(
-                'fill-white dark:group-hover:fill-white',
-                mobile ? 'dark:fill-slate-300' : 'dark:fill-slate-400'
-              )}
-            />
-            <circle
-              cx="9"
-              cy="11"
-              r="1"
-              className={clsx(
-                'fill-violet-200 dark:group-hover:fill-white',
-                mobile ? 'dark:fill-slate-300' : 'dark:fill-slate-400'
-              )}
-            />
-            <circle
-              cx="15"
-              cy="11"
-              r="1"
-              className={clsx(
-                'fill-violet-200 dark:fill-slate-400 dark:group-hover:fill-white',
-                mobile ? '' : ''
-              )}
-            />
-          </>
-        }
-      >
-        Community
-      </TopLevelLink>
-    </>
-  )
-}
-
 function Wrapper({ allowOverflow, children }) {
   return <div className={allowOverflow ? undefined : 'overflow-hidden'}>{children}</div>
 }
@@ -501,7 +231,7 @@ export function SidebarLayout({
       <Wrapper allowOverflow={allowOverflow}>
         <div className="max-w-8xl mx-auto px-4 sm:px-6 md:px-8">
           <div className="hidden lg:block fixed z-20 inset-0 top-[3.8125rem] left-[max(0px,calc(50%-45rem))] right-auto w-[19.5rem] pb-10 px-8 overflow-y-auto">
-            <Nav nav={nav} fallbackHref={fallbackHref}>
+            <Nav nav={documentationNav2} fallbackHref={fallbackHref}>
               {sidebar}
             </Nav>
           </div>
