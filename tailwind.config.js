@@ -69,25 +69,50 @@ module.exports = {
               marginTop: '3em',
               marginBottom: '3em',
             },
-            h1: {
+            'h1, h2, h3, h4': {
               fontWeight: 700,
+              marginTop: '1.875rem',
+            },
+            h1: {
               fontSize: '2.125rem',
               lineHeight: '2.5rem',
             },
             h2: {
-              fontWeight: 700,
               fontSize: '1.75rem',
               lineHeight: '2.0625rem',
             },
             h3: {
-              fontWeight: 700,
               fontSize: '1.5rem',
               lineHeight: '1.75rem',
             },
             h4: {
-              fontWeight: 700,
               fontSize: '1.375rem',
               lineHeight: '1.625rem',
+            } /* 
+            'h2 small, h3 small, h4 small': {
+              fontFamily: theme('fontFamily.mono').join(', '),
+              color: theme('colors.slate.500'),
+              fontWeight: 500,
+            },
+            'h2 small': {
+              fontSize: theme('fontSize.lg')[0],
+              ...theme('fontSize.lg')[1],
+            },
+            'h3 small': {
+              fontSize: theme('fontSize.base')[0],
+              ...theme('fontSize.base')[1],
+            },
+            'h4 small': {
+              fontSize: theme('fontSize.sm')[0],
+              ...theme('fontSize.sm')[1],
+            },
+            'h2, h3, h4': {
+              'scroll-margin-top': 'var(--scroll-mt)',
+            }, */,
+            p: {
+              fontSize: '0.875rem',
+              lineHeight: '1.75rem',
+              marginTop: '1.25rem',
             },
             ul: {
               listStyleType: 'none',
@@ -97,6 +122,7 @@ module.exports = {
               position: 'relative',
               paddingLeft: '1.75em',
               color: '#002D39',
+              fontSize: '0.875rem',
               lineHeight: '2.25rem',
             },
             'ul > li::before': {
@@ -113,6 +139,8 @@ module.exports = {
               color: '#FA5A28',
               textDecoration: 'none',
               borderBottom: `1px solid #FA5A28`,
+              fontSize: '0.875rem',
+              lineHeight: '1.75rem',
             },
             'a:hover': {
               borderBottomWidth: '2px',
@@ -218,6 +246,54 @@ module.exports = {
             },
           },
         },
+        md: {
+          css: {
+            'h1, h2, h3, h4': {
+              fontWeight: 700,
+              marginTop: '3.75rem',
+            },
+            h1: {
+              fontSize: '3rem',
+              lineHeight: '3.5rem',
+            },
+            h2: {
+              fontSize: '2.25rem',
+              lineHeight: '2.625rem',
+            },
+            h3: {
+              fontSize: '2rem',
+              lineHeight: '2.375rem',
+            },
+            h4: {
+              fontSize: '1.75rem',
+              lineHeight: '2.0625rem',
+            },
+            p: {
+              fontSize: '1rem',
+              lineHeight: '1.75rem',
+              marginTop: '1.25rem',
+            },
+            'ul > li': {
+              fontSize: '1rem',
+              lineHeight: '2.25rem',
+            },
+            'ul > li::before': {
+              content: '""',
+              width: '0.75em',
+              height: '0.125em',
+              position: 'absolute',
+              top: 'calc(0.875em - 0.0625em)',
+              left: 0,
+              borderRadius: '999px',
+              backgroundColor: theme('colors.slate.300'),
+            },
+            a: {
+              fontSize: '1rem',
+              lineHeight: '1.75rem',
+              marginTop: '1.25rem',
+            },
+          },
+        },
       }),
       fontFamily: {
         // remove this font from components
@@ -226,6 +302,38 @@ module.exports = {
         //source: ['Source Sans Pro', ...defaultTheme.fontFamily.sans],
         //'ubuntu-mono': ['Ubuntu Mono', ...defaultTheme.fontFamily.mono],
         roboto: ['Roboto', 'sans-serif'],
+      },
+      fontSize: {
+        'nav-directory': [
+          '1.126rem',
+          {
+            lineHeight: '1.3125rem',
+          },
+        ],
+        'nav-subdirectory': [
+          '1rem',
+          {
+            lineHeight: '1.1875rem',
+          },
+        ],
+        'nav-link': [
+          '0.875rem',
+          {
+            lineHeight: '1rem',
+          },
+        ],
+        'button-text': [
+          '0.875rem',
+          {
+            lineHeight: '1.5rem',
+          },
+        ],
+        "sidebar-right-title": [
+          '1.375rem',
+          {
+            lineHeight: '1.5rem',
+          },
+        ],
       },
       spacing: {
         18: '4.5rem',
