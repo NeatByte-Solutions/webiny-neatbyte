@@ -1,6 +1,6 @@
 const page = (mdxName) => {
   // link and title from mdx (look old code implementation)
-  return { type: 'link', link: 'https://some-resolved-link', title: 'Some resolved title' }
+  return { type: 'page', link: 'https://some-resolved-link', title: 'Some resolved title' }
 }
 
 const section = (title) => {
