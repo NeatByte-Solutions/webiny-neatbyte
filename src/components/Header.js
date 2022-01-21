@@ -145,17 +145,17 @@ export function NavItems() {
   return (
     <>
       <li>
-        <Link href="/docs/installation">
+        <Link href="https://www.webiny.com/">
           <a className="hover:text-sky-500 dark:hover:text-sky-400">Webiny Home</a>
         </Link>
       </li>
       <li>
-        <a href="https://tailwindui.com" className="hover:text-sky-500 dark:hover:text-sky-400">
+        <a href="/" className="hover:text-sky-500 dark:hover:text-sky-400">
           Loremipsum
         </a>
       </li>
       <li>
-        <Link href="/blog">
+        <Link href="/">
           <a className="hover:text-sky-500 dark:hover:text-sky-400">Dolor</a>
         </Link>
       </li>
@@ -265,8 +265,11 @@ export function Header({ navIsOpen, onNavToggle, title, section }) {
               </ul>
             </nav>
             <div className="flex items-center h-[2.375rem] border-l border-slate-200 ml-[1.875rem] pl-[1.875rem] dark:border-slate-800">
+              <div className="flex items-center mr-5">
+                <ThemeToggle panelClassName="" />
+              </div>
               <a
-                href="/"
+                href="https://github.com/webiny/webiny-js"
                 className="block text-slate-400 hover:text-slate-500 dark:hover:text-slate-300"
               >
                 <span className="sr-only">Tailwind CSS on GitHub</span>
