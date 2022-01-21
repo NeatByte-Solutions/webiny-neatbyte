@@ -3,6 +3,10 @@ const page = (mdxName) => {
   return { type: 'page', link: 'https://some-resolved-link', title: 'Some resolved title' }
 }
 
+// const link = (title, externalLink) => {
+//   return { type: 'link', link: externalLink, title }
+// }
+
 const section = (title) => {
   return {
     type: 'section',
