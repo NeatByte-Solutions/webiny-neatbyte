@@ -62,29 +62,40 @@ function nearestScrollableContainer(el) {
   return el
 }
 
-const types = (el, type) => {
+const NavTreeElement = ({ element }) => {
+  const { type, title } = element
   if (type === 'collapsable') {
-    return <Collapsable el={el} title={el.title} type={type} />
+    return <Collapsable subElements={element.links} title={title} />
   } else if (type === 'page') {
-    return <Page el={el} title={el.title} link={el.link} type={type} />
+    return <Page title={title} link={element.link} />
   } else if (type === 'section') {
-    return <Section title={el.title} type={type} />
-  } else return
+    return <Section title={title} />
+  } else {
+    return null
+  }
 }
 
-const Collapsable = ({ title, type, el }) => {
-  const [showMenu, useShowMenu] = useState(false)
+const Collapsable = ({ title, subElements = [] }) => {
+  const [showMenu, setShowMenu] = useState(false)
   return (
     <div>
-      <h3 className="cursor-pointer">{title}</h3>
-      <div onClick={() => (showMenu ? useShowMenu(false) : useShowMenu(true))}>
-        {el.links && el.type && types(el.links, el.type)}
+      <h3
+        onClick={() => setShowMenu(!showMenu)}
+        className="cursor-pointer"
+        style={{ color: showMenu ? 'red' : 'green' }}
+      >
+        {title}
+      </h3>
+      <div>
+        {subElements.map((navElement, index) => (
+          <NavTreeElement key={index} element={navElement} />
+        ))}
       </div>
     </div>
   )
 }
 
-const Page = ({ title, link, type, el }) => {
+const Page = ({ title, link }) => {
   return (
     <div className="pl-4">
       <Link href="here must be a link">{title}</Link>
@@ -93,7 +104,7 @@ const Page = ({ title, link, type, el }) => {
   )
 }
 
-const Section = ({ title, type }) => {
+const Section = ({ title }) => {
   return (
     <div>
       <h3 className="pl-2">{title}</h3>
@@ -138,7 +149,7 @@ function Nav({ nav, children, fallbackHref, mobile = false }) {
     <nav ref={scrollRef} id="nav" className="lg:text-sm lg:leading-6 relative">
       <ul>
         {nav.map((el, index) => {
-          return <div>{types(el, el.type)}</div>
+          return <NavTreeElement element={el} key={index} />
         })}
         {/* 
         {nav.map((item, index) => {
