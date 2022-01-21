@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import { createContext, forwardRef, useRef } from 'react'
+import { createContext, forwardRef, useRef, useState } from 'react'
 import { useIsomorphicLayoutEffect } from '@/hooks/useIsomorphicLayoutEffect'
 import clsx from 'clsx'
 import { Dialog } from '@headlessui/react'
@@ -62,10 +62,41 @@ function nearestScrollableContainer(el) {
   return el
 }
 
-const Page = ({ title, link, type }) => {
+const types = (el, type) => {
+  if (type === 'collapsable') {
+    return <Collapsable el={el} title={el.title} type={type} />
+  } else if (type === 'page') {
+    return <Page el={el} title={el.title} link={el.link} type={type} />
+  } else if (type === 'section') {
+    return <Section title={el.title} type={type} />
+  } else return
+}
+
+const Collapsable = ({ title, type, el }) => {
+  const [showMenu, useShowMenu] = useState(false)
   return (
     <div>
+      <h3 className="cursor-pointer">{title}</h3>
+      <div onClick={() => (showMenu ? useShowMenu(false) : useShowMenu(true))}>
+        {el.links && el.type && types(el.links, el.type)}
+      </div>
+    </div>
+  )
+}
+
+const Page = ({ title, link, type, el }) => {
+  return (
+    <div className="pl-4">
       <Link href="here must be a link">{title}</Link>
+      {/* {types(el.lists, el.type)} */}
+    </div>
+  )
+}
+
+const Section = ({ title, type }) => {
+  return (
+    <div>
+      <h3 className="pl-2">{title}</h3>
     </div>
   )
 }
@@ -106,9 +137,17 @@ function Nav({ nav, children, fallbackHref, mobile = false }) {
   return (
     <nav ref={scrollRef} id="nav" className="lg:text-sm lg:leading-6 relative">
       <ul>
-        {nav[0].links.map((el, index) => {
-          return <Page title={el.title} link={el.link} type={el.type} />
+        {nav.map((el, index) => {
+          return <div>{types(el, el.type)}</div>
         })}
+        {/* 
+        {nav.map((item, index) => {
+          return (
+            <div>
+              <Collapsable el={item} title={item.title} />
+            </div>
+          )
+        })} */}
 
         {console.log(nav)}
         {children}
