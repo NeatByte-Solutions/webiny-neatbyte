@@ -231,7 +231,7 @@ export function SidebarLayout({
       <Wrapper allowOverflow={allowOverflow}>
         <div className="max-w-[96.993rem] mx-auto pl-4 sm:pl-6 md:pl-8 2xl:pl-[5.43rem] pr-4 sm:pr-6 md:pr-8">
           <div className="hidden lg:block fixed z-20 inset-0 top-[4.375rem] right-auto w-[20.875rem] pb-10 px-5 overflow-y-auto">
-            <Nav nav={nav} fallbackHref={fallbackHref}>
+            <Nav nav={documentationNav2} fallbackHref={fallbackHref}>
               {sidebar}
             </Nav>
           </div>
