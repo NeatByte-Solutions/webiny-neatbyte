@@ -1,4 +1,3 @@
-const defaultTheme = require('tailwindcss/defaultTheme')
 const svgToDataUri = require('mini-svg-data-uri')
 const { default: flattenColorPalette } = require('tailwindcss/lib/util/flattenColorPalette')
 
@@ -61,46 +60,34 @@ module.exports = {
       typography: (theme) => ({
         DEFAULT: {
           css: {
+            fontFamily: 'Roboto',
             maxWidth: 'none',
-            color: theme('colors.slate.700'),
+            color: '#334155',
+            fontSize: '16px',
             hr: {
               borderColor: theme('colors.slate.100'),
               marginTop: '3em',
               marginBottom: '3em',
             },
-            'h1, h2, h3': {
-              letterSpacing: '-0.025em',
+            h1: {
+              fontWeight: 700,
+              fontSize: '2.125rem',
+              lineHeight: '2.5rem',
             },
             h2: {
-              marginBottom: `${16 / 24}em`,
+              fontWeight: 700,
+              fontSize: '1.75rem',
+              lineHeight: '2.0625rem',
             },
             h3: {
-              marginTop: '2.4em',
-              lineHeight: '1.4',
+              fontWeight: 700,
+              fontSize: '1.5rem',
+              lineHeight: '1.75rem',
             },
             h4: {
-              marginTop: '2em',
-              fontSize: '1.125em',
-            },
-            'h2 small, h3 small, h4 small': {
-              fontFamily: theme('fontFamily.mono').join(', '),
-              color: theme('colors.slate.500'),
-              fontWeight: 500,
-            },
-            'h2 small': {
-              fontSize: theme('fontSize.lg')[0],
-              ...theme('fontSize.lg')[1],
-            },
-            'h3 small': {
-              fontSize: theme('fontSize.base')[0],
-              ...theme('fontSize.base')[1],
-            },
-            'h4 small': {
-              fontSize: theme('fontSize.sm')[0],
-              ...theme('fontSize.sm')[1],
-            },
-            'h2, h3, h4': {
-              'scroll-margin-top': 'var(--scroll-mt)',
+              fontWeight: 700,
+              fontSize: '1.375rem',
+              lineHeight: '1.625rem',
             },
             ul: {
               listStyleType: 'none',
@@ -109,6 +96,8 @@ module.exports = {
             'ul > li': {
               position: 'relative',
               paddingLeft: '1.75em',
+              color: '#002D39',
+              lineHeight: '2.25rem',
             },
             'ul > li::before': {
               content: '""',
@@ -121,9 +110,9 @@ module.exports = {
               backgroundColor: theme('colors.slate.300'),
             },
             a: {
-              fontWeight: theme('fontWeight.semibold'),
+              color: '#FA5A28',
               textDecoration: 'none',
-              borderBottom: `1px solid ${theme('colors.sky.300')}`,
+              borderBottom: `1px solid #FA5A28`,
             },
             'a:hover': {
               borderBottomWidth: '2px',
@@ -143,6 +132,7 @@ module.exports = {
             code: {
               fontWeight: theme('fontWeight.medium'),
               fontVariantLigatures: 'none',
+              fontFamily: 'Roboto',
             },
             pre: {
               color: theme('colors.slate.50'),
@@ -230,11 +220,12 @@ module.exports = {
         },
       }),
       fontFamily: {
-        sans: ['Inter var', ...defaultTheme.fontFamily.sans],
-        mono: ['Fira Code VF', ...defaultTheme.fontFamily.mono],
-        source: ['Source Sans Pro', ...defaultTheme.fontFamily.sans],
-        'ubuntu-mono': ['Ubuntu Mono', ...defaultTheme.fontFamily.mono],
-        roboto: ["Roboto", "sans-serif"],
+        // remove this font from components
+        //sans: ['Inter var', ...defaultTheme.fontFamily.sans],
+        //mono: ['Fira Code VF', ...defaultTheme.fontFamily.mono],
+        //source: ['Source Sans Pro', ...defaultTheme.fontFamily.sans],
+        //'ubuntu-mono': ['Ubuntu Mono', ...defaultTheme.fontFamily.mono],
+        roboto: ['Roboto', 'sans-serif'],
       },
       spacing: {
         18: '4.5rem',
