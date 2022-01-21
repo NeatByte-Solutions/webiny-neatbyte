@@ -5,6 +5,7 @@ import { Logo } from '@/components/Logo'
 import { Dialog } from '@headlessui/react'
 import { useEffect, useState } from 'react'
 import clsx from 'clsx'
+import { ThemeSelect, ThemeToggle } from './ThemeToggle'
 import styles from './Header.module.css'
 
 function Featured() {
