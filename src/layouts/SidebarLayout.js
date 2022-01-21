@@ -229,13 +229,13 @@ export function SidebarLayout({
   return (
     <SidebarContext.Provider value={{ nav, navIsOpen, setNavIsOpen }}>
       <Wrapper allowOverflow={allowOverflow}>
-        <div className="max-w-8xl mx-auto px-4 sm:px-6 md:px-8">
-          <div className="hidden lg:block fixed z-20 inset-0 top-[3.8125rem] left-[max(0px,calc(50%-45rem))] right-auto w-[19.5rem] pb-10 px-8 overflow-y-auto">
-            <Nav nav={documentationNav2} fallbackHref={fallbackHref}>
+        <div className="max-w-[96.993rem] mx-auto pl-4 sm:pl-6 md:pl-8 2xl:pl-[5.43rem] pr-4 sm:pr-6 md:pr-8">
+          <div className="hidden lg:block fixed z-20 inset-0 top-[4.375rem] right-auto w-[20.875rem] pb-10 px-5 overflow-y-auto">
+            <Nav nav={nav} fallbackHref={fallbackHref}>
               {sidebar}
             </Nav>
           </div>
-          <div className="lg:pl-[19.5rem]">{children}</div>
+          <div className="lg:pl-[20.875rem]">{children}</div>
         </div>
       </Wrapper>
       <Dialog
@@ -245,7 +245,7 @@ export function SidebarLayout({
         className="fixed z-50 inset-0 overflow-y-auto lg:hidden"
       >
         <Dialog.Overlay className="fixed inset-0 bg-black/20 backdrop-blur-sm dark:bg-slate-900/80" />
-        <div className="relative bg-white w-80 max-w-[calc(100%-3rem)] p-6 dark:bg-slate-800">
+        <div className="relative bg-white w-[21.25rem] max-w-[calc(100%-3rem)] p-6 dark:bg-slate-800">
           <button
             type="button"
             onClick={() => setNavIsOpen(false)}
