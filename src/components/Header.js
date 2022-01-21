@@ -89,6 +89,9 @@ export function NavPopover({ display = 'md:hidden', className, ...props }) {
           )}
         >
           <div className={styles.whiteCorner}></div>
+          <div className="mb-5 mr-2">
+            <ThemeSelect />
+          </div>
           <ul className="space-y-5 px-5">
             <NavItems />
           </ul>
