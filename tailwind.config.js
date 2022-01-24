@@ -40,6 +40,7 @@ module.exports = {
     },
     extend: {
       colors: {
+        'dark-blue': '#334155',
         gray: '#000E1A',
         blue: '#01579B',
         nordic: '#002D39',
@@ -327,7 +328,7 @@ module.exports = {
             lineHeight: '1.5rem',
           },
         ],
-        "sidebar-right-title": [
+        'sidebar-right-title': [
           '1.375rem',
           {
             lineHeight: '1.5rem',

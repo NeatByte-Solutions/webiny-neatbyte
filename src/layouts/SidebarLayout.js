@@ -1,10 +1,12 @@
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import { createContext, forwardRef, useRef, useState } from 'react'
+import { createContext, forwardRef, useEffect, useRef, useState } from 'react'
 import { useIsomorphicLayoutEffect } from '@/hooks/useIsomorphicLayoutEffect'
 import clsx from 'clsx'
 import { Dialog } from '@headlessui/react'
 import { documentationNav2 } from '@/navs/docjson'
+
+import arrow from '../assets/menu-arrow/New shape Copy 2.png'
 
 export const SidebarContext = createContext()
 
@@ -63,13 +65,13 @@ function nearestScrollableContainer(el) {
 }
 
 const NavTreeElement = ({ element }) => {
-  const { type, title } = element
+  const { type, title, link } = element
   if (type === 'collapsable') {
     return <Collapsable subElements={element.links} title={title} />
   } else if (type === 'page') {
     return <Page title={title} link={element.link} />
   } else if (type === 'section') {
-    return <Section title={title} />
+    return <Section title={title} link={link} />
   } else {
     return null
   }
@@ -79,10 +81,16 @@ const Collapsable = ({ title, subElements = [] }) => {
   const [showMenu, setShowMenu] = useState(false)
   return (
     <div>
-      <h3 onClick={() => setShowMenu(!showMenu)} className="cursor-pointer">
-        {title}
-      </h3>
-      <div className={`${showMenu ? 'block' : 'hidden'}`}>
+      <div
+        onClick={() => setShowMenu(!showMenu)}
+        className="flex items-center cursor-pointer my-[10px]"
+      >
+        <div className="mr-[10px]">
+          <img src={arrow} className={`${showMenu ? 'rotate-90' : null}`}></img>
+        </div>
+        <h3 className="font-roboto font-semibold text-[18px] text-dark-blue">{title}</h3>
+      </div>
+      <div className={`${showMenu ? 'block' : 'hidden'} ml-[10px]`}>
         {subElements.map((navElement, index) => (
           <NavTreeElement key={index} element={navElement} />
         ))}
@@ -92,61 +100,83 @@ const Collapsable = ({ title, subElements = [] }) => {
 }
 
 const Page = ({ title, link }) => {
+  const router = useRouter()
+  // const activeItemRef = useRef()
+  // const previousActiveItemRef = useRef()
+  // const scrollRef = useRef()
+  const [linkIsActive, setLinkIsNotActive] = useState(false)
+
+  useEffect(() => {
+    if (router.pathname === link) {
+      setLinkIsNotActive(true)
+    } else {
+      setLinkIsNotActive(false)
+    }
+  })
+
+  // useIsomorphicLayoutEffect(() => {
+  //   function updatePreviousRef() {
+  //     previousActiveItemRef.current = activeItemRef.current
+  //   }
+
+  //   if (activeItemRef.current) {
+  //     if (activeItemRef.current === previousActiveItemRef.current) {
+  //       updatePreviousRef()
+  //       return
+  //     }
+
+  //     updatePreviousRef()
+
+  //     const scrollable = nearestScrollableContainer(scrollRef.current)
+
+  //     const scrollRect = scrollable.getBoundingClientRect()
+  //     const activeItemRect = activeItemRef.current.getBoundingClientRect()
+
+  //     const top = activeItemRef.current.offsetTop
+  //     const bottom = top - scrollRect.height + activeItemRect.height
+
+  //     if (scrollable.scrollTop > top || scrollable.scrollTop < bottom) {
+  //       scrollable.scrollTop = top - scrollRect.height / 2 + activeItemRect.height / 2
+  //     }
+  //   }
+  // }, [router.pathname])
+
+  // (fallbackHref ? nav[category] : publishedItems).map((item, i) => {
+  //   let isActive = item.match
+  //     ? item.match.test(router.pathname)
+  //     : item.href === router.pathname
+
   return (
-    <div className="pl-4">
-      <Link href="here must be a link">{title}</Link>
-    </div>
+    <Link href={link}>
+      <h3
+        className={`h-[30px] my-[10px] cursor-pointer font-roboto text-[16px]  ${
+          linkIsActive
+            ? 'text-orange border-orange border-r-[2px]'
+            : 'hover:border-r-[2px] hover:text-blue border-blue'
+        }`}
+      >
+        {title}
+      </h3>
+    </Link>
   )
 }
 
 const Section = ({ title }) => {
   return (
-    <div>
-      <h3>{title}</h3>
+    <div className="my-[10px]">
+      <h3 className="uppercase text-dark-blue font-roboto text-[16px]">{title}</h3>
     </div>
   )
 }
 
-function Nav({ nav, children, fallbackHref, mobile = false }) {
-  const router = useRouter()
-  const activeItemRef = useRef()
-  const previousActiveItemRef = useRef()
-  const scrollRef = useRef()
-
-  useIsomorphicLayoutEffect(() => {
-    function updatePreviousRef() {
-      previousActiveItemRef.current = activeItemRef.current
-    }
-
-    if (activeItemRef.current) {
-      if (activeItemRef.current === previousActiveItemRef.current) {
-        updatePreviousRef()
-        return
-      }
-
-      updatePreviousRef()
-
-      const scrollable = nearestScrollableContainer(scrollRef.current)
-
-      const scrollRect = scrollable.getBoundingClientRect()
-      const activeItemRect = activeItemRef.current.getBoundingClientRect()
-
-      const top = activeItemRef.current.offsetTop
-      const bottom = top - scrollRect.height + activeItemRect.height
-
-      if (scrollable.scrollTop > top || scrollable.scrollTop < bottom) {
-        scrollable.scrollTop = top - scrollRect.height / 2 + activeItemRect.height / 2
-      }
-    }
-  }, [router.pathname])
-
+function Nav({ nav, children, mobile = false }) {
   return (
-    <nav ref={scrollRef} id="nav" className="lg:text-sm lg:leading-6 relative">
-      <ul>
-        {nav.map((el, index) => {
-          return <NavTreeElement element={el} key={index} />
-        })}
-        {/* 
+    // <nav ref={scrollRef} id="nav" className="lg:text-sm lg:leading-6 relative">
+    <ul>
+      {nav.map((el, index) => {
+        return <NavTreeElement element={el} key={index} />
+      })}
+      {/* 
         {nav.map((item, index) => {
           return (
             <div>
@@ -155,9 +185,8 @@ function Nav({ nav, children, fallbackHref, mobile = false }) {
           )
         })} */}
 
-        {console.log(nav)}
-        {children}
-        {/* {nav &&
+      {children}
+      {/* {nav &&
           Object.keys(nav)
             .map((category) => {
               let publishedItems = nav[category].filter((item) => item.published !== false)
@@ -200,61 +229,8 @@ function Nav({ nav, children, fallbackHref, mobile = false }) {
               )
             })
             .filter(Boolean)} */}
-      </ul>
-    </nav>
-  )
-}
-
-const TopLevelAnchor = forwardRef(
-  (
-    { children, href, className, icon, isActive, onClick, shadow, activeBackground, mobile },
-    ref
-  ) => {
-    return (
-      <li>
-        <a
-          ref={ref}
-          href={href}
-          onClick={onClick}
-          className={clsx(
-            'group flex items-center lg:text-sm lg:leading-6',
-            className,
-            isActive
-              ? 'font-semibold text-sky-500 dark:text-sky-400'
-              : 'font-medium text-slate-700 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-300'
-          )}
-        >
-          <div
-            className={clsx(
-              'mr-4 rounded-md ring-1 ring-slate-900/5 shadow-sm group-hover:shadow group-hover:ring-slate-900/10 dark:ring-0 dark:shadow-none dark:group-hover:shadow-none dark:group-hover:highlight-white/10',
-              shadow,
-              isActive
-                ? [activeBackground, 'dark:highlight-white/10']
-                : mobile
-                ? 'dark:bg-slate-700 dark:highlight-white/5'
-                : 'dark:bg-slate-800 dark:highlight-white/5'
-            )}
-          >
-            <svg className="h-6 w-6" viewBox="0 0 24 24" fill="none">
-              {icon}
-            </svg>
-          </div>
-          {children}
-        </a>
-      </li>
-    )
-  }
-)
-
-function TopLevelLink({ href, as, ...props }) {
-  if (/^https?:\/\//.test(href)) {
-    return <TopLevelAnchor href={href} {...props} />
-  }
-
-  return (
-    <Link href={href} as={as} passHref>
-      <TopLevelAnchor {...props} />
-    </Link>
+    </ul>
+    // </nav>
   )
 }
 
@@ -276,9 +252,7 @@ export function SidebarLayout({
       <Wrapper allowOverflow={allowOverflow}>
         <div className="max-w-[96.993rem] mx-auto pl-4 sm:pl-6 md:pl-8 2xl:pl-[5.43rem] pr-4 sm:pr-6 md:pr-8">
           <div className="hidden lg:block fixed z-20 inset-0 top-[4.375rem] right-auto w-[20.875rem] pb-10 px-5 overflow-y-auto">
-            <Nav nav={documentationNav2} fallbackHref={fallbackHref}>
-              {sidebar}
-            </Nav>
+            <Nav nav={documentationNav2}>{sidebar}</Nav>
           </div>
           <div className="lg:pl-[20.875rem]">{children}</div>
         </div>
