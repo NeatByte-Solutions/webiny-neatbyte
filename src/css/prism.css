@@ -4,7 +4,7 @@
 .token.selector .class,
 .token.selector.class,
 .token.function {
-  @apply text-sea-green;
+  @apply text-[#8ec39c];
 }
 
 .token.attr-name,
@@ -12,19 +12,19 @@
 .token.rule,
 .token.pseudo-class,
 .token.important {
-  @apply text-dark-yellow;
+  @apply text-[#E3BC66];
 }
 
 .token.attr-value,
 .token.class,
 .token.string {
-  @apply text-sandy-brown;
+  @apply text-[#E19057];
 }
 
 .token.operator,
 .token.punctuation,
 .token.attr-equals {
-  @apply text-light-gray;
+  @apply text-[#CCCCCC];
 }
 
 .token.attr-value * {
@@ -38,7 +38,7 @@
 }
 
 .token.property {
-  @apply text-cornflower-blue;
+  @apply text-[#6587FF];
 }
 
 .token.unit {
@@ -59,11 +59,11 @@
 .token.parameter,
 .token.module,
 .token.combinator {
-  @apply text-plum;
+  @apply text-[#C49CCA];
 }
 
 .token.comment {
-  @apply text-dark-green;
+  @apply text-[#558152];
 }
 
 .token.unchanged {
@@ -83,9 +83,9 @@
   @apply bg-rose-500/[0.15] border-rose-400 before:content-['-'] before:text-rose-400;
 }
 
-code[class*="language-"],
-pre[class*="language-"] {
-  @apply bg-dark-slate-gray text-light-sky-blue;
+code[class*='language-'],
+pre[class*='language-'] {
+  @apply bg-[#2B2D52] text-[#94D8FF];
 }
 
 pre[class^='language-diff-'] {
