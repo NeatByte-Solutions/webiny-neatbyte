@@ -32,6 +32,11 @@ export const documentationNav2 = [
   collapsable('Create Custom Application', [
     section('First section'),
     collapsable('Project Organization', [
+      collapsable('Project Organization', [
+        page('editor-setup'),
+        page('browser-support'),
+        page('upgrade-guide'),
+      ]),
       page('editor-setup'),
       page('browser-support'),
       page('upgrade-guide'),

@@ -79,14 +79,10 @@ const Collapsable = ({ title, subElements = [] }) => {
   const [showMenu, setShowMenu] = useState(false)
   return (
     <div>
-      <h3
-        onClick={() => setShowMenu(!showMenu)}
-        className="cursor-pointer"
-        style={{ color: showMenu ? 'red' : 'green' }}
-      >
+      <h3 onClick={() => setShowMenu(!showMenu)} className="cursor-pointer">
         {title}
       </h3>
-      <div>
+      <div className={`${showMenu ? 'block' : 'hidden'}`}>
         {subElements.map((navElement, index) => (
           <NavTreeElement key={index} element={navElement} />
         ))}
@@ -99,7 +95,6 @@ const Page = ({ title, link }) => {
   return (
     <div className="pl-4">
       <Link href="here must be a link">{title}</Link>
-      {/* {types(el.lists, el.type)} */}
     </div>
   )
 }
@@ -107,7 +102,7 @@ const Page = ({ title, link }) => {
 const Section = ({ title }) => {
   return (
     <div>
-      <h3 className="pl-2">{title}</h3>
+      <h3>{title}</h3>
     </div>
   )
 }
