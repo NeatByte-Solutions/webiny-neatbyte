@@ -4,7 +4,7 @@
 .token.selector .class,
 .token.selector.class,
 .token.function {
-  @apply text-pink-400;
+  @apply text-sea-green;
 }
 
 .token.attr-name,
@@ -12,18 +12,19 @@
 .token.rule,
 .token.pseudo-class,
 .token.important {
-  @apply text-slate-300;
+  @apply text-dark-yellow;
 }
 
 .token.attr-value,
 .token.class,
 .token.string {
-  @apply text-sky-300;
+  @apply text-sandy-brown;
 }
 
+.token.operator,
 .token.punctuation,
 .token.attr-equals {
-  @apply text-slate-500;
+  @apply text-light-gray;
 }
 
 .token.attr-value * {
@@ -37,7 +38,7 @@
 }
 
 .token.property {
-  @apply text-sky-300;
+  @apply text-cornflower-blue;
 }
 
 .token.unit {
@@ -53,11 +54,16 @@
   @apply text-teal-200;
 }
 
-.token.comment,
+.token.console,
+.token.method,
+.token.parameter,
 .token.module,
-.token.operator,
 .token.combinator {
-  @apply text-slate-400;
+  @apply text-plum;
+}
+
+.token.comment {
+  @apply text-dark-green;
 }
 
 .token.unchanged {
@@ -75,6 +81,11 @@
 
 .token.deleted {
   @apply bg-rose-500/[0.15] border-rose-400 before:content-['-'] before:text-rose-400;
+}
+
+code[class*="language-"],
+pre[class*="language-"] {
+  @apply bg-dark-slate-gray text-light-sky-blue;
 }
 
 pre[class^='language-diff-'] {
