@@ -31,8 +31,7 @@ function TableOfContents({ tableOfContents, currentSection }) {
   let pageHasSubsections = (section) => section.children.length > 0
 
   return (
-    <>
-      <ul className="text-slate-700 text-sm leading-4 not-prose">
+      <ul className="text-sm leading-4 not-prose">
         {tableOfContents.map((section, index) => (
           <Fragment key={section.slug}>
             <li>
@@ -77,7 +76,6 @@ function TableOfContents({ tableOfContents, currentSection }) {
           </Fragment>
         ))}
       </ul>
-    </>
   )
 }
 
