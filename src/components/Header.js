@@ -268,7 +268,7 @@ export function Header({ navIsOpen, onNavToggle, title, section }) {
               </ul>
             </nav>
             <div className="flex items-center h-[2.375rem] border-l border-slate-200 ml-[1.875rem] pl-[1.875rem] dark:border-slate-800">
-              <div className="hidden flex items-center mr-5">
+              <div className="flex items-center mr-5">
                 <ThemeToggle panelClassName="" />
               </div>
               <a
