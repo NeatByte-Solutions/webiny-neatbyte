@@ -26,71 +26,86 @@ function TableOfContents({ tableOfContents, currentSection }) {
     if (section.slug === currentSection) {
       return true
     }
-    if (!section.children) {
-      return false
-    }
-    return section.children.findIndex(isActive) > -1
   }
 
-  let pageHasSubsections = tableOfContents.some((section) => section.children.length > 0)
+  let pageHasSubsections = (section) => section.children.length > 0
 
   return (
     <>
-      <h5 className="text-slate-900 font-semibold mb-4 text-sm leading-6 dark:text-slate-100">
-        On this page
-      </h5>
-      <ul className="text-slate-700 text-sm leading-6">
-        {tableOfContents.map((section) => (
+      <ul className="text-slate-700 text-sm leading-4 not-prose">
+        {tableOfContents.map((section, index) => (
           <Fragment key={section.slug}>
             <li>
               <a
                 href={`#${section.slug}`}
                 onClick={closeNav}
-                className={clsx(
-                  'block py-1',
-                  pageHasSubsections ? 'font-medium' : '',
-                  isActive(section)
-                    ? 'font-medium text-sky-500 dark:text-sky-400'
-                    : 'hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-300'
-                )}
+                className={`block font-semibold ${index > 0 ? 'mt-5' : ''} ${
+                  isActive(section) ? 'text-orange' : 'text-dark-blue'
+                }`}
               >
                 {section.title}
               </a>
             </li>
             {section.children.map((subsection) => (
-              <li className="ml-4" key={subsection.slug}>
-                <a
-                  href={`#${subsection.slug}`}
-                  onClick={closeNav}
-                  className={clsx(
-                    'group flex items-start py-1',
-                    isActive(subsection)
-                      ? 'text-sky-500 dark:text-sky-400'
-                      : 'hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-300'
-                  )}
-                >
-                  <svg
-                    width="3"
-                    height="24"
-                    viewBox="0 -9 3 24"
-                    className="mr-2 text-slate-400 overflow-visible group-hover:text-slate-600 dark:text-slate-600 dark:group-hover:text-slate-500"
+              <>
+                <li className="ml-2.5 mt-5" key={subsection.slug}>
+                  <a
+                    href={`#${subsection.slug}`}
+                    onClick={closeNav}
+                    className={clsx(
+                      '',
+                      isActive(subsection) ? 'text-orange' : 'text-[#798099]',
+                      pageHasSubsections(subsection) ? 'font-bold' : 'font-normal'
+                    )}
                   >
-                    <path
-                      d="M0 0L3 3L0 6"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="1.5"
-                      strokeLinecap="round"
-                    />
-                  </svg>
-                  {subsection.title}
-                </a>
-              </li>
+                    {subsection.title}
+                  </a>
+                </li>
+                {subsection?.children.map((item) => (
+                  <li className="ml-5 mt-5" key={item.slug}>
+                    <a
+                      href={`#${item.slug}`}
+                      onClick={closeNav}
+                      className={clsx('', isActive(item) ? 'text-orange' : 'text-[#798099]')}
+                    >
+                      {item.title}
+                    </a>
+                  </li>
+                ))}
+              </>
             ))}
           </Fragment>
         ))}
       </ul>
     </>
+  )
+}
+
+function WasThisArticleHelpful({ className }) {
+  return (
+    <div
+      className={`mt-[3.75rem] xl:mt-[2,5625rem] grid justify-items-center xl:justify-items-start text-dark-blue ${className}`}
+    >
+      <div className="sidebar-right-title font-bold">Was this article helpful?</div>
+      <div className="flex mt-[1.1875rem]">
+        <button className="h-9 w-[4.0625rem] border border-neutral-200 rounded flex items-center justify-center font-semibold text-sm leading-6 mr-2.5">
+          <img
+            src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTgiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAxOCAxNiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTE1LjE1MTQgNi4wOTA4MkgxMS40NThWMi4yODkyNUMxMS40NTggMS41NzcxNyAxMC44OTk5IDEgMTAuMjExMyAxQzkuODMyODIgMSA5LjQ3NDA2IDEuMTc4MTggOS4yMzc3NiAxLjQ4MzYzTDQuNjg4OTYgNy4zNjM1M0g0LjY4OTU4SDQuNjg4OTZWMTMuNzI3MUw2LjUzNTA3IDE0Ljk5OThIMTQuMjEwNUMxNC43NTk1IDE0Ljk5OTggMTUuMjQxOSAxNC42MjMgMTUuMzkyNyAxNC4wNzY0TDE2LjkyNDkgOC41MjQyNEMxNy4yNjA5IDcuMzA0OTggMTYuMzc2NiA2LjA5MDgyIDE1LjE1MTQgNi4wOTA4MloiIHN0cm9rZT0iIzMzNDE1NSIgc3Ryb2tlLW1pdGVybGltaXQ9IjEwIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KPHBhdGggZD0iTTQuNjg5MDMgNi4wOTEyM0gwLjk5NjgyNlYxNS4wMDAySDQuNjg5MDNWNi4wOTEyM1oiIHN0cm9rZT0iIzMzNDE1NSIgc3Ryb2tlLW1pdGVybGltaXQ9IjEwIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KPHBhdGggZD0iTTIuODQzMTUgMTMuMDkxMUMzLjE4MzAxIDEzLjA5MTEgMy40NTg1MiAxMi44MDYyIDMuNDU4NTIgMTIuNDU0N0MzLjQ1ODUyIDEyLjEwMzMgMy4xODMwMSAxMS44MTg0IDIuODQzMTUgMTEuODE4NEMyLjUwMzI5IDExLjgxODQgMi4yMjc3OCAxMi4xMDMzIDIuMjI3NzggMTIuNDU0N0MyLjIyNzc4IDEyLjgwNjIgMi41MDMyOSAxMy4wOTExIDIuODQzMTUgMTMuMDkxMVoiIGZpbGw9IiMzMzQxNTUiLz4KPC9zdmc+Cg=="
+            alt="like button"
+            className="mr-[0.375rem]"
+          />
+          Yes
+        </button>
+        <button className="h-9 w-[4.0625rem] border border-neutral-200 rounded flex items-center justify-center font-semibold text-sm leading-6">
+          <img
+            src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTgiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAxOCAxNiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTIuNTU2NDQgOS45MDkwOUg2LjI0OTk2VjEzLjcxMDdDNi4yNDk5NiAxNC40MjI4IDYuODA4MTEgMTUgNy40OTY3MyAxNUM3Ljg3NTE5IDE1IDguMjMzOTUgMTQuODIxOCA4LjQ3MDI2IDE0LjUxNjRMMTMuMDE5MiA4LjYzNjM2SDEzLjAxODVIMTMuMDE5MlYyLjI3MjczTDExLjE3MyAxSDMuNDk3MzZDMi45NDkwNiAxIDIuNDY2NiAxLjM3NjczIDIuMzE1ODMgMS45MjMzNkwwLjc4MzUyNyA3LjQ3NTY0QzAuNDQ2OTEzIDguNjk0OTEgMS4zMzEyMiA5LjkwOTA5IDIuNTU2NDQgOS45MDkwOVoiIHN0cm9rZT0iIzMzNDE1NSIgc3Ryb2tlLW1pdGVybGltaXQ9IjEwIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KPHBhdGggZD0iTTEzLjAxOTEgOS45MDkwOUwxNi43MTE0IDkuOTA5MDlMMTYuNzExNCAwLjk5OTk5N0wxMy4wMTkxIDAuOTk5OTk3TDEzLjAxOTEgOS45MDkwOVoiIHN0cm9rZT0iIzMzNDE1NSIgc3Ryb2tlLW1pdGVybGltaXQ9IjEwIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KPHBhdGggZD0iTTE0Ljg2NTQgNC4xODE5OEMxNS4yMDUyIDQuMTgxOTggMTUuNDgwOCAzLjg5NzA3IDE1LjQ4MDggMy41NDU2MkMxNS40ODA4IDMuMTk0MTcgMTUuMjA1MiAyLjkwOTI2IDE0Ljg2NTQgMi45MDkyNkMxNC41MjU1IDIuOTA5MjYgMTQuMjUgMy4xOTQxNyAxNC4yNSAzLjU0NTYyQzE0LjI1IDMuODk3MDcgMTQuNTI1NSA0LjE4MTk4IDE0Ljg2NTQgNC4xODE5OFoiIGZpbGw9IiMzMzQxNTUiLz4KPC9zdmc+Cg=="
+            alt="like button"
+            className="mr-[0.375rem]"
+          />
+          No
+        </button>
+      </div>
+    </div>
   )
 }
 
@@ -186,16 +201,24 @@ export function ContentsLayout({ children, meta, classes, tableOfContents, secti
         {classes ? (
           <>
             <ClassTable {...classes} />
-            <div id="content" className="relative z-20 prose md:prose-md prose-slate mt-12 dark:prose-dark">
+            <div
+              id="content"
+              className="relative z-20 prose md:prose-md prose-slate mt-12 dark:prose-dark"
+            >
               <MDXProvider components={{ Heading }}>{children}</MDXProvider>
             </div>
           </>
         ) : (
-          <div id="content" className="relative z-20 prose md:prose-md prose-slate mt-8 dark:prose-dark">
+          <div
+            id="content"
+            className="relative z-20 prose md:prose-md prose-slate mt-8 dark:prose-dark"
+          >
             <MDXProvider components={{ Heading }}>{children}</MDXProvider>
           </div>
         )}
       </ContentsContext.Provider>
+      
+      <WasThisArticleHelpful className="xl:hidden" />
 
       <Footer previous={prev} next={next}>
         <Link
@@ -205,10 +228,13 @@ export function ContentsLayout({ children, meta, classes, tableOfContents, secti
         </Link>
       </Footer>
 
-      <div className="fixed z-20 top-[5,875rem] bottom-0 right-[max(0px,calc(50%-48.5rem))] w-[19.5rem] py-[1.875rem] pl-[4.3125rem] pr-[1.8125rem] overflow-y-auto hidden xl:block">
-        {toc.length > 0 && (
-          <TableOfContents tableOfContents={toc} currentSection={currentSection} />
-        )}
+      <div className="fixed z-20 top-[5.875rem] bottom-0 right-[max(0px,calc(50%-48.5rem))] w-[19.5rem] pl-[4.3125rem] pr-[1.8125rem] overflow-y-auto hidden xl:block">
+        <div className="border-l-2 border-orange pl-5 pt-[0.3125rem] pb-2.5">
+          {toc.length > 0 && (
+            <TableOfContents tableOfContents={toc} currentSection={currentSection} />
+          )}
+        </div>
+        <WasThisArticleHelpful />
       </div>
     </div>
   )
