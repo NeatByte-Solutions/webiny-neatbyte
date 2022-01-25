@@ -48,7 +48,7 @@ const NavTreeElement = forwardRef(({ element, depth = 0 }, ref) => {
   const router = useRouter()
 
   const { type, title, link } = element
- 
+
   if (type === 'collapsable') {
     return <Collapsable subElements={element.links} title={title} ref={ref} depth={depth} />
   } else if (type === 'page') {
@@ -63,7 +63,8 @@ const NavTreeElement = forwardRef(({ element, depth = 0 }, ref) => {
 })
 
 const Collapsable = forwardRef(({ title, subElements = [], depth = 0 }, ref) => {
-  const [showMenu, setShowMenu] = useState(true)
+  const [showMenu, setShowMenu] = useState(false)
+
   return (
     <>
       <li
@@ -74,16 +75,26 @@ const Collapsable = forwardRef(({ title, subElements = [], depth = 0 }, ref) => 
         <div className="mr-[10px]">
           <img src={arrow} className={`duration-300 ${showMenu ? 'rotate-90' : null}`}></img>
         </div>
-        {depth > 0 ? <a href="#" className="font-roboto text-[15px] text-dark-blue">
+
+        <a
+          href="#"
+          className={clsx(
+            'text-nav-directory',
+            showMenu && depth > 0
+              ? 'font-bold nav-link'
+              : !showMenu && depth > 0
+              ? ''
+              : depth === 0
+              ? 'text-dark-blue font-semibold'
+              : 'text-light-blue'
+          )}
+        >
           {title}
-        </a> : <a href="#" className="font-roboto font-semibold text-[18px] text-dark-blue">
-          {title}
-        </a>}
-        
+        </a>
       </li>
       <ul className={`duration-300 ml-[10px] ${showMenu ? 'block' : 'hidden'}`}>
         {subElements.map((navElement, index) => (
-          <NavTreeElement key={index} element={navElement} ref={ref} depth={depth + 1}/>
+          <NavTreeElement key={index} element={navElement} ref={ref} depth={depth + 1} />
         ))}
       </ul>
     </>
@@ -95,7 +106,7 @@ const Page = forwardRef(({ title, link, isActive, depth = 0 }, ref) => {
     <li ref={ref}>
       <Link href={link}>
         <a
-          className={`block h-[30px] my-[10px] cursor-pointer font-roboto text-[16px] ${
+          className={`block h-[30px] my-[10px] cursor-pointer ${
             isActive
               ? 'text-orange border-orange border-r-[2px]'
               : 'hover:border-r-[2px] hover:text-blue border-blue'
@@ -108,7 +119,9 @@ const Page = forwardRef(({ title, link, isActive, depth = 0 }, ref) => {
   )
 })
 const Section = ({ title }) => {
-  return <a className="my-[10px] uppercase text-dark-blue font-roboto text-[16px]">{title}</a>
+  return (
+    <a className="my-[10px] uppercase text-dark-blue font-normal text-nav-subdirectory">{title}</a>
+  )
 }
 
 function Nav({ nav, mobile = false }) {
@@ -145,7 +158,7 @@ function Nav({ nav, mobile = false }) {
   }, [router.pathname])
 
   return (
-    <nav ref={scrollRef} id="nav" className="lg:text-sm lg:leading-6 relative">
+    <nav ref={scrollRef} id="nav" className="lg:text-sm lg:leading-6 relative font-roboto">
       <ul>
         {nav.map((el, index) => {
           return <NavTreeElement element={el} key={index} ref={activeItemRef} router={router} />
