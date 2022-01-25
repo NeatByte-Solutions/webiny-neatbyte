@@ -1,11 +1,11 @@
 import { Tab, TabPanel, Tabs, TabList } from 'react-tabs'
 
-export function TabsNew({ children }) {
+export function TabsNew({ children, labels }) {
   return (
     <Tabs className="">
       <TabList className="flex">
-        {children.map((obj) => {
-          return <Tab>{obj.props.label}</Tab>
+        {labels.map((obj) => {
+          return <Tab>{obj.label}</Tab>
         })}
       </TabList>
       <div>
