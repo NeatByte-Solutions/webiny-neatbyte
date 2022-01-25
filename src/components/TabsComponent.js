@@ -1,10 +1,12 @@
 import { Tab, TabPanel, Tabs, TabList } from 'react-tabs'
 
-export function TabsItem({ children }) {
-  return <TabPanel>{children}</TabPanel>
+// works as a container for props, but don't rended smth directly.
+// its children are used in TabsComponent
+export function TabsItem() {
+  return null;
 }
 
-export function TabsComponent({ children }) {
+export function TabsComponent({ children = [] }) {
   return (
     <Tabs>
       <TabList className="flex not-prose">
@@ -20,7 +22,9 @@ export function TabsComponent({ children }) {
           )
         })}
       </TabList>
-      <div>{children}</div>
+      {children.map((tabsItem, index) => (
+        <TabPanel key={index}>{tabsItem?.props?.children}</TabPanel>
+      ))}
     </Tabs>
   )
 }
