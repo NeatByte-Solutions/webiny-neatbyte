@@ -70,23 +70,18 @@ const Collapsable = forwardRef(({ title, subElements = [], depth = 0 }, ref) => 
       <li
         href="#"
         onClick={() => setShowMenu(!showMenu)}
-        className={`flex items-center cursor-pointer my-[10px]`}
+        className="flex items-center cursor-pointer my-[10px]"
       >
         <div className="mr-[10px]">
           <img src={arrow} className={`duration-300 ${showMenu ? 'rotate-90' : null}`}></img>
         </div>
-
         <a
           href="#"
-          className={clsx(
-            showMenu && depth > 0
-              ? 'font-bold text-nav-subdirectory'
-              : !showMenu && depth > 0
-              ? 'text-nav-subdirectory font-normal'
-              : depth === 0
-              ? 'text-dark-blue font-semibold text-nav-directory'
-              : 'text-light-blue'
-          )}
+          className={clsx({
+            'font-bold text-nav-subdirectory text-dark-purple': showMenu && depth > 0,
+            'text-nav-subdirectory font-normal text-dark-purple': !showMenu && depth > 0,
+            'text-dark-blue font-semibold text-nav-directory': depth === 0,
+          })}
         >
           {title}
         </a>
