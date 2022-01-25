@@ -31,53 +31,51 @@ function TableOfContents({ tableOfContents, currentSection }) {
   let pageHasSubsections = (section) => section.children.length > 0
 
   return (
-    <>
-      <ul className="text-slate-700 text-sm leading-4 not-prose">
-        {tableOfContents.map((section, index) => (
-          <Fragment key={section.slug}>
-            <li>
-              <a
-                href={`#${section.slug}`}
-                onClick={closeNav}
-                className={`block font-semibold ${index > 0 ? 'mt-5' : ''} ${
-                  isActive(section) ? 'text-orange' : 'text-dark-blue'
-                }`}
-              >
-                {section.title}
-              </a>
-            </li>
-            {section.children.map((subsection) => (
-              <>
-                <li className="ml-2.5 mt-5" key={subsection.slug}>
+    <ul className="text-nav-link not-prose">
+      {tableOfContents.map((section, index) => (
+        <Fragment key={section.slug}>
+          <li>
+            <a
+              href={`#${section.slug}`}
+              onClick={closeNav}
+              className={`block font-semibold ${index > 0 ? 'mt-5' : ''} ${
+                isActive(section) ? 'text-orange' : 'text-dark-blue'
+              }`}
+            >
+              {section.title}
+            </a>
+          </li>
+          {section.children.map((subsection) => (
+            <>
+              <li className="ml-2.5 mt-5" key={subsection.slug}>
+                <a
+                  href={`#${subsection.slug}`}
+                  onClick={closeNav}
+                  className={clsx(
+                    '',
+                    isActive(subsection) ? 'text-orange' : 'text-[#798099]',
+                    pageHasSubsections(subsection) ? 'font-bold' : 'font-normal'
+                  )}
+                >
+                  {subsection.title}
+                </a>
+              </li>
+              {subsection?.children.map((item) => (
+                <li className="ml-5 mt-5" key={item.slug}>
                   <a
-                    href={`#${subsection.slug}`}
+                    href={`#${item.slug}`}
                     onClick={closeNav}
-                    className={clsx(
-                      '',
-                      isActive(subsection) ? 'text-orange' : 'text-[#798099]',
-                      pageHasSubsections(subsection) ? 'font-bold' : 'font-normal'
-                    )}
+                    className={clsx('', isActive(item) ? 'text-orange' : 'text-[#798099]')}
                   >
-                    {subsection.title}
+                    {item.title}
                   </a>
                 </li>
-                {subsection?.children.map((item) => (
-                  <li className="ml-5 mt-5" key={item.slug}>
-                    <a
-                      href={`#${item.slug}`}
-                      onClick={closeNav}
-                      className={clsx('', isActive(item) ? 'text-orange' : 'text-[#798099]')}
-                    >
-                      {item.title}
-                    </a>
-                  </li>
-                ))}
-              </>
-            ))}
-          </Fragment>
-        ))}
-      </ul>
-    </>
+              ))}
+            </>
+          ))}
+        </Fragment>
+      ))}
+    </ul>
   )
 }
 
@@ -86,7 +84,7 @@ function WasThisArticleHelpful({ className }) {
     <div
       className={`mt-[3.75rem] xl:mt-[2,5625rem] grid justify-items-center xl:justify-items-start text-dark-blue ${className}`}
     >
-      <div className="sidebar-right-title font-bold">Was this article helpful?</div>
+      <div className="text-sidebar-right-title font-bold">Was this article helpful?</div>
       <div className="flex mt-[1.1875rem]">
         <button className="h-9 w-[4.0625rem] border border-neutral-200 rounded flex items-center justify-center font-semibold text-sm leading-6 mr-2.5">
           <img
@@ -190,7 +188,7 @@ export function ContentsLayout({ children, meta, classes, tableOfContents, secti
   let { prev, next } = usePrevNext()
 
   return (
-    <div className="max-w-3xl mx-auto mt-[1.875rem] xl:pt-10 xl:max-w-[53.6875rem] xl:ml-0 xl:mr-[15.5rem] xl:px-10 xl:border border-neutral-200 rounded-[0.625rem]">
+    <div className="max-w-3xl mx-auto mt-[1.875rem] xl:pt-10 xl:max-w-[53.6875rem] xl:ml-0 xl:mr-[15.5rem] 2xl:mr-[22rem] xl:px-10 xl:border border-neutral-200 rounded-[0.625rem]">
       <PageHeader
         title={meta.title}
         description={meta.description}
@@ -217,7 +215,7 @@ export function ContentsLayout({ children, meta, classes, tableOfContents, secti
           </div>
         )}
       </ContentsContext.Provider>
-      
+
       <WasThisArticleHelpful className="xl:hidden" />
 
       <Footer previous={prev} next={next}>
@@ -228,7 +226,7 @@ export function ContentsLayout({ children, meta, classes, tableOfContents, secti
         </Link>
       </Footer>
 
-      <div className="fixed z-20 top-[5.875rem] bottom-0 right-[max(0px,calc(50%-48.5rem))] w-[19.5rem] pl-[4.3125rem] pr-[1.8125rem] overflow-y-auto hidden xl:block">
+      <div className="fixed z-20 top-[5.875rem] bottom-0 right-[max(0px,calc(50%-48.5rem))] 2xl:right-[max(0px,calc(50%-50rem))] w-[19.5rem] 2xl:w-[22rem] pl-[4.3125rem] pr-[1.8125rem] overflow-y-auto hidden xl:block">
         <div className="border-l-2 border-orange pl-5 pt-[0.3125rem] pb-2.5">
           {toc.length > 0 && (
             <TableOfContents tableOfContents={toc} currentSection={currentSection} />
