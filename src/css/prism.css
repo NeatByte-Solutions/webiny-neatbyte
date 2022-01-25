@@ -72,7 +72,7 @@
 
 .token.deleted,
 .token.inserted {
-  @apply block relative -mx-9 pl-8 pr-5 border-l-4 before:absolute before:top-0 before:left-4;
+  @apply block relative -mx-4 lg:-mx-8 pl-3 lg:pl-8 pr-5 border-l-4 before:absolute before:top-0 before:left-4;
 }
 
 .token.inserted {
@@ -89,7 +89,7 @@ pre[class*='language-'] {
 }
 
 pre[class^='language-diff-'] {
-  @apply flex px-9;
+  @apply flex px-4 py-[1.625rem] lg:p-8;
 }
 
 pre[class^='language-diff-'] > code {
