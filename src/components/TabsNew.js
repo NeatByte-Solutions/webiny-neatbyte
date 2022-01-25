@@ -6,9 +6,9 @@ import styles from './TabsNew.module.css'
 export function TabsNew({ children, labels }) {
   return (
     <Tabs>
-      <TabList className={clsx('flex', styles['prose'])}>
+      <TabList className='flex not-prose'>
         {labels.map((obj) => {
-          return <Tab>{obj.label}</Tab>
+          return <Tab className="" selectedClassName="">{obj.label}</Tab>
         })}
       </TabList>
       <div className="bg-smoke rounded-xl p-8">
