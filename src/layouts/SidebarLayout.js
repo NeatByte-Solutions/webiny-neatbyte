@@ -79,13 +79,12 @@ const Collapsable = forwardRef(({ title, subElements = [], depth = 0 }, ref) => 
         <a
           href="#"
           className={clsx(
-            'text-nav-directory',
             showMenu && depth > 0
-              ? 'font-bold nav-link'
+              ? 'font-bold text-nav-subdirectory'
               : !showMenu && depth > 0
-              ? ''
+              ? 'text-nav-subdirectory font-normal'
               : depth === 0
-              ? 'text-dark-blue font-semibold'
+              ? 'text-dark-blue font-semibold text-nav-directory'
               : 'text-light-blue'
           )}
         >
@@ -106,9 +105,9 @@ const Page = forwardRef(({ title, link, isActive, depth = 0 }, ref) => {
     <li ref={ref}>
       <Link href={link}>
         <a
-          className={`block h-[30px] my-[10px] cursor-pointer ${
+          className={`block my-[10px] cursor-pointer text-nav-link ${
             isActive
-              ? 'text-orange border-orange border-r-[2px]'
+              ? 'text-orange border-orange border-r-[2px] font-bold'
               : 'hover:border-r-[2px] hover:text-blue border-blue'
           }`}
         >
