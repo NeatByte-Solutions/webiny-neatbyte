@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import { createContext, forwardRef, useEffect, useRef, useState } from 'react'
+import { createContext, forwardRef, useRef, useState } from 'react'
 import { useIsomorphicLayoutEffect } from '@/hooks/useIsomorphicLayoutEffect'
 import clsx from 'clsx'
 import { Dialog } from '@headlessui/react'
@@ -9,26 +9,6 @@ import { documentationNav2 } from '@/navs/docjson'
 import arrow from '../assets/menu-arrow/menu-arrow.png'
 
 export const SidebarContext = createContext()
-
-// const NavItem = forwardRef(({ href, children, isActive, isPublished, fallbackHref }, ref) => {
-//   return (
-//     <li ref={ref}>
-//       <Link href={isPublished ? href : fallbackHref}>
-//         <a
-//           className={clsx('block border-l pl-4 -ml-px', {
-//             'text-sky-500 border-current font-semibold dark:text-sky-400': isActive,
-//             'border-transparent hover:border-slate-400 dark:hover:border-slate-500': !isActive,
-//             'text-slate-700 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-300':
-//               !isActive && isPublished,
-//             'text-slate-400': !isActive && !isPublished,
-//           })}
-//         >
-//           {children}
-//         </a>
-//       </Link>
-//     </li>
-//   )
-// })
 
 /**
  * Find the nearst scrollable ancestor (or self if scrollable)
@@ -64,31 +44,25 @@ function nearestScrollableContainer(el) {
   return el
 }
 
-const NavTreeElement = ({ element, ref, router, fallbackHref }) => {
+const NavTreeElement = forwardRef(({ element, depth = 0 }, ref) => {
+  const router = useRouter()
+
   const { type, title, link } = element
+ 
   if (type === 'collapsable') {
-    return <Collapsable subElements={element.links} title={title} router={router} />
+    return <Collapsable subElements={element.links} title={title} ref={ref} depth={depth} />
   } else if (type === 'page') {
-    let isActive = element.match
-      ? element.match.test(router.pathname)
-      : element.link === router.pathname
-    return (
-      <Page
-        title={title}
-        link={element.link}
-        isActive={isActive}
-        ref={ref}
-        fallbackHref={fallbackHref}
-      />
-    )
+    const isActive = element.link === router.pathname
+
+    return <Page title={title} link={element.link} isActive={isActive} ref={ref} depth={depth} />
   } else if (type === 'section') {
-    return <Section title={title} link={link} />
+    return <Section title={title} link={link} depth={depth} />
   } else {
     return null
   }
-}
+})
 
-const Collapsable = ({ title, subElements = [], router, ref }) => {
+const Collapsable = forwardRef(({ title, subElements = [], depth = 0 }, ref) => {
   const [showMenu, setShowMenu] = useState(true)
   return (
     <>
@@ -100,39 +74,44 @@ const Collapsable = ({ title, subElements = [], router, ref }) => {
         <div className="mr-[10px]">
           <img src={arrow} className={`duration-300 ${showMenu ? 'rotate-90' : null}`}></img>
         </div>
-        <a href="#" className="font-roboto font-semibold text-[18px] text-dark-blue">
+        {depth > 0 ? <a href="#" className="font-roboto text-[15px] text-dark-blue">
           {title}
-        </a>
+        </a> : <a href="#" className="font-roboto font-semibold text-[18px] text-dark-blue">
+          {title}
+        </a>}
+        
       </li>
       <ul className={`duration-300 ml-[10px] ${showMenu ? 'block' : 'hidden'}`}>
         {subElements.map((navElement, index) => (
-          <NavTreeElement key={index} element={navElement} router={router} ref={ref} />
+          <NavTreeElement key={index} element={navElement} ref={ref} depth={depth + 1}/>
         ))}
       </ul>
     </>
   )
-}
+})
 
-const Page = forwardRef(({ title, link, isActive, fallbackHref }, ref) => {
+const Page = forwardRef(({ title, link, isActive, depth = 0 }, ref) => {
   return (
-    <Link href={link} ref={isActive ? ref : fallbackHref}>
-      <a
-        className={`block h-[30px] my-[10px] cursor-pointer font-roboto text-[16px] ${
-          isActive
-            ? 'text-orange border-orange border-r-[2px]'
-            : 'hover:border-r-[2px] hover:text-blue border-blue'
-        }`}
-      >
-        {title}
-      </a>
-    </Link>
+    <li ref={ref}>
+      <Link href={link}>
+        <a
+          className={`block h-[30px] my-[10px] cursor-pointer font-roboto text-[16px] ${
+            isActive
+              ? 'text-orange border-orange border-r-[2px]'
+              : 'hover:border-r-[2px] hover:text-blue border-blue'
+          }`}
+        >
+          {title}
+        </a>
+      </Link>
+    </li>
   )
 })
 const Section = ({ title }) => {
   return <a className="my-[10px] uppercase text-dark-blue font-roboto text-[16px]">{title}</a>
 }
 
-function Nav({ nav, children, fallbackHref, mobile = false }) {
+function Nav({ nav, mobile = false }) {
   const router = useRouter()
   const activeItemRef = useRef()
   const previousActiveItemRef = useRef()
@@ -164,64 +143,13 @@ function Nav({ nav, children, fallbackHref, mobile = false }) {
       }
     }
   }, [router.pathname])
+
   return (
     <nav ref={scrollRef} id="nav" className="lg:text-sm lg:leading-6 relative">
       <ul>
         {nav.map((el, index) => {
-          return (
-            <NavTreeElement
-              element={el}
-              key={index}
-              ref={activeItemRef}
-              router={router}
-              fallbackHref={fallbackHref}
-            />
-          )
+          return <NavTreeElement element={el} key={index} ref={activeItemRef} router={router} />
         })}
-
-        {/* {nav &&
-          Object.keys(nav)
-            .map((category) => {
-              let publishedItems = nav[category].filter((item) => item.published !== false)
-              if (publishedItems.length === 0 && !fallbackHref) return null
-              return (
-                <li key={category} className="mt-12 lg:mt-8">
-                  <h5
-                    className={clsx('mb-8 lg:mb-3 font-semibold', {
-                      'text-slate-900 dark:text-slate-200': publishedItems.length > 0,
-                      'text-slate-400': publishedItems.length === 0,
-                    })}
-                  >
-                    {category}
-                  </h5>
-                  <ul
-                    className={clsx(
-                      'space-y-6 lg:space-y-2 border-l border-slate-100',
-                      mobile ? 'dark:border-slate-700' : 'dark:border-slate-800'
-                    )}
-                  >
-                    {(fallbackHref ? nav[category] : publishedItems).map((item, i) => {
-                      let isActive = item.match
-                        ? item.match.test(router.pathname)
-                        : item.href === router.pathname
-                      return (
-                        <NavItem
-                          key={i}
-                          href={item.href}
-                          isActive={isActive}
-                          ref={isActive ? activeItemRef : undefined}
-                          isPublished={item.published !== false}
-                          fallbackHref={fallbackHref}
-                        >
-                          {item.shortTitle || item.title}
-                        </NavItem>
-                      )
-                    })}
-                  </ul>
-                </li>
-              )
-            })
-            .filter(Boolean)} */}
       </ul>
     </nav>
   )
@@ -237,7 +165,6 @@ export function SidebarLayout({
   setNavIsOpen,
   nav,
   sidebar,
-  fallbackHref,
   layoutProps: { allowOverflow = true } = {},
 }) {
   return (
@@ -245,9 +172,7 @@ export function SidebarLayout({
       <Wrapper allowOverflow={allowOverflow}>
         <div className="max-w-[96.993rem] mx-auto pl-4 sm:pl-6 md:pl-8 2xl:pl-[5.43rem] pr-4 sm:pr-6 md:pr-8">
           <div className="hidden lg:block fixed z-20 inset-0 top-[4.375rem] right-auto w-[20.875rem] pb-10 pl-[20px] overflow-y-auto">
-            <Nav nav={documentationNav2} ref={fallbackHref}>
-              {sidebar}
-            </Nav>
+            <Nav nav={documentationNav2}>{sidebar}</Nav>
           </div>
           <div className="lg:pl-[20.875rem]">{children}</div>
         </div>
@@ -276,7 +201,7 @@ export function SidebarLayout({
               />
             </svg>
           </button>
-          <Nav nav={documentationNav2} ref={fallbackHref} mobile={true}>
+          <Nav nav={documentationNav2} mobile={true}>
             {sidebar}
           </Nav>
         </div>
