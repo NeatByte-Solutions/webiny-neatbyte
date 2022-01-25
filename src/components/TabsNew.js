@@ -12,10 +12,10 @@ export function TabsNew({ children, labels }) {
         })}
       </TabList>
       <div className="bg-smoke rounded-xl p-8">
-        {children.map((obj) => {
-          return <TabPanel>{obj.props.children}</TabPanel>
-        })}
+        {children}
       </div>
     </Tabs>
   )
 }
+
+
