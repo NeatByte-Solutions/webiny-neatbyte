@@ -6,29 +6,29 @@ import clsx from 'clsx'
 import { Dialog } from '@headlessui/react'
 import { documentationNav2 } from '@/navs/docjson'
 
-import arrow from '../assets/menu-arrow/New shape Copy 2.png'
+import arrow from '../assets/menu-arrow/menu-arrow.png'
 
 export const SidebarContext = createContext()
 
-const NavItem = forwardRef(({ href, children, isActive, isPublished, fallbackHref }, ref) => {
-  return (
-    <li ref={ref}>
-      <Link href={isPublished ? href : fallbackHref}>
-        <a
-          className={clsx('block border-l pl-4 -ml-px', {
-            'text-sky-500 border-current font-semibold dark:text-sky-400': isActive,
-            'border-transparent hover:border-slate-400 dark:hover:border-slate-500': !isActive,
-            'text-slate-700 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-300':
-              !isActive && isPublished,
-            'text-slate-400': !isActive && !isPublished,
-          })}
-        >
-          {children}
-        </a>
-      </Link>
-    </li>
-  )
-})
+// const NavItem = forwardRef(({ href, children, isActive, isPublished, fallbackHref }, ref) => {
+//   return (
+//     <li ref={ref}>
+//       <Link href={isPublished ? href : fallbackHref}>
+//         <a
+//           className={clsx('block border-l pl-4 -ml-px', {
+//             'text-sky-500 border-current font-semibold dark:text-sky-400': isActive,
+//             'border-transparent hover:border-slate-400 dark:hover:border-slate-500': !isActive,
+//             'text-slate-700 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-300':
+//               !isActive && isPublished,
+//             'text-slate-400': !isActive && !isPublished,
+//           })}
+//         >
+//           {children}
+//         </a>
+//       </Link>
+//     </li>
+//   )
+// })
 
 /**
  * Find the nearst scrollable ancestor (or self if scrollable)
@@ -64,12 +64,23 @@ function nearestScrollableContainer(el) {
   return el
 }
 
-const NavTreeElement = ({ element }) => {
+const NavTreeElement = ({ element, ref, router, fallbackHref }) => {
   const { type, title, link } = element
   if (type === 'collapsable') {
-    return <Collapsable subElements={element.links} title={title} />
+    return <Collapsable subElements={element.links} title={title} router={router} />
   } else if (type === 'page') {
-    return <Page title={title} link={element.link} />
+    let isActive = element.match
+      ? element.match.test(router.pathname)
+      : element.link === router.pathname
+    return (
+      <Page
+        title={title}
+        link={element.link}
+        isActive={isActive}
+        ref={ref}
+        fallbackHref={fallbackHref}
+      />
+    )
   } else if (type === 'section') {
     return <Section title={title} link={link} />
   } else {
@@ -77,116 +88,98 @@ const NavTreeElement = ({ element }) => {
   }
 }
 
-const Collapsable = ({ title, subElements = [] }) => {
-  const [showMenu, setShowMenu] = useState(false)
+const Collapsable = ({ title, subElements = [], router, ref }) => {
+  const [showMenu, setShowMenu] = useState(true)
   return (
-    <div>
-      <div
+    <>
+      <li
+        href="#"
         onClick={() => setShowMenu(!showMenu)}
-        className="flex items-center cursor-pointer my-[10px]"
+        className={`flex items-center cursor-pointer my-[10px]`}
       >
         <div className="mr-[10px]">
-          <img src={arrow} className={`${showMenu ? 'rotate-90' : null}`}></img>
+          <img src={arrow} className={`duration-300 ${showMenu ? 'rotate-90' : null}`}></img>
         </div>
-        <h3 className="font-roboto font-semibold text-[18px] text-dark-blue">{title}</h3>
-      </div>
-      <div className={`${showMenu ? 'block' : 'hidden'} ml-[10px]`}>
+        <a href="#" className="font-roboto font-semibold text-[18px] text-dark-blue">
+          {title}
+        </a>
+      </li>
+      <ul className={`duration-300 ml-[10px] ${showMenu ? 'block' : 'hidden'}`}>
         {subElements.map((navElement, index) => (
-          <NavTreeElement key={index} element={navElement} />
+          <NavTreeElement key={index} element={navElement} router={router} ref={ref} />
         ))}
-      </div>
-    </div>
+      </ul>
+    </>
   )
 }
 
-const Page = ({ title, link }) => {
-  const router = useRouter()
-  // const activeItemRef = useRef()
-  // const previousActiveItemRef = useRef()
-  // const scrollRef = useRef()
-  const [linkIsActive, setLinkIsNotActive] = useState(false)
-
-  useEffect(() => {
-    if (router.pathname === link) {
-      setLinkIsNotActive(true)
-    } else {
-      setLinkIsNotActive(false)
-    }
-  })
-
-  // useIsomorphicLayoutEffect(() => {
-  //   function updatePreviousRef() {
-  //     previousActiveItemRef.current = activeItemRef.current
-  //   }
-
-  //   if (activeItemRef.current) {
-  //     if (activeItemRef.current === previousActiveItemRef.current) {
-  //       updatePreviousRef()
-  //       return
-  //     }
-
-  //     updatePreviousRef()
-
-  //     const scrollable = nearestScrollableContainer(scrollRef.current)
-
-  //     const scrollRect = scrollable.getBoundingClientRect()
-  //     const activeItemRect = activeItemRef.current.getBoundingClientRect()
-
-  //     const top = activeItemRef.current.offsetTop
-  //     const bottom = top - scrollRect.height + activeItemRect.height
-
-  //     if (scrollable.scrollTop > top || scrollable.scrollTop < bottom) {
-  //       scrollable.scrollTop = top - scrollRect.height / 2 + activeItemRect.height / 2
-  //     }
-  //   }
-  // }, [router.pathname])
-
-  // (fallbackHref ? nav[category] : publishedItems).map((item, i) => {
-  //   let isActive = item.match
-  //     ? item.match.test(router.pathname)
-  //     : item.href === router.pathname
-
+const Page = forwardRef(({ title, link, isActive, fallbackHref }, ref) => {
   return (
-    <Link href={link}>
-      <h3
-        className={`h-[30px] my-[10px] cursor-pointer font-roboto text-[16px]  ${
-          linkIsActive
+    <Link href={link} ref={isActive ? ref : fallbackHref}>
+      <a
+        className={`block h-[30px] my-[10px] cursor-pointer font-roboto text-[16px] ${
+          isActive
             ? 'text-orange border-orange border-r-[2px]'
             : 'hover:border-r-[2px] hover:text-blue border-blue'
         }`}
       >
         {title}
-      </h3>
+      </a>
     </Link>
   )
-}
-
+})
 const Section = ({ title }) => {
-  return (
-    <div className="my-[10px]">
-      <h3 className="uppercase text-dark-blue font-roboto text-[16px]">{title}</h3>
-    </div>
-  )
+  return <a className="my-[10px] uppercase text-dark-blue font-roboto text-[16px]">{title}</a>
 }
 
-function Nav({ nav, children, mobile = false }) {
-  return (
-    // <nav ref={scrollRef} id="nav" className="lg:text-sm lg:leading-6 relative">
-    <ul>
-      {nav.map((el, index) => {
-        return <NavTreeElement element={el} key={index} />
-      })}
-      {/* 
-        {nav.map((item, index) => {
-          return (
-            <div>
-              <Collapsable el={item} title={item.title} />
-            </div>
-          )
-        })} */}
+function Nav({ nav, children, fallbackHref, mobile = false }) {
+  const router = useRouter()
+  const activeItemRef = useRef()
+  const previousActiveItemRef = useRef()
+  const scrollRef = useRef()
 
-      {children}
-      {/* {nav &&
+  useIsomorphicLayoutEffect(() => {
+    function updatePreviousRef() {
+      previousActiveItemRef.current = activeItemRef.current
+    }
+
+    if (activeItemRef.current) {
+      if (activeItemRef.current === previousActiveItemRef.current) {
+        updatePreviousRef()
+        return
+      }
+
+      updatePreviousRef()
+
+      const scrollable = nearestScrollableContainer(scrollRef.current)
+
+      const scrollRect = scrollable.getBoundingClientRect()
+      const activeItemRect = activeItemRef.current.getBoundingClientRect()
+
+      const top = activeItemRef.current.offsetTop
+      const bottom = top - scrollRect.height + activeItemRect.height
+
+      if (scrollable.scrollTop > top || scrollable.scrollTop < bottom) {
+        scrollable.scrollTop = top - scrollRect.height / 2 + activeItemRect.height / 2
+      }
+    }
+  }, [router.pathname])
+  return (
+    <nav ref={scrollRef} id="nav" className="lg:text-sm lg:leading-6 relative">
+      <ul>
+        {nav.map((el, index) => {
+          return (
+            <NavTreeElement
+              element={el}
+              key={index}
+              ref={activeItemRef}
+              router={router}
+              fallbackHref={fallbackHref}
+            />
+          )
+        })}
+
+        {/* {nav &&
           Object.keys(nav)
             .map((category) => {
               let publishedItems = nav[category].filter((item) => item.published !== false)
@@ -229,8 +222,8 @@ function Nav({ nav, children, mobile = false }) {
               )
             })
             .filter(Boolean)} */}
-    </ul>
-    // </nav>
+      </ul>
+    </nav>
   )
 }
 
@@ -251,8 +244,10 @@ export function SidebarLayout({
     <SidebarContext.Provider value={{ nav, navIsOpen, setNavIsOpen }}>
       <Wrapper allowOverflow={allowOverflow}>
         <div className="max-w-[96.993rem] mx-auto pl-4 sm:pl-6 md:pl-8 2xl:pl-[5.43rem] pr-4 sm:pr-6 md:pr-8">
-          <div className="hidden lg:block fixed z-20 inset-0 top-[4.375rem] right-auto w-[20.875rem] pb-10 px-5 overflow-y-auto">
-            <Nav nav={documentationNav2}>{sidebar}</Nav>
+          <div className="hidden lg:block fixed z-20 inset-0 top-[4.375rem] right-auto w-[20.875rem] pb-10 pl-[20px] overflow-y-auto">
+            <Nav nav={documentationNav2} ref={fallbackHref}>
+              {sidebar}
+            </Nav>
           </div>
           <div className="lg:pl-[20.875rem]">{children}</div>
         </div>
@@ -281,7 +276,7 @@ export function SidebarLayout({
               />
             </svg>
           </button>
-          <Nav nav={nav} fallbackHref={fallbackHref} mobile={true}>
+          <Nav nav={documentationNav2} ref={fallbackHref} mobile={true}>
             {sidebar}
           </Nav>
         </div>
