@@ -52,9 +52,13 @@ module.exports = {
         yellow: '#FFFAF1',
         peach: '#FCE8E6',
         smoke: '#F8F8F8',
+        border: '#E5E5E5',
         white: '#ffffff',
         black: '#000000',
         code: {
+          'filename': '#D9DAE1',
+          'bar': '#434468',
+          'tab': '#7979f7',
           highlight: 'rgb(125 211 252 / 0.1)',
         },
       },
@@ -333,6 +337,12 @@ module.exports = {
           '1.375rem',
           {
             lineHeight: '1.5rem',
+          },
+        ],
+        'burger-menu-link': [
+          '0.75rem',
+          {
+            lineHeight: '1.625rem',
           },
         ],
       },
