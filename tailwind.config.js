@@ -55,9 +55,9 @@ module.exports = {
         white: '#ffffff',
         black: '#000000',
         code: {
-          'filename': '#D9DAE1',
-          'bar': '#434468',
-          'tab': '#7979f7',
+          filename: '#D9DAE1',
+          bar: '#434468',
+          tab: '#7979f7',
           highlight: 'rgb(125 211 252 / 0.1)',
         },
       },
