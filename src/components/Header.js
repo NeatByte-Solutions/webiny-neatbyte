@@ -151,9 +151,11 @@ export function NavItems() {
         </Link>
       </li>
       <li>
-        <a href="/" className="text-nav-subdirectory">
-          Loremipsum
-        </a>
+        <Link href="/">
+          <a href="/" className="text-nav-subdirectory">
+            Loremipsum
+          </a>
+        </Link>
       </li>
       <li>
         <Link href="/">
