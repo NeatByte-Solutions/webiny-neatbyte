@@ -9,6 +9,8 @@ const { withNextLinks } = require('./remark/withNextLinks')
 const { withLinkRoles } = require('./rehype/withLinkRoles')
 const minimatch = require('minimatch')
 const withExamples = require('./remark/withExamples')
+const { withImages } = require('./remark/withImages')
+
 const {
   highlightCode,
   fixSelectorEscapeTokens,
@@ -177,6 +179,7 @@ module.exports = withBundleAnalyzer({
         loader: '@mdx-js/loader',
         options: {
           remarkPlugins: [
+            withImages,
             withPrevalInstructions,
             withExamples,
             withTableOfContents,
