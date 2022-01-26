@@ -281,7 +281,7 @@ module.exports = {
             },
             'ul > li': {
               fontSize: '1rem',
-              lineHeight: '2.3rem',
+              lineHeight: '2.25rem',
               paddingLeft: '1.5em',
               marginBottom: '0em',
               marginTop: '0em',
