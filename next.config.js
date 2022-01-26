@@ -29,12 +29,9 @@ const fallbackLayouts = {
 
 const fallbackDefaultExports = {
   'src/pages/{docs,components}/**/*': ['@/layouts/ContentsLayout', 'ContentsLayout'],
-  'src/pages/blog/**/*': ['@/layouts/BlogPostLayout', 'BlogPostLayout'],
 }
 
-const fallbackGetStaticProps = {
-  'src/pages/blog/**/*': '@/layouts/BlogPostLayout',
-}
+const fallbackGetStaticProps = {}
 
 module.exports = withBundleAnalyzer({
   swcMinify: true,
@@ -51,7 +48,6 @@ module.exports = withBundleAnalyzer({
 
       config.entry = async () => {
         let entries = { ...(await originalEntry()) }
-        entries['scripts/build-rss'] = './src/scripts/build-rss.js'
         return entries
       }
     }
