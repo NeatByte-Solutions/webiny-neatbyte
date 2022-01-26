@@ -1,10 +1,8 @@
 ---
-id: documentation
 title: Contributing documentation
-sidebar_label: Documentation
-keywords: ["contributing", "documentation"]
-description: Get started guide on how to contribute documentation to Webiny.
 ---
+import { Alert } from "@/components/Alert"
+import DocumentTypes from "./assets/document-types.png"
 
 > If you want them to read the freaking manual , make a better freaking manual.
 
@@ -68,9 +66,11 @@ To run the lint execute this command in the root of the documentation app:
 
 `$ vale docs`
 
-:::info
+<Alert type="info">
+
 There is also a very handy VS Code extension for Vale: https://github.com/errata-ai/vale-vscode
-:::
+
+</Alert>
 
 ## How To Approach Writing an Article?
 
@@ -110,7 +110,7 @@ You have your article ready - what to do next?
 
 ### Document Types
 
-![Document types](./assets/document-types.png)
+<img src={DocumentTypes} alt="Document types" />
 Source: https://www.youtube.com/watch?v=t4vKPhjcMZg
 
 There are several types of documents that we follow at Webiny. Each type is described below.
