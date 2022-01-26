@@ -1,12 +1,8 @@
 ---
-id: changelog
 title: Webiny 5.21.0 Changelog
-sidebar_label: Changelog
-keywords: ["webiny", "version", "5.21.0", "changelog"]
 description: See what's new in Webiny version 5.21.0.
 ---
 
-import Gallery from "@components/Gallery";
 import view1 from "./assets/reCAPTCHASettings.png";
 import view2 from "./assets/UserAccount.png";
 import view3 from "./assets/WebsiteSettings.png";
@@ -28,7 +24,7 @@ We've introduced a new package, called `@webiny/app-serverless-cms`, and from no
 
 This is what a setup of the entire Webiny Admin app looks like now:
 
-```tsx title="Webiny Admin App Setup"
+```tsx Webiny Admin App Setup
 import React from "react";
 import { Admin } from "@webiny/app-serverless-cms";
 import { Cognito } from "@webiny/app-admin-users-cognito";
@@ -85,8 +81,8 @@ Prior to this PR, if one of the [deploy hooks](/docs/how-to-guides/deployment/bu
 
 Some views received a bit of love, and now look visually more appealing. This is primarily related to the settings views, where the content was stretched to fill the width of the screen. Now it's limited to 700px by default, and makes the form look a lot better. The user account form was also slightly improved. See some examples in the screenshots below.
 
-<Gallery>
-  <Gallery.Image src={view3} title="Page Builder - Website Settings" />
-  <Gallery.Image src={view1} title="Form Builder - reCaptcha Settings" />
-  <Gallery.Image src={view2} title="Account Settings" />
-</Gallery>
+
+<img src={view3} alt="Page Builder - Website Settings" />
+<img src={view1} alt="Form Builder - reCaptcha Settings" />
+<img src={view2} alt="Account Settings" />
+

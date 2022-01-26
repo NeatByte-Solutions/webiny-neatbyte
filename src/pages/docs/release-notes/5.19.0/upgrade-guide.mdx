@@ -1,38 +1,45 @@
 ---
-id: upgrade-guide
-title: Upgrade from 5.20.0 to 5.21.0
-sidebar_label: Upgrade Guide
-keywords: ["webiny", "version", "upgrade", "5.20.0", "5.21.0"]
-description: Learn how to upgrade Webiny from 5.20.0 to 5.21.0.
+title: Upgrade from 5.18.0 to 5.19.0
+description: Learn how to upgrade Webiny from 5.18.0 to 5.19.0.
 ---
 
-:::tip What you’ll learn
+import { Alert } from "@/components/Alert"
 
-- how to upgrade Webiny from 5.20.0 to 5.21.0
+<Alert type="success">
 
-:::
+ What you’ll learn
 
-:::danger
+- how to upgrade Webiny from 5.18.0 to 5.19.0
+
+</Alert>
+
+<Alert type="danger">
+
 Before continuing, make sure to take the necessary precautions, listed in the [Overview](/docs/how-to-guides/upgrade-webiny#-precaution-measures) section.
-:::
 
-:::info
-Make sure to check out the [5.21.0 changelog](/docs/release-notes/5.21.0/changelog) to get familiar with all the changes introduced in this release.
-:::
+</Alert>
+
+<Alert type="info">
+
+Make sure to check out the [5.19.0 changelog](/docs/release-notes/5.19.0/changelog) to get familiar with all the changes introduced in this release.
+
+</Alert>
 
 ## 1. Upgrade Webiny Packages
 
 Upgrade all `@webiny/*` packages by running the following command:
 
 ```bash
-yarn up "@webiny/*@5.21.0"
+yarn up "@webiny/*@5.19.0"
 ```
 
-Once the upgrade has finished, running the `yarn webiny --version` command in your terminal should return `5.21.0`.
+Once the upgrade has finished, running the `yarn webiny --version` command in your terminal should return `5.19.0`.
 
-:::info
+<Alert type="info">
+
 Before moving on, make sure you commit all your changes.
-:::
+
+</Alert>
 
 ## 2. Run the Upgrade Command
 
@@ -53,10 +60,21 @@ Finally, proceed by re-deploying your Webiny project:
 yarn webiny deploy --env {environment}
 ```
 
-:::caution
-As stated in the [Overview](/docs/how-to-guides/upgrade-webiny#pre-production-environments-first) section, we recommend that you first deploy your changes into one of your pre-production environments, like `dev` or `staging`.
-:::
+## 4. Upgrade in the Admin Area
 
-:::tip
+There is a database upgrade that we execute from the Admin Area. To make sure it starts, clear your browser cache and log in.
+
+When upgrade screen shows, just follow the instructions.
+
+
+<Alert type="warning">
+
+As stated in the [Overview](/docs/how-to-guides/upgrade-webiny#pre-production-environments-first) section, we recommend that you first deploy your changes into one of your pre-production environments, like `dev` or `staging`.
+
+</Alert>
+
+<Alert type="success">
+
 Learn more about different deployment environments in the [CI/CD / Environments](/docs/key-topics/ci-cd/environments) key topic.
-:::
+
+</Alert>

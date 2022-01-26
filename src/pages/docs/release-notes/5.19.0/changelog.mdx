@@ -1,12 +1,9 @@
 ---
-id: changelog
 title: Webiny 5.19.0 Changelog
-sidebar_label: Changelog
-keywords: ["webiny", "version", "5.19.0", "changelog"]
 description: See what's new in Webiny version 5.19.0.
 ---
 
-import CenteredImage from "@components/CenteredImage";
+import { Alert } from "@/components/Alert"
 import pageBuilderBtnAction from "./images/page-builder-btn-action.png";
 import truncationFixed from "./images/truncation-fixed.png";
 
@@ -18,14 +15,17 @@ import truncationFixed from "./images/truncation-fixed.png";
 
 In attempt to make things a bit more stable, we've decided to put a lock on the `@pulumi/*` NPM package versions. Locking has been achieved via the [`resolutions`](https://yarnpkg.com/configuration/manifest/#resolutions) property in the root `package.json` file.
 
-:::info
+<Alert type="info">
+
 `@pulumi/*` NPM packages are being utilized by Pulumi, the underlying infrastructure-as-code (IaC) solution Webiny relies on. To learn more, check out the [Infrastructure as Code With Pulumi](/docs/key-topics/deployment/iac-with-pulumi) key topic.
-:::
 
-:::note
+</Alert>
+
+<Alert type="success">
+
 For existing projects that are being upgraded to `5.19.0`, the `resolutions` property will be updated via the [`webiny upgrade`](/docs/release-notes/5.19.0/upgrade-guide#2-run-the-upgrade-command) command.
-:::
 
+</Alert>
 ### Pulumi SDK - Using Correct Separator When Constructing `PATH` Environment Variable ([#2084](https://github.com/webiny/webiny-js/pull/2084))
 
 Because of an issue in the construction of the `PATH` environment variable in our internal [Pulumi SDK](https://github.com/webiny/webiny-js/tree/next/packages/pulumi-sdk), on non-Windows operating systems, users might've experienced an issue during deployment of their custom project applications. This has now been addressed, so new deployments should work as expected.
@@ -48,9 +48,11 @@ With this release, we've improved this utility function, by enabling users to sp
 
 Once again, a big thank you to [**@snstanton**](https://github.com/snstanton) for implementing this nifty improvement! 🍻
 
-:::tip
+<Alert type="success">
+
 The `acl` property lets you set **Canned ACL** for every uploaded file. To learn more, check out [official AWS documentation](https://docs.aws.amazon.com/AmazonS3/latest/userguide/acl-overview.html#Canned%20ACL).
-:::
+
+</Alert>
 
 ### `webiny deploy` Command - Introduced `--deploy` Flag ([#2096](https://github.com/webiny/webiny-js/pull/2096))
 
@@ -66,10 +68,9 @@ yarn webiny deploy api --env dev --no-deploy
 
 Previously, if you were to add multiline logs in your cloud infrastructure (Pulumi) code, the [`webiny watch`](/docs/how-to-guides/use-watch-command/#can-i-use-the-webiny-watch-command-to-start-a-watch-process-on-frontend-react-apps) command's terminal output would get truncated. This has now been addressed, so you can freely add any additional multiline logs that you might need.
 
-<CenteredImage
-  src={truncationFixed}
-  title={"The highlight of this release - the new Amazon DynamoDB-only version of Webiny!"}
-/>
+
+<img src={truncationFixed} alt="The highlight of this release - the new Amazon DynamoDB-only version of Webiny!" />
+
 
 ## Page Builder
 
@@ -79,10 +80,8 @@ Prior to this release, we could say the default Button page element was a bit "b
 
 Thanks to [**@econtentmaps**](https://github.com/econtentmaps), the Button page element can now also be configured to execute a piece of code (a click handler) that you previously registered via the new [`PbButtonElementClickHandlerPlugin`](https://github.com/webiny/webiny-js/blob/v5/packages/app-page-builder/src/types.ts#L260) plugin.
 
-<CenteredImage
-  src={pageBuilderBtnAction}
-  title={"The highlight of this release - the new Amazon DynamoDB-only version of Webiny!"}
-/>
+<img src={pageBuilderBtnAction} alt="The highlight of this release - the new Amazon DynamoDB-only version of Webiny!" />
+
 
 Here are a couple of quick examples that show how to use this new plugin type:
 
@@ -155,7 +154,7 @@ If you need them in your existing project, you will need to add them in your `ap
 
 You need to add 4 plugins in total:
 
-```typescript title="apps/admin/code/src/plugins/headlessCms.ts"
+```typescript apps/admin/code/src/plugins/headlessCms.ts
 import lowerCaseSpaceFieldValidator from "@webiny/app-headless-cms/admin/plugins/validators/patternPlugins/lowerCaseSpace";
 import upperCaseSpaceFieldValidator from "@webiny/app-headless-cms/admin/plugins/validators/patternPlugins/upperCaseSpace";
 
