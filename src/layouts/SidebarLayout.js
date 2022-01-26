@@ -75,7 +75,7 @@ const Collapsable = forwardRef(({ title, subElements = [], depth = 0 }, ref) => 
         className="flex items-center cursor-pointer my-[10px]"
       >
         <div className="mr-[10px] pl-[5px]">
-          <img src={arrow} className={`duration-500 ${showMenu ? 'rotate-90' : null}`}></img>
+          <img src={arrow} className={`${showMenu ? 'rotate-90' : null}`}></img>
         </div>
         <a
           href="#"
@@ -89,8 +89,8 @@ const Collapsable = forwardRef(({ title, subElements = [], depth = 0 }, ref) => 
         </a>
       </li>
       <ul
-        className={`duration-100 ml-[10px] transition-all transform ${
-          showMenu ? style.menu__open : style.menu__close
+        className={`ml-[10px] ${
+          showMenu ? "" : "hidden"
         }`}
       >
         {subElements.map((navElement, index) => (
