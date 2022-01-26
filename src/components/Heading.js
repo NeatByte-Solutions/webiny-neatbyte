@@ -33,19 +33,15 @@ export function Heading({
   }, [top, id, context?.registerHeading, context?.unregisterHeading])
 
   return (
-    <Component
-      className={clsx('group flex whitespace-pre-wrap', className)}
-      id={id}
-      ref={ref}
-      {...props}
-    >
+    <Component className={clsx('group flex whitespace-pre-wrap', className)} ref={ref} {...props}>
       <span>{children}</span>
       <a
+        id={id}
         href={`#${id}`}
-        className="ml-2.5 flex items-center opacity-0 border-0 group-hover:opacity-100"
+        className="relative -top-[6.25rem] ml-2.5 flex items-center opacity-0 border-0 group-hover:opacity-100"
         aria-label="Anchor"
       >
-        <div className="w-6 h-6 flex items-center -mt-[0.875rem]">
+        <div className="absolute top-[6.5625rem] w-6 h-6 flex items-center -mt-[0.875rem]">
           <img
             alt="anchor"
             src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjIiIGhlaWdodD0iMTIiIHZpZXdCb3g9IjAgMCAyMiAxMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik02IDBIOVYySDZDMy43OTA4NiAyIDIgMy43OTA4NiAyIDZDMiA4LjIwOTE0IDMuNzkwODYgMTAgNiAxMEg5VjEySDZDMi42ODYyOSAxMiAwIDkuMzEzNzEgMCA2QzAgMi42ODYyOSAyLjY4NjI5IDAgNiAwWk0xNiAxMEgxM1YxMkgxNkMxOS4zMTM3IDEyIDIyIDkuMzEzNzEgMjIgNkMyMiAyLjY4NjI5IDE5LjMxMzcgMCAxNiAwSDEzVjJIMTZDMTguMjA5MSAyIDIwIDMuNzkwODYgMjAgNkMyMCA4LjIwOTE0IDE4LjIwOTEgMTAgMTYgMTBaTTggNUM3LjQ0NzcyIDUgNyA1LjQ0NzcyIDcgNkM3IDYuNTUyMjggNy40NDc3MiA3IDggN0gxNEMxNC41NTIzIDcgMTUgNi41NTIyOCAxNSA2QzE1IDUuNDQ3NzIgMTQuNTUyMyA1IDE0IDVIOFoiIGZpbGw9IiNGQTVBMjgiLz4KPC9zdmc+Cg=="
