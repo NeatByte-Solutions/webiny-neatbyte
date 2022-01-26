@@ -8,6 +8,8 @@ import { documentationNav2 } from '@/navs/docjson'
 
 import arrow from '../assets/menu-arrow/menu-arrow.png'
 
+import style from './SidebarLayout.module.css'
+
 export const SidebarContext = createContext()
 
 /**
@@ -72,8 +74,8 @@ const Collapsable = forwardRef(({ title, subElements = [], depth = 0 }, ref) => 
         onClick={() => setShowMenu(!showMenu)}
         className="flex items-center cursor-pointer my-[10px]"
       >
-        <div className="mr-[10px]">
-          <img src={arrow} className={`duration-300 ${showMenu ? 'rotate-90' : null}`}></img>
+        <div className="mr-[10px] pl-[5px]">
+          <img src={arrow} className={`duration-500 ${showMenu ? 'rotate-90' : null}`}></img>
         </div>
         <a
           href="#"
@@ -86,7 +88,11 @@ const Collapsable = forwardRef(({ title, subElements = [], depth = 0 }, ref) => 
           {title}
         </a>
       </li>
-      <ul className={`duration-300 ml-[10px] ${showMenu ? 'block' : 'hidden'}`}>
+      <ul
+        className={`duration-100 ml-[10px] transition-all transform ${
+          showMenu ? style.menu__open : style.menu__close
+        }`}
+      >
         {subElements.map((navElement, index) => (
           <NavTreeElement key={index} element={navElement} ref={ref} depth={depth + 1} />
         ))}
