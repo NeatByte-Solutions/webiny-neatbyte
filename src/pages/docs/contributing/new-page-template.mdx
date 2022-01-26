@@ -1,16 +1,17 @@
 ---
-id: new-page-template
 title: New Page Template
-sidebar_label: New Page Template
-keywords: ["contributing", "documentation", "article", "template"]
 description: To start writing a new page, feel free to copy and paste the provided template.
 ---
+import { Alert} from "@/components/Alert"
+
 
 In order to start working on your new documentation article, feel free to copy and paste the provided template.
 
-:::info
+<Alert type="info">
+
 Before creating a new article, make sure to quickly go through the instructions provided in the [Documentation](/docs/contributing/documentation) page.
-:::
+
+</Alert>
 
 ```md
 ---
@@ -80,6 +81,7 @@ The heading should:
 
 <!-- The following is optional, but can be pretty useful to users. -->
 
+
 ## FAQ
 
 #### What if A is B?
@@ -95,3 +97,5 @@ If A is B, the C.
 
 #### What to do in case of X?
 In case of X, just stay calm.
+
+```
