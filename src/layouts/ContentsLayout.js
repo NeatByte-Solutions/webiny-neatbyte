@@ -26,6 +26,10 @@ function TableOfContents({ tableOfContents, currentSection }) {
     if (section.slug === currentSection) {
       return true
     }
+    if (!section.children) {
+      return false
+    }
+    return section.children.findIndex(isActive) > -1
   }
 
   let pageHasSubsections = (section) => section.children.length > 0
@@ -46,14 +50,16 @@ function TableOfContents({ tableOfContents, currentSection }) {
             </a>
           </li>
           {section.children.map((subsection) => (
-            <>
-              <li className="ml-2.5 mt-5" key={subsection.slug}>
+            <Fragment key={subsection.slug}>
+              <li className="ml-2.5 mt-5">
                 <a
                   href={`#${subsection.slug}`}
                   onClick={closeNav}
                   className={clsx(
                     '',
-                    isActive(subsection) ? 'text-orange' : 'text-[#798099]',
+                    isActive(subsection) && section.slug !== subsection.slug
+                      ? 'text-orange'
+                      : 'text-[#798099]',
                     pageHasSubsections(subsection) ? 'font-bold' : 'font-normal'
                   )}
                 >
@@ -65,13 +71,13 @@ function TableOfContents({ tableOfContents, currentSection }) {
                   <a
                     href={`#${item.slug}`}
                     onClick={closeNav}
-                    className={clsx('', isActive(item) ? 'text-orange' : 'text-[#798099]')}
+                    className={isActive(item) ? 'text-orange' : 'text-[#798099]'}
                   >
                     {item.title}
                   </a>
                 </li>
               ))}
-            </>
+            </Fragment>
           ))}
         </Fragment>
       ))}
