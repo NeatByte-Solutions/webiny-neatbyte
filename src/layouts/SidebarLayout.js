@@ -6,7 +6,7 @@ import clsx from 'clsx'
 import { Dialog } from '@headlessui/react'
 import { documentationNav2 } from '@/navs/docjson'
 
-import arrow from '../assets/menu-arrow/menu-arrow.png'
+import arrow from '../assets/menu-arrow/menu-arrow.svg'
 
 export const SidebarContext = createContext()
 
@@ -103,7 +103,7 @@ const Page = forwardRef(({ title, link, isActive, depth = 0 }, ref) => {
           className={`block my-[10px] cursor-pointer text-nav-link ${
             isActive
               ? 'text-orange border-orange border-r-[2px] font-bold'
-              : 'hover:border-r-[2px] hover:text-blue border-blue'
+              : 'hover:border-r-[2px] hover:text-dark-purple border-blue'
           }`}
         >
           {title}
