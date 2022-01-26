@@ -63,7 +63,7 @@ module.exports = {
       },
       typography: (theme) => ({
         DEFAULT: {
-          css: {            
+          css: {
             maxWidth: 'none',
             color: '#334155',
             fontSize: '16px',
@@ -276,19 +276,25 @@ module.exports = {
               lineHeight: '1.75rem',
               marginTop: '1.25rem',
             },
+            ul: {
+              paddingTop: '1.3em',
+            },
             'ul > li': {
               fontSize: '1rem',
-              lineHeight: '2.25rem',
+              lineHeight: '2.3rem',
+              paddingLeft: '1.5em',
+              marginBottom: '0em',
+              marginTop: '0em',
             },
             'ul > li::before': {
               content: '""',
-              width: '0.75em',
+              width: '0.63em',
               height: '0.125em',
               position: 'absolute',
-              top: 'calc(0.875em - 0.0625em)',
+              top: '1em',
               left: 0,
               borderRadius: '999px',
-              backgroundColor: theme('colors.slate.300'),
+              backgroundColor: '#FA5A28',
             },
             a: {
               fontSize: '1rem',
