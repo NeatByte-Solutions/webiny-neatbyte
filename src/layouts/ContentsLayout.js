@@ -31,7 +31,7 @@ function TableOfContents({ tableOfContents, currentSection }) {
   let pageHasSubsections = (section) => section.children.length > 0
 
   return (
-    <ul className="text-nav-link not-prose">
+    <ul className="text-nav-link not-prose font-roboto">
       {tableOfContents.map((section, index) => (
         <Fragment key={section.slug}>
           <li>
@@ -82,7 +82,7 @@ function TableOfContents({ tableOfContents, currentSection }) {
 function WasThisArticleHelpful({ className }) {
   return (
     <div
-      className={`mt-[3.75rem] xl:mt-[2,5625rem] grid justify-items-center xl:justify-items-start text-dark-blue ${className}`}
+      className={`mt-[3.75rem] xl:mt-[2,5625rem] grid justify-items-center xl:justify-items-start text-dark-blue font-roboto ${className}`}
     >
       <div className="text-sidebar-right-title font-bold">Was this article helpful?</div>
       <div className="flex mt-[1.1875rem]">

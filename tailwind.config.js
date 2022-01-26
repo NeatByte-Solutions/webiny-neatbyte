@@ -63,8 +63,7 @@ module.exports = {
       },
       typography: (theme) => ({
         DEFAULT: {
-          css: {
-            fontFamily: 'Roboto',
+          css: {            
             maxWidth: 'none',
             color: '#334155',
             fontSize: '16px',
