@@ -1,24 +1,29 @@
 ---
-id: upgrade-guide
 title: Upgrade from 5.19.1 to 5.20.0
-sidebar_label: Upgrade Guide
-keywords: ["webiny", "version", "upgrade", "5.19.1", "5.20.0"]
 description: Learn how to upgrade Webiny from 5.19.1 to 5.20.0.
 ---
 
-:::tip What you’ll learn
+import { Alert } from "@/components/Alert"
+
+<Alert type="success">
+
+ What you’ll learn
 
 - how to upgrade Webiny from 5.19.1 to 5.20.0
 
-:::
+</Alert>
 
-:::danger
+<Alert type="danger">
+
 Before continuing, make sure to take the necessary precautions, listed in the [Overview](/docs/how-to-guides/upgrade-webiny#-precaution-measures) section.
-:::
 
-:::info
+</Alert>
+
+<Alert type="info">
+
 Make sure to check out the [5.20.0 changelog](/docs/release-notes/5.20.0/changelog) to get familiar with all the changes introduced in this release.
-:::
+
+</Alert>
 
 ## 1. Upgrade Webiny Packages
 
@@ -30,9 +35,11 @@ yarn up "@webiny/*@5.20.0"
 
 Once the upgrade has finished, running the `yarn webiny --version` command in your terminal should return `5.20.0`.
 
-:::info
+<Alert type="info">
+
 Before moving on, make sure you commit all your changes.
-:::
+
+</Alert>
 
 ## 2. Deploy Your Project
 
@@ -43,10 +50,14 @@ Finally, proceed by re-deploying your Webiny project:
 yarn webiny deploy --env {environment}
 ```
 
-:::caution
-As stated in the [Overview](/docs/how-to-guides/upgrade-webiny#pre-production-environments-first) section, we recommend that you first deploy your changes into one of your pre-production environments, like `dev` or `staging`.
-:::
+<Alert type="warning">
 
-:::tip
+As stated in the [Overview](/docs/how-to-guides/upgrade-webiny#pre-production-environments-first) section, we recommend that you first deploy your changes into one of your pre-production environments, like `dev` or `staging`.
+
+</Alert>
+
+<Alert type="success">
+
 Learn more about different deployment environments in the [CI/CD / Environments](/docs/key-topics/ci-cd/environments) key topic.
-:::
+
+</Alert>

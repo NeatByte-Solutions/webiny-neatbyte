@@ -1,13 +1,10 @@
 ---
-id: changelog
 title: Webiny 5.20.0 Changelog
-sidebar_label: Changelog
-keywords: ["webiny", "version", "5.20.0", "changelog"]
 description: See what's new in Webiny version 5.20.0.
 ---
 
-import CenteredImage from "@components/CenteredImage";
-import cloneModels from "./images/clone-models.gif";
+import { Alert } from "@/components/Alert"
+import cloneModels from "./images/clone-models.gif"
 
 # Changes
 
@@ -17,15 +14,17 @@ import cloneModels from "./images/clone-models.gif";
 
 With this new feature, users now have the ability to clone existing content models into the same or even a different locale. Manual re-creation of the same content model in a different locale is now a thing of the past!
 
-<CenteredImage src={cloneModels} title={"Cloning of Existing Content Models"} />
+<img src={cloneModels} alt="Cloning of Existing Content Models" />
 
 ### Programmatically Created Content Models - Fixed "List-Entries" GraphQL Query ([#2133](https://github.com/webiny/webiny-js/pull/2133))
 
 We've resolved an issue that would occur when a user created a content model programmatically (via the [`CmsModelPlugin`](https://github.com/webiny/webiny-js/blob/next/packages/api-headless-cms/src/content/plugins/CmsModelPlugin.ts#L9) plugin), and then tried to issue its respective GraphQL query that lists all entries. This issue was occurring only on the DynamoDB + Elasticsearch setup of Webiny.
 
-:::info
+<Alert type="info">
+
 To learn more about creating content models via plugins, check out the [Define Content Models via Plugins](/docs/how-to-guides/webiny-applications/headless-cms/content-model-plugins/) guide.
-:::
+
+</Alert>
 
 ### Fixed Marking a Nested Object's Field as Title Field ([#2127](https://github.com/webiny/webiny-js/pull/2127))
 
@@ -49,7 +48,7 @@ Prior to this release, defining an empty nested object field as the initial fiel
 
 From time to time, users may need to re-render a particular page they've previously created and published. This can now be done easily via the built-in [API Playground](/docs/how-to-guides/webiny-applications/admin-area/api-playground/), by executing a simple `rerenderPage` GraphQL mutation. For example:
 
-```graphql title='Re-rendering a Page via the "rerenderPage" Mutation'
+```graphql Re-rendering a Page via the 'rerenderPage' Mutation
 mutation {
   pageBuilder {
     rerenderPage(id: "xyz") {
@@ -82,9 +81,11 @@ new ContextPlugin<Context>(context => {
 
 For more details on all of the available events, please see the dedicated [Lifecycle Events](/docs/key-topics/page-builder/lifecycle-events) guide.
 
-:::danger
+<Alert type="danger">
+
 The `PagePlugin` plugin that was previously used is no longer supported. If you've already used it your project, please replace all occurrences with the new [`ContextPlugin`](https://github.com/webiny/webiny-js/blob/next/packages/handler/src/plugins/ContextPlugin.ts) approach, as demonstrated above.
-:::
+
+</Alert>
 
 ## Development
 
