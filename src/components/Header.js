@@ -151,14 +151,14 @@ export function NavItems() {
         </Link>
       </li>
       <li>
-        <Link href="/">
-          <a href="/" className="text-nav-subdirectory">
+        <Link href="/docs/installation">
+          <a href="/docs/installation" className="text-nav-subdirectory">
             Loremipsum
           </a>
         </Link>
       </li>
       <li>
-        <Link href="/">
+        <Link href="/docs/installation">
           <a className="text-nav-subdirectory">Dolor</a>
         </Link>
       </li>
@@ -173,29 +173,9 @@ export function Header({ navIsOpen, onNavToggle, title, section }) {
   }
   return (
     <>
-      <div className="absolute z-20 top-0 inset-x-0 flex justify-center overflow-hidden pointer-events-none">
-        <div className="w-[108rem] flex-none flex justify-end">
-          <picture>
-            <source srcSet={require('@/img/beams/docs@30.avif').default} type="image/avif" />
-            <img
-              src={require('@/img/beams/docs@tinypng.png').default}
-              alt=""
-              className="w-[71.75rem] flex-none max-w-none dark:hidden"
-            />
-          </picture>
-          <picture>
-            <source srcSet={require('@/img/beams/docs-dark@30.avif').default} type="image/avif" />
-            <img
-              src={require('@/img/beams/docs-dark@tinypng.png').default}
-              alt=""
-              className="w-[90rem] flex-none max-w-none hidden dark:block"
-            />
-          </picture>
-        </div>
-      </div>
       <div
         className={clsx(
-          'sticky top-0 z-40 w-full backdrop-blur flex-none transition-colors duration-500 lg:z-50 bg-smoke',
+          'fixed top-0 z-40 w-full backdrop-blur flex-none transition-colors duration-500 lg:z-50 bg-smoke',
           styles.mainHeader
         )}
       >
@@ -216,7 +196,7 @@ export function Header({ navIsOpen, onNavToggle, title, section }) {
               />
             </svg>
           </button>
-          <Link href="/">
+          <Link href="/docs/installation">
             <a
               className="flex-none w-[1.5925rem] lg:pr-[8.1875rem] lg:border-r border-border overflow-hidden lg:w-auto"
               onContextMenu={(e) => {
@@ -287,7 +267,7 @@ export function Header({ navIsOpen, onNavToggle, title, section }) {
                 </svg>
               </a>
               <a
-                href="/"
+                href="/docs/installation"
                 className="ml-5 block text-slate-400 hover:text-slate-500 dark:hover:text-slate-300"
               >
                 <span className="sr-only">Tailwind CSS on GitHub</span>
@@ -333,7 +313,7 @@ export function Header({ navIsOpen, onNavToggle, title, section }) {
       {!isSearchIcon && (
         <div
           className={clsx(
-            'sticky z-40 top-16 hidden lg:flex items-center w-full py-6 pl-[2.375rem] pr-[1.875rem] bg-white',
+            'fixed z-40 top-16 hidden lg:flex items-center w-full py-6 pl-[2.375rem] pr-[1.875rem] bg-white',
             styles.searchHeader
           )}
         >
@@ -361,9 +341,16 @@ export function Header({ navIsOpen, onNavToggle, title, section }) {
               />
             </svg>
           </button>
-          <input type="text" className="w-full focus:outline-0 pr-4" placeholder="Search..." />
+          <input
+            type="text"
+            className={clsx(
+              'text-nav-directory text-black font-roboto w-full focus:outline-0 pr-4',
+              styles.inputPlaceholder
+            )}
+            placeholder="Search..."
+          />
           <div className="flex flex-row">
-            <button>
+            <button className="cursor-auto">
               <svg
                 width="29"
                 height="29"
@@ -401,7 +388,7 @@ export function Header({ navIsOpen, onNavToggle, title, section }) {
                 </defs>
               </svg>
             </button>
-            <button className="ml-[0.38375rem]">
+            <button className="ml-[0.38375rem] cursor-auto">
               <svg
                 width="29"
                 height="29"
@@ -427,6 +414,9 @@ export function Header({ navIsOpen, onNavToggle, title, section }) {
             </button>
           </div>
         </div>
+      )}
+      {!isSearchIcon && (
+        <div className={clsx('z-30 w-full', styles.searchShadow)} onClick={onToggleSearch}></div>
       )}
     </>
   )
