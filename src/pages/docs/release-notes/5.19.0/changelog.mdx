@@ -26,6 +26,7 @@ In attempt to make things a bit more stable, we've decided to put a lock on the 
 For existing projects that are being upgraded to `5.19.0`, the `resolutions` property will be updated via the [`webiny upgrade`](/docs/release-notes/5.19.0/upgrade-guide#2-run-the-upgrade-command) command.
 
 </Alert>
+
 ### Pulumi SDK - Using Correct Separator When Constructing `PATH` Environment Variable ([#2084](https://github.com/webiny/webiny-js/pull/2084))
 
 Because of an issue in the construction of the `PATH` environment variable in our internal [Pulumi SDK](https://github.com/webiny/webiny-js/tree/next/packages/pulumi-sdk), on non-Windows operating systems, users might've experienced an issue during deployment of their custom project applications. This has now been addressed, so new deployments should work as expected.
