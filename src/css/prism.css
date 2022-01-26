@@ -95,3 +95,14 @@ pre[class^='language-diff-'] {
 pre[class^='language-diff-'] > code {
   @apply flex-none min-w-full;
 }
+
+.prose :where(p > code, li > code) {
+  @apply bg-smoke ring-1 ring-[#E8E8E8] px-[0.625rem] mx-1 py-1 rounded;
+  color: #FA5A28 !important;
+  font-family: monospace !important;
+}
+
+.prose :where(code)::before,
+.prose :where(code)::after {
+  content: none !important;
+}
