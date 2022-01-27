@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import { createContext, forwardRef, useRef, useState } from 'react'
+import { createContext, forwardRef, useEffect, useRef, useState } from 'react'
 import { useIsomorphicLayoutEffect } from '@/hooks/useIsomorphicLayoutEffect'
 import clsx from 'clsx'
 import { Dialog } from '@headlessui/react'
@@ -44,16 +44,13 @@ function nearestScrollableContainer(el) {
 }
 
 const NavTreeElement = forwardRef(({ element, depth = 0 }, ref) => {
-  const router = useRouter()
 
   const { type, title, link } = element
 
   if (type === 'collapsable') {
-    return <Collapsable subElements={element.links} title={title} ref={ref} depth={depth} />
+    return <Collapsable subElements={element.links} isActiveChild={element.isActiveChild} title={title} ref={ref} depth={depth} />
   } else if (type === 'page') {
-    const isActive = element.link === router.pathname
-
-    return <Page title={title} link={element.link} isActive={isActive} ref={ref} depth={depth} />
+    return <Page title={title} link={element.link} isActive={element.isActive} ref={ref} depth={depth} />
   } else if (type === 'section') {
     return <Section title={title} link={link} depth={depth} />
   } else {
@@ -61,8 +58,14 @@ const NavTreeElement = forwardRef(({ element, depth = 0 }, ref) => {
   }
 })
 
-const Collapsable = forwardRef(({ title, subElements = [], depth = 0 }, ref) => {
+const Collapsable = forwardRef(({ title, subElements = [], isActiveChild, depth = 0 }, ref) => {
   const [showMenu, setShowMenu] = useState(false)
+
+  useEffect(()=> {
+    if (isActiveChild){
+      setShowMenu(true);
+    }
+  }, [isActiveChild])
 
   return (
     <>
@@ -72,7 +75,8 @@ const Collapsable = forwardRef(({ title, subElements = [], depth = 0 }, ref) => 
         className="flex items-center cursor-pointer my-[10px]"
       >
         <div className="mr-[10px]">
-          <img src={arrow} className={`${showMenu ? 'rotate-90' : null}`}></img>
+          <img src={arrow} className={showMenu ? 
+          "rotate-90" : ""} alt="collapsable"></img>
         </div>
         <a
           href="#"
@@ -123,6 +127,22 @@ function Nav({ nav, mobile = false }) {
   const previousActiveItemRef = useRef()
   const scrollRef = useRef()
 
+  function setIsActive(nav) {
+    for (const navItem of nav) {
+      if (navItem.type === "page") {
+        const isActive = navItem.link === router.pathname
+
+        navItem.isActive = isActive
+      } else if (navItem.type === "collapsable") {
+        setIsActive(navItem.links)
+
+        const isActiveChild = navItem.links.some(link => link.isActive || link.isActiveChild)
+
+        navItem.isActiveChild = isActiveChild
+      }
+    }
+  }
+
   useIsomorphicLayoutEffect(() => {
     function updatePreviousRef() {
       previousActiveItemRef.current = activeItemRef.current
@@ -149,6 +169,8 @@ function Nav({ nav, mobile = false }) {
       }
     }
   }, [router.pathname])
+
+  setIsActive(nav)
 
   return (
     <nav ref={scrollRef} id="nav" className="lg:text-sm lg:leading-6 relative font-roboto">
