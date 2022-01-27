@@ -106,73 +106,73 @@ export const documentationNav2 = [
       page('release-notes/5.19.0/changelog'),
       page('release-notes/5.19.0/upgrade-guide'),
     ]),
-    // collapsable('Older Releases', [
-    //   collapsable('5.18.0', [
-    //     page('release-notes/5.18.0/changelog'),
-    //     page('release-notes/5.18.0/upgrade-guide'),
-    //   ]),
-    //   collapsable('5.17.0', [
-    //     page('release-notes/5.17.0/changelog'),
-    //     page('release-notes/5.17.0/upgrade-guide'),
-    //   ]),
-    //   collapsable('5.16.0', [
-    //     page('release-notes/5.16.0/changelog'),
-    //     page('release-notes/5.16.0/upgrade-guide'),
-    //   ]),
-    //   collapsable('5.15.0', [
-    //     page('release-notes/5.15.0/changelog'),
-    //     page('release-notes/5.15.0/upgrade-guide'),
-    //   ]),
-    //   collapsable('5.14.0', [
-    //     page('release-notes/5.14.0/changelog'),
-    //     page('release-notes/5.14.0/upgrade-guide'),
-    //   ]),
-    //   collapsable('5.13.0', [
-    //     page('release-notes/5.13.0/changelog'),
-    //     page('release-notes/5.13.0/upgrade-guide'),
-    //   ]),
-    //   collapsable('5.12.0', [
-    //     page('release-notes/5.12.0/changelog'),
-    //     page('release-notes/5.12.0/upgrade-guide'),
-    //   ]),
-    //   collapsable('5.11.1', [
-    //     page('release-notes/5.11.1/changelog'),
-    //     page('release-notes/5.11.1/upgrade-guide'),
-    //   ]),
-    //   collapsable('5.11.0', [
-    //     page('release-notes/5.11.0/changelog'),
-    //     page('release-notes/5.11.0/upgrade-guide'),
-    //   ]),
-    //   collapsable('5.10.0', [
-    //     page('release-notes/5.10.0/changelog'),
-    //     page('release-notes/5.10.0/upgrade-guide'),
-    //   ]),
-    //   collapsable('5.9.0', [
-    //     page('release-notes/5.9.0/changelog'),
-    //     page('release-notes/5.9.0/upgrade-guide'),
-    //   ]),
-    //   collapsable('5.8.0', [
-    //     page('release-notes/5.8.0/changelog'),
-    //     page('release-notes/5.8.0/upgrade-guide'),
-    //   ]),
-    //   collapsable('5.7.0', [
-    //     page('release-notes/5.7.0/changelog'),
-    //     page('release-notes/5.7.0/upgrade-guide'),
-    //   ]),
-    //   collapsable('5.6.0', [
-    //     page('release-notes/5.6.0/changelog'),
-    //     page('release-notes/5.6.0/upgrade-guide'),
-    //   ]),
-    //   collapsable('5.5.0', [
-    //     page('release-notes/5.5.0/changelog'),
-    //     page('release-notes/5.5.0/upgrade-guide'),
-    //   ]),
-    //   collapsable('5.4.0', [
-    //     page('release-notes/5.4.0/changelog'),
-    //     page('release-notes/5.4.0/upgrade-guide'),
-    //   ]),
-    //   collapsable('5.8.0', [page('release-notes/5.3.0/changelog')]),
-    // ]),
+    collapsable('Older Releases', [
+      collapsable('5.18.0', [
+        page('release-notes/5.18.0/changelog'),
+        page('release-notes/5.18.0/upgrade-guide'),
+      ]),
+      collapsable('5.17.0', [
+        page('release-notes/5.17.0/changelog'),
+        page('release-notes/5.17.0/upgrade-guide'),
+      ]),
+      collapsable('5.16.0', [
+        page('release-notes/5.16.0/changelog'),
+        page('release-notes/5.16.0/upgrade-guide'),
+      ]),
+      collapsable('5.15.0', [
+        page('release-notes/5.15.0/changelog'),
+        page('release-notes/5.15.0/upgrade-guide'),
+      ]),
+      collapsable('5.14.0', [
+        page('release-notes/5.14.0/changelog'),
+        page('release-notes/5.14.0/upgrade-guide'),
+      ]),
+      collapsable('5.13.0', [
+        page('release-notes/5.13.0/changelog'),
+        page('release-notes/5.13.0/upgrade-guide'),
+      ]),
+      collapsable('5.12.0', [
+        page('release-notes/5.12.0/changelog'),
+        page('release-notes/5.12.0/upgrade-guide'),
+      ]),
+      collapsable('5.11.1', [
+        page('release-notes/5.11.1/changelog'),
+        page('release-notes/5.11.1/upgrade-guide'),
+      ]),
+      collapsable('5.11.0', [
+        page('release-notes/5.11.0/changelog'),
+        page('release-notes/5.11.0/upgrade-guide'),
+      ]),
+      collapsable('5.10.0', [
+        page('release-notes/5.10.0/changelog'),
+        page('release-notes/5.10.0/upgrade-guide'),
+      ]),
+      collapsable('5.9.0', [
+        page('release-notes/5.9.0/changelog'),
+        page('release-notes/5.9.0/upgrade-guide'),
+      ]),
+      collapsable('5.8.0', [
+        page('release-notes/5.8.0/changelog'),
+        page('release-notes/5.8.0/upgrade-guide'),
+      ]),
+      collapsable('5.7.0', [
+        page('release-notes/5.7.0/changelog'),
+        page('release-notes/5.7.0/upgrade-guide'),
+      ]),
+      collapsable('5.6.0', [
+        page('release-notes/5.6.0/changelog'),
+        page('release-notes/5.6.0/upgrade-guide'),
+      ]),
+      collapsable('5.5.0', [
+        page('release-notes/5.5.0/changelog'),
+        page('release-notes/5.5.0/upgrade-guide'),
+      ]),
+      collapsable('5.4.0', [
+        page('release-notes/5.4.0/changelog'),
+        page('release-notes/5.4.0/upgrade-guide'),
+      ]),
+      collapsable('5.8.0', [page('release-notes/5.3.0/changelog')]),
+    ]),
   ]),
   collapsable('Contributing', [
     page('contributing/documentation'),
