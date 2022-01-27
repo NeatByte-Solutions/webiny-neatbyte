@@ -1,27 +1,28 @@
 ---
-id: content-model-plugins
 title: Define Content Models via Plugins
-sidebar_label: Define Content Models via Plugins
-keywords: ["headless", "cms", "content", "model", "plugin"]
 description: Learn how to define content models and content model groups via plugins.
 ---
 
-import CenteredImage from "@components/CenteredImage";
-import contentModelsGroupEditor from "./content-models-plugins/content-models-group-editor.png";
-import basicsPluginsWork from "./content-models-plugins/basics-plugins-work.png";
-import faqIconSelector from "./content-models-plugins/faq-icon-selector.png";
+import { Alert } from '@/components/Alert'
+import contentModelsGroupEditor from './content-models-plugins/content-models-group-editor.png'
+import basicsPluginsWork from './content-models-plugins/basics-plugins-work.png'
+import faqIconSelector from './content-models-plugins/faq-icon-selector.png'
 
-:::tip What you'll learn
+<Alert type="success">
+
+What you'll learn
 
 - how to define content models and content model groups via plugins
 
-:::
+</Alert>
 
-:::info Can I use this?
+<Alert type="info">
+
+Can I use this?
 
 This feature is available since **v5.11.0**.
 
-:::
+</Alert>
 
 ## Overview
 
@@ -31,7 +32,7 @@ Content models and content model groups can be defined in two ways.
 
 The most straightforward way to define content models and content model groups would be via the Admin Area application, via the Content Model Editor and the Content Model Groups module. This is especially suitable for users that are not developers, and just want to manage everything in a quick and easy way.
 
-<CenteredImage
+<img
   alt="Defining Content Models and Content Model Groups via the Admin Area Application"
   src={contentModelsGroupEditor}
 />
@@ -55,87 +56,89 @@ In the following sections, we cover a couple of examples that show how to define
 
 In this example, we show how we can define a simple **Product** content model, that belongs to the **E-Commerce** content model group. Both plugins can be defined within a single file, in our case, [`api/code/headlessCMS/src/plugins/models.ts`](https://github.com/webiny/webiny-examples/blob/master/headless-cms/content-model-plugins/basic/api/code/headlessCMS/src/plugins/models.ts):
 
-```ts title="api/code/headlessCMS/src/plugins/models.ts"
-import { CmsModelPlugin } from "@webiny/api-headless-cms/content/plugins/CmsModelPlugin";
-import { CmsGroupPlugin } from "@webiny/api-headless-cms/content/plugins/CmsGroupPlugin";
+```ts api/code/headlessCMS/src/plugins/models.ts
+import { CmsModelPlugin } from '@webiny/api-headless-cms/content/plugins/CmsModelPlugin'
+import { CmsGroupPlugin } from '@webiny/api-headless-cms/content/plugins/CmsGroupPlugin'
 
 export default [
   // Defines a new "E-Commerce" content models group.
   new CmsGroupPlugin({
-    id: "ecommerce",
-    name: "E-Commerce",
-    slug: "e-commerce",
-    icon: "fas/shopping-cart"
+    id: 'ecommerce',
+    name: 'E-Commerce',
+    slug: 'e-commerce',
+    icon: 'fas/shopping-cart',
   }),
 
   // Defines a new "Product" content model.
   new CmsModelPlugin({
-    name: "Product",
-    modelId: "product",
+    name: 'Product',
+    modelId: 'product',
     group: {
-      id: "ecommerce",
-      name: "E-Commerce"
+      id: 'ecommerce',
+      name: 'E-Commerce',
     },
     fields: [
       {
-        id: "name",
-        fieldId: "name",
-        type: "text",
-        label: "Product Name",
-        helpText: "A short product name",
-        renderer: { name: "text-input" },
+        id: 'name',
+        fieldId: 'name',
+        type: 'text',
+        label: 'Product Name',
+        helpText: 'A short product name',
+        renderer: { name: 'text-input' },
         validation: [
           {
-            name: "required",
-            message: "Value is required."
-          }
-        ]
+            name: 'required',
+            message: 'Value is required.',
+          },
+        ],
       },
       {
-        id: "sku",
-        fieldId: "sku",
-        type: "text",
-        label: "SKU",
-        placeholderText: "SKU = Stock Keeping Unit",
-        renderer: { name: "text-input" }
+        id: 'sku',
+        fieldId: 'sku',
+        type: 'text',
+        label: 'SKU',
+        placeholderText: 'SKU = Stock Keeping Unit',
+        renderer: { name: 'text-input' },
       },
       {
-        id: "price",
-        fieldId: "price",
-        type: "number",
-        label: "Price",
-        renderer: { name: "text-input" }
-      }
+        id: 'price',
+        fieldId: 'price',
+        type: 'number',
+        label: 'Price',
+        renderer: { name: 'text-input' },
+      },
     ],
-    layout: [["name"], ["sku", "price"]],
-    titleFieldId: "name"
-  })
-];
+    layout: [['name'], ['sku', 'price']],
+    titleFieldId: 'name',
+  }),
+]
 ```
 
-:::info
+<Alert type="info">
+
 Do note that you will also need to import the newly created [`api/code/headlessCMS/src/plugins/models.ts`](https://github.com/webiny/webiny-examples/blob/master/headless-cms/content-model-plugins/basic/api/code/headlessCMS/src/plugins/models.ts) file and register the created plugins in the [`api/code/headlessCMS/src/index.ts`](https://github.com/webiny/webiny-examples/blob/master/headless-cms/content-model-plugins/basic/api/code/headlessCMS/src/index.ts#L42) entrypoint file.
-:::
+
+</Alert>
 
 Once registered, we should end up with the following two items in our Admin Area main menu:
 
-<CenteredImage
-  alt="Product and E-Commerce Items in the Admin Area Main Menu"
-  src={basicsPluginsWork}
-/>
+<img alt="Product and E-Commerce Items in the Admin Area Main Menu" src={basicsPluginsWork} />
 
 As shown in the example, the [`CmsGroupPlugin`](https://github.com/webiny/webiny-js/blob/v5.21.0/packages/api-headless-cms/src/content/plugins/CmsGroupPlugin.ts#L4) receives a [`CmsContentModel`](https://github.com/webiny/webiny-js/blob/v5.21.0/packages/api-headless-cms/src/types.ts#L282) object upon instantiation. It lets us define all of the content model's properties, like its name, ID (`modelId`), a content model group to which it belongs to, and most importantly, all of the fields that it consists of.
 
 All of the fields of a single content model are defined via the [`fields`](https://github.com/webiny/webiny-js/blob/v5.21.0/packages/api-headless-cms/src/types.ts#L327) property, which is an array of [`CmsContentModelField`](https://github.com/webiny/webiny-js/blob/v5.21.0/packages/api-headless-cms/src/types.ts#L99) objects. Note that some of the properties that we need to define for each field are simpler than others, for example `label` or `placeholderText`. On the other hand, properties like `type`, `renderer.name`, and `validation.name` contain values that actually reference other registered plugins. In case an invalid reference was provided, an error will be thrown and you will have to make corrections.
 
-:::info
+<Alert type="info">
 
 All available [field types (`type`)](https://github.com/webiny/webiny-js/tree/v5.21.0/packages/api-headless-cms/src/content/plugins/graphqlFields), [field renderers (`renderer.name`)](https://github.com/webiny/webiny-js/tree/v5.21.0/packages/app-headless-cms/src/admin/plugins/fieldRenderers), and [field validators (`validators.name`)](https://github.com/webiny/webiny-js/tree/v5.21.0/packages/api-headless-cms/src/content/plugins/validators) can be found in our GitHub repository.
-:::
 
-:::tip
+</Alert>
+
+<Alert type="success">
+
 Want to learn how to create your own custom field type? Check out the [Create a Field Plugin](/docs/how-to-guides/webiny-applications/headless-cms/create-a-webiny-headless-cms-field-plugin) how-to guide.
-:::
+
+</Alert>
 
 Finally, note that both the **Product** content model and the **E-Commerce** content model group will be available for all existing locales. If you're interested in defining a content model only for a specific locale, check out the following example.
 
@@ -143,7 +146,7 @@ Finally, note that both the **Product** content model and the **E-Commerce** con
 
 In this example, we show how we can define content models and content model groups only for a specific locale, in our case, the `en-US`.
 
-```ts title="api/code/headlessCMS/src/plugins/models.ts"
+```ts api/code/headlessCMS/src/plugins/models.ts
 import { CmsModelPlugin } from "@webiny/api-headless-cms/content/plugins/CmsModelPlugin";
 import { CmsGroupPlugin } from "@webiny/api-headless-cms/content/plugins/CmsGroupPlugin";
 import { ContextPlugin } from "@webiny/handler/plugins/ContextPlugin";
@@ -170,13 +173,15 @@ export default [
 
 Note that we've used the [`ContextPlugin`](https://github.com/webiny/webiny-js/blob/v5.21.0/packages/handler/src/plugins/ContextPlugin.ts#L7) first, in order to be able to access the dynamic `context` object, and the `context.i18nContent.getLocale` method. Once we've determined that the `en-US` is the current locale, we proceed by registering the [`CmsModelPlugin`](https://github.com/webiny/webiny-js/blob/v5.21.0/packages/api-headless-cms/src/content/plugins/CmsModelPlugin.ts#L4) and [`CmsGroupPlugin`](https://github.com/webiny/webiny-js/blob/v5.21.0/packages/api-headless-cms/src/content/plugins/CmsGroupPlugin.ts#L4) plugins, as seen in the previous example.
 
-:::tip
+<Alert type="success">
 
 In Admin Area, user's current local is sent with every issued HTTP request, via the `x-i18n-locale` header.
 
-:::
+</Alert>
 
 ## FAQ
+
+### Placeholder
 
 #### Can content models (and groups) defined via plugins be edited via Admin Area?
 
@@ -202,7 +207,7 @@ There is a difference in how these two IDs are used internally within Headless C
 
 When defining content model groups via Admin Area, we pick its icon via a simple drop-down menu:
 
-<CenteredImage alt="Content Model Groups Form - Icon Selector" src={faqIconSelector} />
+<img alt="Content Model Groups Form - Icon Selector" src={faqIconSelector} />
 
 On the other hand, when defining content model groups via a plugin, we need to specify the icon manually, by setting the same string value that would be set once an icon was picked from the above seen drop-down menu.
 

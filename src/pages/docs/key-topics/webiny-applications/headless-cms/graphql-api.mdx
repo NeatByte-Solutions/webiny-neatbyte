@@ -1,24 +1,24 @@
 ---
-id: graphql-api
 title: Headless CMS GraphQL API
-sidebar_label: GraphQL API
-keywords: ["webiny", "headless", "cms", "graphql", "api", "locales", "types", "security"]
 description: Learn what is the Headless CMS GraphQL API, what are its main characteristics, and how to access it.
 ---
 
-import CenteredImage from "@components/CenteredImage";
-import securityImagePart1 from "./graphql-api/security-cms-form-1.png";
-import securityImagePart2 from "./graphql-api/security-cms-form-2.png";
-import apiPlayground from "./graphql-api/api-playground.png";
-import apiUrlWebinyCli from "./graphql-api/api-url-webiny-cli.png";
-import apiPlaygroundSwitchLocale from "./graphql-api/api-playground-switch-locale.png";
+import { Alert } from '@/components/Alert'
+import securityImagePart1 from './graphql-api/security-cms-form-1.png'
+import securityImagePart2 from './graphql-api/security-cms-form-2.png'
+import apiPlayground from './graphql-api/api-playground.png'
+import apiUrlWebinyCli from './graphql-api/api-url-webiny-cli.png'
+import apiPlaygroundSwitchLocale from './graphql-api/api-playground-switch-locale.png'
 
-:::tip What you'll learn
+<Alert type="success">
+
+tip What you'll learn
 
 - what is the Headless CMS GraphQL API
 - what are its main characteristics
 - how to access it
-:::
+
+</Alert>
 
 ## Overview
 
@@ -29,7 +29,7 @@ The easiest way to explore it and try different things is via the API Playground
 <!-- vale off -->
 
 <img
-  src={require("./graphql-api/api_playground_from_main_menu.png").default}
+  src={require('./graphql-api/api_playground_from_main_menu.png').default}
   className="no-shadow"
   title="Access API Playground via Main Menu"
   alt="Access API Playground via Main Menu"
@@ -37,9 +37,13 @@ The easiest way to explore it and try different things is via the API Playground
 
 <!-- vale on -->
 
-:::info
-If you want to learn how to use the Headless CMS GraphQL API via the built-in API Playground or programmatically, via a GraphQL client, make sure to check out the [Using the GraphQL API](/docs/how-to-guides/webiny-applications/headless-cms/using-graphql-api) guide.
-:::
+<Alert type="info">
+
+If you want to learn how to use the Headless CMS GraphQL API via the built-in API Playground or
+programmatically, via a GraphQL client, make sure to check out the [Using the GraphQL
+API](/docs/how-to-guides/webiny-applications/headless-cms/using-graphql-api) guide.
+
+</Alert>
 
 ## Main Characteristics
 
@@ -47,9 +51,13 @@ If you want to learn how to use the Headless CMS GraphQL API via the built-in AP
 
 The Headless CMS GraphQL API comes in three different types - **manage**, **preview** and **read**. Each type is served via a separate URL and has a specific purpose.
 
-:::info
-Skip to the [The GraphQL API URL Structure](/docs/key-topics/webiny-applications/headless-cms/graphql-api#the-graphql-api-url-structure) to learn more about the Headless CMS GraphQL API's URL structure.
-:::
+<Alert type="info">
+
+Skip to the [The GraphQL API URL
+Structure](/docs/key-topics/webiny-applications/headless-cms/graphql-api#the-graphql-api-url-structure)
+to learn more about the Headless CMS GraphQL API's URL structure.
+
+</Alert>
 
 #### Manage
 
@@ -94,12 +102,8 @@ The Headless CMS GraphQL API sits behind a security layer that provides fine-gra
 - allow users to access only specific Headless CMS GraphQL API types (**manage**, **read**, **preview**)
 - allow users to access only specific content models, groups, and entries
 
-<CenteredImage alt="Fine-grained Access Controls" src={securityImagePart1} />
-<CenteredImage
-  alt="Fine-grained Access Controls"
-  src={securityImagePart2}
-  style={{ marginTop: -25 }}
-/>
+<img alt="Fine-grained Access Controls" src={securityImagePart1} />
+<img alt="Fine-grained Access Controls" src={securityImagePart2} style={{ marginTop: -25 }} />
 
 ## The GraphQL API URL Structure
 
@@ -126,9 +130,15 @@ https://random-id-xyz.cloudfront.net/cms/read/de-DE
 https://random-id-xyz.cloudfront.net/cms/read/it-IT
 ```
 
-:::info
-To learn more about the cloud infrastructure deployed as part of the **API** project application, check out the [Cloud Infrastructure - API](/docs/key-topics/cloud-infrastructure/api/introduction) key topic. You can also skip to the [API Overview](/docs/key-topics/cloud-infrastructure/api/overview#6-headless-cms) section, to immediately see how the Headless CMS GraphQL API fits in.
-:::
+<Alert type="info">
+
+To learn more about the cloud infrastructure deployed as part of the **API** project application,
+check out the [Cloud Infrastructure - API](/docs/key-topics/cloud-infrastructure/api/introduction)
+key topic. You can also skip to the [API
+Overview](/docs/key-topics/cloud-infrastructure/api/overview#6-headless-cms) section, to
+immediately see how the Headless CMS GraphQL API fits in.
+
+</Alert>
 
 ### Where to Find the URL of the GraphQL API?
 
@@ -138,15 +148,17 @@ You can find the URL of the Headless CMS GraphQL API via one of the following tw
 
 When you access the API Playground via the main menu in the Administration Area, at the top of the screen, in the URL bar, you will be able to see the URL for all three Headless CMS GraphQL API types.
 
-<CenteredImage alt="API Playground" src={apiPlayground} />
+<img alt="API Playground" src={apiPlayground} />
 
 Note that if you want to retrieve the URL for a different locale, you can switch to a different one via the locale selector, located in the top right corner of the screen.
 
-<CenteredImage alt="Switch Locale via the Locale Selector" src={apiPlaygroundSwitchLocale} />
+<img alt="Switch Locale via the Locale Selector" src={apiPlaygroundSwitchLocale} />
 
-:::info
+<Alert type="info">
+
 The locale selector is not visible for systems that have only one active locale.
-:::
+
+</Alert>
 
 #### Webiny CLI
 
@@ -159,14 +171,14 @@ yarn webiny info --env dev
 
 Running the shown command should produce the following output:
 
-<CenteredImage alt="Find Headless CMS GraphQL API URLs via Webiny CLI" src={apiUrlWebinyCli} />
+<img alt="Find Headless CMS GraphQL API URLs via Webiny CLI" src={apiUrlWebinyCli} />
 
 Note that with this method, you will still need to manually replace the `{LOCALE_CODE}` with an actual locale code. A list of all available locales can be found in the Administration Area, in the **Locales** section of the I18N Webiny application.
 
 <!-- vale off -->
 
 <img
-  src={require("./graphql-api/i18n-locales-section.png").default}
+  src={require('./graphql-api/i18n-locales-section.png').default}
   className="no-shadow"
   alt="Webiny I18N Application - Locales Section"
   title="Webiny I18N Application - Locales Section"
@@ -175,6 +187,8 @@ Note that with this method, you will still need to manually replace the `{LOCALE
 <!-- vale on -->
 
 ## FAQ
+
+### Placeholder
 
 #### When using the API Playground, is my access limited in any way?
 
