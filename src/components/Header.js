@@ -416,7 +416,13 @@ export function Header({ navIsOpen, onNavToggle, title, section }) {
         </div>
       )}
       {!isSearchIcon && (
-        <div className={clsx('z-30 w-full', styles.searchShadow)} onClick={onToggleSearch}></div>
+        <div
+          className={clsx(
+            'z-30 w-full inset-0 bg-black/20 backdrop-blur-sm dark:bg-slate-900/80',
+            styles.searchShadow
+          )}
+          onClick={onToggleSearch}
+        ></div>
       )}
     </>
   )
