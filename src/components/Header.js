@@ -166,7 +166,7 @@ export function NavItems() {
   )
 }
 
-export function Header({ navIsOpen, onNavToggle, title, section }) {
+export function Header({ navIsOpen, onNavToggle }) {
   const [isSearchIcon, setIsSearchIcon] = useState(true)
   const onToggleSearch = () => {
     return setIsSearchIcon(!isSearchIcon)
