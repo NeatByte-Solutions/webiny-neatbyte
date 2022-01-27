@@ -84,6 +84,19 @@ export const documentationNav = [
     ]),
   ]),
   ///////////////////////// HERES BE NEW BLOCKS////////////////////
+  collapsable('Security', [
+    page('webiny-overview/security'),
+    page('key-topics/security-framework/introduction'),
+    page('key-topics/security-framework/api-security'),
+    page('key-topics/security-framework/react-security'),
+  ]),
+  // collapsable('Performance', [
+  //   page('webiny-overview/performance-benchmark/introduction'),
+  //   page('webiny-overview/performance-benchmark/headless-cms-write-benchmark'),
+  //   page('webiny-overview/performance-benchmark/headless-cms-read-benchmark'),
+  //   page('webiny-overview/performance-benchmark/pb-deliver-a-page'),
+  // ]),
+  // collapsable('Community Plugins', [page('community-plugins/introduction')]),
   collapsable('Release Notes', [
     page('how-to-guides/upgrade-webiny'),
     collapsable('5.22.0', [
