@@ -171,7 +171,7 @@ export const documentationNav2 = [
         page('release-notes/5.4.0/changelog'),
         page('release-notes/5.4.0/upgrade-guide'),
       ]),
-      collapsable('5.8.0', [page('release-notes/5.3.0/changelog')]),
+      collapsable('5.3.0', [page('release-notes/5.3.0/changelog')]),
     ]),
   ]),
   collapsable('Contributing', [
