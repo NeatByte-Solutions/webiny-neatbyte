@@ -4,7 +4,6 @@ import { createContext, forwardRef, useRef, useState } from 'react'
 import { useIsomorphicLayoutEffect } from '@/hooks/useIsomorphicLayoutEffect'
 import clsx from 'clsx'
 import { Dialog } from '@headlessui/react'
-import { documentationNav2 } from '@/navs/docjson'
 
 import arrow from '../assets/menu-arrow/menu-arrow.svg'
 
@@ -179,7 +178,7 @@ export function SidebarLayout({
       <Wrapper allowOverflow={allowOverflow}>
         <div className="max-w-[96.993rem] 2xl:max-w-[104rem] mx-auto pl-4 sm:pl-6 md:pl-8 2xl:pl-[5.43rem] pr-4 sm:pr-6 md:pr-8">
           <div className="hidden lg:block fixed z-20 inset-0 top-[4.375rem] right-auto w-[20.875rem] pb-10 pl-[20px] overflow-y-auto">
-            <Nav nav={documentationNav2}>{sidebar}</Nav>
+            <Nav nav={nav}>{sidebar}</Nav>
           </div>
           <div className="lg:pl-[20.875rem]">{children}</div>
         </div>
@@ -208,7 +207,7 @@ export function SidebarLayout({
               />
             </svg>
           </button>
-          <Nav nav={documentationNav2} mobile={true}>
+          <Nav nav={nav} mobile={true}>
             {sidebar}
           </Nav>
         </div>

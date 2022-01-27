@@ -29,7 +29,7 @@ const collapsable = (title, links) => {
   }
 }
 
-export const documentationNav2 = [
+export const documentationNav = [
   page('webiny/introduction'),
   page('tutorials/install-webiny'),
   collapsable('Core Concepts', [
