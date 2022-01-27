@@ -44,13 +44,22 @@ function nearestScrollableContainer(el) {
 }
 
 const NavTreeElement = forwardRef(({ element, depth = 0 }, ref) => {
-
   const { type, title, link } = element
 
   if (type === 'collapsable') {
-    return <Collapsable subElements={element.links} isActiveChild={element.isActiveChild} title={title} ref={ref} depth={depth} />
+    return (
+      <Collapsable
+        subElements={element.links}
+        isActiveChild={element.isActiveChild}
+        title={title}
+        ref={ref}
+        depth={depth}
+      />
+    )
   } else if (type === 'page') {
-    return <Page title={title} link={element.link} isActive={element.isActive} ref={ref} depth={depth} />
+    return (
+      <Page title={title} link={element.link} isActive={element.isActive} ref={ref} depth={depth} />
+    )
   } else if (type === 'section') {
     return <Section title={title} link={link} depth={depth} />
   } else {
@@ -61,9 +70,9 @@ const NavTreeElement = forwardRef(({ element, depth = 0 }, ref) => {
 const Collapsable = forwardRef(({ title, subElements = [], isActiveChild, depth = 0 }, ref) => {
   const [showMenu, setShowMenu] = useState(false)
 
-  useEffect(()=> {
-    if (isActiveChild){
-      setShowMenu(true);
+  useEffect(() => {
+    if (isActiveChild) {
+      setShowMenu(true)
     }
   }, [isActiveChild])
 
@@ -75,14 +84,14 @@ const Collapsable = forwardRef(({ title, subElements = [], isActiveChild, depth 
         className="flex items-center cursor-pointer my-[10px]"
       >
         <div className="mr-[10px]">
-          <img src={arrow} className={showMenu ? 
-          "rotate-90" : ""} alt="collapsable"></img>
+          <img src={arrow} className={showMenu ? 'rotate-90' : ''} alt="collapsable"></img>
         </div>
         <a
           href="#"
           className={clsx({
-            'font-bold text-nav-subdirectory text-dark-purple': showMenu && depth > 0,
-            'text-nav-subdirectory font-normal text-dark-purple': !showMenu && depth > 0,
+            'font-bold text-nav-subdirectory text-dark-purple': isActiveChild && depth > 0,
+            'text-nav-subdirectory font-normal text-dark-purple':
+              (!showMenu && depth > 0) || (!isActiveChild && showMenu),
             'text-dark-blue font-semibold text-nav-directory': depth === 0,
           })}
         >
@@ -129,14 +138,14 @@ function Nav({ nav, mobile = false }) {
 
   function setIsActive(nav) {
     for (const navItem of nav) {
-      if (navItem.type === "page") {
+      if (navItem.type === 'page') {
         const isActive = navItem.link === router.pathname
 
         navItem.isActive = isActive
-      } else if (navItem.type === "collapsable") {
+      } else if (navItem.type === 'collapsable') {
         setIsActive(navItem.links)
 
-        const isActiveChild = navItem.links.some(link => link.isActive || link.isActiveChild)
+        const isActiveChild = navItem.links.some((link) => link.isActive || link.isActiveChild)
 
         navItem.isActiveChild = isActiveChild
       }
