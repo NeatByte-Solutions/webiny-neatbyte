@@ -2,7 +2,7 @@ import { createPageList } from '@/utils/createPageList'
 
 const page = (mdxName) => {
   const pages = createPageList(
-    require.context(`../pages/docs/?meta=title,shortTitle,published`, false, /\.mdx$/),
+    require.context(`../pages/docs/?meta=title`, true, /\.mdx$/),
     'docs'
   )
 
@@ -33,7 +33,9 @@ const collapsable = (title, links) => {
 }
 
 export const documentationNav2 = [
+  page('webiny/introduction'),
   collapsable('Create Custom Application', [
+    page('key-topics/webiny-cli'),
     section('First section'),
     collapsable('Project Organization', [
       collapsable('Project Organization', [
