@@ -151,6 +151,7 @@ module.exports = {
             'a code': {
               color: 'inherit',
               fontWeight: 'inherit',
+              textDecoration: 'underline',
             },
             strong: {
               color: theme('colors.slate.900'),
@@ -163,7 +164,21 @@ module.exports = {
             code: {
               fontWeight: theme('fontWeight.medium'),
               fontVariantLigatures: 'none',
-              fontFamily: 'Roboto',
+              fontFamily: 'monospace',
+              color: '#FA5A28',
+              paddingTop: '0.25rem',
+              paddingBottom: '0.25rem',
+              paddingLeft: '0.625rem',
+              paddingRight: '0.625rem',
+              borderRadius: '0.25rem',
+              boxShadow: 'inset 0 0 0 1px #E8E8E8',
+              backgroundColor: '#F8F8F8',
+            },
+            'code::before': {
+              content: 'none',
+            },
+            'code::after': {
+              content: 'none',
             },
             pre: {
               color: theme('colors.slate.50'),
@@ -183,6 +198,7 @@ module.exports = {
             'pre code': {
               flex: 'none',
               minWidth: '100%',
+              boxShadow: 'none',
             },
             table: {
               fontSize: theme('fontSize.sm')[0],
