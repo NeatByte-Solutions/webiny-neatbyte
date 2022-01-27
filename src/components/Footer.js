@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { InputFooter } from '@/components/InputFooter'
 
 export function Footer({ previous, next }) {
   return (
@@ -82,7 +83,7 @@ export function Footer({ previous, next }) {
           <p className="text-[0.875rem] md:text-[1rem] leading-7 font-bold">
             Join our developer newsletter
           </p>
-          <div className="bg-black mt-2.5 mb-[0.3125rem] h-10 w-full" />
+          <InputFooter className="mt-2.5 mb-[0.3125rem]" />
           <p className="text-[0.75rem] leading-[0.875rem]">You can unsuscribe at any time.</p>
         </div>
       </div>
