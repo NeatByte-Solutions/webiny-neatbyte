@@ -1,15 +1,18 @@
 ---
-id: preview-deployments
 title: Preview Deployments
-sidebar_label: Preview Deployments
-keywords: ["deploy", "preview", "project", "application", "CLI"]
 description: Learn how to preview cloud infrastructure deployments, before actually executing them.
 ---
 
-:::tip What you’ll learn
+import { Alert } from "@/components/Alert"
+import PreviewingDeploy from "./assets/preview-deployments/preview-terminal.png"
+
+<Alert type="success">
+
+ What you’ll learn
 
 - how to preview cloud infrastructure deployment for your project application
-:::
+
+</Alert>
 
 ## Introduction
 
@@ -32,7 +35,7 @@ Executing these commands won't perform any changes to your cloud infrastructure 
 <!-- vale off -->
 
 <img
-  src={require("./assets/preview-deployments/preview-terminal.png").default}
+  src={PreviewingDeploy}
   className="no-shadow"
   style={{ borderRadius: 0 }}
   alt="Previewing Deploy Command"
