@@ -73,7 +73,7 @@ const Collapsable = forwardRef(({ title, subElements = [], depth = 0 }, ref) => 
         className="flex items-center cursor-pointer my-[10px]"
       >
         <div className="mr-[10px]">
-          <img src={arrow} className={`duration-300 ${showMenu ? 'rotate-90' : null}`}></img>
+          <img src={arrow} className={`${showMenu ? 'rotate-90' : null}`}></img>
         </div>
         <a
           href="#"
@@ -100,11 +100,11 @@ const Page = forwardRef(({ title, link, isActive, depth = 0 }, ref) => {
     <li ref={ref}>
       <Link href={link}>
         <a
-          className={`block my-[10px] cursor-pointer text-nav-link ${
-            isActive
-              ? 'text-orange border-orange border-r-[2px] font-bold'
-              : 'hover:border-r-[2px] hover:text-dark-purple border-blue'
-          }`}
+          className={clsx('block my-[10px] cursor-pointer text-nav-link', {
+            'text-orange border-orange border-r-[2px] font-bold': isActive,
+            'hover:border-r-[2px] hover:text-dark-purple border-blue': !isActive,
+            'text-dark-blue font-semibold text-nav-directory': depth === 0,
+          })}
         >
           {title}
         </a>
