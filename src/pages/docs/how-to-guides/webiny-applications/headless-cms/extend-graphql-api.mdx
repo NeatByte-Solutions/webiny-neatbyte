@@ -1,26 +1,25 @@
 ---
-id: extend-graphql-api
 title: Extend GraphQL API
-sidebar_label: Extend GraphQL API
-keywords: ["headless", "cms", "graphql", "gql", "api", "extend", "expand"]
 description: Learn how to extend the Headless CMS-related GraphQL types and operations.
 ---
 
-import CenteredImage from "@components/CenteredImage";
-import myPostsModel from "./extend-graphql-api/my-posts-model.png";
-import myPostsQuery from "./extend-graphql-api/my-posts-query.png";
+import { Alert } from '@/components/Alert'
+import myPostsModel from './extend-graphql-api/my-posts-model.png'
+import myPostsQuery from './extend-graphql-api/my-posts-query.png'
 
-:::tip What you'll learn
+<Alert type="success">
+
+What you'll learn
 
 - how to extend the Headless CMS-related GraphQL types and operations
 
-:::
+</Alert>
 
-:::info
+<Alert type="info">
 
 Use the [`webiny watch`](/docs/how-to-guides/use-watch-command) command to continuously deploy application code changes into the cloud and instantly see them in action. For quick (manual) testing, you can use the built-in [API Playground](/docs/how-to-guides/webiny-applications/admin-area/api-playground/).
 
-:::
+</Alert>
 
 ## Custom Queries
 
@@ -28,70 +27,72 @@ Let's say we wanted to extend our GraphQL schema with a custom `listMyPosts` que
 
 In other words, we want to return all content entries of the **Post** content model, where the `createdBy` points to the currently logged in user. For demonstration purposes, our **Post** content model will be very simple:
 
-<CenteredImage alt={"The Post Content Model"} src={myPostsModel} />
+<img alt={'The Post Content Model'} src={myPostsModel} />
 
-:::tip
+<Alert type="success">
 
 The `createdBy` field is automatically assigned to every content entry and it represents the currently logged in user.
 
-:::
+</Alert>
 
 Creating the new `listMyPosts` query can be achieved via a single [`GraphQLSchemaPlugin`](https://github.com/webiny/webiny-js/blob/v5.11.0/packages/handler-graphql/src/plugins/GraphQLSchemaPlugin.ts#L10) plugin.
 
-```ts title="api/code/headlessCMS/src/plugins/posts.ts"
-import { GraphQLSchemaPlugin } from "@webiny/handler-graphql/plugins";
-import { ListResponse } from "@webiny/handler-graphql/responses";
-import { CmsContentEntry, CmsContentEntryMeta } from "@webiny/api-headless-cms/types";
+```ts api/code/headlessCMS/src/plugins/posts.ts
+import { GraphQLSchemaPlugin } from '@webiny/handler-graphql/plugins'
+import { ListResponse } from '@webiny/handler-graphql/responses'
+import { CmsContentEntry, CmsContentEntryMeta } from '@webiny/api-headless-cms/types'
 
 // Make sure to import the `Context` interface and pass it to the `GraphQLSchemaPlugin`
 // plugin. Apart from making your application code type-safe, it will also make the
 // interaction with the `context` object significantly easier.
-import { Context } from "~/types";
+import { Context } from '~/types'
 
 export default [
-    new GraphQLSchemaPlugin<Context>({
-        // Extend the `Query` type with the `listMyPosts` query. Note the `PostListResponse` type.
-        // It exists because we've previously created the `Post` content model via Admin Area.
-        typeDefs: /* GraphQL */ `
-            extend type Query {
-                # List posts that were created by the currently logged in user.
-                listMyPosts: PostListResponse
+  new GraphQLSchemaPlugin<Context>({
+    // Extend the `Query` type with the `listMyPosts` query. Note the `PostListResponse` type.
+    // It exists because we've previously created the `Post` content model via Admin Area.
+    typeDefs: /* GraphQL */ `
+      extend type Query {
+        # List posts that were created by the currently logged in user.
+        listMyPosts: PostListResponse
+      }
+    `,
+    // In order for the `listMyPosts` to work, we also need to create a resolver function.
+    resolvers: {
+      Query: {
+        listMyPosts: async (_, args: { id: string }, context) => {
+          const { security, cms } = context
+
+          // Retrieve the `post` model.
+          const model = await cms.models.get('post')
+
+          // Use the `cms.entries.listLatest` method to fetch latest entries for the currently
+          // logged in user. Note that you could also use the `listPublished` method here instead
+          // of `cms.entries.listLatest`, if a list of published posts is what you need.
+          const response: [CmsContentEntry[], CmsContentEntryMeta] = await cms.entries.listLatest(
+            model,
+            {
+              where: {
+                // Retrieving the currently logged in user is as easy
+                // as calling the `security.getIdentity` method.
+                createdBy: security.getIdentity().id,
+              },
             }
-        `,
-        // In order for the `listMyPosts` to work, we also need to create a resolver function.
-        resolvers: {
-            Query: {
-                listMyPosts: async (_, args: { id: string }, context) => {
-                    const { security, cms } = context;
+          )
 
-                    // Retrieve the `post` model.
-                    const model = await cms.models.get("post");
-
-                    // Use the `cms.entries.listLatest` method to fetch latest entries for the currently
-                    // logged in user. Note that you could also use the `listPublished` method here instead
-                    // of `cms.entries.listLatest`, if a list of published posts is what you need.
-                    const response: [
-                        CmsContentEntry[],
-                        CmsContentEntryMeta
-                    ] = await cms.entries.listLatest(model, {
-                        where: {
-                            // Retrieving the currently logged in user is as easy
-                            // as calling the `security.getIdentity` method.
-                            createdBy: security.getIdentity().id
-                        }
-                    });
-
-                    return new ListResponse(...response);
-                }
-            }
-        }
-    })
-];
+          return new ListResponse(...response)
+        },
+      },
+    },
+  }),
+]
 ```
 
-:::info
+<Alert type="info">
+
 The code above can be placed in the [`api/code/headlessCMS/src/plugins/posts.ts`](https://github.com/webiny/webiny-examples/blob/master/headless-cms/extend-graphql-api/custom-queries/api/code/headlessCMS/src/plugins/posts.ts) file, which doesn't exist by default, so you will have to create it manually. Furthermore, once the file is created, make sure that it's actually imported and registered in the [`api/code/headlessCMS/src/index.ts`](https://github.com/webiny/webiny-examples/blob/master/headless-cms/extend-graphql-api/custom-queries/api/code/headlessCMS/src/index.ts) entrypoint file.
-:::
+
+</Alert>
 
 With all the changes in place, we should be able to run the following GraphQL mutation:
 
@@ -114,11 +115,13 @@ With all the changes in place, we should be able to run the following GraphQL mu
 
 For example:
 
-<CenteredImage alt={"Using the `listMyPosts` Query"} src={myPostsQuery} />
+<img alt={'Using the `listMyPosts` Query'} src={myPostsQuery} />
 
 As we can see, the `listPosts` query returned a total of three posts. On the other hand, the `listMyPosts` only returned posts for the currently logged in user, which is the expected result.
 
 ## FAQ
+
+### Placeholder
 
 #### What is the `context` object and where are all of its properties coming from?
 
