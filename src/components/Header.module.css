@@ -32,13 +32,13 @@
   height: 62px;
 }
 
-.searchShadow {
+/* .searchShadow {
   position: fixed;
   top: 0;
   bottom: 0;
   width: 100%;
   height: 100%;
-}
+} */
 
 .inputPlaceholder::placeholder {
   font-family: Roboto;
