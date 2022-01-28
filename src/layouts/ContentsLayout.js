@@ -183,7 +183,7 @@ export function ContentsLayoutOuter({ children, layoutProps, ...props }) {
   )
 }
 
-export function ContentsLayout({ children, meta, classes, tableOfContents, section }) {
+export function ContentsLayout({ children, meta, classes, tableOfContents }) {
   const router = useRouter()
   const toc = [
     ...(classes ? [{ title: 'Quick reference', slug: 'class-reference', children: [] }] : []),
@@ -199,7 +199,6 @@ export function ContentsLayout({ children, meta, classes, tableOfContents, secti
         title={meta.title}
         description={meta.description}
         badge={{ key: 'Tailwind CSS version', value: meta.featureVersion }}
-        section={section}
       />
       <ContentsContext.Provider value={{ registerHeading, unregisterHeading }}>
         {classes ? (

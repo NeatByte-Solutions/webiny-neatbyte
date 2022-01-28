@@ -1,10 +1,9 @@
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import { createContext, forwardRef, useRef, useState } from 'react'
+import { createContext, forwardRef, useEffect, useRef, useState } from 'react'
 import { useIsomorphicLayoutEffect } from '@/hooks/useIsomorphicLayoutEffect'
 import clsx from 'clsx'
 import { Dialog } from '@headlessui/react'
-import { documentationNav2 } from '@/navs/docjson'
 
 import arrow from '../assets/menu-arrow/menu-arrow.svg'
 
@@ -45,16 +44,22 @@ function nearestScrollableContainer(el) {
 }
 
 const NavTreeElement = forwardRef(({ element, depth = 0 }, ref) => {
-  const router = useRouter()
-
   const { type, title, link } = element
 
   if (type === 'collapsable') {
-    return <Collapsable subElements={element.links} title={title} ref={ref} depth={depth} />
+    return (
+      <Collapsable
+        subElements={element.links}
+        isActiveChild={element.isActiveChild}
+        title={title}
+        ref={ref}
+        depth={depth}
+      />
+    )
   } else if (type === 'page') {
-    const isActive = element.link === router.pathname
-
-    return <Page title={title} link={element.link} isActive={isActive} ref={ref} depth={depth} />
+    return (
+      <Page title={title} link={element.link} isActive={element.isActive} ref={ref} depth={depth} />
+    )
   } else if (type === 'section') {
     return <Section title={title} link={link} depth={depth} />
   } else {
@@ -62,8 +67,14 @@ const NavTreeElement = forwardRef(({ element, depth = 0 }, ref) => {
   }
 })
 
-const Collapsable = forwardRef(({ title, subElements = [], depth = 0 }, ref) => {
+const Collapsable = forwardRef(({ title, subElements = [], isActiveChild, depth = 0 }, ref) => {
   const [showMenu, setShowMenu] = useState(false)
+
+  useEffect(() => {
+    if (isActiveChild) {
+      setShowMenu(true)
+    }
+  }, [isActiveChild])
 
   return (
     <>
@@ -73,13 +84,14 @@ const Collapsable = forwardRef(({ title, subElements = [], depth = 0 }, ref) => 
         className="flex items-center cursor-pointer my-[10px]"
       >
         <div className="mr-[10px]">
-          <img src={arrow} className={`duration-300 ${showMenu ? 'rotate-90' : null}`}></img>
+          <img src={arrow} className={showMenu ? 'rotate-90' : ''} alt="collapsable"></img>
         </div>
         <a
           href="#"
           className={clsx({
-            'font-bold text-nav-subdirectory text-dark-purple': showMenu && depth > 0,
-            'text-nav-subdirectory font-normal text-dark-purple': !showMenu && depth > 0,
+            'font-bold text-nav-subdirectory text-dark-purple': isActiveChild && depth > 0,
+            'text-nav-subdirectory font-normal text-dark-purple':
+              (!showMenu && depth > 0) || (!isActiveChild && showMenu),
             'text-dark-blue font-semibold text-nav-directory': depth === 0,
           })}
         >
@@ -100,11 +112,11 @@ const Page = forwardRef(({ title, link, isActive, depth = 0 }, ref) => {
     <li ref={ref}>
       <Link href={link}>
         <a
-          className={`block my-[10px] cursor-pointer text-nav-link ${
-            isActive
-              ? 'text-orange border-orange border-r-[2px] font-bold'
-              : 'hover:border-r-[2px] hover:text-dark-purple border-blue'
-          }`}
+          className={clsx('block my-[10px] cursor-pointer text-nav-link', {
+            'text-orange border-orange border-r-[2px] font-bold': isActive,
+            'hover:border-r-[2px] hover:text-dark-purple border-blue': !isActive,
+            'text-dark-blue font-semibold text-nav-directory': depth === 0,
+          })}
         >
           {title}
         </a>
@@ -123,6 +135,22 @@ function Nav({ nav, mobile = false }) {
   const activeItemRef = useRef()
   const previousActiveItemRef = useRef()
   const scrollRef = useRef()
+
+  function setIsActive(nav) {
+    for (const navItem of nav) {
+      if (navItem.type === 'page') {
+        const isActive = navItem.link === router.pathname
+
+        navItem.isActive = isActive
+      } else if (navItem.type === 'collapsable') {
+        setIsActive(navItem.links)
+
+        const isActiveChild = navItem.links.some((link) => link.isActive || link.isActiveChild)
+
+        navItem.isActiveChild = isActiveChild
+      }
+    }
+  }
 
   useIsomorphicLayoutEffect(() => {
     function updatePreviousRef() {
@@ -150,6 +178,8 @@ function Nav({ nav, mobile = false }) {
       }
     }
   }, [router.pathname])
+
+  setIsActive(nav)
 
   return (
     <nav ref={scrollRef} id="nav" className="lg:text-sm lg:leading-6 relative font-roboto">
@@ -179,7 +209,7 @@ export function SidebarLayout({
       <Wrapper allowOverflow={allowOverflow}>
         <div className="max-w-[96.993rem] 2xl:max-w-[104rem] mx-auto pl-4 sm:pl-6 md:pl-8 2xl:pl-[5.43rem] pr-4 sm:pr-6 md:pr-8">
           <div className="hidden lg:block fixed z-20 inset-0 top-[4.375rem] right-auto w-[20.875rem] pb-10 pl-[20px] overflow-y-auto">
-            <Nav nav={documentationNav2}>{sidebar}</Nav>
+            <Nav nav={nav}>{sidebar}</Nav>
           </div>
           <div className="lg:pl-[20.875rem]">{children}</div>
         </div>
@@ -208,7 +238,7 @@ export function SidebarLayout({
               />
             </svg>
           </button>
-          <Nav nav={documentationNav2} mobile={true}>
+          <Nav nav={nav} mobile={true}>
             {sidebar}
           </Nav>
         </div>

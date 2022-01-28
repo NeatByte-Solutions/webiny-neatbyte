@@ -166,7 +166,7 @@ export function NavItems() {
   )
 }
 
-export function Header({ navIsOpen, onNavToggle, title, section }) {
+export function Header({ navIsOpen, onNavToggle }) {
   let [isOpen, setIsOpen] = useState(false)
   const openDialog = () => {
     return setIsOpen(!isOpen)
