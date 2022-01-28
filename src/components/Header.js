@@ -348,7 +348,7 @@ export function Header({ navIsOpen, onNavToggle }) {
           <input
             type="text"
             className={clsx(
-              'text-nav-directory text-black font-roboto w-full focus:outline-0 pr-4',
+              'text-nav-directory text-black font-roboto w-full focus:outline-none pr-4',
               styles.inputPlaceholder
             )}
             placeholder="Search..."
