@@ -6,7 +6,7 @@ function flatPages(links, pages = []) {
   for (const link of links) {
     if (link.type ==="page"){
       pages.push(link);
-    } else if (link.type ==="collapsable") {
+    } else if (link.type ==="collapsable" || link.type ==="section") {
       flatPages(link.links, pages);
     }
   }
