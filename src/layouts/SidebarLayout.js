@@ -88,9 +88,9 @@ const Collapsable = forwardRef(({ title, subElements = [], isActiveChild, depth 
       <li
         href="#"
         onClick={() => setShowMenu(!showMenu)}
-        className="relative flex items-center cursor-pointer mt-[20px] mb-[13px]"
+        className="relative flex items-center cursor-pointer h-[30px] mt-[10px] mb-[8px]"
       >
-        <div className={`${depth === 0 ? 'absolute left-[-15px] top-[4px]' : 'mr-[10px]'}`}>
+        <div className={`${depth === 0 ? 'absolute left-[-15px] top-[9px]' : 'mr-[10px]'}`}>
           <img src={arrow} className={showMenu ? 'rotate-90' : ''} alt="collapsable"></img>
         </div>
         <a
@@ -140,7 +140,7 @@ const Page = forwardRef(({ title, link, isActive, depth = 0 }, ref) => {
 const Section = forwardRef(({ title, subElements = [], isActiveChild, depth = 0 }, ref) => {
   return (
     <>
-      <li className="flex items-center my-[20px]">
+      <li className="flex items-center">
         <span className="my-[10px] uppercase text-dark-blue font-normal text-nav-subdirectory">
           {title}
         </span>
