@@ -81,9 +81,9 @@ const Collapsable = forwardRef(({ title, subElements = [], isActiveChild, depth 
       <li
         href="#"
         onClick={() => setShowMenu(!showMenu)}
-        className="flex items-center cursor-pointer my-[10px]"
+        className="flex items-center cursor-pointer my-[20px]"
       >
-        <div className="mr-[10px]">
+        <div className={`${depth === 0 ? 'absolute left-[3px]' : 'mr-[10px]'}`}>
           <img src={arrow} className={showMenu ? 'rotate-90' : ''} alt="collapsable"></img>
         </div>
         <a
@@ -91,14 +91,15 @@ const Collapsable = forwardRef(({ title, subElements = [], isActiveChild, depth 
           className={clsx({
             'font-bold text-nav-subdirectory text-dark-purple': isActiveChild && depth > 0,
             'text-nav-subdirectory font-normal text-dark-purple':
-              (!showMenu && depth > 0) || (!isActiveChild && showMenu),
+              (!showMenu && depth > 0 && !isActiveChild) ||
+              (!isActiveChild && showMenu && depth > 0),
             'text-dark-blue font-semibold text-nav-directory': depth === 0,
           })}
         >
           {title}
         </a>
       </li>
-      <ul className={`duration-300 ml-[10px] ${showMenu ? 'block' : 'hidden'}`}>
+      <ul className={clsx({ 'ml-[30px]': depth > 0, block: showMenu, hidden: !showMenu })}>
         {subElements.map((navElement, index) => (
           <NavTreeElement key={index} element={navElement} ref={ref} depth={depth + 1} />
         ))}
@@ -112,11 +113,14 @@ const Page = forwardRef(({ title, link, isActive, depth = 0 }, ref) => {
     <li ref={ref}>
       <Link href={link}>
         <a
-          className={clsx('block my-[10px] cursor-pointer text-nav-link', {
-            'text-orange border-orange border-r-[2px] font-bold': isActive,
-            'hover:border-r-[2px] hover:text-dark-purple border-blue': !isActive,
-            'text-dark-blue font-semibold text-nav-directory': depth === 0,
-          })}
+          className={clsx(
+            'grid content-center block my-[10px] h-[30px] cursor-pointer text-nav-link',
+            {
+              'text-orange border-orange border-r-[2px] font-bold': isActive,
+              'hover:border-r-[2px] hover:text-dark-purple border-blue': !isActive,
+              'text-dark-blue font-semibold text-nav-directory': depth === 0,
+            }
+          )}
         >
           {title}
         </a>
@@ -182,7 +186,11 @@ function Nav({ nav, mobile = false }) {
   setIsActive(nav)
 
   return (
-    <nav ref={scrollRef} id="nav" className="lg:text-sm lg:leading-6 relative font-roboto">
+    <nav
+      ref={scrollRef}
+      id="nav"
+      className="pl-[16px] lg:text-sm lg:leading-6 relative font-roboto"
+    >
       <ul>
         {nav.map((el, index) => {
           return <NavTreeElement element={el} key={index} ref={activeItemRef} router={router} />
@@ -208,7 +216,7 @@ export function SidebarLayout({
     <SidebarContext.Provider value={{ nav, navIsOpen, setNavIsOpen }}>
       <Wrapper allowOverflow={allowOverflow}>
         <div className="max-w-[96.993rem] 2xl:max-w-[104rem] mx-auto pl-4 sm:pl-6 md:pl-8 2xl:pl-[5.43rem] pr-4 sm:pr-6 md:pr-8">
-          <div className="hidden lg:block fixed z-20 inset-0 top-[4.375rem] right-auto w-[20.875rem] pb-10 pl-[20px] overflow-y-auto">
+          <div className="hidden lg:block fixed z-20 inset-0 top-[4.15rem] right-auto w-[20.875rem] pb-10 ml-[18px] overflow-y-auto border-r border-neutral-200">
             <Nav nav={nav}>{sidebar}</Nav>
           </div>
           <div className="lg:pl-[20.875rem]">{children}</div>
