@@ -164,7 +164,7 @@ module.exports = {
             code: {
               fontWeight: theme('fontWeight.medium'),
               fontVariantLigatures: 'none',
-              fontFamily: 'monospace',
+              fontFamily: 'Source Code Pro, monospace',
               color: '#FA5A28',
               paddingTop: '0.25rem',
               paddingBottom: '0.25rem',
@@ -199,6 +199,7 @@ module.exports = {
               flex: 'none',
               minWidth: '100%',
               boxShadow: 'none',
+              fontFamily: 'Source Code Pro, monospace',
             },
             table: {
               fontSize: theme('fontSize.sm')[0],
@@ -327,6 +328,7 @@ module.exports = {
         //source: ['Source Sans Pro', ...defaultTheme.fontFamily.sans],
         //'ubuntu-mono': ['Ubuntu Mono', ...defaultTheme.fontFamily.mono],
         roboto: ['Roboto', 'sans-serif'],
+        'source-sans-pro': ['Source Sans Pro', 'sans-serif'],
       },
       fontSize: {
         'nav-directory': [

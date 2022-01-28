@@ -10,7 +10,7 @@ export function TabBar({
 }) {
   return (
     <div className="flex text-slate-400 text-nav-directory">
-      <div className="flex-none text-code-filename px-4 lg:px-[2.375rem] py-[0.625rem] lg:py-4 flex items-center">
+      <div className="flex-none text-code-filename px-4 lg:px-[2.375rem] py-[0.625rem] lg:py-4 flex items-center font-source-sans-pro">
         {primary.name}
         {showTabMarkers &&
           (primary.saved ? (
