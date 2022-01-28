@@ -84,7 +84,7 @@ export function Footer({ previous, next }) {
             Join our developer newsletter
           </p>
           <InputFooter className="mt-2.5 mb-[0.3125rem]" />
-          <p className="text-[0.75rem] leading-[0.875rem]">You can unsuscribe at any time.</p>
+          <p className="text-[0.75rem] leading-[0.875rem]">You can unsubscribe at any time.</p>
         </div>
       </div>
     </footer>
