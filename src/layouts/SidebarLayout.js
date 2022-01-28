@@ -84,12 +84,13 @@ const Collapsable = forwardRef(({ title, subElements = [], isActiveChild, depth 
 
   return (
     <>
+      {/* second line */}
       <li
         href="#"
         onClick={() => setShowMenu(!showMenu)}
-        className="flex items-center cursor-pointer my-[20px]"
+        className="relative flex items-center cursor-pointer mt-[20px] mb-[13px]"
       >
-        <div className={`${depth === 0 ? 'absolute left-[3px]' : 'mr-[10px]'}`}>
+        <div className={`${depth === 0 ? 'absolute left-[-15px] top-[4px]' : 'mr-[10px]'}`}>
           <img src={arrow} className={showMenu ? 'rotate-90' : ''} alt="collapsable"></img>
         </div>
         <a
@@ -118,6 +119,7 @@ const Page = forwardRef(({ title, link, isActive, depth = 0 }, ref) => {
   return (
     <li ref={ref}>
       <Link href={link}>
+        {/* first line */}
         <a
           className={clsx(
             'grid content-center block my-[15px] h-[30px] cursor-pointer text-nav-link',
@@ -125,6 +127,7 @@ const Page = forwardRef(({ title, link, isActive, depth = 0 }, ref) => {
               'text-orange border-orange border-r-[2px] font-bold': isActive,
               'hover:border-r-[2px] hover:text-dark-purple border-blue': !isActive,
               'text-dark-blue font-semibold text-nav-directory': depth === 0,
+              'my-[7px]': depth > 0,
             }
           )}
         >
@@ -206,7 +209,7 @@ function Nav({ nav, mobile = false }) {
     <nav
       ref={scrollRef}
       id="nav"
-      className="pl-[12px] lg:text-sm lg:leading-6 relative font-roboto"
+      className="pl-[13px] lg:text-sm lg:leading-6 relative font-roboto"
     >
       <ul>
         {nav.map((el, index) => {
@@ -233,7 +236,7 @@ export function SidebarLayout({
     <SidebarContext.Provider value={{ nav, navIsOpen, setNavIsOpen }}>
       <Wrapper allowOverflow={allowOverflow}>
         <div className="max-w-[96.993rem] 2xl:max-w-[104rem] mx-auto pl-4 sm:pl-6 md:pl-8 2xl:pl-[5.43rem] pr-4 sm:pr-6 md:pr-8">
-          <div className="hidden lg:block fixed z-20 inset-0 top-[4.15rem] right-auto w-[20.875rem] pb-10 ml-[18px] overflow-y-auto border-r border-neutral-200">
+          <div className="hidden lg:block fixed z-20 inset-0 top-[4.15rem] right-auto w-[20.875rem] pb-10 pl-[18px] overflow-y-auto border-r border-neutral-200">
             <Nav nav={nav}>{sidebar}</Nav>
           </div>
           <div className="lg:pl-[20.875rem]">{children}</div>
