@@ -29,6 +29,12 @@ const collapsable = (title, links) => {
   }
 }
 
+const horizontalLine = () => {
+  return {
+    type: 'horizontal-line',
+  }
+}
+
 export const documentationNav = [
   page('webiny/introduction'),
   page('tutorials/install-webiny'),
@@ -161,6 +167,7 @@ export const documentationNav = [
     page('webiny-overview/performance-benchmark/pb-deliver-a-page'),
   ]),
   collapsable('Community Plugins', [page('community-plugins/introduction')]),
+  horizontalLine(),
   collapsable('Release Notes', [
     page('how-to-guides/upgrade-webiny'),
     collapsable('5.22.0', [
