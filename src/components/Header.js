@@ -210,7 +210,10 @@ export function Header({ navIsOpen, onNavToggle }) {
           </Link>
           <Featured />
           <div className="relative hidden lg:flex items-center ml-auto">
-            <button onClick={openDialog}>
+            <button
+              className="flex items-center justify-center w-8 h-8 focus:outline-none"
+              onClick={openDialog}
+            >
               {!isOpen ? (
                 <svg
                   width="19"
