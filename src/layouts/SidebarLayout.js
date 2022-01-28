@@ -114,7 +114,7 @@ const Page = forwardRef(({ title, link, isActive, depth = 0 }, ref) => {
       <Link href={link}>
         <a
           className={clsx(
-            'grid content-center block my-[10px] h-[30px] cursor-pointer text-nav-link',
+            'grid content-center block my-[15px] h-[30px] cursor-pointer text-nav-link',
             {
               'text-orange border-orange border-r-[2px] font-bold': isActive,
               'hover:border-r-[2px] hover:text-dark-purple border-blue': !isActive,
@@ -189,7 +189,7 @@ function Nav({ nav, mobile = false }) {
     <nav
       ref={scrollRef}
       id="nav"
-      className="pl-[16px] lg:text-sm lg:leading-6 relative font-roboto"
+      className="pl-[12px] lg:text-sm lg:leading-6 relative font-roboto"
     >
       <ul>
         {nav.map((el, index) => {
