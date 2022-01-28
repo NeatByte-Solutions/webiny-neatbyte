@@ -302,7 +302,7 @@ module.exports = {
               marginTop: '1.25rem',
             },
             ul: {
-              paddingTop: '1.3em',
+              marginTop: '1.3em',
             },
             'ul > li': {
               fontSize: '1rem',
