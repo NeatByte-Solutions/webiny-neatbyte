@@ -5,8 +5,8 @@ const page = (mdxName) => {
 
   return {
     type: 'page',
-    link: pages[mdxName].link,
-    title: pages[mdxName].title,
+    link: pages[mdxName]?.link || "/",
+    title: pages[mdxName]?.title || "invalid page link",
   }
 }
 
