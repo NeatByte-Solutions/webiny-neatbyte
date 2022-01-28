@@ -319,7 +319,7 @@ export function Header({ navIsOpen, onNavToggle }) {
         <Dialog.Overlay className="fixed top-[3.975rem] inset-1 bg-black/20 backdrop-blur-sm dark:bg-slate-900/80" />
         <div
           className={clsx(
-            'fixed z-40 top-16 hidden lg:flex items-center w-full py-6 pl-[2.375rem] pr-[1.875rem] bg-white',
+            'fixed z-40 top-16 hidden lg:flex items-center w-full h-[4.375rem] pl-[2.375rem] pr-[1.875rem] bg-white',
             styles.searchHeader
           )}
         >
