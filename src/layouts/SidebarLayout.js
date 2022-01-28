@@ -68,10 +68,20 @@ const NavTreeElement = forwardRef(({ element, depth = 0 }, ref) => {
         depth={depth}
       />
     )
+  } else if (type === 'horizontal-line') {
+    return <HorizontalLine />
   } else {
     return null
   }
 })
+
+const HorizontalLine = () => {
+  return (
+    <div className="pr-[10px]">
+      <div className="border-b-[1px] border-neutral-200 w-full -ml-[10px]"></div>
+    </div>
+  )
+}
 
 const Collapsable = forwardRef(({ title, subElements = [], isActiveChild, depth = 0 }, ref) => {
   const [showMenu, setShowMenu] = useState(false)
