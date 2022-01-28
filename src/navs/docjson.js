@@ -5,8 +5,8 @@ const page = (mdxName) => {
 
   return {
     type: 'page',
-    link: pages[mdxName].link,
-    title: pages[mdxName].title,
+    link: pages[mdxName]?.link || "/",
+    title: pages[mdxName]?.title || "invalid page link",
   }
 }
 
@@ -27,6 +27,12 @@ const collapsable = (title, links) => {
     type: 'collapsable',
     title,
     links,
+  }
+}
+
+const horizontalLine = () => {
+  return {
+    type: 'horizontal-line',
   }
 }
 
@@ -162,6 +168,7 @@ export const documentationNav = [
     page('webiny-overview/performance-benchmark/pb-deliver-a-page'),
   ]),
   collapsable('Community Plugins', [page('community-plugins/introduction')]),
+  horizontalLine(),
   collapsable('Release Notes', [
     page('how-to-guides/upgrade-webiny'),
     collapsable('5.22.0', [
