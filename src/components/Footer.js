@@ -3,7 +3,7 @@ import { InputFooter } from '@/components/InputFooter'
 
 export function Footer({ previous, next }) {
   return (
-    <footer className="text-sm leading-6 my-[1.875rem] md:my-[3.75rem] text-dark-blue">
+    <footer className="text-sm leading-6 my-[1.875rem] md:my-[3.75rem] text-dark-blue not-prose">
       {(previous || next) && (
         <div className="grid grid-cols-2 content-center w-full border-t border-b border-neutral-200 pt-2 md:pt-[1.4375rem] pb-2 md:pb-[1.8125rem] text-sm md:text-base font-semibold">
           {previous ? (
@@ -47,7 +47,7 @@ export function Footer({ previous, next }) {
             />
             <p>
               Questions? &nbsp;
-              <a href="#" className="text-orange underline hover:decoration-2">
+              <a href="#" className="font-source-sans-pro text-orange underline hover:decoration-2">
                 Find us on slack.
               </a>
             </p>
@@ -60,7 +60,7 @@ export function Footer({ previous, next }) {
             />
             <p>
               Found a bug on the page, &nbsp;
-              <a href="#" className="text-orange underline hover:decoration-2">
+              <a href="#" className="font-source-sans-pro text-orange underline hover:decoration-2">
                 submit an issue or a PR.
               </a>
             </p>
@@ -73,7 +73,7 @@ export function Footer({ previous, next }) {
             />
             <p>
               Check out our &nbsp;
-              <a href="#" className="text-orange underline hover:decoration-2">
+              <a href="#" className="font-source-sans-pro text-orange underline hover:decoration-2">
                 roadmap.
               </a>
             </p>
