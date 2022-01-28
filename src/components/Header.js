@@ -329,7 +329,7 @@ export function Header({ navIsOpen, onNavToggle }) {
           <button
             type="button"
             onClick={() => onNavToggle(!navIsOpen)}
-            className="text-slate-500 hover:text-slate-600 dark:text-slate-400 dark:hover:text-slate-300 mr-5"
+            className="text-slate-500 hover:text-slate-600 dark:text-slate-400 dark:hover:text-slate-300 mr-5 focus:outline-none"
           >
             <span className="sr-only">Navigation</span>
             <svg
