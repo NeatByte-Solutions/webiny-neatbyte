@@ -222,12 +222,20 @@ module.exports = {
             'tbody code': {
               fontSize: theme('fontSize.xs')[0],
             },
-            'figure figcaption': {
-              textAlign: 'center',
-              fontStyle: 'italic',
+            figure: {
+              padding: '0.875rem',
+              borderRadius: '0.625rem',
+              backgroundColor: '#F8F8F8',
             },
-            'figure > figcaption': {
-              marginTop: `${12 / 14}em`,
+            'figure > img': {
+              margin: 0,
+            },
+            'figure figcaption': {
+              fontFamily: 'Roboto, sans-serif',
+              fontSize: '0.875rem',
+              lineHeight: '1.625rem',
+              textAlign: 'center',
+              marginTop: '0.625rem',
             },
           },
         },
@@ -317,6 +325,15 @@ module.exports = {
               fontSize: '1rem',
               lineHeight: '1.75rem',
               marginTop: '1.25rem',
+            },
+            figure: {
+              paddingTop: '1.875rem',
+              paddingBottom: '1.875rem',
+              paddingLeft: '3rem',
+              paddingRight: '3rem',
+            },
+            'figure figcaption': {
+              marginTop: '0.75rem',
             },
           },
         },
