@@ -44,24 +44,30 @@ function nearestScrollableContainer(el) {
 }
 
 const NavTreeElement = forwardRef(({ element, depth = 0 }, ref) => {
-  const { type, title, link } = element
+  const { type, title, link, links, isActive, isActiveChild } = element
 
   if (type === 'collapsable') {
     return (
       <Collapsable
-        subElements={element.links}
-        isActiveChild={element.isActiveChild}
+        subElements={links}
+        isActiveChild={isActiveChild}
         title={title}
         ref={ref}
         depth={depth}
       />
     )
   } else if (type === 'page') {
-    return (
-      <Page title={title} link={element.link} isActive={element.isActive} ref={ref} depth={depth} />
-    )
+    return <Page title={title} link={link} isActive={isActive} ref={ref} depth={depth} />
   } else if (type === 'section') {
-    return <Section title={title} link={link} depth={depth} />
+    return (
+      <Section
+        subElements={links}
+        isActiveChild={isActiveChild}
+        title={title}
+        ref={ref}
+        depth={depth}
+      />
+    )
   } else if (type === 'horizontal-line') {
     return <HorizontalLine />
   } else {
@@ -138,11 +144,22 @@ const Page = forwardRef(({ title, link, isActive, depth = 0 }, ref) => {
     </li>
   )
 })
-const Section = ({ title }) => {
+const Section = forwardRef(({ title, subElements = [], isActiveChild, depth = 0 }, ref) => {
   return (
-    <a className="my-[10px] uppercase text-dark-blue font-normal text-nav-subdirectory">{title}</a>
+    <>
+      <li className="flex items-center my-[20px]">
+        <span className="my-[10px] uppercase text-dark-blue font-normal text-nav-subdirectory">
+          {title}
+        </span>
+      </li>
+      <ul className={clsx({ 'ml-[30px]': depth > 0 })}>
+        {subElements.map((navElement, index) => (
+          <NavTreeElement key={index} element={navElement} ref={ref} depth={depth + 1} />
+        ))}
+      </ul>
+    </>
   )
-}
+})
 
 function Nav({ nav, mobile = false }) {
   const router = useRouter()
@@ -156,7 +173,7 @@ function Nav({ nav, mobile = false }) {
         const isActive = navItem.link === router.pathname
 
         navItem.isActive = isActive
-      } else if (navItem.type === 'collapsable') {
+      } else if (navItem.type === 'collapsable' || navItem.type === 'section') {
         setIsActive(navItem.links)
 
         const isActiveChild = navItem.links.some((link) => link.isActive || link.isActiveChild)

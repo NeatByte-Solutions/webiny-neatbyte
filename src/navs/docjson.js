@@ -5,8 +5,8 @@ const page = (mdxName) => {
 
   return {
     type: 'page',
-    link: pages[mdxName].link,
-    title: pages[mdxName].title,
+    link: pages[mdxName]?.link || "/",
+    title: pages[mdxName]?.title || "invalid page link",
   }
 }
 
@@ -14,10 +14,11 @@ const page = (mdxName) => {
 //   return { type: 'link', link: externalLink, title }
 // }
 
-const section = (title) => {
+const section = (title, links) => {
   return {
     type: 'section',
     title,
+    links,
   }
 }
 
@@ -53,7 +54,7 @@ export const documentationNav = [
     page('tutorials/create-custom-application/introduction'),
     page('tutorials/create-custom-application/getting-started'),
     page('tutorials/create-custom-application/graphql-api'),
-    collapsable('React Application', [
+    section('React Application', [
       page('tutorials/create-custom-application/react-application/introduction'),
       page('tutorials/create-custom-application/react-application/layout'),
       page('tutorials/create-custom-application/react-application/new-pin-modal-dialog'),
@@ -63,7 +64,7 @@ export const documentationNav = [
     collapsable('Security', [
       page('tutorials/create-custom-application/security/introduction'),
       page('tutorials/create-custom-application/security/getting-started'),
-      collapsable('Cloud Infrastructure', [
+      section('Cloud Infrastructure', [
         page(
           'tutorials/create-custom-application/security/cloud-infrastructure/adding-user-pool-and-user-pool-domain'
         ),
@@ -103,7 +104,7 @@ export const documentationNav = [
       page('how-to-guides/deployment/aws/configure-aws-credentials'),
       page('how-to-guides/deployment/aws/use-aws-profiles'),
     ]),
-    collapsable('CI/CD', [
+    section('CI/CD', [
       page('key-topics/ci-cd/introduction'),
       page('key-topics/ci-cd/environments'),
       page('key-topics/ci-cd/version-control'),
