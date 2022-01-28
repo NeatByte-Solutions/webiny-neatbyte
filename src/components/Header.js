@@ -193,7 +193,7 @@ export function Header({ navIsOpen, onNavToggle }) {
           </button>
           <Link href="/docs/installation">
             <a
-              className="flex-none w-[1.5925rem] lg:pr-[8.1875rem] lg:border-r border-border overflow-hidden lg:w-auto"
+              className="flex-none w-[1.5925rem] lg:pr-[8.3875rem] lg:border-r border-border overflow-hidden lg:w-auto"
               onContextMenu={(e) => {
                 e.preventDefault()
                 Router.push('/brand')

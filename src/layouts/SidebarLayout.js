@@ -151,7 +151,12 @@ const Section = forwardRef(({ title, subElements = [], isActiveChild, depth = 0 
   return (
     <>
       <li className="flex items-center">
-        <span className="my-[10px] uppercase text-dark-blue font-normal text-nav-subdirectory">
+        <span
+          className={clsx({
+            'my-[10px] uppercase text-dark-blue font-normal text-nav-subdirectory': !isActiveChild,
+            'my-[10px] uppercase text-dark-blue font-semibold text-nav-subdirectory': isActiveChild,
+          })}
+        >
           {title}
         </span>
       </li>
