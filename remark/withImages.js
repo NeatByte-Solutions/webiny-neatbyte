@@ -17,7 +17,7 @@ module.exports.withImages = () => {
         const imageImportName = addImportImage(preTree, node.url, 'Image' + counter++)
 
         node.type = 'jsx'
-        node.value = `<figure><img src={${imageImportName}}alt="${
+        node.value = `<figure><img src={${imageImportName}} alt="${
           node.alt || getImageFileName(node.url)
         }"></img>${node.alt ? `<figcaption>${node.alt}</figcaption>` : ''}</figure>`
       } else if (node.children) {
