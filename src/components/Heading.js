@@ -44,7 +44,7 @@ export function Heading({
       <a
         id={id}
         href={`#${id}`}
-        className="relative -top-[5.25rem] md:-top-[6.25rem] ml-2.5 flex items-center opacity-0 border-0 group-hover:opacity-100"
+        className="relative -top-[5.25rem] md:-top-[6.25rem] w-[1.375rem] ml-2.5 flex items-center opacity-0 border-0 group-hover:opacity-100"
         aria-label="Anchor"
       >
         <div className={`absolute ${LEVELS[level]} w-6 h-6 flex items-center -mt-[0.875rem]`}>
