@@ -167,9 +167,9 @@ export function NavItems() {
 }
 
 export function Header({ navIsOpen, onNavToggle }) {
-  const [isSearchIcon, setIsSearchIcon] = useState(true)
-  const onToggleSearch = () => {
-    return setIsSearchIcon(!isSearchIcon)
+  let [isOpen, setIsOpen] = useState(false)
+  const openDialog = () => {
+    return setIsOpen(!isOpen)
   }
   return (
     <>
@@ -210,8 +210,8 @@ export function Header({ navIsOpen, onNavToggle }) {
           </Link>
           <Featured />
           <div className="relative hidden lg:flex items-center ml-auto">
-            <button onClick={onToggleSearch}>
-              {isSearchIcon ? (
+            <button onClick={openDialog}>
+              {!isOpen ? (
                 <svg
                   width="19"
                   height="20"
@@ -310,7 +310,13 @@ export function Header({ navIsOpen, onNavToggle }) {
           <NavPopover className="ml-[1.3781rem] -my-1" display="lg:hidden" />
         </div>
       </div>
-      {!isSearchIcon && (
+      <Dialog
+        as="div"
+        className={clsx('hidden lg:block fixed top-[3.375rem] z-50 inset-0')}
+        open={isOpen}
+        onClose={setIsOpen}
+      >
+        <Dialog.Overlay className="fixed top-[3.975rem] inset-1 bg-black/20 backdrop-blur-sm dark:bg-slate-900/80" />
         <div
           className={clsx(
             'fixed z-40 top-16 hidden lg:flex items-center w-full py-6 pl-[2.375rem] pr-[1.875rem] bg-white',
@@ -414,10 +420,7 @@ export function Header({ navIsOpen, onNavToggle }) {
             </button>
           </div>
         </div>
-      )}
-      {!isSearchIcon && (
-        <div className={clsx('z-30 w-full', styles.searchShadow)} onClick={onToggleSearch}></div>
-      )}
+      </Dialog>
     </>
   )
 }
