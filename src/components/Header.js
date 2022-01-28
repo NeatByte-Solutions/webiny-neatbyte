@@ -11,7 +11,7 @@ import styles from './Header.module.css'
 function Featured() {
   return (
     <Link href="https://github.com/webiny/webiny-js">
-      <a className={clsx('ml-9 bg-white rounded-full py-2 px-3 hidden xl:flex items-center')}>
+      <a className="ml-9 bg-white rounded-full py-2 px-3 hidden xl:flex items-center">
         <span className="text-nav-link ml-2">
           ⭐️ If you like Webiny, give it a star on GitHub! ⭐
         </span>
