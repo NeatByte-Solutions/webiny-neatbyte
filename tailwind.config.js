@@ -116,6 +116,7 @@ module.exports = {
               fontSize: '0.875rem',
               lineHeight: '1.75rem',
               marginTop: '1.25rem',
+              wordWrap: 'break-word',
             },
             ul: {
               listStyleType: 'none',
