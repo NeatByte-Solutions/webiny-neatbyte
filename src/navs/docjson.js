@@ -5,8 +5,8 @@ const page = (mdxName) => {
 
   return {
     type: 'page',
-    link: pages[mdxName]?.link || "/",
-    title: pages[mdxName]?.title || "invalid page link",
+    link: pages[mdxName]?.link || '/',
+    title: pages[mdxName]?.title || 'invalid page link',
   }
 }
 
@@ -91,6 +91,65 @@ export const documentationNav = [
     ]),
   ]),
   ///////////////////////// HERES BE NEW BLOCKS////////////////////
+  collapsable('Serverless CMS', [
+    page('webiny-overview/serverless-cms/apps/intro'),
+    collapsable('Headless CMS', [
+      page('webiny-overview/serverless-cms/apps/headless-cms'),
+      page('key-topics/webiny-applications/headless-cms/graphql-api'),
+      page('how-to-guides/webiny-applications/headless-cms/using-graphql-api'),
+      page('how-to-guides/webiny-applications/headless-cms/extend-graphql-api'),
+      page('tutorials/headless-cms/create-a-webiny-headless-cms-custom-field-plugin'),
+      page('how-to-guides/webiny-applications/headless-cms/content-model-plugins'),
+      page('key-topics/headless-cms/lifecycle-events'),
+      page('how-to-guides/webiny-applications/headless-cms/create-a-content-model-form-layout'),
+      page('how-to-guides/webiny-applications/headless-cms/rendering-rich-text'),
+      collapsable('Plugins', [
+        page('serverless-cms/headless-cms/plugins/storage-transform-plugin'),
+      ]),
+    ]),
+    collapsable('Page Builder', [
+      page('webiny-overview/serverless-cms/apps/page-builder'),
+      page('tutorials/page-builder/create-a-new-page-element'),
+      page('tutorials/page-builder/customize-an-existing-page-builder-element'),
+      page('how-to-guides/webiny-applications/page-builder/extend-graphql-api'),
+      page('how-to-guides/webiny-applications/page-builder/extend-page-settings'),
+      page('key-topics/page-builder/lifecycle-events'),
+      collapsable('Themes', [
+        page('how-to-guides/webiny-applications/themes/page-builder/introduction'),
+        page('how-to-guides/webiny-applications/themes/page-builder/colors'),
+        page('how-to-guides/webiny-applications/themes/page-builder/elements'),
+        page('how-to-guides/webiny-applications/themes/page-builder/layouts'),
+      ]),
+    ]),
+    collapsable('Form Builder', [
+      page('webiny-overview/serverless-cms/apps/form-builder'),
+      collapsable('Themes', [
+        page('how-to-guides/webiny-applications/themes/form-builder/introduction'),
+        page('how-to-guides/webiny-applications/themes/form-builder/layouts'),
+      ]),
+    ]),
+    collapsable('File Manager', [
+      page('webiny-overview/serverless-cms/apps/file-manager'),
+      page('how-to-guides/webiny-applications/file-manager/create-a-file-type-plugin'),
+    ]),
+    collapsable('Admin Area', [
+      page('how-to-guides/webiny-applications/admin-area/introduction'),
+      page('how-to-guides/webiny-applications/admin-area/framework'),
+      page('how-to-guides/webiny-applications/admin-area/api-playground'),
+      page('how-to-guides/webiny-applications/admin-area/change-logo'),
+      collapsable('Extend Admin Area', [
+        page('tutorials/extend-admin-area/introduction'),
+        page('how-to-guides/scaffolding/extend-admin-area'),
+        page('tutorials/extend-admin-area/getting-started'),
+        page('tutorials/extend-admin-area/extending-entities'),
+        collapsable('Security', [
+          page('tutorials/extend-admin-area/security/introduction'),
+          page('tutorials/extend-admin-area/security/graphql-api'),
+          page('tutorials/extend-admin-area/security/admin-area'),
+        ]),
+      ]),
+    ]),
+  ]),
   collapsable('Deployment', [
     page('key-topics/deployment/introduction'),
     page('key-topics/deployment/environments'),
@@ -114,47 +173,50 @@ export const documentationNav = [
       page('how-to-guides/scaffolding/ci-cd'),
     ]),
   ]),
-  // collapsable('Key Topics', [
-  //   collapsable('Scaffolding', [
-  //     page('how-to-guides/scaffolding/introduction'),
-  //     page('how-to-guides/scaffolding/full-stack-application'),
-  //     page('how-to-guides/scaffolding/graphql-api'),
-  //     page('how-to-guides/scaffolding/extend-graphql-api'),
-  //     page('how-to-guides/scaffolding/react-application'),
-  //   ]),
-  //   collapsable('Cloud Infrastructure', [
-  //     page('key-topics/cloud-infrastructure/introduction'),
-  //     collapsable('API', [
-  //       page('key-topics/cloud-infrastructure/api/introduction'),
-  //       page('key-topics/cloud-infrastructure/api/overview'),
-  //       page('key-topics/cloud-infrastructure/api/graphql-requests'),
-  //       page('key-topics/cloud-infrastructure/api/file-upload'),
-  //       page('key-topics/cloud-infrastructure/api/file-download'),
-  //       page('key-topics/cloud-infrastructure/api/overview-vpc-default'),
-  //       page('cloud-infrastructure/api/overview-vpc-custom'),
-  //     ]),
-  //     collapsable('Admin Area', [
-  //       page('key-topics/cloud-infrastructure/admin/introduction'),
-  //       page('key-topics/cloud-infrastructure/admin/overview'),
-  //       page('key-topics/cloud-infrastructure/admin/serving-application-files'),
-  //     ]),
-  //     collapsable('Website', [
-  //       page('key-topics/cloud-infrastructure/website/introduction'),
-  //       page('key-topics/cloud-infrastructure/website/overview'),
-  //       page('key-topics/cloud-infrastructure/website/prerendering-pages'),
-  //       page('key-topics/cloud-infrastructure/website/serving-pages'),
-  //     ]),
-  //   ]),
-  //   page('how-to-guides/environment-variables'),
-  //   page('how-to-guides/importing-plugins'),
-  //   page('how-to-guides/extend-graphql-api'),
-  //   page('tutorials/webiny-cli/adding-custom-commands'),
-  //   page('key-topics/tools-libraries'),
-  //   page('how-to-guides/webiny-applications/themes/introduction'),
-  //   page('tutorials/create-a-package-in-webiny-project'),
-  //   page('key-topics/multi-tenancy'),
-  //   collapsable('Integrations', [page('how-to-guides/integrations/integrate-tailwindcss')]),
-  // ]),
+  collapsable('Key Topics', [
+    section('SECTION NAME', [
+      collapsable('Scaffolding', [
+        page('how-to-guides/scaffolding/introduction'),
+        page('how-to-guides/scaffolding/full-stack-application'),
+        page('how-to-guides/scaffolding/graphql-api'),
+        page('how-to-guides/scaffolding/extend-graphql-api'),
+        page('how-to-guides/scaffolding/react-application'),
+      ]),
+      collapsable('Cloud Infrastructure', [
+        page('key-topics/cloud-infrastructure/introduction'),
+        collapsable('API', [
+          page('key-topics/cloud-infrastructure/api/introduction'),
+          page('key-topics/cloud-infrastructure/api/overview'),
+          page('key-topics/cloud-infrastructure/api/graphql-requests'),
+          page('key-topics/cloud-infrastructure/api/file-upload'),
+          page('key-topics/cloud-infrastructure/api/file-download'),
+          page('key-topics/cloud-infrastructure/api/overview-vpc-default'),
+          page('cloud-infrastructure/api/overview-vpc-custom'),
+        ]),
+        collapsable('Admin Area', [
+          page('key-topics/cloud-infrastructure/admin/introduction'),
+          page('key-topics/cloud-infrastructure/admin/overview'),
+          page('key-topics/cloud-infrastructure/admin/serving-application-files'),
+        ]),
+        collapsable('Website', [
+          page('key-topics/cloud-infrastructure/website/introduction'),
+          page('key-topics/cloud-infrastructure/website/overview'),
+          page('key-topics/cloud-infrastructure/website/prerendering-pages'),
+          page('key-topics/cloud-infrastructure/website/serving-pages'),
+        ]),
+      ]),
+      page('how-to-guides/environment-variables'),
+      page('how-to-guides/importing-plugins'),
+    ]),
+    horizontalLine(),
+    page('how-to-guides/extend-graphql-api'),
+    page('tutorials/webiny-cli/adding-custom-commands'),
+    page('key-topics/tools-libraries'),
+    page('how-to-guides/webiny-applications/themes/introduction'),
+    page('tutorials/create-a-package-in-webiny-project'),
+    page('key-topics/multi-tenancy'),
+    collapsable('Integrations', [page('how-to-guides/integrations/integrate-tailwindcss')]),
+  ]),
   collapsable('Security', [
     page('webiny-overview/security'),
     page('key-topics/security-framework/introduction'),
