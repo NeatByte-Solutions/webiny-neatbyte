@@ -123,6 +123,7 @@ module.exports = {
               paddingLeft: 0,
             },
             'ul > li': {
+              position: 'relative',
               fontSize: '1rem',
               lineHeight: '2.25rem',
               paddingLeft: '1.5em',
@@ -321,6 +322,7 @@ module.exports = {
               paddingLeft: '1.5em',
               marginBottom: '0em',
               marginTop: '0em',
+              position: 'relative',
             },
             'ul > li::before': {
               content: '""',
