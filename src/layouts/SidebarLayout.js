@@ -264,7 +264,7 @@ export function SidebarLayout({
         className="fixed z-50 inset-0 overflow-y-auto lg:hidden"
       >
         <Dialog.Overlay className="fixed inset-0 bg-black/20 backdrop-blur-sm dark:bg-slate-900/80" />
-        <div className="relative bg-white w-[21.25rem] max-w-[calc(100%-3rem)] p-6 dark:bg-slate-800">
+        <div className="relative bg-white w-[21.25rem] max-w-[calc(100%-3rem)] p-6 dark:bg-slate-800 overflow-scroll h-full">
           <button
             type="button"
             onClick={() => setNavIsOpen(false)}
