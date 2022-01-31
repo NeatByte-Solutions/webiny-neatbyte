@@ -160,7 +160,7 @@ const Section = forwardRef(({ title, subElements = [], isActiveChild, depth = 0 
           {title}
         </span>
       </li>
-      <ul className={clsx({ 'ml-[30px]': depth > 0 })}>
+      <ul className={clsx({ 'ml-[10px]': depth > 0 })}>
         {subElements.map((navElement, index) => (
           <NavTreeElement key={index} element={navElement} ref={ref} depth={depth + 1} />
         ))}
