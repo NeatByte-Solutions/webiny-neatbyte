@@ -127,14 +127,14 @@ const Collapsable = forwardRef(({ title, subElements = [], isActiveChild, depth 
 
 const Page = forwardRef(({ title, link, isActive, depth = 0 }, ref) => {
   return (
-    <li ref={ref}>
+    <li className="relative" ref={ref}>
       <Link href={link}>
         {/* first line */}
         <a
           className={clsx(
             'grid content-center block my-[15px] h-[30px] cursor-pointer text-nav-link',
             {
-              'text-orange border-orange border-r-[2px] font-bold': isActive,
+              'text-orange font-bold': isActive,
               'hover:border-r-[2px] hover:text-dark-purple border-blue': !isActive,
               'text-dark-blue font-semibold text-nav-directory': depth === 0,
               'my-[7px]': depth > 0,
@@ -144,6 +144,10 @@ const Page = forwardRef(({ title, link, isActive, depth = 0 }, ref) => {
           {title}
         </a>
       </Link>
+
+      {isActive && (
+        <div className="absolute top-[0px] right-[0px] w-[2px] h-[30px] bg-orange"></div>
+      )}
     </li>
   )
 })
@@ -251,7 +255,7 @@ export function SidebarLayout({
     <SidebarContext.Provider value={{ nav, navIsOpen, setNavIsOpen }}>
       <Wrapper allowOverflow={allowOverflow}>
         <div className="max-w-[96.993rem] 2xl:max-w-[104rem] mx-auto pl-4 sm:pl-6 md:pl-8 2xl:pl-[5.43rem] pr-4 sm:pr-6 md:pr-8">
-          <div className="hidden lg:block fixed z-20 inset-0 top-[4.15rem] right-auto w-[20.875rem] pb-10 pl-[18px] overflow-y-auto border-r border-neutral-200">
+          <div className="after:block after:fixed after:top-[0px] after:left-[331px] after:w-[1px] after:h-full after:bg-neutral-200 hidden lg:block fixed z-20 inset-0 top-[4.15rem] right-auto w-[20.875rem] pb-10 pl-[18px] overflow-y-auto">
             <Nav nav={nav}>{sidebar}</Nav>
           </div>
           <div className="lg:pl-[20.875rem]">{children}</div>
