@@ -2,18 +2,16 @@
 id: getting-started
 title: Getting Started
 sidebar_label: Getting Started
-keywords: ["create", "custom", "application", "react", "graphql", "api", "scaffolding"]
+keywords: ['create', 'custom', 'application', 'react', 'graphql', 'api', 'scaffolding']
 description: Learn how to use the existing Full Stack Application scaffold in order to start building your first custom Webiny application.
 ---
 
-import CenteredImage from "@components/CenteredImage";
-import scaffoldsList from "./getting-started/scaffolds-list.png";
-import fullStackAppScaffold from "./getting-started/full-stack-app-scaffold.png";
-import dependentApps from "./getting-started/dependent-apps.png";
-import watchCommands from "./getting-started/watch-commands.png";
-import graphqlApiCloudInfrastructureDiagram from "./getting-started/new_graphql_api_scaffold.png";
-import reactAppCloudInfrastructureDiagram from "./getting-started/new_react_app_scaffold.png";
-
+import scaffoldsList from './getting-started/scaffolds-list.png'
+import fullStackAppScaffold from './getting-started/full-stack-app-scaffold.png'
+import dependentApps from './getting-started/dependent-apps.png'
+import watchCommands from './getting-started/watch-commands.png'
+import graphqlApiCloudInfrastructureDiagram from './getting-started/new_graphql_api_scaffold.png'
+import reactAppCloudInfrastructureDiagram from './getting-started/new_react_app_scaffold.png'
 
 :::tip WHAT YOU’LL LEARN
 
@@ -75,7 +73,7 @@ yarn webiny scaffold
 
 Running this command should give us the following list of available scaffolds:
 
-<CenteredImage alt="Scaffolds List" style={{ maxWidth: 650 }} src={scaffoldsList} />
+<CenteredImage alt="Scaffolds List" style={{ maxWidth: 650, width: '100%' }} src={scaffoldsList} />
 
 Once we've selected the **Full Stack Application** scaffold from the list, we'll get presented with the the following three questions:
 
@@ -93,7 +91,7 @@ Ultimately, we should end up with the following output in our terminal:
 
 <CenteredImage
   alt="Full Stack Application - Full Output"
-  style={{ maxWidth: 750 }}
+  style={{ maxWidth: 750, width: '100%' }}
   src={fullStackAppScaffold}
 />
 
@@ -171,7 +169,7 @@ When we say _scripts need to pick up some of the values exported from GraphQL AP
 
 The following screenshot shows the two [`webiny watch`](/docs/how-to-guides/use-watch-command) commands run side-by-side in two separate terminal sessions:
 
-<CenteredImage alt="Watching GraphQL API and React Application" src={watchCommands}/>
+<CenteredImage alt="Watching GraphQL API and React Application" src={watchCommands} />
 
 ## Deployments
 

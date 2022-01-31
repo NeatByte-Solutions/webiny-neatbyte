@@ -3,15 +3,15 @@ title: Getting Started
 description: Learn how to use the existing Extend Admin Area scaffold in order to start extending your Admin Area application in no time.
 ---
 
-import { Alert } from "@/components/Alert"
-import watchSessions from "./scaffolding/watch-sessions.png";
-import scaffoldsList from "./scaffolding/scaffolds-list.png";
-import scaffoldsAdminArea from "./scaffolding/scaffolds-admin-area.png";
-import scaffoldsFullOutput from "./scaffolding/scaffold-full-output.png";
+import { Alert } from '@/components/Alert'
+import watchSessions from './scaffolding/watch-sessions.png'
+import scaffoldsList from './scaffolding/scaffolds-list.png'
+import scaffoldsAdminArea from './scaffolding/scaffolds-admin-area.png'
+import scaffoldsFullOutput from './scaffolding/scaffold-full-output.png'
 
 <Alert type="success">
 
- WHAT YOU’LL LEARN
+WHAT YOU’LL LEARN
 
 - how to use the **Extend Admin Area** scaffold to get started in no time
 
@@ -19,7 +19,7 @@ import scaffoldsFullOutput from "./scaffolding/scaffold-full-output.png";
 
 <Alert type="info">
 
- Can I use this?
+Can I use this?
 
 In order to follow this tutorial, you must use Webiny version **5.9.0** or greater.
 
@@ -40,7 +40,7 @@ yarn webiny scaffold
 
 Running this command should give us the following list of available scaffolds:
 
-<img alt="Scaffolds List" style={{ maxWidth: 650 }} src={scaffoldsList}/>
+<img alt="Scaffolds List" style={{ maxWidth: 650, width: '100%' }} src={scaffoldsList} />
 
 Once we've selected the **Extend Admin Area** scaffold from the list, we'll get presented with the the following three questions:
 
@@ -52,7 +52,7 @@ For the first two, we can just use the default paths by simply pressing the **En
 
 Once we've answered all of the questions, after a quick confirmation step, scaffolding will start and eventually, we should end up with the following output in our terminal:
 
-<img alt="Extend Admin Area - Full Output" src={scaffoldsFullOutput}/>
+<img alt="Extend Admin Area - Full Output" src={scaffoldsFullOutput} />
 
 ## Using the Watch Command
 
@@ -78,7 +78,7 @@ Upon initializing a new watch session, all of the application code changes that 
 
 <Alert type="success">
 
- Misplaced GraphQL API URL?
+Misplaced GraphQL API URL?
 
 Running the `yarn webiny info` command in your Webiny project folder will give you all of the relevant project URLs, including the URL of your GraphQL API.
 
@@ -102,13 +102,13 @@ In contrast to the [GraphQL API](/docs/tutorials/extend-admin-area/getting-start
 
 The following screenshot shows the two watch commands run side-by-side in two separate terminal sessions:
 
-<img alt="Watching Our Application Code" src={watchSessions}/>
+<img alt="Watching Our Application Code" src={watchSessions} />
 
 ### Admin Area Application
 
 Once the two watch sessions have been started, in our Admin Area application, we should be able to see the new **Car Manufacturers** module and, via the generated [CRUD view](/docs/how-to-guides/scaffolding/extend-admin-area/#new-webiny-admin-area-module), perform essential CRUD operations.
 
-<img shadow={false} alt="New Car Manufacturers Module" src={scaffoldsAdminArea}/>
+<img shadow={false} alt="New Car Manufacturers Module" src={scaffoldsAdminArea} />
 
 <Alert type="success">
 
