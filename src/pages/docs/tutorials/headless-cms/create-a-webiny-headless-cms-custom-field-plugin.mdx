@@ -4,6 +4,7 @@ description: Create a Webiny Headless CMS Custom Field Plugin.
 ---
 
 import { Alert } from '@/components/Alert'
+import WordWrapper from '@/components/WordWrapper'
 import fieldDefinition from './assets/field-definition.png'
 import fieldRendered from './assets/field-renderer.png'
 import encryptedText from './assets/encrypted-text.gif'
@@ -55,7 +56,7 @@ We will name the new custom field **Secret Text**, as we'll be storing the text 
 
 We will start by creating a field type plugin (`CmsEditorFieldTypePlugin`) to define the field and to show it in the field list in the content model editor.
 
-1. Create `fields/secretText` directory in `apps/admin/code/src/plugins/headlessCMS`.
+1. Create `fields/secretText` directory in <WordWrapper>`apps/admin/code/src/plugins/headlessCMS`</WordWrapper>.
 2. Create a file [`secretTextFieldPlugin.tsx`](https://github.com/webiny/webiny-examples/blob/master/headless-cms/custom-field-plugin/ui/secretTextFieldPlugin.tsx) in the newly created directory.
 
 ```tsx apps/admin/code/src/plugins/headlessCMS/fields/secretText/secretTextFieldPlugin.tsx
@@ -88,7 +89,7 @@ export default (): CmsEditorFieldTypePlugin => ({
 })
 ```
 
-3. Import this new plugin in `apps/admin/code/src/plugins/headlessCms.ts`.
+3. Import this new plugin in <WordWrapper>`apps/admin/code/src/plugins/headlessCms.ts`</WordWrapper>.
 
 ```ts apps/admin/code/src/plugins/headlessCms.ts {5,13}
 (...)
@@ -123,7 +124,7 @@ As a result, our new field should be shown in **Fields** menu:
 
 As our next step, we'll define a renderer for our new field. The renderer determines how this field will be rendered in the content entry form, when you create/update your data. We'll be using the `CmsEditorFieldRendererPlugin` plugin type.
 
-1. Create a file [`secretTextFieldRendererPlugin.tsx`](https://github.com/webiny/webiny-examples/blob/master/headless-cms/custom-field-plugin/ui/secretTextFieldRendererPlugin.tsx) in `apps/admin/code/src/plugins/headlessCMS/fields/secretText` directory.
+1. Create a file [`secretTextFieldRendererPlugin.tsx`](https://github.com/webiny/webiny-examples/blob/master/headless-cms/custom-field-plugin/ui/secretTextFieldRendererPlugin.tsx) in <WordWrapper>`apps/admin/code/src/plugins/headlessCMS/fields/secretText`</WordWrapper> directory.
 
 ```tsx apps/admin/code/src/plugins/headlessCMS/fields/secretText/secretTextFieldRendererPlugin.tsx
 import React from 'react'
@@ -160,7 +161,7 @@ export default (): CmsEditorFieldRendererPlugin => ({
 })
 ```
 
-3. Import this new plugin in `apps/admin/code/src/plugins/headlessCms.ts`.
+3. Import this new plugin in <WordWrapper>`apps/admin/code/src/plugins/headlessCms.ts`</WordWrapper>.
 
 ```ts apps/admin/code/src/plugins/headlessCms.ts {5,14}
 (...)
@@ -338,7 +339,7 @@ As we can see in the video above, when you create the entry and save it, you wil
 
 In the next step, let's decrypt the data after we retrieve it.
 
-1. Open the `api/code/headlessCMS/src/fields/secretText/secretTextFieldStoragePlugin.ts` file.
+1. Open the <WordWrapper>`api/code/headlessCMS/src/fields/secretText/secretTextFieldStoragePlugin.ts`</WordWrapper> file.
 2. Update the `return` statement of `fromStorage` function with this:
 
 ```ts api/code/headlessCMS/src/fields/secretText/secretTextFieldStoragePlugin.ts {5}
