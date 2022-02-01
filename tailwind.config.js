@@ -121,12 +121,20 @@ module.exports = {
             ul: {
               listStyleType: 'none',
               paddingLeft: 0,
+              marginBottom: '1.3em',
+              marginTop: '1.3em',
+            },
+            'li > ul': {
+              marginBottom: '0em',
+              marginTop: '0em',
             },
             'ul > li': {
               position: 'relative',
               fontSize: '1rem',
               lineHeight: '2.25rem',
               paddingLeft: '1.5em',
+              marginBottom: '0em',
+              marginTop: '0em',
             },
             'ul > li::before': {
               content: '""',
@@ -138,7 +146,7 @@ module.exports = {
               borderRadius: '999px',
               backgroundColor: '#FA5A28',
             },
-            '.success-box > div > ul > li::before': {
+            '.success-box li::before': {
               content: '""',
               width: '0.63em',
               height: '0.125em',
@@ -313,12 +321,19 @@ module.exports = {
             },
             ul: {
               marginTop: '1.3em',
+              marginBottom: '1.3em',
+            },
+            'li > ul': {
+              marginBottom: '0em',
+              marginTop: '0em',
             },
             'ul > li': {
               fontSize: '1rem',
               lineHeight: '2.25rem',
               paddingLeft: '1.5em',
               position: 'relative',
+              marginBottom: '0em',
+              marginTop: '0em',
             },
             'ul > li::before': {
               content: '""',
@@ -330,7 +345,7 @@ module.exports = {
               borderRadius: '999px',
               backgroundColor: '#FA5A28',
             },
-            '.success-box > div > ul > li::before': {
+            '.success-box li::before': {
               content: '""',
               width: '0.63em',
               height: '0.125em',
