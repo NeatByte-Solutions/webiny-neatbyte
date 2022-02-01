@@ -127,8 +127,6 @@ module.exports = {
               fontSize: '1rem',
               lineHeight: '2.25rem',
               paddingLeft: '1.5em',
-              marginBottom: '0em',
-              marginTop: '0em',
             },
             'ul > li::before': {
               content: '""',
@@ -320,8 +318,6 @@ module.exports = {
               fontSize: '1rem',
               lineHeight: '2.25rem',
               paddingLeft: '1.5em',
-              marginBottom: '0em',
-              marginTop: '0em',
               position: 'relative',
             },
             'ul > li::before': {
