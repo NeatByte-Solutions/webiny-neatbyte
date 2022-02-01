@@ -76,7 +76,7 @@ export function NavPopover({ display = 'md:hidden', className, ...props }) {
         as="div"
         className={clsx('fixed z-50 inset-0', display)}
         open={isOpen}
-        onClose={setIsOpen}
+        onClose={() => setIsOpen(false)}
       >
         <Dialog.Overlay className="fixed top-[3.375rem] inset-0 bg-black/20 backdrop-blur-sm dark:bg-slate-900/80" />
         <div
