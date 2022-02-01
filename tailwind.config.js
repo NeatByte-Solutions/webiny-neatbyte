@@ -67,6 +67,7 @@ module.exports = {
             maxWidth: 'none',
             color: '#334155',
             fontSize: '16px',
+            overflowWrap: 'break-word',
             hr: {
               borderColor: theme('colors.slate.100'),
               marginTop: '3em',
@@ -116,7 +117,6 @@ module.exports = {
               fontSize: '0.875rem',
               lineHeight: '1.75rem',
               marginTop: '1.25rem',
-              wordWrap: 'break-word',
             },
             ul: {
               listStyleType: 'none',
