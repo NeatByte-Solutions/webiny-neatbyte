@@ -90,7 +90,7 @@ const getBgByType = (type) => {
   }
 }
 
-export function Alert({ type, children }) {
+export function Alert({ type, children, title }) {
   return (
     <div
       className={clsx(
@@ -98,8 +98,11 @@ export function Alert({ type, children }) {
         getBgByType(type)
       )}
     >
-      {getIconByType(type)}
-      <div className="first:children:mt-0 last:children:mb-0">{children}</div>
+      <div className={clsx({ 'flex items-center': !title })}> {getIconByType(type)}</div>
+      <div>
+        <div className="font-bold uppercase -mt-[2px]">{title && title}</div>
+        <div className="mb-0">{children}</div>
+      </div>
     </div>
   )
 }
