@@ -135,7 +135,7 @@ const Page = forwardRef(({ title, link, isActive, depth = 0 }, ref) => {
             'grid content-center block my-[15px] h-[30px] cursor-pointer text-nav-link',
             {
               'text-orange border-orange border-r-[2px] font-bold': isActive,
-              'hover:border-r-[2px] hover:text-dark-purple border-blue': !isActive,
+              'hover:border-r-[2px] hover:text-dark-purple border-orange opacity-50': !isActive,
               'text-dark-blue font-semibold text-nav-directory': depth === 0,
               'my-[7px]': depth > 0,
             }
