@@ -166,6 +166,7 @@ export function Header({ navIsOpen, onNavToggle }) {
   const openDialog = () => {
     return setIsOpen(!isOpen)
   }
+  console.log(isOpen)
   return (
     <>
       <div
@@ -312,7 +313,7 @@ export function Header({ navIsOpen, onNavToggle }) {
         as="div"
         className={clsx('hidden lg:block fixed top-[3.375rem] z-50 inset-0')}
         open={isOpen}
-        onClose={setIsOpen}
+        onClose={() => setIsOpen}
       >
         <Dialog.Overlay className="fixed top-[3.975rem] inset-1 bg-black/20 backdrop-blur-sm dark:bg-slate-900/80" />
         <div
