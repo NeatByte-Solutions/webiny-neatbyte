@@ -3,9 +3,9 @@ title: Getting Started
 description: Get a high-level overview of Amazon Cognito's Hosted UI authentication flow.
 ---
 
-import { Alert } from "@/components/Alert"
-import hostedUi1 from "./getting-started/hosted-ui-1.png";
-import hostedUi2 from "./getting-started/hosted-ui-2.png";
+import { Alert } from '@/components/Alert'
+import hostedUi1 from './getting-started/hosted-ui-1.png'
+import hostedUi2 from './getting-started/hosted-ui-2.png'
 
 <Alert type="success">
 
@@ -41,7 +41,7 @@ With this approach, the authentication flow is completely offloaded to Amazon Co
 <img
   alt="User Authentication Flow Start"
   shadow={false}
-  style={{ maxWidth: 500 }}
+  style={{ maxWidth: 500, width: '100%' }}
   src={hostedUi1}
 />
 
@@ -50,7 +50,7 @@ Once completed successfully, the user is redirected back to our application, but
 <img
   alt="User Authentication Flow End"
   shadow={false}
-  style={{ maxWidth: 500 }}
+  style={{ maxWidth: 500, width: '100%' }}
   src={hostedUi2}
 />
 
@@ -77,7 +77,6 @@ Learn more about other types of authentication flows that Amazon Cognito offers,
 
 </Alert>
 
-
 ## Before We Begin
 
 ### `dev` and `prod` Stacks
@@ -97,24 +96,24 @@ The React application's cloud infrastructure code doesn't follow this organizati
 It's useful to know that every package in a Webiny project possesses the `webiny.config.ts` configuration file. For example, if we were to open our GraphQL API's [`webiny.config.ts`](https://github.com/webiny/webiny-examples/blob/master/create-custom-application/05-security/02-getting-started/pinterest-clone/api/code/graphql/webiny.config.ts) file, located in the [`pinterest-clone/api/code/graphql`](https://github.com/webiny/webiny-examples/tree/master/create-custom-application/05-security/02-getting-started/pinterest-clone/api/code/graphql) folder, we'd see the following:
 
 ```ts pinterest-clone/api/code/graphql/webiny.config.ts {5,6}
-const { createWatchFunction, createBuildFunction } = require("@webiny/project-utils");
+const { createWatchFunction, createBuildFunction } = require('@webiny/project-utils')
 
 module.exports = {
-    commands: {
-        watch: createWatchFunction({ cwd: __dirname }),
-        build: createBuildFunction({ cwd: __dirname })
-    }
-};
+  commands: {
+    watch: createWatchFunction({ cwd: __dirname }),
+    build: createBuildFunction({ cwd: __dirname }),
+  },
+}
 ```
 
-Essentially, the main purpose of this file is to export the needed `watch` and `build` commands, which are then internally utilized by the [`webiny watch`](/docs/how-to-guides/use-watch-command/)  and [`webiny deploy`](/docs/how-to-guides/deployment/deploy-your-project) commands, respectively. As we can see, these can be simple one-liners, but note that we could also expand them with additional custom steps, if need be.
+Essentially, the main purpose of this file is to export the needed `watch` and `build` commands, which are then internally utilized by the [`webiny watch`](/docs/how-to-guides/use-watch-command/) and [`webiny deploy`](/docs/how-to-guides/deployment/deploy-your-project) commands, respectively. As we can see, these can be simple one-liners, but note that we could also expand them with additional custom steps, if need be.
 
 As another example, if we were to open our React application's [`webiny.config.ts`](https://github.com/webiny/webiny-examples/blob/master/create-custom-application/05-security/02-getting-started/pinterest-clone/app/code/webiny.config.ts) file located in the [`pinterest-clone/app/code`](https://github.com/webiny/webiny-examples/blob/master/create-custom-application/05-security/02-getting-started/pinterest-clone/app/code) folder, we'd see the following:
 
 ```ts pinterest-clone/app/code/webiny.config.ts {22,40}
-import invariant from "invariant";
-import { createWatchApp, createBuildApp } from "@webiny/project-utils";
-import { getStackOutput } from "@webiny/cli-plugin-deploy-pulumi/utils";
+import invariant from 'invariant'
+import { createWatchApp, createBuildApp } from '@webiny/project-utils'
+import { getStackOutput } from '@webiny/cli-plugin-deploy-pulumi/utils'
 
 // Exports fundamental start (watch) and build commands.
 // Within both commands, we rely on the deployed GraphQL API (pinterest-clone/api) and its stack
@@ -125,50 +124,50 @@ import { getStackOutput } from "@webiny/cli-plugin-deploy-pulumi/utils";
 // - `pinterest-clone/api/pulumi/prod/index.ts`
 
 const API_MAP = {
-    REACT_APP_API_URL: "${apiUrl}",
-    REACT_APP_GRAPHQL_API_URL: "${apiUrl}/graphql"
-};
+  REACT_APP_API_URL: '${apiUrl}',
+  REACT_APP_GRAPHQL_API_URL: '${apiUrl}/graphql',
+}
 
-const NO_ENV_MESSAGE = `Please specify the environment via the "--env" argument, for example: "--env dev".`;
+const NO_ENV_MESSAGE = `Please specify the environment via the "--env" argument, for example: "--env dev".`
 
 export default {
-    commands: {
-        async watch(options) {
-            invariant(options.env, NO_ENV_MESSAGE);
-            Object.assign(
-                process.env,
-                getStackOutput({
-                    folder: "pinterest-clone/api",
-                    env: options.env,
-                    map: API_MAP
-                })
-            );
+  commands: {
+    async watch(options) {
+      invariant(options.env, NO_ENV_MESSAGE)
+      Object.assign(
+        process.env,
+        getStackOutput({
+          folder: 'pinterest-clone/api',
+          env: options.env,
+          map: API_MAP,
+        })
+      )
 
-            // Starts the local development server at port 3002.
-            Object.assign(process.env, { PORT: 3002 });
+      // Starts the local development server at port 3002.
+      Object.assign(process.env, { PORT: 3002 })
 
-            // Starts local application development.
-            const watch = createWatchApp({ cwd: __dirname });
-            await watch(options);
-        },
-        async build(options) {
-            invariant(options.env, NO_ENV_MESSAGE);
-            Object.assign(
-                process.env,
-                getStackOutput({
-                    folder: "pinterest-clone/api",
-                    env: options.env,
-                    map: API_MAP
-                })
-            );
+      // Starts local application development.
+      const watch = createWatchApp({ cwd: __dirname })
+      await watch(options)
+    },
+    async build(options) {
+      invariant(options.env, NO_ENV_MESSAGE)
+      Object.assign(
+        process.env,
+        getStackOutput({
+          folder: 'pinterest-clone/api',
+          env: options.env,
+          map: API_MAP,
+        })
+      )
 
-            // Creates a production build of your application, ready to be deployed to
-            // a hosting provider of your choice, for example Amazon S3.
-            const build = createBuildApp({ cwd: __dirname });
-            await build(options);
-        }
-    }
-};
+      // Creates a production build of your application, ready to be deployed to
+      // a hosting provider of your choice, for example Amazon S3.
+      const build = createBuildApp({ cwd: __dirname })
+      await build(options)
+    },
+  },
+}
 ```
 
 Here we have slightly more complex `watch` and `build` commands, but, at this point, we don't need to concern ourselves with what's exactly happening here. The main takeaway is that these commands can be expanded to our needs.
@@ -189,9 +188,9 @@ If we were to open the cloud infrastructure code that is initially included duri
 return {
   region: process.env.AWS_REGION,
   apiUrl: cloudfront.getDistributionUrl(),
-  graphqlApiUrl: cloudfront.getDistributionUrl("/graphql"),
+  graphqlApiUrl: cloudfront.getDistributionUrl('/graphql'),
   dynamoDbTable: dynamoDb.table.name,
-};
+}
 ```
 
 It's important to note that the returned object represents something called the **cloud infrastructure stack output** or just **stack output**, which, essentially, enables us to expose multiple values that were created during a deployment process. These may entail unique IDs of deployed cloud infrastructure resources, maybe a URL that points to a specific resource, and basically anything else that we might need.
@@ -199,9 +198,9 @@ It's important to note that the returned object represents something called the 
 The stack output can then be retrieved within cloud infrastructure or application code that is part of the same, or an entirely separate, [project application](/docs/key-topics/project-organization/project-applications). For example, if we were to open our React application's [`webiny.config.ts`](https://github.com/webiny/webiny-examples/blob/master/create-custom-application/05-security/02-getting-started/pinterest-clone/app/code/webiny.config.ts) configuration file, located in the [`pinterest-clone/app/code`](https://github.com/webiny/webiny-examples/blob/master/create-custom-application/05-security/02-getting-started/pinterest-clone/app/code/webiny.config.ts) folder, we'd see that we're using the [`getStackOutput`](https://github.com/webiny/webiny-examples/blob/master/create-custom-application/05-security/02-getting-started/pinterest-clone/app/code/webiny.config.ts#L26) function in order to retrieve the URL over which our GraphQL API can be accessed:
 
 ```ts pinterest-clone/app/code/webiny.config.ts {3,13-16,24-31,42-49}
-import invariant from "invariant";
-import { createWatchApp, createBuildApp } from "@webiny/project-utils";
-import { getStackOutput } from "@webiny/cli-plugin-deploy-pulumi/utils";
+import invariant from 'invariant'
+import { createWatchApp, createBuildApp } from '@webiny/project-utils'
+import { getStackOutput } from '@webiny/cli-plugin-deploy-pulumi/utils'
 
 // Exports fundamental start (watch) and build commands.
 // Within both commands, we rely on the deployed GraphQL API (pinterest-clone/api) and its stack
@@ -212,50 +211,50 @@ import { getStackOutput } from "@webiny/cli-plugin-deploy-pulumi/utils";
 // - `pinterest-clone/api/pulumi/prod/index.ts`
 
 const API_MAP = {
-    REACT_APP_API_URL: "${apiUrl}",
-    REACT_APP_GRAPHQL_API_URL: "${apiUrl}/graphql"
-};
+  REACT_APP_API_URL: '${apiUrl}',
+  REACT_APP_GRAPHQL_API_URL: '${apiUrl}/graphql',
+}
 
-const NO_ENV_MESSAGE = `Please specify the environment via the "--env" argument, for example: "--env dev".`;
+const NO_ENV_MESSAGE = `Please specify the environment via the "--env" argument, for example: "--env dev".`
 
 export default {
-    commands: {
-        async watch(options) {
-            invariant(options.env, NO_ENV_MESSAGE);
-            Object.assign(
-                process.env,
-                getStackOutput({
-                    folder: "pinterest-clone/api",
-                    env: options.env,
-                    map: API_MAP
-                })
-            );
+  commands: {
+    async watch(options) {
+      invariant(options.env, NO_ENV_MESSAGE)
+      Object.assign(
+        process.env,
+        getStackOutput({
+          folder: 'pinterest-clone/api',
+          env: options.env,
+          map: API_MAP,
+        })
+      )
 
-            // Starts the local development server at port 3002.
-            Object.assign(process.env, { PORT: 3002 });
+      // Starts the local development server at port 3002.
+      Object.assign(process.env, { PORT: 3002 })
 
-            // Starts local application development.
-            const watch = createWatchApp({ cwd: __dirname });
-            await watch(options);
-        },
-        async build(options) {
-            invariant(options.env, NO_ENV_MESSAGE);
-            Object.assign(
-                process.env,
-                getStackOutput({
-                    folder: "pinterest-clone/api",
-                    env: options.env,
-                    map: API_MAP
-                })
-            );
+      // Starts local application development.
+      const watch = createWatchApp({ cwd: __dirname })
+      await watch(options)
+    },
+    async build(options) {
+      invariant(options.env, NO_ENV_MESSAGE)
+      Object.assign(
+        process.env,
+        getStackOutput({
+          folder: 'pinterest-clone/api',
+          env: options.env,
+          map: API_MAP,
+        })
+      )
 
-            // Creates a production build of your application, ready to be deployed to
-            // a hosting provider of your choice, for example Amazon S3.
-            const build = createBuildApp({ cwd: __dirname });
-            await build(options);
-        }
-    }
-};
+      // Creates a production build of your application, ready to be deployed to
+      // a hosting provider of your choice, for example Amazon S3.
+      const build = createBuildApp({ cwd: __dirname })
+      await build(options)
+    },
+  },
+}
 ```
 
 As we can see, once we've retrieved the stack output values, via [`Object.assign`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign), we're assigning them to the [`process.env`](https://nodejs.org/api/process.html#process_process_env) object. Meaning, we're exposing the retrieved values as environment variables, which we'll be able to use in our React application's code.
@@ -269,4 +268,5 @@ Stack output can also be quickly retrieved via [Webiny CLI](/docs/key-topics/web
 ```bash
 yarn webiny output pinterest-clone/api --env dev
 ```
+
 </Alert>

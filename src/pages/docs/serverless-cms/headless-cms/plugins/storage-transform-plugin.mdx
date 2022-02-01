@@ -36,13 +36,23 @@ For example, the time in format `15:45:59` is not usable when filtering, so we t
 
 When storing the data (create, update and createFrom) the plugin's `toStorage` is executed just after the `onBefore` lifecycle events and before actual call to the storage operations.
 
-<img shadow={false} style={{ maxWidth: 850 }} alt="storing the data flow" src={storingTheData} />
+<img
+  shadow={false}
+  style={{ maxWidth: 850, width: '100%' }}
+  alt="storing the data flow"
+  src={storingTheData}
+/>
 
 ### Fetching The Data
 
 When fetching the entries the plugin's `fromStorage` is executed in the GraphQL resolvers, just before the output of the field value. We decided to have it like this because of possible unnecessary calls to `fromStorage` if we executed it just after fetching the data from the database.
 
-<img shadow={false} style={{ maxWidth: 850 }} alt="fetching the data flow" src={fetchingTheData} />
+<img
+  shadow={false}
+  style={{ maxWidth: 850, width: '100%' }}
+  alt="fetching the data flow"
+  src={fetchingTheData}
+/>
 
 #### Why Execute `fromStorage` Just Before The Output?
 
