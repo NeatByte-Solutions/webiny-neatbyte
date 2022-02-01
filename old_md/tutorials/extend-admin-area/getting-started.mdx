@@ -2,20 +2,19 @@
 id: getting-started
 title: Getting Started
 sidebar_label: Getting Started
-keywords: ['extend', 'admin', 'area', 'graphql', 'api', 'scaffolding']
+keywords: ["extend", "admin", "area", "graphql", "api", "scaffolding"]
 description: Learn how to use the existing Extend Admin Area scaffold in order to start extending your Admin Area application in no time.
 ---
 
-import CenteredImage from '@components/CenteredImage'
-import watchSessions from './scaffolding/watch-sessions.png'
-import scaffoldsList from './scaffolding/scaffolds-list.png'
-import scaffoldsAdminArea from './scaffolding/scaffolds-admin-area.png'
-import scaffoldsFullOutput from './scaffolding/scaffold-full-output.png'
+import CenteredImage from "@components/CenteredImage";
+import watchSessions from "./scaffolding/watch-sessions.png";
+import scaffoldsList from "./scaffolding/scaffolds-list.png";
+import scaffoldsAdminArea from "./scaffolding/scaffolds-admin-area.png";
+import scaffoldsFullOutput from "./scaffolding/scaffold-full-output.png";
 
 :::tip WHAT YOU’LL LEARN
-
 - how to use the **Extend Admin Area** scaffold to get started in no time
-  :::
+:::
 
 :::info Can I use this?
 
@@ -38,7 +37,7 @@ yarn webiny scaffold
 
 Running this command should give us the following list of available scaffolds:
 
-<CenteredImage alt="Scaffolds List" style={{ maxWidth: 650, width: '100%' }} src={scaffoldsList} />
+<CenteredImage alt="Scaffolds List" style={{ maxWidth: 650 }} src={scaffoldsList}/>
 
 Once we've selected the **Extend Admin Area** scaffold from the list, we'll get presented with the the following three questions:
 
@@ -50,7 +49,7 @@ For the first two, we can just use the default paths by simply pressing the **En
 
 Once we've answered all of the questions, after a quick confirmation step, scaffolding will start and eventually, we should end up with the following output in our terminal:
 
-<CenteredImage alt="Extend Admin Area - Full Output" src={scaffoldsFullOutput} />
+<CenteredImage alt="Extend Admin Area - Full Output" src={scaffoldsFullOutput}/>
 
 ## Using the Watch Command
 
@@ -96,13 +95,13 @@ In contrast to the [GraphQL API](/docs/tutorials/extend-admin-area/getting-start
 
 The following screenshot shows the two watch commands run side-by-side in two separate terminal sessions:
 
-<CenteredImage alt="Watching Our Application Code" src={watchSessions} />
+<CenteredImage alt="Watching Our Application Code" src={watchSessions}/>
 
 ### Admin Area Application
 
 Once the two watch sessions have been started, in our Admin Area application, we should be able to see the new **Car Manufacturers** module and, via the generated [CRUD view](/docs/how-to-guides/scaffolding/extend-admin-area/#new-webiny-admin-area-module), perform essential CRUD operations.
 
-<CenteredImage shadow={false} alt="New Car Manufacturers Module" src={scaffoldsAdminArea} />
+<CenteredImage shadow={false} alt="New Car Manufacturers Module" src={scaffoldsAdminArea}/>
 
 :::tip
 By default, the Admin Area application should be locally accessible via [http://localhost:3001](http://localhost:3001).
