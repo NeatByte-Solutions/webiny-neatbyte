@@ -3,15 +3,16 @@ title: Headless CMS - Read operation benchmark
 description: Webiny Headless CMS performance benchmark.
 ---
 
-import { Alert } from "@/components/Alert"
-import Image1 from "./assets/hc-read-api/response-time-d.png"
-import Image2 from "./assets/hc-read-api/response-time-e.png"
-import Image3 from "./assets/hc-read-api/throughput-d.png"
-import Image4 from "./assets/hc-read-api/throughput-e.png"
+import { Alert } from '@/components/Alert'
+import TableWrapper from '@/components/TableWrapper'
+import Image1 from './assets/hc-read-api/response-time-d.png'
+import Image2 from './assets/hc-read-api/response-time-e.png'
+import Image3 from './assets/hc-read-api/throughput-d.png'
+import Image4 from './assets/hc-read-api/throughput-e.png'
 
 <Alert type="success">
 
- What you’ll learn
+What you’ll learn
 
 - performance of read operations on Webiny Headless CMS
 - optimization suggestions
@@ -20,10 +21,11 @@ import Image4 from "./assets/hc-read-api/throughput-e.png"
 
 ## Results
 
-import SummarySvg from "./assets/hc-read-api/summary.svg";
+import SummarySvg from './assets/hc-read-api/summary.svg'
 
-<img src={SummarySvg} alt="image"/>
+<img src={SummarySvg} alt="image" />
 
+<TableWrapper>
 
 | Test   | Records in database | Records requested | Avg. response time (ms) | p95 response time (ms) | Error rate (%) | Throughput (req/sec) |
 | ------ | ------------------: | ----------------: | ----------------------: | ---------------------: | -------------: | -------------------: |
@@ -32,6 +34,8 @@ import SummarySvg from "./assets/hc-read-api/summary.svg";
 | Test C |           1,506,112 |         1,402,424 |                  449.17 |                 587.00 |          0.01% |             2,123.35 |
 | Test D |           3,319,812 |         1,718,146 |                  838.01 |                1035.00 |          1.23% |             2,043.43 |
 | Test E |           3,343,666 |         2,964,663 |                  484.37 |                1355.00 |          0.01% |             3,510.60 |
+
+</TableWrapper>
 
 ### What does this mean?
 
@@ -115,7 +119,6 @@ All other requests go Elasticsearch as it provides better filtering, searching a
 
 We only extracted the charts for the last 2 tests as most charts showed the same behavior. In case you want to see the full report with all the charts for all the tests, [click here](https://github.com/webiny/benchmark/tree/main/benchmarks/results/hc-read-data).
 
-
 </Alert>
 
 ### Response time
@@ -198,6 +201,8 @@ To increase your throughput for the read operations you would need to scale your
 
 ### Total cost
 
+<TableWrapper>
+
 | Test   |                    CloudFront |                    ApiGateway |                         Lambda |                      DynamoDB |                 Elasticsearch |                          Total |
 | ------ | ----------------------------: | ----------------------------: | -----------------------------: | ----------------------------: | ----------------------------: | -----------------------------: |
 | Test A | <!-- prettier-ignore -->$0.10 | <!-- prettier-ignore -->$0.10 |  <!-- prettier-ignore -->$0.26 | <!-- prettier-ignore -->$0.33 | <!-- prettier-ignore -->$0.01 |  <!-- prettier-ignore -->$0.80 |
@@ -205,6 +210,8 @@ To increase your throughput for the read operations you would need to scale your
 | Test C | <!-- prettier-ignore -->$1.47 | <!-- prettier-ignore -->$1.40 |  <!-- prettier-ignore -->$5.17 | <!-- prettier-ignore -->$1.40 | <!-- prettier-ignore -->$0.33 |  <!-- prettier-ignore -->$9.77 |
 | Test D | <!-- prettier-ignore -->$1.80 | <!-- prettier-ignore -->$1.72 | <!-- prettier-ignore -->$11.90 | <!-- prettier-ignore -->$1.93 | <!-- prettier-ignore -->$0.92 | <!-- prettier-ignore -->$27.50 |
 | Test E | <!-- prettier-ignore -->$3.11 | <!-- prettier-ignore -->$2.96 | <!-- prettier-ignore -->$11.77 | <!-- prettier-ignore -->$3.57 | <!-- prettier-ignore -->$2.68 | <!-- prettier-ignore -->$24.09 |
+
+</TableWrapper>
 
 <Alert type="info">
 
@@ -220,10 +227,9 @@ Notice how the test E is cheaper than test D, while E handled almost 3M requests
 
 ### Cost per 10k requests
 
-import CostPerRequestSvg from "./assets/hc-read-api/cost-per-request.svg";
+import CostPerRequestSvg from './assets/hc-read-api/cost-per-request.svg'
 
-<img src={CostPerRequestSvg} alt="image"/>
-
+<img src={CostPerRequestSvg} alt="image" />
 
 | Test   |      Hits |                     Total cost |                     Cost per request |
 | ------ | --------: | -----------------------------: | -----------------------------------: |
@@ -285,7 +291,6 @@ Notice the difference in lambda costs between tests C and D, versus the number o
 | Test C |    5.61M |         0 | <!-- prettier-ignore -->$1.40 |
 | Test D |     7.7M |         0 | <!-- prettier-ignore -->$1.93 |
 | Test E |    13.3M |         0 | <!-- prettier-ignore -->$3.57 |
-
 
 <Alert type="info">
 
