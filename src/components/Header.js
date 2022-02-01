@@ -166,7 +166,6 @@ export function Header({ navIsOpen, onNavToggle }) {
   const openDialog = () => {
     return setIsOpen(!isOpen)
   }
-  console.log(isOpen)
   return (
     <>
       <div
