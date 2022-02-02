@@ -248,7 +248,7 @@ module.exports = {
             table: {
               fontSize: theme('fontSize.sm')[0],
               lineHeight: theme('fontSize.sm')[1].lineHeight,
-              display: 'inline-block',
+              display: 'block',
               overflowX: 'auto',
             },
             thead: {
