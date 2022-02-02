@@ -6,24 +6,14 @@ const withSmartQuotes = require('@silvenon/remark-smartypants')
 const { withTableOfContents } = require('./remark/withTableOfContents')
 const { withSyntaxHighlighting } = require('./remark/withSyntaxHighlighting')
 const { withNextLinks } = require('./remark/withNextLinks')
-const { withLinkRoles } = require('./rehype/withLinkRoles')
 const minimatch = require('minimatch')
-const withExamples = require('./remark/withExamples')
 const { withImages } = require('./remark/withImages')
 
-const {
-  highlightCode,
-  fixSelectorEscapeTokens,
-  simplifyToken,
-  normalizeTokens,
-} = require('./remark/utils')
-const { withPrevalInstructions } = require('./remark/withPrevalInstructions')
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
 })
 const defaultConfig = require('tailwindcss/resolveConfig')(require('tailwindcss/defaultConfig'))
 const dlv = require('dlv')
-const Prism = require('prismjs')
 
 const fallbackLayouts = {
   'src/pages/docs/**/*': ['@/layouts/DocumentationLayout', 'DocumentationLayout'],
@@ -76,42 +66,6 @@ module.exports = withBundleAnalyzer({
       }),
     })
 
-    config.resolve.alias['utilities$'] = require.resolve('tailwindcss/lib/corePlugins.js')
-
-    // import utilities from 'utilities?plugin=backgroundColor'
-    config.module.rules.push({
-      resourceQuery: /plugin/,
-      test: require.resolve('tailwindcss/lib/corePlugins.js'),
-      use: createLoader(function (_source) {
-        let pluginName = new URLSearchParams(this.resourceQuery).get('plugin')
-        let plugin = require('tailwindcss/lib/corePlugins.js').corePlugins[pluginName]
-        return `export default ${JSON.stringify(getUtilities(plugin))}`
-      }),
-    })
-
-    config.module.rules.push({
-      resourceQuery: /examples/,
-      test: require.resolve('tailwindcss/lib/corePlugins.js'),
-      use: createLoader(function (_source) {
-        let plugins = require('tailwindcss/lib/corePlugins.js').corePlugins
-        let examples = Object.entries(plugins).map(([name, plugin]) => {
-          let utilities = getUtilities(plugin)
-          return {
-            plugin: name,
-            example:
-              Object.keys(utilities).length > 0
-                ? Object.keys(utilities)
-                    [Math.floor((Object.keys(utilities).length - 1) / 2)].split(/[>:]/)[0]
-                    .trim()
-                    .substr(1)
-                    .replace(/\\/g, '')
-                : undefined,
-          }
-        })
-        return `export default ${JSON.stringify(examples)}`
-      }),
-    })
-
     config.module.rules.push({
       test: /\.svg$/,
       use: [
@@ -126,68 +80,17 @@ module.exports = withBundleAnalyzer({
       ],
     })
 
-    // Remove the 3px deadzone for drag gestures in Framer Motion
-    config.module.rules.push({
-      test: /framer-motion/,
-      use: createLoader(function (source) {
-        return source.replace(
-          /var isDistancePastThreshold = .*?$/m,
-          'var isDistancePastThreshold = true'
-        )
-      }),
-    })
-
-    config.module.rules.push({
-      resourceQuery: /fields/,
-      use: createLoader(function (source) {
-        let fields = new URLSearchParams(this.resourceQuery).get('fields').split(',')
-        return JSON.stringify(JSON.parse(source), (key, value) => {
-          return ['', ...fields].includes(key) ? value : undefined
-        })
-      }),
-    })
-
-    config.module.rules.push({
-      resourceQuery: /highlight/,
-      use: [
-        options.defaultLoaders.babel,
-        createLoader(function (source) {
-          let lang =
-            new URLSearchParams(this.resourceQuery).get('highlight') ||
-            this.resourcePath.split('.').pop()
-          let isDiff = lang.startsWith('diff-')
-          let prismLang = isDiff ? lang.substr(5) : lang
-          let grammar = Prism.languages[isDiff ? 'diff' : prismLang]
-          let tokens = Prism.tokenize(source, grammar, lang)
-
-          if (lang === 'css') {
-            fixSelectorEscapeTokens(tokens)
-          }
-
-          return `
-            export const tokens = ${JSON.stringify(tokens.map(simplifyToken))}
-            export const lines = ${JSON.stringify(normalizeTokens(tokens))}
-            export const code = ${JSON.stringify(source)}
-            export const highlightedCode = ${JSON.stringify(highlightCode(source, lang))}
-          `
-        }),
-      ],
-    })
-
     let mdx = [
       {
         loader: '@mdx-js/loader',
         options: {
           remarkPlugins: [
             withImages,
-            withPrevalInstructions,
-            withExamples,
             withTableOfContents,
             withSyntaxHighlighting,
             withNextLinks,
             withSmartQuotes,
           ],
-          rehypePlugins: [withLinkRoles],
         },
       },
       createLoader(function (source) {
@@ -201,46 +104,7 @@ module.exports = withBundleAnalyzer({
     ]
 
     config.module.rules.push({
-      test: { and: [/\.mdx$/, /snippets/] },
-      resourceQuery: { not: [/rss/, /preview/] },
-      use: [
-        options.defaultLoaders.babel,
-        {
-          loader: '@mdx-js/loader',
-          options: {
-            remarkPlugins: [withSyntaxHighlighting],
-          },
-        },
-      ],
-    })
-
-    config.module.rules.push({
       test: /\.mdx$/,
-      resourceQuery: /rss/,
-      use: [options.defaultLoaders.babel, ...mdx],
-    })
-
-    config.module.rules.push({
-      test: /\.mdx$/,
-      resourceQuery: /preview/,
-      use: [
-        options.defaultLoaders.babel,
-        ...mdx,
-        createLoader(function (src) {
-          if (src.includes('<!--more-->')) {
-            const [preview] = src.split('<!--more-->')
-            return preview
-          }
-
-          const [preview] = src.split('<!--/excerpt-->')
-          return preview.replace('<!--excerpt-->', '')
-        }),
-      ],
-    })
-
-    config.module.rules.push({
-      test: { and: [/\.mdx$/], not: [/snippets/] },
-      resourceQuery: { not: [/rss/, /preview/] },
       use: [
         options.defaultLoaders.babel,
         createLoader(function (source) {
