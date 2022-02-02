@@ -10,6 +10,8 @@ import { Footer } from '@/components/Footer'
 import { Heading } from '@/components/Heading'
 import { MDXProvider } from '@mdx-js/react'
 
+import { scroll } from './SidebarLayout.module.css'
+
 export const ContentsContext = createContext()
 
 function TableOfContents({ tableOfContents, currentSection }) {
@@ -231,7 +233,9 @@ export function ContentsLayout({ children, meta, classes, tableOfContents }) {
         </Link>
       </Footer>
 
-      <div className="fixed z-20 top-[5.875rem] bottom-0 right-[max(0px,calc(50%-48.5rem))] 2xl:right-[max(0px,calc(50%-50rem))] w-[19.5rem] 2xl:w-[22rem] pl-[4.3125rem] pr-[1.8125rem] overflow-y-auto hidden xl:block">
+      <div
+        className={`fixed z-20 top-[5.875rem] bottom-0 right-[max(0px,calc(50%-48.5rem))] 2xl:right-[max(0px,calc(50%-50rem))] w-[19.5rem] 2xl:w-[22rem] pl-[4.3125rem] pr-[1.8125rem] overflow-y-auto hidden xl:block ${scroll}`}
+      >
         <div className="border-l-2 border-orange pl-5 pt-[0.3125rem] pb-2.5">
           {toc.length > 0 && (
             <TableOfContents tableOfContents={toc} currentSection={currentSection} />
