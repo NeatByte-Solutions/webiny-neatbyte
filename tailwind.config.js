@@ -1,4 +1,3 @@
-const svgToDataUri = require('mini-svg-data-uri')
 const { default: flattenColorPalette } = require('tailwindcss/lib/util/flattenColorPalette')
 
 module.exports = {
@@ -16,27 +15,6 @@ module.exports = {
       lg: '1024px',
       xl: '1280px',
       '2xl': '1536px',
-    },
-    aspectRatio: {
-      auto: 'auto',
-      square: '1 / 1',
-      video: '16 / 9',
-      1: '1',
-      2: '2',
-      3: '3',
-      4: '4',
-      5: '5',
-      6: '6',
-      7: '7',
-      8: '8',
-      9: '9',
-      10: '10',
-      11: '11',
-      12: '12',
-      13: '13',
-      14: '14',
-      15: '15',
-      16: '16',
     },
     extend: {
       colors: {
@@ -92,27 +70,7 @@ module.exports = {
             h4: {
               fontSize: '1.375rem',
               lineHeight: '1.625rem',
-            } /* 
-            'h2 small, h3 small, h4 small': {
-              fontFamily: theme('fontFamily.mono').join(', '),
-              color: theme('colors.slate.500'),
-              fontWeight: 500,
             },
-            'h2 small': {
-              fontSize: theme('fontSize.lg')[0],
-              ...theme('fontSize.lg')[1],
-            },
-            'h3 small': {
-              fontSize: theme('fontSize.base')[0],
-              ...theme('fontSize.base')[1],
-            },
-            'h4 small': {
-              fontSize: theme('fontSize.sm')[0],
-              ...theme('fontSize.sm')[1],
-            },
-            'h2, h3, h4': {
-              'scroll-margin-top': 'var(--scroll-mt)',
-            }, */,
             p: {
               fontSize: '0.875rem',
               lineHeight: '1.75rem',
@@ -365,11 +323,6 @@ module.exports = {
         },
       }),
       fontFamily: {
-        // remove this font from components
-        //sans: ['Inter var', ...defaultTheme.fontFamily.sans],
-        //mono: ['Fira Code VF', ...defaultTheme.fontFamily.mono],
-        //source: ['Source Sans Pro', ...defaultTheme.fontFamily.sans],
-        //'ubuntu-mono': ['Ubuntu Mono', ...defaultTheme.fontFamily.mono],
         roboto: ['Roboto', 'sans-serif'],
         'source-sans-pro': ['Source Sans Pro', 'sans-serif'],
       },
@@ -422,15 +375,6 @@ module.exports = {
   },
   plugins: [
     require('@tailwindcss/typography'),
-    require('@tailwindcss/aspect-ratio'),
-    function ({ addVariant }) {
-      addVariant('supports-scrollbars', '@supports selector(::-webkit-scrollbar)')
-      addVariant('children', '& > *')
-      addVariant('scrollbar', '&::-webkit-scrollbar')
-      addVariant('scrollbar-track', '&::-webkit-scrollbar-track')
-      addVariant('scrollbar-thumb', '&::-webkit-scrollbar-thumb')
-      addVariant('demo-dark', '.demo-dark &')
-    },
     function ({ matchUtilities, theme }) {
       matchUtilities(
         {
