@@ -9,7 +9,6 @@ import ProgressBar from '@badrap/bar-of-progress'
 import Head from 'next/head'
 import socialCardLarge from '@/img/social-card-large.jpg'
 import { ResizeObserver } from '@juggle/resize-observer'
-import 'intersection-observer'
 import { SearchProvider } from '@/components/Search'
 
 if (typeof window !== 'undefined' && !('ResizeObserver' in window)) {

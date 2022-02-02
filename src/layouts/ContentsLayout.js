@@ -1,14 +1,15 @@
 import { useState, useEffect, createContext, Fragment, useCallback, useContext } from 'react'
-import { ClassTable } from '@/components/ClassTable'
 import { useRouter } from 'next/router'
 import { usePrevNext } from '@/hooks/usePrevNext'
 import Link from 'next/link'
+import { MDXProvider } from '@mdx-js/react'
+
 import { SidebarLayout, SidebarContext } from '@/layouts/SidebarLayout'
 import { PageHeader } from '@/components/PageHeader'
-import clsx from 'clsx'
 import { Footer } from '@/components/Footer'
 import { Heading } from '@/components/Heading'
-import { MDXProvider } from '@mdx-js/react'
+
+import clsx from 'clsx'
 
 import { scroll } from './SidebarLayout.module.css'
 
@@ -200,27 +201,11 @@ export function ContentsLayout({ children, meta, classes, tableOfContents }) {
       <PageHeader
         title={meta.title}
         description={meta.description}
-        badge={{ key: 'Tailwind CSS version', value: meta.featureVersion }}
       />
       <ContentsContext.Provider value={{ registerHeading, unregisterHeading }}>
-        {classes ? (
-          <>
-            <ClassTable {...classes} />
-            <div
-              id="content"
-              className="relative z-20 prose md:prose-md prose-slate mt-12 dark:prose-dark"
-            >
-              <MDXProvider components={{ Heading }}>{children}</MDXProvider>
-            </div>
-          </>
-        ) : (
-          <div
-            id="content"
-            className="relative z-20 prose md:prose-md prose-slate mt-8 dark:prose-dark"
-          >
-            <MDXProvider components={{ Heading }}>{children}</MDXProvider>
-          </div>
-        )}
+        <div id="content" className="relative z-20 prose md:prose-md prose-slate mt-8 dark:prose-dark">
+          <MDXProvider components={{ Heading }}>{children}</MDXProvider>
+        </div>
       </ContentsContext.Provider>
 
       <WasThisArticleHelpful className="xl:hidden" />
