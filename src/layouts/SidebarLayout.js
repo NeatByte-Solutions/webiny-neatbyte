@@ -106,7 +106,6 @@ const Collapsable = forwardRef(({ title, subElements = [], isActiveChild, depth 
           <img src={arrow} className={showMenu ? 'rotate-90' : ''} alt="collapsable"></img>
         </div>
         <button
-          href="#"
           className={clsx({
             'font-bold text-nav-subdirectory text-dark-purple': isActiveChild && depth > 0,
             'text-nav-subdirectory font-normal text-dark-purple':
