@@ -248,6 +248,8 @@ module.exports = {
             table: {
               fontSize: theme('fontSize.sm')[0],
               lineHeight: theme('fontSize.sm')[1].lineHeight,
+              display: 'block',
+              overflowX: 'auto',
             },
             thead: {
               color: theme('colors.slate.700'),
