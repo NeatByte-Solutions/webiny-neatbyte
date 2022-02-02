@@ -105,7 +105,7 @@ const Collapsable = forwardRef(({ title, subElements = [], isActiveChild, depth 
         <div className={`${depth === 0 ? 'absolute left-[-15px] top-[9px]' : 'mr-[10px]'}`}>
           <img src={arrow} className={showMenu ? 'rotate-90' : ''} alt="collapsable"></img>
         </div>
-        <a
+        <button
           href="#"
           className={clsx({
             'font-bold text-nav-subdirectory text-dark-purple': isActiveChild && depth > 0,
@@ -116,7 +116,7 @@ const Collapsable = forwardRef(({ title, subElements = [], isActiveChild, depth 
           })}
         >
           {title}
-        </a>
+        </button>
       </li>
       <ul className={clsx({ 'ml-[30px]': depth > 0, block: showMenu, hidden: !showMenu })}>
         {subElements.map((navElement, index) => (
