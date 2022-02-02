@@ -88,7 +88,7 @@ Note that importing the library may visually disrupt the initial design of our a
 
 The [`Layout`](https://github.com/webiny/webiny-examples/blob/master/create-custom-application/04-react-application/02-layout/pinterest-clone/app/code/src/components/Layout.tsx#L12) React component, located in the [`pinterest-clone/app/code/src/components/Layout.tsx`](https://github.com/webiny/webiny-examples/blob/master/create-custom-application/04-react-application/02-layout/pinterest-clone/app/code/src/components/Layout.tsx) file, is a global component which defines the default visual layout of our application. In terms of what we're building here, it should place the header bar at the top of the screen, and below it, render any React components that have been passed to it as its children.
 
-<img shadow={false} style={{maxWidth: 650}} alt="Application Layout" src={applicationLayout} />
+<img shadow={false} style={{maxWidth: 650, width: '100%'}} alt="Application Layout" src={applicationLayout} />
 
 By rendering all of our application's pages as children of the [`Layout`](https://github.com/webiny/webiny-examples/blob/master/create-custom-application/04-react-application/02-layout/pinterest-clone/app/code/src/components/Layout.tsx#L12) component, we ensure that every page is visually consistent. And, if we decide to make a change in the layout down the road, we can do it in a single React component, and all of the pages will be affected.
 
@@ -207,6 +207,6 @@ export default new RoutePlugin({
 
 And this is what you should end up with once you've completed all of the steps. Basically, a blank page with just the header at the top of the screen, and that's it.
 
-<img style={{maxWidth: 650 }} alt="Application Layout - Blank Homepage" src={endResult} />
+<img style={{maxWidth: 650, width: '100%' }} alt="Application Layout - Blank Homepage" src={endResult} />
 
 Now that we have this foundation in place, we can start building the rest of the planned functionality.
