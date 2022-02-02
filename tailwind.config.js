@@ -158,7 +158,6 @@ module.exports = {
             '.danger-box li::before': {
               backgroundColor: '#D14343',
             },
-
             a: {
               color: '#FA5A28',
               textDecoration: 'none',
