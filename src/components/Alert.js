@@ -77,16 +77,16 @@ const getIconByType = (type) => {
 
 const getBgByType = (type) => {
   if (type === 'info') {
-    return 'bg-purple info-box'
+    return 'info-box bg-purple'
   }
   if (type === 'success') {
-    return 'bg-green success-box'
+    return 'success-box bg-green'
   }
   if (type === 'warning') {
-    return 'bg-yellow warning-box'
+    return 'warning-box bg-yellow'
   }
   if (type === 'danger') {
-    return 'bg-peach danger-box'
+    return 'danger-box bg-peach'
   }
 }
 
