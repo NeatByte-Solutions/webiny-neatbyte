@@ -191,7 +191,7 @@ export const documentationNav = [
           page('key-topics/cloud-infrastructure/api/file-upload'),
           page('key-topics/cloud-infrastructure/api/file-download'),
           page('key-topics/cloud-infrastructure/api/overview-vpc-default'),
-          page('cloud-infrastructure/api/overview-vpc-custom'),
+          page('key-topics/cloud-infrastructure/api/overview-vpc-custom'),
         ]),
         collapsable('Admin Area', [
           page('key-topics/cloud-infrastructure/admin/introduction'),
