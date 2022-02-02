@@ -121,23 +121,42 @@ module.exports = {
             ul: {
               listStyleType: 'none',
               paddingLeft: 0,
+              marginBottom: '1.3em',
+              marginTop: '1.3em',
+            },
+            'li > ul': {
+              marginBottom: '0em',
+              marginTop: '0em',
             },
             'ul > li': {
               position: 'relative',
-              paddingLeft: '1.75em',
-              color: '#002D39',
-              fontSize: '0.875rem',
+              fontSize: '1rem',
               lineHeight: '2.25rem',
+              paddingLeft: '1.5em',
+              marginBottom: '0em',
+              marginTop: '0em',
             },
             'ul > li::before': {
               content: '""',
-              width: '0.75em',
+              width: '0.63em',
               height: '0.125em',
               position: 'absolute',
-              top: 'calc(0.875em - 0.0625em)',
+              top: '1em',
               left: 0,
               borderRadius: '999px',
-              backgroundColor: theme('colors.slate.300'),
+              backgroundColor: '#FA5A28',
+            },
+            '.success-box li::before': {
+              backgroundColor: '#52BD94',
+            },
+            '.info-box li::before': {
+              backgroundColor: '#01579B',
+            },
+            '.warning-box li::before': {
+              backgroundColor: '#FFB020',
+            },
+            '.danger-box li::before': {
+              backgroundColor: '#D14343',
             },
             ol: {
               counterReset: 'cupcake',
@@ -325,26 +344,6 @@ module.exports = {
               fontSize: '1rem',
               lineHeight: '1.75rem',
               marginTop: '1.25rem',
-            },
-            ul: {
-              marginTop: '1.3em',
-            },
-            'ul > li': {
-              fontSize: '1rem',
-              lineHeight: '2.25rem',
-              paddingLeft: '1.5em',
-              marginBottom: '0em',
-              marginTop: '0em',
-            },
-            'ul > li::before': {
-              content: '""',
-              width: '0.63em',
-              height: '0.125em',
-              position: 'absolute',
-              top: '1em',
-              left: 0,
-              borderRadius: '999px',
-              backgroundColor: '#FA5A28',
             },
             a: {
               fontSize: '1rem',
