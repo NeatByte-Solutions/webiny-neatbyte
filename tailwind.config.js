@@ -147,15 +147,18 @@ module.exports = {
               backgroundColor: '#FA5A28',
             },
             '.success-box li::before': {
-              content: '""',
-              width: '0.63em',
-              height: '0.125em',
-              position: 'absolute',
-              top: '1em',
-              left: 0,
-              borderRadius: '999px',
+              backgroundColor: '#52BD94',
+            },
+            '.info-box li::before': {
               backgroundColor: '#01579B',
             },
+            '.warning-box li::before': {
+              backgroundColor: '#FFB020',
+            },
+            '.danger-box li::before': {
+              backgroundColor: '#D14343',
+            },
+
             a: {
               color: '#FA5A28',
               textDecoration: 'none',
