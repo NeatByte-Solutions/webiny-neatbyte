@@ -199,7 +199,7 @@ export function Header({ navIsOpen, onNavToggle }) {
                 Router.push('/brand')
               }}
             >
-              <span className="sr-only">Tailwind CSS home page</span>
+              <span className="sr-only">Webiny Docs home page</span>
               <Logo className="w-auto h-[1.8025rem] lg:h-10" />
             </a>
           </Link>
@@ -253,7 +253,7 @@ export function Header({ navIsOpen, onNavToggle }) {
                 href="https://github.com/webiny/webiny-js"
                 className="block text-slate-400 hover:text-slate-500 dark:hover:text-slate-300"
               >
-                <span className="sr-only">Tailwind CSS on GitHub</span>
+                <span className="sr-only">Webiny Docs on GitHub</span>
                 <svg
                   width="26"
                   height="26"
@@ -268,7 +268,7 @@ export function Header({ navIsOpen, onNavToggle }) {
                 href="/docs/installation"
                 className="ml-5 block text-slate-400 hover:text-slate-500 dark:hover:text-slate-300"
               >
-                <span className="sr-only">Tailwind CSS on GitHub</span>
+                <span className="sr-only">Webiny Docs on GitHub</span>
                 <svg
                   width="26"
                   height="26"
