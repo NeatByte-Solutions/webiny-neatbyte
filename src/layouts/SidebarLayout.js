@@ -133,12 +133,12 @@ const Page = forwardRef(({ title, link, isActive, depth = 0 }, ref) => {
         {/* first line */}
         <a
           className={clsx(
-            'grid content-center block my-[15px] h-[30px] cursor-pointer text-nav-link',
+            'grid content-center block my-[15px] h-[30px] cursor-pointer',
             {
               'text-orange border-orange border-r-[2px] font-bold': isActive,
               'hover:border-r-[2px] hover:text-dark-purple hover:border-orange/50': !isActive,
               'text-dark-blue font-semibold text-nav-directory': depth === 0,
-              'my-[7px]': depth > 0,
+              'my-[7px] text-nav-link': depth > 0,
             }
           )}
         >
