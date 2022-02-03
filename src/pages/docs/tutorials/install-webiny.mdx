@@ -7,9 +7,7 @@ import { Alert } from "@/components/Alert"
 import { TabsComponent, TabsItem } from "@/components/TabsComponent"
 
 
-<Alert type="success"> 
-
-WHAT YOU’LL LEARN
+<Alert type="success" title="WHAT YOU’LL LEARN"> 
 
 - how to create a brand new Webiny project
 - how to deploy it to your [AWS](https://aws.amazon.com/) account
@@ -72,9 +70,7 @@ Unfortunately, it might happen that we load all the records from a certain appli
   </TabsItem>
   <TabsItem title="DynamoDB + Elasticsearch">
 
-<Alert type="danger">
-
-AWS RESOURCES ARE NOT FREE!
+<Alert type="danger" title="AWS RESOURCES ARE NOT FREE!">
 
 Although Webiny is using serverless resources, the Elasticsearch option relies on **AWS ElasticsearchService**, which is not free.
 It is the only non-serverless component of our infrastructure and is charged per hour. It amounts to roughly $25/month.
@@ -106,17 +102,13 @@ yarn webiny deploy
 
 By executing this command, all of the project applications will first get built, and, along with needed cloud infrastructure resources, deployed into your AWS account.
 
-<Alert type="info">
-
-Project Applications
+<Alert type="info" title="Project Applications">
 
 Learn more about project applications and project organization in general, in the [Project Applications and Packages](/docs/key-topics/project-organization/project-applications-and-packages) key topic.
 
 </Alert>
 
-<Alert type="success">
-
-Cloud Infrastructure
+<Alert type="success" title="Cloud Infrastructure">
 
 Learn what gets deployed into your AWS account and how it all works in the [Cloud Infrastructure](/docs/key-topics/cloud-infrastructure/introduction) key topics section.
 
@@ -128,17 +120,13 @@ Finally, once the deployment has been done, you are presented with the URL over 
 
 ![Admin Area - Installation Wizard](./install-webiny/installation-wizard.png)
 
-<Alert type="info">
-
-Misplaced Admin area URL?
+<Alert type="info" title="Misplaced Admin area URL?">
 
 Running the `yarn webiny info` command in your Webiny project folder will give you all of the relevant project URLs.
 
 </Alert>
 
-<Alert type="warning">
-
-Telemetry
+<Alert type="warning" title="Telemetry">
 
 Please note that, by default, Webiny collects anonymous usage information, which is exclusively used for improving the product and understanding usage patterns. Please take a look at our [Telemetry](https://www.webiny.com/telemetry/) page for more information on this subject.
 
