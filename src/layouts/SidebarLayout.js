@@ -5,7 +5,7 @@ import { useIsomorphicLayoutEffect } from '@/hooks/useIsomorphicLayoutEffect'
 import clsx from 'clsx'
 import { Dialog } from '@headlessui/react'
 
-import arrow from '../assets/menu-arrow/menu-arrow.svg'
+import arrow from '@/img/menu-arrow.svg'
 
 import { scroll } from './SidebarLayout.module.css'
 
