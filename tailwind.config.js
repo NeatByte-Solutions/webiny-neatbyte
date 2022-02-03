@@ -7,10 +7,8 @@ module.exports = {
   content: ['./src/**/*.{js,jsx,mdx,html}', './remark/**/*.js'],
   darkMode: 'class',
   theme: {
-    // `demo-*` screens are used for the "mobile-first" responsive demo
     screens: {
       sm: '640px',
-      'demo-sm': '720px',
       md: '768px',
       lg: '1024px',
       xl: '1280px',
