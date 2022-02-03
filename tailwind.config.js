@@ -45,7 +45,7 @@ module.exports = {
             fontSize: '16px',
             overflowWrap: 'break-word',
             hr: {
-              borderColor: theme('colors.slate.100'),
+              borderColor: '#E5E5E5',
               marginTop: '3em',
               marginBottom: '3em',
             },
@@ -252,10 +252,6 @@ module.exports = {
             },
             code: {
               color: theme('colors.slate.200'),
-            },
-            hr: {
-              borderColor: theme('colors.slate.200'),
-              opacity: '0.05',
             },
             pre: {
               boxShadow: 'inset 0 0 0 1px rgb(255 255 255 / 0.1)',
