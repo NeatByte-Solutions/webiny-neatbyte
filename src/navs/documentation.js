@@ -1,40 +1,4 @@
-import { createPageList } from '@/utils/createPageList'
-
-const page = (mdxName) => {
-  const pages = createPageList(require.context(`../pages/docs/?meta=title`, true, /\.mdx$/), 'docs')
-
-  return {
-    type: 'page',
-    link: pages[mdxName]?.link || '/',
-    title: pages[mdxName]?.title || 'invalid page link',
-  }
-}
-
-// const link = (title, externalLink) => {
-//   return { type: 'link', link: externalLink, title }
-// }
-
-const section = (title, links) => {
-  return {
-    type: 'section',
-    title,
-    links,
-  }
-}
-
-const collapsable = (title, links) => {
-  return {
-    type: 'collapsable',
-    title,
-    links,
-  }
-}
-
-const horizontalLine = () => {
-  return {
-    type: 'horizontal-line',
-  }
-}
+import { collapsable, horizontalLine, page, section } from '@/utils/navElements'
 
 export const documentationNav = [
   page('webiny/introduction'),
