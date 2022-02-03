@@ -9,7 +9,7 @@ export function DocumentationLayout(props) {
 
   return (
     <>
-      <Title suffix={router.pathname === '/' ? undefined : 'Tailwind CSS'}>
+      <Title suffix={router.pathname === '/' ? undefined : 'Webiny Docs'}>
         {props.layoutProps.meta.metaTitle || props.layoutProps.meta.title}
       </Title>
       <SidebarLayout nav={documentationNav} {...props} />

@@ -23,8 +23,8 @@ export default class Document extends NextDocument {
           <link rel="manifest" href={v('/favicons/site.webmanifest')} />
           <link rel="mask-icon" href={v('/favicons/safari-pinned-tab.svg')} color="#FA5A28" />
           <link rel="shortcut icon" href={v('/favicons/favicon.ico')} />
-          <meta name="apple-mobile-web-app-title" content="Tailwind CSS" />
-          <meta name="application-name" content="Tailwind CSS" />
+          <meta name="apple-mobile-web-app-title" content="Webiny Docs" />
+          <meta name="application-name" content="Webiny Docs" />
           <meta name="msapplication-TileColor" content="#FA5A28" />
           <meta name="msapplication-config" content={v('/favicons/browserconfig.xml')} />
           <meta name="theme-color" content="#ffffff" />
@@ -42,7 +42,7 @@ export default class Document extends NextDocument {
             }}
           />
         </Head>
-        <body className='antialiased text-slate-500 dark:text-slate-400'>
+        <body className="antialiased text-slate-500 dark:text-slate-400">
           <Main />
           <NextScript />
           <script> </script>
