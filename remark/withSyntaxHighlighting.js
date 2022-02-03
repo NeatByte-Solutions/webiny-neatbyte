@@ -1,8 +1,10 @@
-const { highlightCode } = require('./utils')
+const { highlightCode, addImport } = require('./utils')
 
 module.exports.withSyntaxHighlighting = () => {
   return (tree) => {
     let preTree = { children: [] }
+    let componentName
+
     tree.children = tree.children.flatMap((node) => {
       if (node.type !== 'code') return node
       if (node.lang === null) return node
@@ -42,6 +44,17 @@ module.exports.withSyntaxHighlighting = () => {
         ]
           .filter(Boolean)
           .join('')
+      }
+
+      if (node.meta) {
+        if (!componentName) {
+          componentName = addImport(preTree, '@/components/Editor', 'Editor')
+        }
+        return [
+          { type: 'jsx', value: `<${componentName} filename="${node.meta}">` },
+          node,
+          { type: 'jsx', value: `</${componentName}>` },
+        ]
       }
 
       return node

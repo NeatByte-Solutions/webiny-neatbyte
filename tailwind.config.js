@@ -373,6 +373,9 @@ module.exports = {
   },
   plugins: [
     require('@tailwindcss/typography'),
+    function ({ addVariant }) {
+      addVariant('children', '& > *')
+    },
     function ({ matchUtilities, theme }) {
       matchUtilities(
         {
