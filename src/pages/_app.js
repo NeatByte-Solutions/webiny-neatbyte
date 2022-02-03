@@ -70,20 +70,20 @@ export default function App({ Component, pageProps, router }) {
         <meta
           key="twitter:image"
           name="twitter:image"
-          content={`https://tailwindcss.com${socialCardLarge}`}
+          content={`https://www.webiny.com/docs${socialCardLarge}`}
         />
         <meta key="twitter:creator" name="twitter:creator" content="@tailwindcss" />
         <meta
           key="og:url"
           property="og:url"
-          content={`https://tailwindcss.com${router.pathname}`}
+          content={`https://www.webiny.com/docs${router.pathname}`}
         />
         <meta key="og:type" property="og:type" content="article" />
         <meta key="og:description" property="og:description" content={description} />
         <meta
           key="og:image"
           property="og:image"
-          content={`https://tailwindcss.com${socialCardLarge}`}
+          content={`https://www.webiny.com/docs${socialCardLarge}`}
         />
         <link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="/feeds/feed.xml" />
         <link rel="alternate" type="application/atom+xml" title="Atom 1.0" href="/feeds/atom.xml" />
