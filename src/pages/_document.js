@@ -21,11 +21,11 @@ export default class Document extends NextDocument {
           <link rel="icon" type="image/png" sizes="32x32" href={v('/favicons/favicon-32x32.png')} />
           <link rel="icon" type="image/png" sizes="16x16" href={v('/favicons/favicon-16x16.png')} />
           <link rel="manifest" href={v('/favicons/site.webmanifest')} />
-          <link rel="mask-icon" href={v('/favicons/safari-pinned-tab.svg')} color="#38bdf8" />
+          <link rel="mask-icon" href={v('/favicons/safari-pinned-tab.svg')} color="#FA5A28" />
           <link rel="shortcut icon" href={v('/favicons/favicon.ico')} />
           <meta name="apple-mobile-web-app-title" content="Webiny Docs" />
           <meta name="application-name" content="Webiny Docs" />
-          <meta name="msapplication-TileColor" content="#38bdf8" />
+          <meta name="msapplication-TileColor" content="#FA5A28" />
           <meta name="msapplication-config" content={v('/favicons/browserconfig.xml')} />
           <meta name="theme-color" content="#ffffff" />
           <script
