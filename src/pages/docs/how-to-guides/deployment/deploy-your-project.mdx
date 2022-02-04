@@ -5,9 +5,8 @@ description: Learn how to deploy your Webiny project and its project application
 
 import { Alert } from "@/components/Alert"
 
-<Alert type="success">
+<Alert type="success" title="What you’ll learn">
 
-What you’ll learn
 - how to deploy your project into multiple environments
 - how to deploy a single project application into multiple environments
 
@@ -30,7 +29,6 @@ Note that, in order to more easily filter out the cloud infrastructure resources
 - `WbyProjectName` - the name of your project (declared in your `webiny.project.js` file)
 - `WbyEnvironment` - the environment of which the resource is part of
 
-
 ## The `deploy` Command
 
 The `deploy` command can be used to completely deploy your project, or just a specific project application.
@@ -50,11 +48,9 @@ yarn webiny deploy
 
 This command deploys all of the three applications that are, by default, included in every Webiny project. It deploys them in the following order:
 
-<!-- vale off -->
 1. **API** (`./api`) - your project's GraphQL API
 2. **Admin Area** (`./apps/admin`) - your administration area
 3. **Website** (`./apps/website`) - your public website
-<!-- vale on -->
 
 <Alert type="info">
 
@@ -95,16 +91,7 @@ yarn webiny pulumi api --env dev -- stack --show-ids
 
 Running the above command should produce the following output:
 
-<!-- vale off -->
-
-<img
-  src={require("./assets/deploy-your-project/list-aws-resources.png").default}
-  className="no-shadow"
-  style={{ borderRadius: 0 }}
-  alt="Previewing Stack command"
-/>
-
-<!-- vale on -->
+![Previewing Stack command](./assets/deploy-your-project/list-aws-resources.png)
 
 Similarly, you can use the following commands to list all cloud infrastructure resources
 deployed as part of the **Admin Area** and **Website** project applications, into the `dev` environment:
@@ -126,7 +113,6 @@ By default, every Webiny project consists of three project applications: **API**
 Read more about project organization in the [Project Organization](/docs/key-topics/project-organization/project-applications-and-packages) key topics section.
 
 </Alert>
-
 
 ## Debugging
 

@@ -5,9 +5,8 @@ description: Learn about fundamental organizational units of every Webiny projec
 
 import { Alert } from "@/components/Alert"
 
-<Alert type="success">
+<Alert type="success" title="WHAT YOU’LL LEARN">
 
-What you’ll learn
 - what are the fundamental organizational units of every Webiny project and their most important characteristics
 
 </Alert>
@@ -38,16 +37,7 @@ Every Webiny project is organized as a monorepo. Visit the [Monorepo Organizatio
 
 The following diagram shows the project organization in a simplified and clear manner:
 
-<!-- vale off -->
-
-<img
-  src={require("./project-applications-and-packages/project-organization.png").default}
-  className="no-shadow"
-  style={{ marginBottom: 20 }}
-  alt="Project Organization"
-/>
-
-<!-- vale on -->
+![Project Organization](./project-applications-and-packages/project-organization.png)
 
 If we were to translate the above diagram into a simplified directory tree, we would end up with the following:
 
@@ -112,16 +102,7 @@ In terms of packages, an example might be a utility (shared) package whose code 
 
 The same can happen with project applications. For example, let's say you have a simple HTTP API and a React app that's relying on it. In this case, the project application that's holding the React app depends on the project application that's holding the HTTP API.
 
-<!-- vale off -->
-
-<img
-  src={require("./project-applications-and-packages/dependent-packages-apps.png").default}
-  className="no-shadow"
-  style={{ marginBottom: 20 }}
-  alt="Dependent Packages and Applications"
-/>
-
-<!-- vale on -->
+![Dependent Packages and Applications](./project-applications-and-packages/dependent-packages-apps.png)
 
 ## FAQ
 

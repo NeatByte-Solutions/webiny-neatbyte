@@ -4,19 +4,14 @@ description: Learn how to continuously rebuild and redeploy your code using the 
 ---
 
 import { Alert } from "@/components/Alert"
-import preview from "./use-watch-command/watch-command-preview.png";
-import pseudoConsoles from "./use-watch-command/git-support-pseudo-consoles.png";
 
-<Alert type="info">
+<Alert type="info" title="Can I Use This?">
 
-Can I Use This?
 The `webiny watch` command is available since Webiny **v5.5.0**.
 
 </Alert>
 
-<Alert type="success">
-
-What you'll learn
+<Alert type="success" title="What you'll learn">
 
 - how to continuously rebuild and redeploy your code using the `webiny watch` command.
 
@@ -42,7 +37,7 @@ The command can be instructed not only to watch one or more packages in your Web
 
 The following screenshot shows the `webiny watch` command in action,  displaying different logs, grouped into three different panes - **Build**, **Deploy**, and **Logs**.
 
-<img alt="Watch Command - Build, Deploy and Logs Panes" src={preview} />
+![Watch Command - Build, Deploy and Logs Panes](./use-watch-command/watch-command-preview.png)
 
 <Alert type="info">
 
@@ -224,6 +219,6 @@ This feature really shines when talking about backend (serverless) development, 
 
 If you're using [GitBash](https://www.atlassian.com/git/tutorials/git-bash), then you'll have to update it to at least to version `2.27.0`, as this version introduces the support for pseudo consoles.
 
-<img alt="Enable Support For Pseudo Consoles" src={pseudoConsoles} />
+![Enable Support For Pseudo Consoles](./use-watch-command/git-support-pseudo-consoles.png)
 
 Please try enabling this option and try again.

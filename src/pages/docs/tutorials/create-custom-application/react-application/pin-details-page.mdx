@@ -4,11 +4,8 @@ description: Learn how to create a simple page that's responsible for displaying
 ---
 
 import { Alert } from "@/components/Alert"
-import pinDetailsPage from "./pin-details-page/pin-details-page.png";
 
-<Alert type="success">
-
-WHAT YOU’LL LEARN
+<Alert type="success" title="WHAT YOU’LL LEARN">
 
 - how to create a simple page that's responsible for displaying details for a particular pin
 - how to execute GraphQL queries using already configured [Apollo Client](https://www.apollographql.com/docs/react/v2)
@@ -16,9 +13,7 @@ WHAT YOU’LL LEARN
 
 </Alert>
 
-<Alert type="info">
-
-Can I use this?
+<Alert type="info" title="Can I use this?">
 
 In order to follow this tutorial, you must use Webiny version **5.18.0** or greater.
 
@@ -207,12 +202,10 @@ Then, similarly to what we did in the previous [Registering the `RoutePlugin` Pl
 @import "./styles/notFound";
 ```
 
-
-
 ## Final Result
 
 Finally, with all of the both React and Sass code in place, if we were to click on an arbitrary pin from the homepage, we should be redirected to the **Pin Details** page and see something like the following:
 
-<img src={pinDetailsPage} alt="Pin Details Page" />
+![Pin Details Page](./pin-details-page/pin-details-page.png)
 
 If that's the case, then all of the steps were performed correctly. This also means we can move on to the following section of this tutorial, in which we'll talk about securing your application.

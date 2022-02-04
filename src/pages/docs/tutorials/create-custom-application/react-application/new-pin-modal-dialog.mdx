@@ -4,20 +4,15 @@ description: Learn how to create a simple modal dialog over which users can crea
 ---
 
 import { Alert } from "@/components/Alert"
-import newPinModalDialog from "./new-pin-modal-dialog/new-pin-modal-dialog.png";
-import plusHeaderButton from "./new-pin-modal-dialog/plus-header-button.png";
 
-<Alert type="success">
-
-WHAT YOU’LL LEARN
+<Alert type="success" title="WHAT YOU’LL LEARN">
 
 - how to create a simple modal dialog for creating new pins (with [Ant Design](https://ant.design/docs/react/introduce) React library)
 - how to execute GraphQL mutations using already configured [Apollo Client](https://www.apollographql.com/docs/react/v2)
 
 </Alert>
 
-<Alert type="info">
-Can I use this?
+<Alert type="info" title="Can I use this?">
 
 In order to follow this tutorial, you must use Webiny version **5.18.0** or greater.
 
@@ -32,7 +27,7 @@ The code that we cover in this section can also be found in our GitHub [examples
 
 It's time to create the **New Pin** modal dialog, which the users will open by clicking on the **&#10753;** icon, located in the top right corner of the screen.
 
-<img src={plusHeaderButton} style={{ maxWidth: 650, width:'100%' }} alt="Open New Pin Modal Dialog" />
+![Open New Pin Modal Dialog](./new-pin-modal-dialog/plus-header-button.png)
 
 For starters, let's create the [`NewPinModal`](https://github.com/webiny/webiny-examples/blob/master/create-custom-application/04-react-application/03-new-pin-modal-dialog/pinterest-clone/app/code/src/components/NewPinModal.tsx#L26) React component in the [`pinterest-clone/app/code/src/components/NewPinModal.tsx`](https://github.com/webiny/webiny-examples/blob/master/create-custom-application/04-react-application/03-new-pin-modal-dialog/pinterest-clone/app/code/src/components/NewPinModal.tsx) file:
 
@@ -189,7 +184,7 @@ export default Layout;
 
 With all of the code updates in place, we should be able to see the **&#10753;** icon in the header and open the **New Pin** dialog by clicking on it. And, of course, we should be able to create new pins by simply filling the form and pressing the **OK** button. Feel free to create as much pins as you like!
 
-<img src={newPinModalDialog} alt="New Pin Modal Dialog" />
+![New Pin Modal Dialog](./new-pin-modal-dialog/new-pin-modal-dialog.png)
 
 <Alert type="info">
 

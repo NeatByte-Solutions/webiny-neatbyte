@@ -4,13 +4,8 @@ description: Learn how to build a simple React application that interacts with a
 ---
 
 import { Alert } from "@/components/Alert"
-import viewPin from "./introduction/view-pin.png";
-import viewPins from "./introduction/view-pins.png";
-import newPinModalDialog from "./introduction/new-pin-modal-dialog.png";
 
-<Alert type="success">
-
-WHAT YOU’LL LEARN
+<Alert type="success" title="WHAT YOU’LL LEARN">
 
 - how to build a simple React application that interacts with an existing GraphQL API
 - what the React application will look like
@@ -18,9 +13,7 @@ WHAT YOU’LL LEARN
 
 </Alert>
 
-<Alert type="info">
-
-Can I use this?
+<Alert type="info" title="Can I use this?">
 
 In order to follow this tutorial, you must use Webiny version **5.18.0** or greater.
 
@@ -40,16 +33,15 @@ Essentially, the application will consist of the following two pages:
 
 1. **Homepage** - a list of all pins, created by different users:
 
-<img src={viewPins} alt="The Pinterest Clone Application" />
-
+![The Pinterest Clone Application](./introduction/view-pins.png)
 
 2. **Pin Details**:
 
-<img shadow={viewPins} alt="Viewing a Pin" src={viewPin} />
+![Viewing a Pin](./introduction/view-pin.png)
 
 With these two pages, we'll also have to create a simple **New Pin** modal dialog that will enable users to create new pins:
 
-<img src={newPinModalDialog} alt="New Pin Modal Dialog" />
+![New Pin Modal Dialog](./introduction/new-pin-modal-dialog.png)
 
 Before we start with any kind of coding, let's quickly outline the plan.
 
@@ -97,4 +89,3 @@ Finally, on the homepage, once a user clicks on a pin, we need to redirect her/h
 To create our React application, we won't be relying on any existing scaffolds. Instead, we'll simply use our existing [React](https://reactjs.org/) and CSS ([Sass](https://sass-lang.com/)) knowledge. And, as previously mentioned, we'll also use the [Ant Design](https://ant.design/docs/react/introduce) React library, which will make the whole process a bit faster.
 
 Additionally, note that, for now, we won't be dealing with security and the file upload functionality. We will tackle these separately, in the upcoming sections of this tutorial.
-
