@@ -4,22 +4,14 @@ description: Learn how to quickly extend a GraphQL API with the Extend GraphQL A
 ---
 
 import { Alert } from "@/components/Alert"
-import extendGqlApiScaffold from "./graphql-api/extend-gql-api-scaffold.png";
-import extendGqlApiScaffoldOutput from "./graphql-api/extend-gql-api-scaffold-output.png";
-import createPinMutation from "./graphql-api/create-pin-mutation-test.png";
-import coverImagePreview from "./graphql-api/cover-image-preview.png";
 
-<Alert type="success">
-
-WHAT YOU’LL LEARN
+<Alert type="success" title="WHAT YOU’LL LEARN">
 
 - how to quickly extend a GraphQL API with the **Extend GraphQL API** scaffold.
 
 </Alert>
 
-<Alert type="info">
-
-Can I use this?
+<Alert type="info" title="Can I use this?">
 
 In order to follow this tutorial, you must use Webiny version **5.18.0** or greater.
 
@@ -62,12 +54,7 @@ For this tutorial, we'll go with the second approach. So, in your terminal of ch
 ```bash
 yarn webiny scaffold
 ```
-
-<img
-  alt="Extend GraphQL API Scaffold"
-  style={{ maxWidth: 650, width: "100%" }}
-  src={extendGqlApiScaffold}
-/>
+![Extend GraphQL API Scaffold](./graphql-api/extend-gql-api-scaffold.png)
 
 Once we've selected the **Extend GraphQL API** scaffold from the list, we'll get presented with the the following two questions:
 
@@ -78,7 +65,7 @@ As the answer to the first question, we can simply use the [`pinterest-clone/api
 
 Once we've answered all of the questions, after a quick confirmation step, scaffolding will start and eventually, we should end up with the following output in our terminal:
 
-<img alt="Extend GraphQL API Scaffold - Full Output" src={extendGqlApiScaffoldOutput} />
+![Extend GraphQL API Scaffold - Full Output](./graphql-api/extend-gql-api-scaffold-output.png)
 
 After the scaffolding process has been completed, we should end up with the following new GraphQL query and mutation operations in our GraphQL API:
 
@@ -107,9 +94,8 @@ This is great because, as we can see, the type already contains two out of three
 
 For now, let's just do a quick test of the changes that were initially performed by the scaffold.
 
-<Alert type="info">
+<Alert type="info" title="In Case You Missed It">
 
-In Case You Missed It
 In order to actually see the new operations in your GraphQL API, your application code needs to be redeployed. This can be done as usual via the [`webiny deploy`](/docs/how-to-guides/deployment/deploy-your-project), or, even easier, via the [`webiny watch`](/docs/how-to-guides/use-watch-command) command. The latter will not only deploy the changes, but also start a new watch session, which will automatically redeploy further application code changes, as you perform them.
 
 For more information on how to use it, revisit the [Using the Watch Command](/docs/tutorials/create-custom-application/getting-started#using-the-watch-command) topic in the previous [Getting Started](/docs/tutorials/create-custom-application/getting-started#using-the-watch-command) section.
@@ -157,7 +143,7 @@ mutation CreatePin($data: PinCreateInput!) {
 
 Once run, we should receive a response similar to the following (the only piece of information that should be different on your end should be the returned `id`):
 
-<img alt={'"CreatePin Mutation" Test'} src={createPinMutation} />
+![CreatePin Mutation Test](./graphql-api/create-pin-mutation-test.png)
 
 <Alert type="info">
 
@@ -291,7 +277,7 @@ mutation CreatePin($data: PinCreateInput!) {
 }
 ```
 
-<img alt={'"CreatePin Mutation" Test'} src={coverImagePreview} />
+![CreatePin Mutation Test](./graphql-api/cover-image-preview.png)
 
 <Alert type="info">
 

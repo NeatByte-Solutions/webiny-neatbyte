@@ -5,9 +5,8 @@ description: Learn what are monorepos and what are the benefits this project org
 
 import { Alert } from "@/components/Alert"
 
-<Alert type="success">
+<Alert type="success" title="WHAT YOU’LL LEARN">
 
-What you'll learn
 - what are monorepos and what are the benefits of using them
 - where can a list of all workspaces be found
 
@@ -41,21 +40,10 @@ Monorepo organization makes it possible to structure different logical pieces of
 
 An abstract example of packages and shared packages, located in different project applications, can be found in the [Project Applications and Packages](/docs/key-topics/project-organization/project-applications-and-packages) topic:
 
-<!-- vale off -->
-
-<img
-  src={require("./project-applications-and-packages/project-organization.png").default}
-  className="no-shadow"
-  style={{ marginBottom: 20 }}
-  alt="Project Organization"
-/>
-
-<!-- vale on -->
+![Project Organization](./project-applications-and-packages/project-organization.png)
 
 #### Optimally Storing Dependencies
 The yarn 2 workspaces feature makes sure that the same dependencies required by multiple packages are stored in a most efficient way. For example, when specifying the React library as a dependency in two or more packages, the library is actually downloaded only once. On larger projects, this significantly reduces the overall size on disk of all of the different dependencies that your packages may require.
-
-
 
 ## List of Workspaces
 In every Webiny project, the list of all workspaces can be found in the `package.json` file, located in your project root, for example:
@@ -80,7 +68,6 @@ In every Webiny project, the list of all workspaces can be found in the `package
 },
 (...)
 ```
-
 In addition to the above shown list, you're also free to add more workspaces, if need be. You will be updating this list whenever you're about to add a new package to your project.
 
 <Alert type="info">

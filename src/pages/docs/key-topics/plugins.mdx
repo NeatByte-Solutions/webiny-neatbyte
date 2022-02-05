@@ -5,9 +5,7 @@ description: Learn about plugins, how they work, and the differences between fro
 
 import { Alert } from "@/components/Alert"
 
-<Alert type="success">
-
-What you'll learn
+<Alert type="success" title="WHAT YOU’LL LEARN">
 
 - how Webiny is built using plugins
 - what is a `PluginsContainer`
@@ -30,9 +28,8 @@ Plugins are very simple in nature. They can be a plain JS object, or extend a bu
 
 Plugins can not only do what Webiny expects them to, but can also introduce hooks for other plugins, which can call other plugins, and so on. You just use them as building blocks for your business logic, UI, data processing, etc.
 
-<Alert type="info">
+<Alert type="info" title="Good to know">
 
-Good to know
 You will find a mix of plain JS objects and class plugins when reading our docs, or browsing the Github repository. This is because, initially, we started with plugins as plain objects. Recently, we realized that we can greatly improve the developer experience and speed of development by providing concrete plugin classes you can just instantiate, or extend, instead of dabbling with TS types.
 
 All the new plugins we're creating, are written as classes. You can expect plain object plugins to go away in the future, but we will cover them in this article, because the majority of the platform still uses them.
@@ -94,9 +91,8 @@ helloPlugins.forEach(plugin => plugin.hello());
 
 To recap: by always importing the same `plugins` instance from `@webiny/plugins`, you're referencing the same `PluginsContainer` instance, and so, you have access to all the plugins anywhere in the application.
 
-<Alert type="info">
+<Alert type="info" title="Why not use React Context to share plugins?">
 
-Why not use React Context to share plugins?
 Not all plugins are related to React. There are plugins that are used outside React, but still within your application. For this reason, plugins container lives on its own.
 
 </Alert>

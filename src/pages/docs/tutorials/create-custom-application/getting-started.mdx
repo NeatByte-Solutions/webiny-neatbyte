@@ -4,25 +4,14 @@ description: Learn how to use the existing Full Stack Application scaffold in or
 ---
 
 import { Alert } from "@/components/Alert"
-import scaffoldsList from "./getting-started/scaffolds-list.png";
-import fullStackAppScaffold from "./getting-started/full-stack-app-scaffold.png";
-import dependentApps from "./getting-started/dependent-apps.png";
-import watchCommands from "./getting-started/watch-commands.png";
-import graphqlApiCloudInfrastructureDiagram from "./getting-started/new_graphql_api_scaffold.png";
-import reactAppCloudInfrastructureDiagram from "./getting-started/new_react_app_scaffold.png";
 
-
-<Alert type="success">
-
-WHAT YOU’LL LEARN
+<Alert type="success" title="WHAT YOU’LL LEARN">
 
 - how to use the **Full Stack Application** scaffold to start building a new custom application in no time
 
 </Alert>
 
-<Alert type="info">
-
-Can I use this?
+<Alert type="info" title="Can I use this?">
 
 In order to follow this tutorial, you must use Webiny version **5.18.0** or greater.
 
@@ -46,10 +35,7 @@ Speaking of deployment, note that we'll need to deploy the newly created GraphQL
 
 In order to host the GraphQL API, these are the cloud infrastructure resources that will get deployed:
 
-<img
-  alt="Cloud Infrastructure Resources"
-  src={graphqlApiCloudInfrastructureDiagram}
-/>
+![Cloud Infrastructure Resources](./getting-started/new_graphql_api_scaffold.png)
 
 Note that we will expand this infrastructure with a couple of additional resources, in the following sections of this tutorial.
 
@@ -61,10 +47,7 @@ Note that, for development purposes, except having the GraphQL API deployed, we 
 
 In order to host the React application, these are the cloud infrastructure resources that will get deployed:
 
-<img
-  alt="Cloud Infrastructure Resources"
-  src={reactAppCloudInfrastructureDiagram}
-/>
+![Cloud Infrastructure Resources](./getting-started/new_react_app_scaffold.png)
 
 ## Running the Scaffold
 
@@ -76,7 +59,7 @@ yarn webiny scaffold
 
 Running this command should give us the following list of available scaffolds:
 
-<img alt="Scaffolds List" style={{ maxWidth: 650, width: "100%" }} src={scaffoldsList} />
+![Scaffolds List](./getting-started/scaffolds-list.png)
 
 Once we've selected the **Full Stack Application** scaffold from the list, we'll get presented with the the following three questions:
 
@@ -92,11 +75,7 @@ Furthermore, we'll also be asked about whether we want to immediately deploy the
 
 Ultimately, we should end up with the following output in our terminal:
 
-<img
-  alt="Full Stack Application - Full Output"
-  style={{ maxWidth: 750, width: "100%" }}
-  src={fullStackAppScaffold}
-/>
+![Full Stack Application - Full Output](./getting-started/full-stack-app-scaffold.png)
 
 As we can see, the scaffold created the GraphQL API inside the [`pinterest-clone/api`](https://github.com/webiny/webiny-examples/tree/master/create-custom-application/02-getting-started/pinterest-clone/api), and the React application inside the [`pinterest-clone/app`](https://github.com/webiny/webiny-examples/tree/master/create-custom-application/02-getting-started/pinterest-clone/app) folder.
 
@@ -142,9 +121,8 @@ The following command will start a new watch session on our GraphQL API applicat
 yarn webiny watch pinterest-clone/api --env dev
 ```
 
-<Alert type="success">
+<Alert type="success" title="Misplaced GraphQL API URL?">
 
-Misplaced GraphQL API URL?
 Running the `yarn webiny output pinterest-clone/api --env dev` command from your project root will display all of the values that were exported from your cloud infrastructure code. That includes GraphQL API URL, Amazon DynamoDB table name, and more.
 
 </Alert>
@@ -181,7 +159,7 @@ When we say _scripts need to pick up some of the values exported from GraphQL AP
 
 The following screenshot shows the two [`webiny watch`](/docs/how-to-guides/use-watch-command) commands run side-by-side in two separate terminal sessions:
 
-<img alt="Watching GraphQL API and React Application" src={watchCommands}/>
+![Watching GraphQL API and React Application](./getting-started/watch-commands.png)
 
 ## Deployments
 

@@ -7,12 +7,8 @@ description: Learn how to create a simple homepage that lists the pins created b
 ---
 
 import { Alert } from "@/components/Alert"
-import pinterestMosaicLayout from "./homepage/pinterest-mosaic-layout.png";
-import homepage from "./homepage/homepage.png";
 
-<Alert type="success">
-
-WHAT YOU’LL LEARN
+<Alert type="success" title="WHAT YOU’LL LEARN">
 
 - how to create a simple homepage that lists the pins created by different users
 - how to execute GraphQL queries using already configured [Apollo Client](https://www.apollographql.com/docs/react/v2)
@@ -20,9 +16,7 @@ WHAT YOU’LL LEARN
 
 </Alert>
 
-<Alert type="info">
-
-Can I use this?
+<Alert type="info" title="Can I use this?">
 
 In order to follow this tutorial, you must use Webiny version **5.18.0** or greater.
 
@@ -34,14 +28,13 @@ The code that we cover in this section can also be found in our GitHub [examples
 
 </Alert>
 
-
 ## Overview
 
 Now that we have our **New Pin** modal dialog working as expected, we're can continue by creating the homepage. As seen in previous sections, the homepage lists all pins that were created by different users.
 
 Like in the previous section, fetching the list of created pins can be easily done via the [Apollo Client](https://www.apollographql.com/docs/react/v2/) and its [`useQuery`](https://www.apollographql.com/docs/react/v2/data/queries/#executing-a-query) React hook. A bit trickier part is rendering the pins in a mosaic layout, which is how the original [Pinterest](https://www.pinterest.com/) website does it.
 
-<img src={pinterestMosaicLayout} alt="Pinterest - The Mosaic Layout"/>
+![Pinterest - The Mosaic Layout](./homepage/pinterest-mosaic-layout.png)
 
 Luckily, we can achieve this pretty easily with a small React library called [`react-columned`](https://www.npmjs.com/package/react-columned), which we'll need to add to our React application. Once we have that, we can start working on our homepage by adjusting the existing [`Home`](https://github.com/webiny/webiny-examples/blob/master/create-custom-application/04-react-application/04-homepage/pinterest-clone/app/code/src/plugins/routes/home.tsx#L25) React component.
 
@@ -198,7 +191,7 @@ Not super important, but making this change this will make the pins listed on ou
 
 With this component in place, our homepage should look like the following:
 
-<img src={homepage} alt="Homepage - List of Pins"/>
+![Homepage - List of Pins](./homepage/homepage.png)
 
 At the moment, we could probably say that our homepage looks a bit bland and maybe boring. But we don't need to worry about that for now. The whole page will start looking much more lively as soon as we bring the missing cover image field and file upload functionality into the mix.
 
