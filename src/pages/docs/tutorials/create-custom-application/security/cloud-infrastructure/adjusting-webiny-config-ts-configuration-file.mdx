@@ -4,19 +4,14 @@ description: Learn how to we can transfer all of the stack output properties tha
 ---
 
 import { Alert } from "@/components/Alert"
-import stackOutputExample from "./adjusting-webiny-config-ts/stack-output-example.png";
 
-<Alert type="success">
-
-WHAT YOU’LL LEARN
+<Alert type="success" title="WHAT YOU’LL LEARN">
 
 - how to we can transfer all of the stack output properties that we've added in GraphQL API and React application cloud infrastructure code, into our React application
 
 </Alert>
 
-<Alert type="info">
-
-Can I use this?
+<Alert type="info" title="Can I use this?">
 
 In order to follow this tutorial, you must use Webiny version **5.18.0** or greater.
 
@@ -207,11 +202,7 @@ yarn webiny output pinterest-clone/app --env  --json
 
 If the result is different from `"null"`, that would mean the application has been previously deployed.
 
-<img
-  alt='Running "webiny Output" Command on a Non-existing and Existing Environments'
-  style={{ maxWidth: 750, width:'100%' }}
-  src={stackOutputExample}
-/>
+![Running webiny Output Command on a Non-existing and Existing Environments](./adjusting-webiny-config-ts/stack-output-example.png)
 
 <Alert type="info">
 

@@ -4,19 +4,14 @@ description: Learn how we can add and deploy a new User Pool Client, via React a
 ---
 
 import { Alert } from "@/components/Alert"
-import cloudInfraDeploy from "./adding-user-pool-client/cloud-infra-deploy.png";
 
-<Alert type="success">
-
-WHAT YOU’LL LEARN
+<Alert type="success" title="WHAT YOU’LL LEARN">
 
 - how we can add and deploy a new User Pool Client, via React application's cloud infrastructure code
 
 </Alert>
 
-<Alert type="info">
-
-Can I use this?
+<Alert type="info" title="Can I use this?">
 
 In order to follow this tutorial, you must use Webiny version **5.18.0** or greater.
 
@@ -137,11 +132,7 @@ yarn webiny deploy pinterest-clone/app --env dev --no-build
 
 Notice the `--no-build` argument at the end of the command. With it, we've instructed the [`webiny deploy`](/docs/how-to-guides/deployment/deploy-your-project) command to not worry about our React application (its code), but just ensure that the supporting cloud infrastructure resources are deployed. Furthermore, note that this will not only deploy the newly defined User Pool Client, but also other already defined resources - an [Amazon S3 bucket](https://github.com/webiny/webiny-examples/blob/master/create-custom-application/05-security/03-cloud-infrastructure/02-adding-user-pool-client/pinterest-clone/app/pulumi/index.ts#L22) and a [CloudFront distribution](https://github.com/webiny/webiny-examples/blob/master/create-custom-application/05-security/03-cloud-infrastructure/02-adding-user-pool-client/pinterest-clone/app/pulumi/index.ts#L23).
 
-<img
-  alt="Initial deployment of Cloud Infrastructure"
-  style={{ maxWidth: 750, width: "100%" }}
-  src={cloudInfraDeploy}
-/>
+![Initial deployment of Cloud Infrastructure](./adding-user-pool-client/cloud-infra-deploy.png)
 
 <Alert type="success">
 
@@ -154,4 +145,3 @@ As seen in the screenshot above, except all of the cloud infrastructure resource
 In this section, we defined and deployed the last cloud infrastructure resource that we need in order to implement the Hosted UI authentication flow: the User Pool Client. Also, by adding `cognitoUserPool.clientId` to stack output properties, we've exposed the ID of the deployed User Pool Client. This will enable us to later retrieve it within our React application code and connect everything together.
 
 With all of this in place, there's one additional step we need to complete before we finally start working on our React application code, and that's adjusting its [`webiny.config.ts`](https://github.com/webiny/webiny-examples/blob/master/create-custom-application/05-security/03-cloud-infrastructure/02-adding-user-pool-client/pinterest-clone/app/code/webiny.config.ts) configuration file.
-

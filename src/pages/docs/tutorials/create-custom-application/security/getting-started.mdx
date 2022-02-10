@@ -4,21 +4,15 @@ description: Get a high-level overview of Amazon Cognito's Hosted UI authenticat
 ---
 
 import { Alert } from "@/components/Alert"
-import hostedUi1 from "./getting-started/hosted-ui-1.png";
-import hostedUi2 from "./getting-started/hosted-ui-2.png";
 
-<Alert type="success">
-
-WHAT YOU’LL LEARN
+<Alert type="success" title="WHAT YOU’LL LEARN">
 
 - an overview of Amazon Cognito's Hosted UI authentication flow
 - what are some of the things we need to consider, before starting with the tutorial
 
 </Alert>
 
-<Alert type="info">
-
-Can I use this?
+<Alert type="info" title="Can I use this?">
 
 In order to follow this tutorial, you must use Webiny version **5.18.0** or greater.
 
@@ -38,21 +32,11 @@ An authentication flow can easily be introduced via [Amazon Cognito](https://aws
 
 With this approach, the authentication flow is completely offloaded to Amazon Cognito. Once users wish to sign up or sign in to our application, they usually click on a button or a link, which causes a redirect to the standalone hosted authentication flow. So, as mentioned, the authentication flow is happening completely outside of our application.
 
-<img
-  alt="User Authentication Flow Start"
-  shadow={false}
-  style={{ maxWidth: 500, width: '100%' }}
-  src={hostedUi1}
-/>
+![User Authentication Flow Start](./getting-started/hosted-ui-1.png)
 
 Once completed successfully, the user is redirected back to our application, but this time, authenticated. Which means we should be able to retrieve the currently signed in user within both React application and GraphQL API, ultimately enabling us to securely perform sensitive operations like sensitive GraphQL mutations, maybe even file upload, and more.
 
-<img
-  alt="User Authentication Flow End"
-  shadow={false}
-  style={{ maxWidth: 500 , width: '100%'}}
-  src={hostedUi2}
-/>
+![User Authentication Flow End](./getting-started/hosted-ui-2.png)
 
 In total, in order to fully implement this flow, we're going to need three new Amazon Cognito cloud infrastructure resources. Two deployed as part of our GraphQL API:
 
@@ -76,7 +60,6 @@ In the following sections, for the sake of brevity, we'll refer to these resourc
 Learn more about other types of authentication flows that Amazon Cognito offers, in its official [documentation](https://docs.aws.amazon.com/cognito/latest/developerguide/amazon-cognito-user-pools-authentication-flow.html).
 
 </Alert>
-
 
 ## Before We Begin
 

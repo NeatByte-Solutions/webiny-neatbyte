@@ -4,21 +4,14 @@ description: Learn how to define content models and content model groups via plu
 ---
 
 import { Alert } from '@/components/Alert'
-import contentModelsGroupEditor from './content-models-plugins/content-models-group-editor.png'
-import basicsPluginsWork from './content-models-plugins/basics-plugins-work.png'
-import faqIconSelector from './content-models-plugins/faq-icon-selector.png'
 
-<Alert type="success">
-
-What you'll learn
+<Alert type="success" title="What you'll learn">
 
 - how to define content models and content model groups via plugins
 
 </Alert>
 
-<Alert type="info">
-
-Can I use this?
+<Alert type="info" title="Can I use this?">
 
 This feature is available since **v5.11.0**.
 
@@ -32,10 +25,7 @@ Content models and content model groups can be defined in two ways.
 
 The most straightforward way to define content models and content model groups would be via the Admin Area application, via the Content Model Editor and the Content Model Groups module. This is especially suitable for users that are not developers, and just want to manage everything in a quick and easy way.
 
-<img
-  alt="Defining Content Models and Content Model Groups via the Admin Area Application"
-  src={contentModelsGroupEditor}
-/>
+![Defining Content Models and Content Model Groups via the Admin Area Application](./content-models-plugins/content-models-group-editor.png)
 
 ### Using Plugins
 
@@ -122,7 +112,7 @@ Do note that you will also need to import the newly created [`api/code/headlessC
 
 Once registered, we should end up with the following two items in our Admin Area main menu:
 
-<img alt="Product and E-Commerce Items in the Admin Area Main Menu" src={basicsPluginsWork} />
+![Product and E-Commerce Items in the Admin Area Main Menu](./content-models-plugins/basics-plugins-work.png)
 
 As shown in the example, the [`CmsGroupPlugin`](https://github.com/webiny/webiny-js/blob/v5.21.0/packages/api-headless-cms/src/content/plugins/CmsGroupPlugin.ts#L4) receives a [`CmsContentModel`](https://github.com/webiny/webiny-js/blob/v5.21.0/packages/api-headless-cms/src/types.ts#L282) object upon instantiation. It lets us define all of the content model's properties, like its name, ID (`modelId`), a content model group to which it belongs to, and most importantly, all of the fields that it consists of.
 
@@ -207,7 +197,7 @@ There is a difference in how these two IDs are used internally within Headless C
 
 When defining content model groups via Admin Area, we pick its icon via a simple drop-down menu:
 
-<img alt="Content Model Groups Form - Icon Selector" src={faqIconSelector} />
+![Content Model Groups Form - Icon Selector](./content-models-plugins/faq-icon-selector.png)
 
 On the other hand, when defining content model groups via a plugin, we need to specify the icon manually, by setting the same string value that would be set once an icon was picked from the above seen drop-down menu.
 
