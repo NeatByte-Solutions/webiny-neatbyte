@@ -4,34 +4,14 @@ description: Learn how you can secure your Admin Area application modules.
 ---
 
 import { Alert } from "@/components/Alert"
-import securityGroupsSelection from "./assets/security-groups-selection.png";
-import securityGroupsPermissions from "./assets/security-groups-permissions.png";
-import addedSecurityPermissionsGroup from "./assets/added-security-permissions-group.png";
-import unprotectedQuery from "./assets/unprotected-query.png";
-import unprotectedMutation from "./assets/unprotected-mutation.png";
-import graphqlAuthError from "./assets/query-auth-error.png";
-import graphqlAuthSuccess from "./assets/query-auth-success.png";
-import createTestUser from "./assets/create-test-user.png";
-import newSecurityGroup from "./assets/new-security-group.png";
-import contentLocaleSection from "./assets/content-locale-section.png";
-import carManufacturersMenuItem from "./assets/car-manufacturers-menu-item.png";
-import carManufacturersMenuItemHidden from "./assets/car-manufacturers-menu-item-hidden.png";
-import routeNotAuthorized from "./assets/route-not-authorized.png";
-import hidingNewButton from "./assets/hiding-new-button.png";
-import hidingNewButtonHidden from "./assets/hiding-new-button-hidden.png";
-import deleteButtonInDataList from "./assets/delete-button-in-datalist.png";
 
-<Alert type="success">
-
- What you'll learn
+<Alert type="success" title="What you'll learn">
 
 - how to prevent unauthorized users from seeing user-interface sections in Webiny Admin application
 
 </Alert>
 
-<Alert type="info">
-
- Can I use this?
+<Alert type="info" title="Can I use this?">
 
 In order to follow this tutorial, you must use Webiny version **5.9.0** or greater.
 
@@ -59,7 +39,7 @@ For starters, let's see how we can hide the Car Manufacturers menu items in the 
 
 By completing the [previous set of tutorials](/docs/tutorials/extend-admin-area/introduction), in our Admin Area application, we should have the following items in the main menu:
 
-<img alt="Main Menu - Car Manufacturers Module" src={carManufacturersMenuItem} />
+![Main Menu - Car Manufacturers Module](./assets/car-manufacturers-menu-item.png)
 
 So, what we want to achieve here is the following:
 
@@ -155,10 +135,7 @@ As you may have noticed, we're using the exact same logic and code, that we prev
 
 In order to manually test this, we can just log in with a user that doesn't belong to the Car Manufacturers security group. In that case, if everything was done correctly, we should not be able to see the Car Manufacturers menu item:
 
-<img
-  alt="Main Menu - Car Manufacturers Module (Hidden)"
-  src={carManufacturersMenuItemHidden}
-/>
+![Main Menu - Car Manufacturers Module (Hidden)](./assets/car-manufacturers-menu-item-hidden.png)
 
 And while this is much better than what we had earlier, note that the actual route, to which the Car Manufacturers menu item linked, is still accessible. In other words, if a user tried to enter the `/car-manufacturers` URL path (route) into the browser manually, the view would still be shown. This is simply because the route itself isn't secured. So, let's see how we can do that.
 
@@ -216,7 +193,7 @@ In order to conditionally render the `/car-manufacturers` route, we are using th
 
 So, with this newly added code in place, by entering the mentioned `/car-manufacturers` URL path into the browser, we'd receive the following:
 
-<img alt="Cannot Access Route - Not Authorized Message" src={routeNotAuthorized} />
+![Cannot Access Route - Not Authorized Message](./assets/route-not-authorized.png)
 
 And that's how you secure your routes. Note that we've only checking if the logged-in user possesses the `car-manufacturers` permission. And although that's not a very specific check, we can still consider is it as enough, since we can perform more specific checks within the rendered child React components.
 
@@ -226,7 +203,7 @@ Let's see how we can prevent rendering of React components, in case the logged-i
 
 For example, let's hide the New Car Manufacturer button, for logged-in users that aren't allowed to create new or update existing car manufacturers. As we'll soon be able to see, this is determined via the `rwd` property in our `car-manufacturers` security permission object (letter `w` must be present in the string).
 
-<img alt='Hiding the "New Car Manufacturer Button"' src={hidingNewButton} />
+![Hiding the New Car Manufacturer Button](./assets/hiding-new-button.png)
 
 To do that, let's jump to the `CarManufacturersDataList` React component ([`apps/admin/code/src/plugins/scaffolds/carManufacturers/views/CarManufacturersDataList.tsx`](https://github.com/webiny/webiny-examples/blob/master/extend-admin-area-security/apps/admin/code/src/plugins/scaffolds/carManufacturers/views/CarManufacturersDataList.tsx#L39)), in which we're going to wrap the `ButtonSecondary` component with the `SecureView` component. The following code shows how we can do that (parts of code excluded for brevity):
 
@@ -336,10 +313,7 @@ In order to conditionally render the New Car Manufacturer button, we are using t
 
 Once again, with this newly added code in place, we should no longer see the New Car Manufacturer button if the logged-in user isn't allowed to create new or update existing car manufacturers (letter `w` must be present in the `rwd` property of our `car-manufacturers` security permission object).
 
-<img
-  alt='Hiding the "New Car Manufacturer Button" (Hidden)'
-  src={hidingNewButtonHidden}
-/>
+![Hiding the New Car Manufacturer Button](./assets/hiding-new-button-hidden.png)
 
 And that's how we can use the `SecureView` React component to conditionally render a React component.
 
@@ -363,10 +337,7 @@ To learn more about how to use these in a custom React application, please check
 
 Furthermore, note that there are still places in the user interface, where we'd most probably want to perform authorization checks, using one of the shown utilities. For example, in the car manufacturers list, we certainly don't want to show the delete entry icon, if the user isn't allowed to perform the delete operation.
 
-<img
-  alt='Hiding the "Car Manufacturers Data List - Delete Button" (Hidden)'
-  src={deleteButtonInDataList}
-/>
+![Hiding the Car Manufacturers Data List - Delete Button (Hidden)](./assets/delete-button-in-datalist.png)
 
 Make sure to check the [full code example](https://github.com/webiny/webiny-examples/tree/master/extend-admin-area-security/apps/admin/code/src/plugins/scaffolds/carManufacturers) to see how the rest of the authorization checks were implemented.
 

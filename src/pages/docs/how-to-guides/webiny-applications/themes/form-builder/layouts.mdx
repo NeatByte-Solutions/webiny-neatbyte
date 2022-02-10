@@ -28,29 +28,17 @@ Feel free to organize the code to your liking, import custom CSS, fonts, or even
 
 Be default, every form has a default layout, which can be changed via the form settings. In the Form Builder, click on the settings icon in the top right corner:
 
-<!-- vale off -->
-
-<img
-  src={require('./images/webiny-fb-form-settings-button.png').default}
-  style={{ marginBottom: 20 }}
-  alt="Webiny form settings button"
-/>
-
-<!-- vale on -->
+![Webiny form settings button](./images/webiny-fb-form-settings-button.png)
 
 You should then see the following screen, and the "Layout" field at the bottom of the general settings form:
 
-<!-- vale off -->
+![Webiny form settings button](./images/webiny-fb-form-settings.png)
 
-<img
-  src={require('./images/webiny-fb-form-settings.png').default}
-  style={{ marginBottom: 20 }}
-  alt="Webiny form settings button"
-/>
-
-<!-- vale on -->
+<Alert type="info">
 
 Please note that a single form layout can be used on any number of forms, but every single form can use only one layout.
+
+</Alert>
 
 ## Anatomy of Form Layout
 
@@ -76,11 +64,15 @@ export default [
 ]
 ```
 
+<Alert type="info">
+
 The plugin is defined once but must be registered both in your admin and website apps.
 It enables you to do both:
 
 - see the form preview in the Form Builder editor
 - and show your form on the actual website
+
+</Alert>
 
 <Alert type="info">
 
@@ -219,12 +211,4 @@ export default [
 
 After making these changes head over to the Form Builder app and try using your newly added form layout.
 
-<!-- vale off -->
-
-<img
-  src={require('./images/webiny-theme-form-layout.gif').default}
-  style={{ marginBottom: 20 }}
-  alt="Webiny form builder preview"
-/>
-
-<!-- vale on -->
+![Webiny form builder preview](./images/webiny-theme-form-layout.gif)

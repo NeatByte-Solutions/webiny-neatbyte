@@ -4,12 +4,8 @@ description: Learn how to continue developing on top of the generated applicatio
 ---
 
 import { Alert } from "@/components/Alert"
-import formUpdated from "./entities/form-updated.png";
-import popularCarManufacturerSaved from "./entities/popular-car-manufacturer-saved.png";
 
-<Alert type="success">
-
- WHAT YOU’LL LEARN
+<Alert type="success" title="WHAT YOU’LL LEARN">
 
 - how to continue developing on top of the generated application code
 - in the GraphQL API, how to extend the initially created entity with new attributes
@@ -17,9 +13,7 @@ import popularCarManufacturerSaved from "./entities/popular-car-manufacturer-sav
 
 </Alert>
 
-<Alert type="info">
-
- Can I use this?
+<Alert type="info" title="Can I use this?">
 
 In order to follow this tutorial, you must use Webiny version **5.9.0** or greater.
 
@@ -163,7 +157,7 @@ return (
 
 Once we've updated the [`CarManufacturersForm`](https://github.com/webiny/webiny-examples/blob/master/extend-admin-area/apps/admin/code/src/plugins/scaffolds/carManufacturers/views/CarManufacturersForm.tsx#L75-L84) React component, the form itself should look like the following:
 
-<img alt="Updated Car Manufacturers Form" src={formUpdated} />
+![Updated Car Manufacturers Form](./entities/form-updated.png)
 
 Finally, we need to add the `isPopular` field to all relevant GraphQL query and mutation operations. This ensures that we're both sending and receiving the `isPopular` value while interacting with the GraphQL API.
 
@@ -189,7 +183,7 @@ export const CAR_MANUFACTURER_FIELDS = /* GraphQL */ `
 
 With this final change in place, we should be able to edit the **isPopular** attribute for each car manufacturer entry. To test this, we can simply open an existing entry, try marking it as popular, and submitting the form. If everything was done correctly, the form submission should be successful.
 
-<img alt="Updated Car Manufacturers Form" src={popularCarManufacturerSaved} />
+![Updated Car Manufacturers Form](./entities/popular-car-manufacturer-saved.png)
 
 ## FAQ
 

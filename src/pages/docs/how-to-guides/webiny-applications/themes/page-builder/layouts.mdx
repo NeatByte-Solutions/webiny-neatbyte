@@ -7,9 +7,7 @@ import { Alert } from '@/components/Alert'
 
 <!-- Always include this section on top of the page. -->
 
-<Alert type="success">
-
-What You’ll Learn
+<Alert type="success" title="What You’ll Learn">
 
 - what is a layout
 - what are the internals of a layout
@@ -35,15 +33,7 @@ The options available inside the layout dropdown are registered by the [`pb-page
 Each page created inside the "Blog" category, by default, use that layout.
 However, inside the page settings, you can overwrite that on a per-page basis if you need to.
 
-<!-- vale off -->
-
-<img
-  src={require('./images/webiny-page-category.gif').default}
-  style={{ marginBottom: 20 }}
-  alt="Webiny page categories"
-/>
-
-<!-- vale on -->
+![Webiny page categories](./images/webiny-page-category.gif)
 
 ## Layout internals
 
@@ -152,12 +142,4 @@ export default [
 
 Let's add the newly created layout to our page in the editor. It looks as shown below:
 
-<!-- vale off -->
-
-<img
-  src={require('./images/webiny-theme-custom-layout.gif').default}
-  style={{ marginBottom: 20 }}
-  alt="Webiny page builder custom layout"
-/>
-
-<!-- vale on -->
+![Webiny page builder custom layout](./images/webiny-theme-custom-layout.gif)

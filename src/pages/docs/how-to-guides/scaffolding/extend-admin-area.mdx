@@ -4,20 +4,14 @@ description: Learn how to use the Extend Admin Area scaffold.
 ---
 
 import { Alert } from "@/components/Alert"
-import localesSelector from "./extend-admin-area/locales-selector.png";
-import scaffoldsAdminArea from "./extend-admin-area/scaffolds-admin-area.png";
 
-<Alert type="info">
-
- Can I use this?
+<Alert type="info" title="Can I use this?">
 
 The **Extend Admin Area** scaffold (previously **Admin Area Package**) received a major overhaul in [Webiny 5.9.0](/docs/release-notes/5.9.0/changelog). Note that this guide is not relevant for projects that are using Webiny 5.8.0 and lower.
 
 </Alert>
 
-<Alert type="success">
-
- What you'll learn
+<Alert type="success" title="What you'll learn">
 
 - main features of the **Extend Admin Area** scaffold
 - how to continue developing on top of the generated application code
@@ -53,7 +47,7 @@ As an example, during the scaffold's wizard, if we were to enter **CarManufactur
 2. a new `/car-manufacturers` route
 3. a new **Car Manufacturers** item in the main menu
 
-<img src={scaffoldsAdminArea} shadow={false} alt={"New Webiny Admin Area Module"} />
+![New Webiny Admin Area Module](./extend-admin-area/scaffolds-admin-area.png)
 
 <Alert type="info">
 
@@ -73,7 +67,7 @@ By default, Webiny Admin Area is a multi-locale system. This means entries like 
 
 The generated application code follows the same idea and there aren't any additional steps that you need to take in order to enable multi-locale support. By simply changing the locale via the locales selector located in top-right corner of the screen, users get to manage a completely separate set of data, only available for the selected locale.
 
-<img src={localesSelector} alt={"Locales Selector"} />
+![Locales Selector](./extend-admin-area/locales-selector.png)
 
 <Alert type="info">
 
@@ -178,7 +172,6 @@ Check out the [Extend GraphQL API - Development](/docs/how-to-guides/scaffolding
 Please note that, by default, the authentication and authorization logic isn't included in the generated code.
 
 Luckily, with a couple of built-in utilities, this can be relatively easily added. Please check out the [existing tutorials](/docs/tutorials/extend-admin-area/security/introduction) to learn how to implement these on your own.
-
 
 #### Can Webiny's multi-tenancy feature be utilized with this scaffold?
 
