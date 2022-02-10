@@ -7,9 +7,7 @@ import { Alert } from '@/components/Alert'
 
 <!-- Always include this section on top of the page. -->
 
-<Alert type="success">
-
-What You’ll Learn
+<Alert type="success" title="What You’ll Learn">
 
 - how elements are used in Page Builder theme
 - how to update elements in Page Builder theme
@@ -20,15 +18,7 @@ What You’ll Learn
 
 Another way Webiny Page Builder ensures that visual styles follow your design system is by having certain style presets for some of the elements like the Button element as shown below:
 
-<!-- vale off -->
-
-<img
-  src={require('./images/webiny-theme-elements.gif').default}
-  style={{ marginBottom: 20 }}
-  alt="Webiny theme elements"
-/>
-
-<!-- vale on -->
+![Webiny theme elements](./images/webiny-theme-elements.gif)
 
 ## Elements Definition
 
@@ -91,24 +81,20 @@ The definition takes two keys:
 - `className`: Name of the CSS class that gets appended to that element.
 - `label`: This is what's shown in the dropdown when a user is selecting a style.
 
-<!-- vale off -->
-
-<img
-  src={require('./images/webiny-theme-elements.gif').default}
-  style={{ marginBottom: 20 }}
-  alt="Webiny theme elements"
-/>
-
-<!-- vale on -->
+![Webiny theme elements](./images/webiny-theme-elements.gif)
 
 ### Button Element
 
 In the case of the `button` element, the `types` attribute contains available button types.
 Each type references a specific class name that gets added to the button component when that type is selected.
 
+<Alert type="info">
+
 By default, Webiny uses [BEM naming](http://getbem.com/introduction/).
 The default button class is `webiny-pb-element-button`, so when the user selects the `primary` button type,
 it adds a modifier of `primary` to the base class, meaning the resulting class name becomes `webiny-pb-element-button--primary`.
+
+</Alert>
 
 ## Extend Button Element Types
 
@@ -196,12 +182,4 @@ Make the following changes in [`apps/theme/pageBuilder/styles/elements/button.sc
 
 With these changes in place, the `button` element gets a new type available to use in the Page Builder editor as shown below:
 
-<!-- vale off -->
-
-<img
-  src={require('./images/webiny-theme-new-button-type.gif').default}
-  style={{ marginBottom: 20 }}
-  alt="Webiny theme new button element type"
-/>
-
-<!-- vale on -->
+![Webiny theme new button element type](./images/webiny-theme-new-button-type.gif)

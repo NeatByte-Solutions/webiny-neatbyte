@@ -4,20 +4,14 @@ description: Learn what makes the Admin app tick, and how plugins work.
 ---
 
 import { Alert } from "@/components/Alert"
-import adminAppFramework from "./framework/AdminAppFramework.png";
-import menuRenderers from "./framework/MenuRenderers.png";
 
-<Alert type="info">
-
- Can I Use This?
+<Alert type="info" title="Can I Use This?">
 
 In order to follow this guide, you must use Webiny version **5.21.0** or greater.
 
 </Alert>
 
-<Alert type="success">
-
- What you'll learn
+<Alert type="success" title="What you'll learn">
 
 - the moving parts of the Admin app framework
 - what is a plugin
@@ -33,7 +27,7 @@ In the following sections, we cover 5 fundamental components which make everythi
 
 The following diagram shows all 5 components in action:
 
-<img src={adminAppFramework} title={"Admin App Framework In Action"} shadow={false}/>
+![Admin App Framework In Action](./framework/AdminAppFramework.png)
 
 As you can see, what you mount, is not exactly what gets rendered. The `Admin` component (the framework) takes care of rendering things _where_ and _when_ they need to be rendered, and also does various compositions and optimizations (caching) in the process.
 
@@ -84,7 +78,7 @@ The `Compose` component allows you to wrap (compose) _existing_ React components
 
 A good usage example are the menu items in the main navigation of the Admin app.
 
-<img src={menuRenderers} title={"Navigation Menu Renderers"} />
+![Navigation Menu Renderers](./framework/MenuRenderers.png)
 
 All the menu items are represented with a single underlying data structure. Depending on menu item's children, depth (menu within a menu), presence of a link (or an onClick callback), etc., different renderers need to be applied.
 
@@ -217,9 +211,7 @@ export const App = () => {
 };
 ```
 
-<Alert type="info">
-
- Important
+<Alert type="info" title="Important">
 
 The only hard rule to be aware of is that you **must** mount the `<Provider/>` element _outside_ of the `<Plugins/>` element. `<Compose/>` can go anywhere within the `<Admin/>` element.
 

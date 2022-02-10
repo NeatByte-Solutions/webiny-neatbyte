@@ -4,22 +4,14 @@ description: Learn how to extend page settings with new fields
 ---
 
 import { Alert } from '@/components/Alert'
-import settingsView from './extend-page-settings/settingsView.png'
-import updatedSchema from './extend-page-settings/schema.png'
-import passwordField from './extend-page-settings/passwordField.png'
-import websitePassword from './extend-page-settings/websitePassword.png'
-import listPublishedPages from './extend-page-settings/listPublishedPages.png'
 
-<Alert type="info">
+<Alert type="info" title="Can I Use This?">
 
-Can I Use This?
 This feature is available since Webiny **v5.12.0**.
 
 </Alert>
 
-<Alert type="success">
-
-What you'll learn
+<Alert type="success" title="What you'll learn">
 
 - how to hook into the page settings views
 - how to add new fields to the existing page settings views
@@ -30,7 +22,7 @@ What you'll learn
 
 Page settings UI within the Webiny Page Builder, by default, contains 3 major sections: **General settings**, **Social media**, and **SEO settings**.
 
-<img src={settingsView} title={'Page Settings View'} />
+![Page Settings View](./extend-page-settings/settingsView.png)
 
 Adding a new field to the page settings involves the following steps:
 
@@ -102,7 +94,7 @@ The code above can be placed in the `api/code/graphql/src/plugins/pageSettings.t
 
 With this plugin, once you redeploy the API project application, your GraphQL schema will contain the new `password` field:
 
-<img src={updatedSchema} title={'New Password Field in the Schema'} style={{ width: 636 }} />
+![New Password Field in the Schema](./extend-page-settings/schema.png)
 
 <Alert type="success">
 
@@ -151,13 +143,17 @@ export default [
 
 After your application rebuilds, the new field will be rendered in the settings view. Using this technique, you can add as many fields as you need. You can also hook into other page settings views, using their corresponding classes: `SocialSettingsView` and `SEOSettingsView`.
 
-<img src={passwordField} title={'Password Field Added to the General Settings View'} />
+![Password Field Added to the General Settings View](./extend-page-settings/passwordField.png)
 
 For the Admin Area, the work is done. You can now get and update the value of that new `password` field.
 
 ## Add the New Query Selection in the Website Application
 
+<Alert type="info">
+
 This step is optional. If you're writing custom queries and are executing the GraphQL API calls yourself, you can skip this step.
+
+</Alert>
 
 Website application doesn't know about the plugin we've added in the Admin Area application. If you want this new field to be automatically queried with the rest of the page data, you need to add a plugin, just like in the Admin Area app.
 
@@ -188,7 +184,7 @@ The code above can be placed in the `apps/website/code/src/plugins/pageSettings.
 
 Once the application is rebuilt, the `password` field will be included in all `PbGetPublishedPage` GraphQL query operations:
 
-<img src={websitePassword} title={'Password Is Now Returned from the API'} />
+![Password Is Now Returned from the API](./extend-page-settings/websitePassword.png)
 
 ## Handling DateTime Fields
 
@@ -253,11 +249,10 @@ export default [
 
 With these plugins in place, you can now access the `password` field on the `listPublishedPages` query:
 
-<img src={listPublishedPages} title={`Password Field in the "listPublishedPages" Query`} />
+![Password Field in the listPublishedPages Query](./extend-page-settings/listPublishedPages.png)
 
-<Alert type="info">
+<Alert type="info" title="Important">
 
-Important
 After these plugins are deployed, you need to **publish** the page, to trigger ES index update. Only then your new data will be available for querying in the `listPublishedPages` query.
 
 </Alert>

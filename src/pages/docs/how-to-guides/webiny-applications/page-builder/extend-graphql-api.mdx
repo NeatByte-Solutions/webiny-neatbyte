@@ -4,15 +4,8 @@ description: Learn how to extend the Page Builder-related GraphQL types and oper
 ---
 
 import { Alert } from '@/components/Alert'
-import specialQueryResults from './extend-graphql-api/special-query-results.png'
-import specialRunMutation from './extend-graphql-api/special-run-mutation.png'
-import duplicatesListPages from './extend-graphql-api/duplicates-list-pages.png'
-import duplicatesRunMutation from './extend-graphql-api/duplicates-run-mutation.png'
-import listPagesQuery from './extend-graphql-api/list-pages-query.png'
 
-<Alert type="success">
-
-What you'll learn
+<Alert type="success" title="What you'll learn">
 
 - how to extend the Page Builder-related GraphQL types and operations
 
@@ -101,14 +94,11 @@ mutation UpdatePage($id: ID!, $data: PbUpdatePageInput!) {
 
 For example:
 
-<img alt={'Marking an Existing Page as Special'} src={specialRunMutation} />
+![Marking an Existing Page as Special](./extend-graphql-api/special-run-mutation.png)
 
 Running the above mutation should mark the page with the `60f903881f76a1000820068e#0001` ID as special, which we should be able to see afterwards while performing queries:
 
-<img
-  alt={'Querying Pages with the New Special Field Included in the Results'}
-  src={specialQueryResults}
-/>
+![Querying Pages with the New Special Field Included in the Results](./extend-graphql-api/special-query-results.png)
 
 ## Modifying GraphQL Queries
 
@@ -214,7 +204,7 @@ query ListSpecialPages {
 
 For example:
 
-<img alt={'Listing Special Pages'} src={listPagesQuery} />
+![Listing Special Pages](./extend-graphql-api/list-pages-query.png)
 
 Note that because we've created both the [`SearchLatestPagesPlugin`](https://github.com/webiny/webiny-js/blob/v5.11.0/packages/api-page-builder/src/plugins/SearchLatestPagesPlugin.ts#L3) and [`SearchPublishedPagesPlugin`](https://github.com/webiny/webiny-js/blob/v5.11.0/packages/api-page-builder/src/plugins/SearchPublishedPagesPlugin.ts#L3) plugins, we can also apply the same `special: true` filter within the `listPublishedPages` GraphQL query.
 
@@ -309,11 +299,11 @@ mutation DuplicatePage($id: ID!) {
 
 For example:
 
-<img alt={'Duplicating an Existing Page'} src={duplicatesRunMutation} />
+![Duplicating an Existing Page](./extend-graphql-api/duplicates-run-mutation.png)
 
 After the mutation has been executed, we should be able to see the created copy in the list of pages:
 
-<img alt={'Listing Pages After A Copy Has Been Created'} src={duplicatesListPages} />
+![Listing Pages After A Copy Has Been Created](./extend-graphql-api/duplicates-list-pages.png)
 
 ## FAQ
 

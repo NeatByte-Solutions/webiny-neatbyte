@@ -8,12 +8,7 @@ description: Learn about StorageTransformPlugin
 
 import { Alert } from '@/components/Alert'
 
-import storingTheData from './assets/storage-transform-plugin-storing-the-data.png'
-import fetchingTheData from './assets/storage-transform-plugin-fetching-the-data.png'
-
-<Alert type="success">
-
-What you'll learn
+<Alert type="success" title="What you'll learn">
 
 - what is StorageTransformPlugin
 - when is it executed
@@ -36,13 +31,13 @@ For example, the time in format `15:45:59` is not usable when filtering, so we t
 
 When storing the data (create, update and createFrom) the plugin's `toStorage` is executed just after the `onBefore` lifecycle events and before actual call to the storage operations.
 
-<img shadow={false} style={{ maxWidth: 850 , width: '100%'}} alt="storing the data flow" src={storingTheData} />
+![storing the data flow](./assets/storage-transform-plugin-storing-the-data.png)
 
 ### Fetching The Data
 
 When fetching the entries the plugin's `fromStorage` is executed in the GraphQL resolvers, just before the output of the field value. We decided to have it like this because of possible unnecessary calls to `fromStorage` if we executed it just after fetching the data from the database.
 
-<img shadow={false} style={{ maxWidth: 850, width: '100%' }} alt="fetching the data flow" src={fetchingTheData} />
+![fetching the data flow](./assets/storage-transform-plugin-fetching-the-data.png)
 
 #### Why Execute `fromStorage` Just Before The Output?
 
