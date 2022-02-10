@@ -7,9 +7,7 @@ import { Alert } from "@/components/Alert"
 
 import scaffoldsAdminArea from "./introduction/scaffolds-admin-area.png";
 
-<Alert type="success">
-
-WHAT YOU’LL LEARN
+<Alert type="success" title="WHAT YOU’LL LEARN">
 
 - the motivation for extending the Admin Area application with new modules
 - the goal of this tutorial
@@ -17,13 +15,12 @@ WHAT YOU’LL LEARN
 
 </Alert>
 
-<Alert type="info">
-
- Can I use this?
+<Alert type="info" title="Can I use this?">
 
 In order to follow this tutorial, you must use Webiny version **5.9.0** or greater.
 
 </Alert>
+
 ## Overview
 
 By default, every Webiny project comes with Webiny Admin Area, a ready-made React application which enables project administrators to manage content coming from one or more Webiny applications, like [Headless CMS](https://www.webiny.com/serverless-app/headless-cms), [Page Builder](https://www.webiny.com/serverless-app/page-builder), [File Manager](https://www.webiny.com/serverless-app/file-manager), and so on. And while these applications do offer a solid number of features and can also be extended to a certain extent, there are still cases where creating custom standalone Admin Area application modules makes more sense.
@@ -36,9 +33,8 @@ Extending the existing Webiny applications may work, but still, by creating a cu
 
 The goal of this tutorial is to learn how we can easily extend the existing Admin Area application with custom standalone modules. We will create a new **Car Manufacturers** module, which, as the name itself depicts, will enable users to manage car manufacturer entries.
 
-<img shadow={false} alt="New Car Manufacturers Module" src={scaffoldsAdminArea}/>
+![New Car Manufacturers Module](./introduction/scaffolds-admin-area.png)
 
 ## Prerequisites
 
 Except having an installed Webiny project (version `5.9.0` or greater) on top of which we can follow this tutorial, there are no special prerequisites that need to be fulfilled.
-

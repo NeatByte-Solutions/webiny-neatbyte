@@ -4,23 +4,14 @@ description: Learn how you can secure your GraphQL API.
 ---
 
 import { Alert } from "@/components/Alert"
-import unprotectedQuery from "./assets/unprotected-query.png";
-import unprotectedMutation from "./assets/unprotected-mutation.png";
-import graphqlAuthError from "./assets/query-auth-error.png";
-import graphqlAuthSuccess from "./assets/query-auth-success.png";
-import createTestUser from "./assets/create-test-user.png";
 
-<Alert type="success">
-
- What you'll learn
+<Alert type="success" title="What you'll learn">
 
 - prevent unauthorized users from performing sensitive GraphQL API queries and mutations
 
 </Alert>
 
-<Alert type="info">
-
- Can I use this?
+<Alert type="info" title="Can I use this?">
 
 In order to follow this tutorial, you must use Webiny version **5.9.0** or greater.
 
@@ -44,11 +35,11 @@ At the moment, all car manufacturers-related queries and mutations that we've ad
 
 For example, if were to perform a simple `listCarManufacturers` GraphQL query, we would receive a list of all car manufacturers:
 
-<img alt="Exposed GraphQL Queries" src={unprotectedQuery} />
+![Exposed GraphQL Queries](./assets/unprotected-query.png)
 
 Even more important, anybody can create new car manufacturers, with the `createCarManufacturer` GraphQL mutation:
 
-<img alt="Exposed GraphQL Mutations" src={unprotectedMutation} />
+![Exposed GraphQL Mutations](./assets/unprotected-mutation.png)
 
 In most cases, this is not the desirable behaviour, and you'll certainly want to have control over who can perform these GraphQL operations, and who cannot.
 
@@ -182,16 +173,15 @@ Now, to see this new piece of authorization logic in action, we can use a GraphQ
 }
 ```
 
-<Alert type="success">
+<Alert type="success" title="Misplaced GraphQL API URL?">
 
- Misplaced GraphQL API URL?
 Running the `yarn webiny info` command in your Webiny project folder will give you all of the relevant project URLs, including the URL of your GraphQL API.
 
 </Alert>
 
 Without including the appropriate `Authorization` request header, we should receive the following error response:
 
-<img alt="GraphQL Authorization Error" src={graphqlAuthError} />
+![GraphQL Authorization Error](./assets/query-auth-error.png)
 
 If you've received the **Not authorized.** error, that means authorization was successful.
 
@@ -199,7 +189,7 @@ On the other hand, if a valid `Authorization` request header is included, or in 
 
 To manually test that, we can simply create a new user via the Webiny Security application, and either place it into the default Full Access security group, or even better, into the newly created Car Manufacturers security group. Which is what the following screenshot is showing:
 
-<img alt="Create a Test User" src={createTestUser} />
+![Create a Test User](./assets/create-test-user.png)
 
 Once we've created the user, we can log in into the Admin Area application with it (using its username and password), and execute the same GraphQL query, this time using the built-in API Playground. We will use this client simply because of the fact that, upon issuing GraphQL operations, it will automatically attach the correct `Authorization` request header for us. In other words, it will perform GraphQL operations as the currently logged-in user.
 
@@ -211,7 +201,7 @@ Learn more about the API Playground GraphQL client in the [API Playground](/docs
 
 So, as we can see in the following screenshot, the GraphQL query was successful, as we've successfully received the car manufacturer data in the response:
 
-<img alt="GraphQL Authorization Success" src={graphqlAuthSuccess} />
+![GraphQL Authorization Success](./assets/query-auth-success.png)
 
 This means that the user we're currently logged-in with has the appropriate security permissions, and that the newly added authorization code works as expected.
 
