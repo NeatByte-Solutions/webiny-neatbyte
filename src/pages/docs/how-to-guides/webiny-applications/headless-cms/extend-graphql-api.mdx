@@ -7,9 +7,7 @@ import { Alert } from '@/components/Alert'
 import myPostsModel from './extend-graphql-api/my-posts-model.png'
 import myPostsQuery from './extend-graphql-api/my-posts-query.png'
 
-<Alert type="success">
-
-What you'll learn
+<Alert type="success" title="What you'll learn">
 
 - how to extend the Headless CMS-related GraphQL types and operations
 
@@ -27,7 +25,7 @@ Let's say we wanted to extend our GraphQL schema with a custom `listMyPosts` que
 
 In other words, we want to return all content entries of the **Post** content model, where the `createdBy` points to the currently logged in user. For demonstration purposes, our **Post** content model will be very simple:
 
-<img alt={'The Post Content Model'} src={myPostsModel} />
+![The Post Content Model](./extend-graphql-api/my-posts-model.png)
 
 <Alert type="success">
 
@@ -115,7 +113,7 @@ With all the changes in place, we should be able to run the following GraphQL mu
 
 For example:
 
-<img alt={'Using the `listMyPosts` Query'} src={myPostsQuery} />
+![Using the listMyPosts Query](./extend-graphql-api/my-posts-query.png)
 
 As we can see, the `listPosts` query returned a total of three posts. On the other hand, the `listMyPosts` only returned posts for the currently logged in user, which is the expected result.
 

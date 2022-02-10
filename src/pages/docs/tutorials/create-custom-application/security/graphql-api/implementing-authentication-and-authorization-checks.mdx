@@ -4,26 +4,14 @@ description: Learn how to implement authentication and authorization checks with
 ---
 
 import { Alert } from "@/components/Alert"
-import createPinMutation from "./implementing-authentication-and-authorization-checks/create-pin-mutation-test.png";
-import gqlClientAuthHeader from "./implementing-authentication-and-authorization-checks/graphql-client-authorization-header.png";
-import networkTabAuthorizationToken from "./implementing-authentication-and-authorization-checks/network-tab-authorization-token.png";
-import createPinMutationUnauthorized from "./implementing-authentication-and-authorization-checks/create-pin-mutation-unauthorized.png";
-import createPinMutationAuthorized from "./implementing-authentication-and-authorization-checks/create-pin-mutation-authorized.png";
-import updatePinMutationCannotUpdateOtherUsersPin from "./implementing-authentication-and-authorization-checks/update-pin-cannot-update-other-users-pin.png";
-import updatePinMutationUpdateWithUser from "./implementing-authentication-and-authorization-checks/update-pin-update-with-user.png";
-import deletePinAuthorized from "./implementing-authentication-and-authorization-checks/delete-pin-authorized.png";
 
-<Alert type="success">
-
-WHAT YOU’LL LEARN
+<Alert type="success" title="WHAT YOU’LL LEARN">
 
 - how to implement authentication and authorization checks within our GraphQL API resolver functions
 
 </Alert>
 
-<Alert type="info">
-
-Can I use this?
+<Alert type="info" title="Can I use this?">
 
 In order to follow this tutorial, you must use Webiny version **5.18.0** or greater.
 
@@ -39,9 +27,8 @@ The code that we cover in this section can also be found in our GitHub [examples
 
 At the moment, all pins-related queries and mutations that were created during the [Extend GraphQL API](/docs/how-to-guides/scaffolding/extend-graphql-api) scaffolding process are publicly accessible.
 
-<Alert type="info">
+<Alert type="info" title="In Case You Forgot">
 
-In Case You Forgot
 In the [GraphQL API](/docs/tutorials/create-custom-application/graphql-api) section of this tutorial, we've used the [Extend GraphQL API](/docs/how-to-guides/scaffolding/extend-graphql-api) scaffold to extend our GraphQL API and introduce essential CRUD GraphQL queries and mutations.
 
 </Alert>
@@ -76,7 +63,7 @@ mutation CreatePin($data: PinCreateInput!) {
 
 Once run, we should receive a response similar to the following (the only piece of information that should be different on your end should be the returned `id`):
 
-<img alt={'"CreatePin" Mutation - Publicly Accessible'} src={createPinMutation} />
+![CreatePin Mutation - Publicly Accessible](./implementing-authentication-and-authorization-checks/create-pin-mutation-test.png)
 
 And that's not all. Anonymous users can even change the information on pins created by other users, and even delete them! This is certainly not what we'd expect of a modern application nor from any kind of application at all.
 
@@ -96,10 +83,7 @@ In the following couple of sections, we'll manually test the changes that we'll 
 
 When it comes to signed in users, in order to simulate one, we'll need to add the `authorization` header via the **HTTP Headers** tab:
 
-<img
-  alt={'GraphQL Playground - Setting "authorization" Header'}
-  src={gqlClientAuthHeader}
-/>
+![GraphQL Playground - Setting authorization Header](./implementing-authentication-and-authorization-checks/graphql-client-authorization-header.png)
 
 ```json HTTP Headers
 {
@@ -109,9 +93,8 @@ When it comes to signed in users, in order to simulate one, we'll need to add th
 
 The value of the header is a base 64 encoded JWT token, which we should be able to easily retrieve via [Google Chrome DevTools](https://developer.chrome.com/docs/devtools/overview/).
 
-<Alert type="info">
+<Alert type="info" title="Not using Google Chrome browser?">
 
-Not using Google Chrome browser?
 Other browsers also offer their own versions of development-related tools. For example, [Firefox Browser](https://www.mozilla.org/en-US/firefox/new/) has [Firefox Developer Tools](https://developer.mozilla.org/en-US/docs/Tools). Be sure to check your browser's documentation for more information.
 
 </Alert>
@@ -123,7 +106,7 @@ To retrieve the token, follow these steps:
 - in the **Network** tab, from the list of all HTTP requests, pick any **POST** request directed at our GraphQL API's URL (if you're not seeing any, simply refresh the page)
 - in the **Headers** tab, you should be able to find the token in the **Request Headers** section (`authorization` header)
 
-<img alt={"Google Chrome - Network Tab"} src={networkTabAuthorizationToken} />
+![Google Chrome - Network Tab](./implementing-authentication-and-authorization-checks/network-tab-authorization-token.png)
 
 Once you've found it, simply copy and paste the token into the GraphQL playground as shown in the above screenshot, and you should be good to go.
 
@@ -178,11 +161,11 @@ We've also updated the `pin` object, where we added the `createdBy` property, an
 
 With all of the changes in place, while not signed in, performing the same `CreatePin` mutation, should give us the following **Not authenticated.** error response:
 
-<img alt={'"CreatePin" Mutation - Not Authorized'} src={createPinMutationUnauthorized} />
+![CreatePin Mutation - Not Authorized](./implementing-authentication-and-authorization-checks/create-pin-mutation-unauthorized.png)
 
 On the other hand, if we were perform the same mutation, but this time as a signed in user, we should receive the following response:
 
-<img alt={'"CreatePin" Mutation - Authorized'} src={createPinMutationAuthorized} />
+![CreatePin Mutation - Authorized](./implementing-authentication-and-authorization-checks/create-pin-mutation-authorized.png)
 
 If that's true, that means everything is in order, and we can continue with updating the next resolver function in line, and that's [`updatePin`](https://github.com/webiny/webiny-examples/blob/master/create-custom-application/05-security/05-graphql-api/02-implementing-authentication-and-authorization-checks/pinterest-clone/api/code/graphql/src/plugins/scaffolds/pins/resolvers/PinsMutation.ts#L85).
 
@@ -260,21 +243,18 @@ mutation UpdatePin($id: ID!, $data: PinUpdateInput!) {
 }
 ```
 
-<img
-  alt={'"UpdatePin" Mutation - Not Authorized'}
-  src={updatePinMutationCannotUpdateOtherUsersPin}
-/>
+![UpdatePin Mutation - Not Authorized](./implementing-authentication-and-authorization-checks/update-pin-cannot-update-other-users-pin.png)
 
 To manually test if this really works as intended, while signed in, we could create a new pin, and then immediately try to update it.
 
 <!--
 
-<img alt={'"CreatePin" Mutation - Authorized'} src={updatePinMutationCreateWithUser} />
+![CreatePin Mutation - Authorized](./implementing-authentication-and-authorization-checks/update-pin-update-with-user.png)
  -->
 
 Once the pin is created, upon updating it, we should not receive the already seen **Not authenticated.** error response, because we're signed in with the same user that created the pin:
 
-<img alt={'"UpdatePin" Mutation - Authorized'} src={updatePinMutationUpdateWithUser} />
+![UpdatePin Mutation - Authorized](./implementing-authentication-and-authorization-checks/update-pin-update-with-user.png)
 
 ## Deleting Pins
 
@@ -335,7 +315,7 @@ mutation DeletePin($id: ID!) {
 }
 ```
 
-<img alt={'"DeletePin" Mutation - Authorized'} src={deletePinAuthorized} />
+![DeletePin Mutation - Authorized](./implementing-authentication-and-authorization-checks/delete-pin-authorized.png)
 
 ## Final Result
 

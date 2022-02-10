@@ -5,18 +5,14 @@ description: Before implementing authentication and authorization checks in our 
 
 import { Alert } from "@/components/Alert"
 
-<Alert type="success">
-
-WHAT YOU’LL LEARN
+<Alert type="success" title="WHAT YOU’LL LEARN">
 
 - what are the initial steps we need to perform, before implementing authentication and authorization checks in our GraphQL API
 - how to perform all of the initial steps
 
 </Alert>
 
-<Alert type="info">
-
-Can I use this?
+<Alert type="info" title="Can I use this?">
 
 In order to follow this tutorial, you must use Webiny version **5.18.0** or greater.
 
@@ -262,9 +258,8 @@ export interface PinEntity {
 }
 ```
 
-<Alert type="info">
+<Alert type="info" title="In Case You Forgot">
 
-In Case You Forgot
 In the [GraphQL API](/docs/tutorials/create-custom-application/graphql-api) section of this tutorial, we've used the [Extend GraphQL API](/docs/how-to-guides/scaffolding/extend-graphql-api) scaffold to extend our GraphQL API and introduce essential CRUD GraphQL queries and mutations.
 
 By default, the application code relies on [DynamoDB Toolbox](https://github.com/jeremydaly/dynamodb-toolbox), which is a library that makes it a bit easier to interact with the [Amazon DynamoDB](https://aws.amazon.com/dynamodb/features/) database. The `Entity` class we've seen in the above code sample is part of it.

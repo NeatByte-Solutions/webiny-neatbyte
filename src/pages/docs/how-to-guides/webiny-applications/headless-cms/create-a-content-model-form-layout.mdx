@@ -8,20 +8,13 @@ description: How to create a custom form layout for content model data entry.
 
 import { Alert } from '@/components/Alert'
 
-import defaultLayout from '../../assets/headless-cms/create-a-content-model-form-layout/defaultLayout.png'
-import customLayout from '../../assets/headless-cms/create-a-content-model-form-layout/customLayout.png'
-import customElements from '../../assets/headless-cms/create-a-content-model-form-layout/customElements.png'
+<Alert type="info" title="Can I use this?">
 
-<Alert type="info">
-
-Can I use this?
 This feature is available since **v5.1.0**.
 
 </Alert>
 
-<Alert type="success">
-
-What you'll learn
+<Alert type="success" title="What you'll learn">
 
 - how to render custom form layout
 - how to render UI elements based on user's permissions
@@ -117,11 +110,11 @@ export default (): CmsContentFormRendererPlugin => ({
 
 Here's what a default layout looks like:
 
-<img src={defaultLayout} alt={'Default form layout'} />
+![Default form layout](../../assets/headless-cms/create-a-content-model-form-layout/defaultLayout.png)
 
 Once we import the plugin and register it in our `admin` app, we get our custom layout:
 
-<img src={customLayout} alt={'Custom form layout'} />
+![Custom form layout](../../assets/headless-cms/create-a-content-model-form-layout/customLayout.png)
 
 You can see the `Recipe` tab is hidden. That's because we don't have the necessary permission to view it.
 
@@ -192,4 +185,4 @@ export default (): CmsContentFormRendererPlugin => ({
 
 Using this approach, you can add a nice touch to your UI and guide the content editor with additional logic, validate the input, and add other helpful elements which would otherwise be really difficult to define on the content model itself:
 
-<img src={customElements} alt={'Custom UI elements'} />
+![Custom UI elements](../../assets/headless-cms/create-a-content-model-form-layout/customElements.png)

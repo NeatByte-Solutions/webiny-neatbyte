@@ -4,20 +4,14 @@ description: Learn how we can add and deploy a new User Pool and User Pool Domai
 ---
 
 import { Alert } from "@/components/Alert"
-import cloudInfraAutoDeploy from "./adding-user-pool-and-user-pool-domain/cloud-infra-auto-deploy.png";
-import cloudInfraDeploy from "./adding-user-pool-and-user-pool-domain/cloud-infra-deploy.png";
 
-<Alert type="success">
-
-WHAT YOU’LL LEARN
+<Alert type="success" title="WHAT YOU’LL LEARN">
 
 - how we can add and deploy a new User Pool and User Pool Domain, via GraphQL API's cloud infrastructure code
 
 </Alert>
 
-<Alert type="info">
-
-Can I use this?
+<Alert type="info" title="Can I use this?">
 
 In order to follow this tutorial, you must use Webiny version **5.18.0** or greater.
 
@@ -187,19 +181,11 @@ In order to continue further development, the new cloud infrastructure resources
 
 If you had the [`webiny watch`](/docs/how-to-guides/use-watch-command) command up and running while making the shown changes, the new cloud infrastructure resources should have been deployed automatically for you:
 
-<img
-  alt="Automatic Re-deployment of Cloud Infrastructure"
-  style={{ maxWidth: 750, width: "100%" }}
-  src={cloudInfraAutoDeploy}
-/>
+![Automatic Re-deployment of Cloud Infrastructure](./adding-user-pool-and-user-pool-domain/cloud-infra-auto-deploy.png)
 
 If not, you can either start a new watch session, or simply deploy the changes via the [`webiny deploy`](/docs/how-to-guides/deployment/deploy-your-project) command.
 
-<img
-  alt="Automatic Re-deployment of Cloud Infrastructure"
-  style={{ maxWidth: 750, width: "100%" }}
-  src={cloudInfraDeploy}
-/>
+![Automatic Re-deployment of Cloud Infrastructure](./adding-user-pool-and-user-pool-domain/cloud-infra-deploy.png)
 
 <Alert type="success">
 

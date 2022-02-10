@@ -4,11 +4,8 @@ description: Create a Webiny Headless CMS Custom Field Plugin.
 ---
 
 import { Alert } from '@/components/Alert'
-import fieldDefinition from './assets/field-definition.png'
-import fieldRendered from './assets/field-renderer.png'
-import encryptedText from './assets/encrypted-text.gif'
 
-<Alert type="success">tip What you'll learn
+<Alert type="success" title="What you'll learn">
 
 - how to create a new content model field plugin
 - how a plugin stores and retrieves data
@@ -117,7 +114,7 @@ This command will build our application and will serve the **Admin Area** applic
 
 As a result, our new field should be shown in **Fields** menu:
 
-<img src={fieldDefinition} alt="Field Definition" />
+![Field Definition](./assets/field-definition.png)
 
 ### Field Renderer Plugin
 
@@ -182,7 +179,7 @@ export default [
 
 4. As the [`webiny watch`](/docs/how-to-guides/use-watch-command) command is already running on `apps/admin`, we should see these changes immediately.
    Drag and drop the **Secret Text** field to create a model and navigate to the **PREVIEW** tab; you should see an input field here:
-   <img src={fieldRendered} alt="Field Rendered" />
+   ![Field Rendered](./assets/field-renderer.png)
 
 Cool, so far, we are done with the UI part of the custom field. In the next step, we will handle the GraphQL part by creating a Field to GraphQL API plugin (`CmsModelFieldToGraphQLPlugin`) for the **Secret Text** field.
 
@@ -332,7 +329,7 @@ export const handler = createHandler({
 
 Now, let's create a content entry with our new field.
 
-<img src={encryptedText} alt="Encrypted Text" />
+![Encrypted Text](./assets/encrypted-text.gif)
 
 As we can see in the video above, when you create the entry and save it, you will see encrypted data in the input text field because, as per our current code, we encrypt our data before storing it, but we're not decrypting it back after retrieving from the database.
 

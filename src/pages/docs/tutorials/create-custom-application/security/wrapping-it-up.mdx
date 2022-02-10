@@ -4,12 +4,8 @@ description: A summary of all the steps we took in order to secure our applicati
 ---
 
 import { Alert } from "@/components/Alert"
-import pinDetails from "./wrapping-it-up/pin-details-final.png";
-import pinDetailsCurrent from "./wrapping-it-up/pin-details-current.png";
 
-<Alert type="success">
-
-WHAT YOU’LL LEARN
+<Alert type="success" title="WHAT YOU’LL LEARN">
 
 - showing who created a pin on the **Pin Details** page
 - a summary of all the steps we took in order to secure our application
@@ -17,9 +13,7 @@ WHAT YOU’LL LEARN
 
 </Alert>
 
-<Alert type="info">
-
-Can I use this?
+<Alert type="info" title="Can I use this?">
 
 In order to follow this tutorial, you must use Webiny version **5.18.0** or greater.
 
@@ -31,12 +25,11 @@ The code that we cover in this section can also be found in our GitHub [examples
 
 </Alert>
 
-
 ## Updating the Pin Details Page
 
 With the all of the GraphQL API changes in place, let's wrap up the [Security](/docs/tutorials/create-custom-application/security/introduction) section of the tutorial by returning back to our React application and making one small addition to the **Pin Details** page, which currently looks like this:
 
-<img src={pinDetailsCurrent} alt="Current Profile Details Page"/>
+![Current Profile Details Page](./wrapping-it-up/pin-details-current.png)
 
 Apart form the basic pin information, let's also show who created the pin we've clicked on. In order to do this, we'll need to perform the following two additions in the existing [`pinDetails.tsx`](https://github.com/webiny/webiny-examples/blob/master/create-custom-application/05-security/06-wrapping-it-up/pinterest-clone/app/code/src/plugins/routes/pinDetails.tsx) file, located in the [`pinterest-clone/app/code/src/plugins/routes`](https://github.com/webiny/webiny-examples/blob/master/create-custom-application/05-security/06-wrapping-it-up/pinterest-clone/app/code/src/plugins/routes) folder:
 1. expand the existing GraphQL query by adding the `createdBy` field
@@ -120,7 +113,7 @@ export default new RoutePlugin({
 
 And this is how our **Pin Details** page should actually look like (notice the **Created by:** section below the pin description):
 
-<img src={pinDetails} alt="Updated Profile Details Page"/>
+![Updated Profile Details Page](./wrapping-it-up/pin-details-final.png)
 
 As we can see, we didn't do anything too complex in terms of the actual visual layout. But, nevertheless, we're now finally able to see who created the particular pin we're looking at, and that's what we were aiming for.
 
@@ -131,6 +124,3 @@ By performing these last couple of changes outlined in the section above, we've 
 Via our React application, users can now easily sign up and sign in using the integrated Hosted UI authentication flow. Once successfully completed, they are then able to perform all of the sensitive pins-related actions (GraphQL mutations): create, update, and delete pins. Furthermore, upon their creation, the pins will be tied to the signed in user, which also gives us the ability to restrict users from updating or even deleting pins that were initially created by a different user. Overall, we could certainly say that, when it comes to the application security, our application is now in a much better place than it initially was!
 
 Application security is a never-ending topic, so, all of the knowledge we've obtained here will certainly be useful to us as we continue with further development of our application. Speaking of further development, we're now ready to move on to the next section of this tutorial, in which we'll cover one of the most essential features of every modern application, and that's the file upload functionality.
-
-
-
