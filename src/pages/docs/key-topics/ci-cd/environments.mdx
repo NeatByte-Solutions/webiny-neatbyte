@@ -4,18 +4,14 @@ description: Learn how to organize different deployment environments for your pr
 ---
 
 import { Alert } from "@/components/Alert"
-import WebinyCloud from "./assets/environments.png"
 
-<Alert type="success">
-
- What you'll learn
+<Alert type="success" title="What you'll learn">
 
 - how to organize different environments for your project
 
 </Alert>
 
 <Alert type="info">
-
 
 Get your CI/CD set up in no time with the built-in [CI/CD scaffold](/docs/how-to-guides/scaffolding/ci-cd).
 
@@ -45,9 +41,7 @@ Serverless technologies and services have many advantages, one of them being the
 
 This **pay-per-use** pricing model, paired with Webiny's built-in deployment workflows and tools, makes it much more affordable and easier to introduce multiple environments for your project.
 
-<Alert type="warning">
-
- Non-Serverless Resources
+<Alert type="warning" title="Non-Serverless Resources">
 
 Take into consideration that sometimes, projects do require cloud infrastructure resources that aren't serverless or do not follow the pay-per-use pricing model. In that case, having multiple environments could in fact incur additional cost.
 
@@ -86,7 +80,7 @@ Read more about how to organize cloud accounts in the [Cloud (AWS) Accounts](/do
 
 Shared environments are long-lived environments, meaning, once they're deployed, they do not get destroyed that often, if ever. In contrast, isolated environments are short-lived - they are frequently deployed and destroyed.
 
-<Alert type="warning">
+<Alert type="warning" title="Caution">
 
 Be sure to check for unused deployed cloud infrastructure resources from time to time. We want to avoid unnecessary cost from mentioned non-serverless resources, that do not follow the pay-per-use pricing model.
 
@@ -96,16 +90,7 @@ Be sure to check for unused deployed cloud infrastructure resources from time to
 
 The following diagram shows the most common organization of shared and isolated environments in a single project:
 
-<!-- vale off -->
-
-<img
-  src={WebinyCloud}
-  className="no-shadow"
-  style={{ marginBottom: 20 }}
-  alt="Webiny Cloud Infrastructure - Environments"
-/>
-
-<!-- vale on -->
+![Webiny Cloud Infrastructure - Environments](./assets/environments.png)
 
 <Alert type="info">
 
@@ -169,7 +154,7 @@ With serverless application development, the deployed cloud infrastructure can p
 
 To enable this, please open your [`packages/cwp-template-aws/template/api/pulumi/index.ts`](https://github.com/webiny/webiny-js/blob/next/packages/cwp-template-aws/template/api/pulumi/index.ts#L7) file, and uncomment the `staging` string in the `PROD_STACK_ENVIRONMENTS` array.
 
-<Alert type="warning">
+<Alert type="info">
 
 Learn more about differences between the development and production cloud infrastructure differences in the [Cloud Infrastructure](/docs/key-topics/cloud-infrastructure/api/introduction#different-cloud-infrastructure-setups) key topic.
 

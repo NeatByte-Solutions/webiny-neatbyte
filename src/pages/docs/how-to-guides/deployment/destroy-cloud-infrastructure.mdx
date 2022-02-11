@@ -5,9 +5,7 @@ description: Learn how to destroy the cloud infrastructure deployed for your pro
 
 import { Alert } from "@/components/Alert"
 
-<Alert type="success">
-
- What you’ll learn
+<Alert type="success" title="What you’ll learn">
 
 - how to destroy cloud infrastructure previously deployed for project applications (possibly into multiple environments)
 
@@ -75,7 +73,6 @@ When deploying into the `prod` environment, some of the cloud infrastructure res
 
 <Alert type="info">
 
-
 Within a Webiny project, note that the `pulumi up` and `pulumi destroy` commands are run via the [`webiny deploy`](/docs/how-to-guides/deployment/deploy-your-project) and [`webiny destroy`](/docs/how-to-guides/deployment/destroy-cloud-infrastructure) commands, respectively.
 
 </Alert>
@@ -93,4 +90,3 @@ Once that's in place, run the [`webiny deploy`](/docs/how-to-guides/deployment/d
 We're aware of this fact, and this is mainly because of the [Amazon ElasticSearch Service](https://aws.amazon.com/elasticsearch-service/). While other cloud infrastructure resources get destroyed reasonably fast, this service can take anywhere from 15 to 30 minutes to destroy itself. In rare cases, we've even seen the service still present in user's account [for days](https://forums.aws.amazon.com/thread.jspa?threadID=233859).
 
 Unfortunately, this is a well-known issue for quite some time, and until the present, there haven't been any positive improvements.
-

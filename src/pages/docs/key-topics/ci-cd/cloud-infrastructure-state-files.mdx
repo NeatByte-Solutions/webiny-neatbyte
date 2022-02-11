@@ -5,9 +5,7 @@ description: Learn what are cloud infrastructure state files and how to properly
 
 import { Alert } from "@/components/Alert"
 
-<Alert type="success"> 
-
-What you'll learn
+<Alert type="success" title="What you'll learn"> 
 
 - what are cloud infrastructure state files
 - how to properly store cloud infrastructure state files using different Pulumi backends
@@ -16,7 +14,6 @@ What you'll learn
 </Alert>
 
 <Alert type="info"> 
-
 
 Get your CI/CD set up in no time with the built-in [CI/CD scaffold](/docs/how-to-guides/scaffolding/ci-cd).
 
@@ -38,7 +35,7 @@ One of the fundamental concepts of any IaC framework are cloud infrastructure st
 
 It's important to know that state files must not be lost or deleted, because otherwise, the connection between our IaC framework and the actual cloud infrastructure resources would also be lost. Meaning, we would lose the ability to update existing cloud infrastructure resources or even delete them (using the IaC framework).
 
-<Alert type="warning">
+<Alert type="warning" title="CAUTION">
 
 If it happens that we've lost our state files and we wanted to delete all of the deployed cloud infrastructure resources, we would have to do it manually, via the cloud provider's user interface or using a CLI.
 
@@ -58,9 +55,7 @@ The following are three backends that are commonly used with Webiny projects.
 
 This is the default backend, with which, all of the state files are stored within your Webiny project, inside of a single `.pulumi` folder, located in your project root. Note that this folder contains cloud infrastructure state files for all project applications you might have in your Webiny project.
 
-<Alert type="info">
-
-Project Applications
+<Alert type="info" title="Project Applications">
 
 Learn more about project applications and project organization in general, in the [Project Applications and Packages](/docs/key-topics/project-organization/project-applications-and-packages) key topic.
 
@@ -182,7 +177,7 @@ In case of the latter, where developers just wants to continue working from one 
 
 Simply copy and paste your `.pulumi` folder to the other machine. Once you've done that, also note that all of the extra configuration arguments, that were passed to Pulumi via environment variables, should also be copied. Usually, here we're referring to values that were specified in your root `.env` file, where by default, the `PULUMI_SECRETS_PROVIDER` and `PULUMI_CONFIG_PASSPHRASE` values are set.
 
-<Alert type="warning">
+<Alert type="warning" title="CAUTION">
 
 Keep in mind that if you switched to another machine and later plan to return back to the initial one, you'll need to repeat the explained steps.
 
@@ -274,4 +269,3 @@ With this approach, values will still end up in your state files, but they will 
 Learn more about secrets in Pulumi's official [documentation page](https://www.pulumi.com/docs/intro/concepts/secrets/).
 
 </Alert>
-
