@@ -5,19 +5,13 @@ description: Learn how to hook onto key lifecycle events of the "webiny deploy" 
 
 import { Alert } from "@/components/Alert"
 
-import cloudInfrastructureDiagram from "./assets/build-and-deploy-hooks/webiny_deploy_phases.png";
-
-<Alert type="info">
-
- Can I Use This?
+<Alert type="info" title="Can I Use This?">
 
 Build-related hooks outlined in this guide are available since Webiny **v5.20.0**, while deploy-related ones are available already since Webiny **v5.0.0**.
 
 </Alert>
 
-<Alert type="success">
-
- What you’ll learn
+<Alert type="success" title="What you’ll learn">
 
 - how to run custom code before and after build and deploy steps
 
@@ -47,12 +41,7 @@ This is why the [`webiny deploy`](/docs/how-to-guides/deployment/deploy-your-pro
 
 The following diagram shows in which order these lifecycle events are triggered:
 
-
-<img  
-  alt="webiny deploy Command's Lifecycle Events"
-  src={cloudInfrastructureDiagram} />
-
-
+![webiny deploy Command's Lifecycle Events](./assets/build-and-deploy-hooks/webiny_deploy_phases.png)
 
 We can hook onto any of these events via a dedicated plugin type, which we cover in the following section.
 

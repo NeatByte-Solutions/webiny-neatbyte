@@ -4,11 +4,8 @@ description: Learn how to preview cloud infrastructure deployments, before actua
 ---
 
 import { Alert } from "@/components/Alert"
-import PreviewingDeploy from "./assets/preview-deployments/preview-terminal.png"
 
-<Alert type="success">
-
- What you’ll learn
+<Alert type="success" title="What you’ll learn">
 
 - how to preview cloud infrastructure deployment for your project application
 
@@ -32,16 +29,7 @@ yarn webiny deploy apps/website --env dev --preview
 
 Executing these commands won't perform any changes to your cloud infrastructure resources. They would just list all of the changes that would be applied, for example:
 
-<!-- vale off -->
-
-<img
-  src={PreviewingDeploy}
-  className="no-shadow"
-  style={{ borderRadius: 0 }}
-  alt="Previewing Deploy Command"
-/>
-
-<!-- vale on -->
+![Previewing Deploy Command](./assets/preview-deployments/preview-terminal.png)
 
 ## Debugging
 

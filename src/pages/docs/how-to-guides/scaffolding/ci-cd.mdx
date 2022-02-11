@@ -5,20 +5,13 @@ description: Learn how to set up a CI/CD pipeline for your Webiny project.
 
 import { Alert } from "@/components/Alert"
 
-import ghEnvironments from "./ci-cd/gh_environments.png";
-import ghActions from "./ci-cd/gh_actions_logo.png";
-
-<Alert type="info">
-
- Can I use this?
+<Alert type="info" title="Can I use this?">
 
 This feature is available since **v5.7.0**.
 
 </Alert>
 
-<Alert type="success">
-
- What you'll learn
+<Alert type="success" title="What you'll learn">
 
 - how to use the built-in scaffold to set up your CI/CD in no time
 
@@ -49,14 +42,14 @@ If you plan to use a different CI/CD provider, you can still create your workflo
 ### GitHub Actions
 
 <a href="https://github.com/features/actions" target="_blank">
-<img alt="GitHub Actions" src={ghActions} />
+
+![GitHub Actions](./ci-cd/gh_actions_logo.png)
+
 </a>
 
 [GitHub Actions](https://github.com/features/actions) are often a good choice when it comes to setting up your own CI/CD, simply because of its tight integration with other existing GitHub concepts and resources.
 
-<Alert type="info">
-
- Can I use this?
+<Alert type="info" title="Can I use this?">
 
 You must be running a **public repo** or a **private repo under a GitHub Enterprise** account.
 The current GitHub CI/CD set up relies on [GitHub Environments](https://docs.github.com/en/actions/reference/environments). Environments are only available in public repositories - for all GitHub products - or private repositories in GitHub Enterprise.
@@ -67,7 +60,7 @@ If you're running a private repository in a non-GitHub Enterprise account, you w
 
 </Alert>
 
-<Alert type="warning">
+<Alert type="warning" title="CAUTION">
 
 Upon running this scaffold, note that you will need to paste your GitHub account's personal access token. You can choose to use an existing one, or even better, create a new one simply by clicking on the [following link](https://github.com/settings/tokens/new?scopes=repo,workflow&description=webiny-cicd-token).
 
@@ -128,7 +121,7 @@ In case of the latter, if you've picked an existing GitHub code repository, then
 
 By default, for every new code repository, GitHub sets the `main` (previously `master`) branch as the default one. Since during the scaffolding process, the `dev` branch was set as the new default, you can delete the previous one.
 
-<Alert type="warning">
+<Alert type="warning" title="CAUTION">
 
 When scaffolding inside of an existing repository, just double-check if the new `dev` and previous default branch are in sync. We don't want to accidentally end up with lost code commits.
 
@@ -138,7 +131,7 @@ When scaffolding inside of an existing repository, just double-check if the new 
 
 Finally, go to your code repository settings and navigate to the [Environments](https://docs.github.com/en/actions/reference/environments#creating-an-environment) settings. In here, you should be able to see three different environments that were created during the scaffolding process:
 
-<img alt="GitHub Environments" src={ghEnvironments} />
+![GitHub Environments](./ci-cd/gh_environments.png)
 
 Respectively, these environments are assumed every time a change is pushed into `dev`, `staging`, and `prod` branches, in the `build-test` job within created [`devPush.yml`](https://github.com/webiny/webiny-js/blob/next/packages/cli-plugin-scaffold-ci/src/githubActions/files/workflows/.github/workflows/pushDev.yml#L30), [`stagingPush.yml`](https://github.com/webiny/webiny-js/blob/next/packages/cli-plugin-scaffold-ci/src/githubActions/files/workflows/.github/workflows/pushStaging.yml#L30), and [`prodPush.yml`](https://github.com/webiny/webiny-js/blob/next/packages/cli-plugin-scaffold-ci/src/githubActions/files/workflows/.github/workflows/pushProd.yml#L30) workflows.
 

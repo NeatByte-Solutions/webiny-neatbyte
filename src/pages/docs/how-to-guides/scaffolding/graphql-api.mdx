@@ -4,19 +4,14 @@ description: Learn how to use the GraphQL API scaffold.
 ---
 
 import { Alert } from "@/components/Alert"
-import cloudInfrastructureDiagram from "./graphql-api/new_graphql_api_scaffold.png";
 
-<Alert type="info">
-
- Can I use this?
+<Alert type="info" title="Can I use this?">
 
 This feature is available since **v5.13.0**.
 
 </Alert>
 
-<Alert type="success">
-
- What you'll learn
+<Alert type="success" title="What you'll learn">
 
 - main features of the **GraphQL API** scaffold
 - how to continue developing on top of the created application code
@@ -39,8 +34,7 @@ Be sure to check the [Development](#development) section below to learn more.
 
 Only a couple of cloud infrastructure resources need to be deployed in order to host a new GraphQL API, which is depicted by the following diagram:
 
-<img  alt="Cloud Infrastructure Resources" src={cloudInfrastructureDiagram}/>
-
+![Cloud Infrastructure Resources](./graphql-api/new_graphql_api_scaffold.png)
 
 As shown, the scaffold also includes a single Amazon DynamoDB <diagram-letter>D</diagram-letter> table, which you can use for all of your GraphQL API's data storing and retrieval needs. Also, in case you need additional databases, you're free to include them.
 

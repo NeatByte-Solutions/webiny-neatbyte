@@ -5,17 +5,15 @@ description: Learn what are environments and how they work in a Webiny project.
 
 import { Alert } from "@/components/Alert"
 
-<Alert type="success">
+<Alert type="success" title="What you’ll learn">
 
-What you’ll learn
 - what are environments
 - how are environments handled in a Webiny project
 
 </Alert>
 
-<Alert type="warning">
+<Alert type="warning" title="Just want to deploy?">
 
-Just want to deploy?
 This article covers the general idea of environments and how they are embedded into a Webiny project. To learn how to deploy your project using [Webiny CLI](/docs/key-topics/webiny-cli), please visit the [Deploy your project](/docs/how-to-guides/deployment/deploy-your-project) guide.
 
 </Alert>
@@ -40,24 +38,14 @@ For best practices on how to organize your environments and other workflows, che
 
 Every project application can be deployed into several different environments. For example, we might have three applications in our project, and for each, we might want to have three different environments: **dev**, **staging**, and **production**.
 
-<!-- vale off -->
-
-<img
-  src={require("./assets/environments.png").default}
-  className="no-shadow"
-  style={{ marginBottom: 20 }}
-  alt="Environments."
-/>
-
-<!-- vale on -->
+![Environments.](./assets/environments.png)
 
 Note that Webiny does **not** sync environments across your project applications. Meaning, if you want to deploy your entire project into a specific environment, you need to deploy every application into it. So, in the case of the above project, you would need to deploy all three applications.
 
 Fortunately, Webiny makes it easy to work with different environments, using the [Webiny CLI](/docs/key-topics/webiny-cli) and [Pulumi](/docs/key-topics/deployment/iac-with-pulumi). Be sure to check out the [Deploy your project](/docs/how-to-guides/deployment/deploy-your-project) guide to learn how to deploy a Webiny project.
 
-<Alert type="danger">
+<Alert type="danger" title="Watch out for extra costs">
 
-Watch out for extra costs
 Deploying multiple project environments into the same AWS account may incur additional cost. Check out the [Cloud Infrastructure](#) section for more information.
 
 </Alert>

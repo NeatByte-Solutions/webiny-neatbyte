@@ -4,23 +4,14 @@ description: Learn how to set up a CI/CD pipeline for your Webiny project.
 ---
 
 import { Alert } from "@/components/Alert"
-import WebinyCloud from "./assets/merging_3.png"
-import Image2 from "./assets/merging_2.png"
-import Image from "./assets/merging_1.png"
-import Organization from "./assets/short_long_lived.png"
 
-
-
-<Alert type="success">
-
- What you'll learn
+<Alert type="success" title="What you'll learn">
 
 - how to set up a CI/CD workflow for your Webiny project
 
 </Alert>
 
 <Alert type="info">
-
 
 Get your CI/CD set up in no time with the built-in [CI/CD scaffold](/docs/how-to-guides/scaffolding/ci-cd).
 
@@ -88,16 +79,7 @@ Once a PR is closed, these environments are immediately destroyed.
 
 The following diagrams gives us an overview of the explained organization of Git branches and environments into which our project is deployed:
 
-<!-- vale off -->
-
-<img
-  src={Organization}
-  className="no-shadow"
-  style={{ marginBottom: 20 }}
-  alt="Organization of Git Branches and Environments"
-/>
-
-<!-- vale on -->
+![Organization of Git Branches and Environments](./assets/short_long_lived.png)
 
 With this overview, let's continue by going step-by-step into how everything works together.
 
@@ -109,31 +91,13 @@ Developers start their development process by creating a new branch from the `de
 
 As mentioned above, when a PR is submitted, we want to run different types of tests against a project that was dynamically deployed into a [short-lived (ephemeral)](/docs/key-topics/ci-cd/testing#deploying-short-lived-ephemeral-environments-for-testing-purposes) test environment. Once all tests are passing, we can then approve the PR and merge its code changes into the `dev` branch.
 
-<!-- vale off -->
-
-<img
-  src={Image}
-  className="no-shadow"
-  style={{ marginBottom: 20 }}
-  alt="Webiny Cloud Infrastructure - Environments"
-/>
-
-<!-- vale on -->
+![Webiny Cloud Infrastructure - Environments](./assets/merging_1.png)
 
 ### 2. Merge Changes To `staging` Branch
 
 Once all of the pending PRs have been tested successfully and merged into the `dev` branch, we then continue by merging the `dev` branch into `staging`. This can be done either via a new PR or a direct merge, but we recommend the former. This is simply because creating a PR first allows us to maybe [preview the deployment](/docs/key-topics/ci-cd/testing#testing-cloud-infrastructure-changes) that will happen once the code is merged, and maybe perform some other tests.
 
-<!-- vale off -->
-
-<img
-  src={Image2}
-  className="no-shadow"
-  style={{ marginBottom: 20 }}
-  alt="Webiny Cloud Infrastructure - Environments"
-/>
-
-<!-- vale on -->
+![Webiny Cloud Infrastructure - Environments](./assets/merging_2.png)
 
 As mentioned, merging code into long-lived branches should trigger automatic deploys into their respective long-lived environments. So, once the deploy into the `staging` environment has been completed, the rest of the team, for example product owners or [QA](https://en.wikipedia.org/wiki/Quality_assurance) teams, can start testing the new release candidate.
 
@@ -168,16 +132,7 @@ Once the changes deployed into the `staging` branch have been reviewed and accep
 
 As always, this will trigger automatic deployment of your project, and ultimately, make the new changes available for real users.
 
-<!-- vale off -->
-
-<img
-  src={WebinyCloud}
-  className="no-shadow"
-  style={{ marginBottom: 20 }}
-  alt="Webiny Cloud Infrastructure - Environments"
-/>
-
-<!-- vale on -->
+![Webiny Cloud Infrastructure - Environments](./assets/merging_3.png)
 
 ### 4. Hot Fixes
 
@@ -188,7 +143,6 @@ Some of these may be minor and may not require immediate attention (these can be
 In other words, in cases like these, it's allowed to break the rules, and either create a PR directly against the `prod` branch, or even directly push into it. Note that, as the long-lived branches are usually marked as protected, only users with admin privileges will be able to do that.
 
 In case you end up doing this, remember that all of the changes you merge into the `prod` branch, should also be merged into the `dev` and `staging` branches. You can do that by simply merging the `prod` branch into `staging`, then merging the `staging` branch back to `dev`.
-
 
 ## FAQ
 

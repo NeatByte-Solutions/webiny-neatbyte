@@ -4,19 +4,14 @@ description: Learn what are cloud infrastructure state files and how to properly
 ---
 
 import { Alert } from "@/components/Alert"
-import Environments from "./assets/ci_cd_tests_order.png"
-import Environments2 from "./assets/testing_trophy.png"
 
-<Alert type="success">
-
- What you'll learn
+<Alert type="success" title="What you'll learn">
 
 - how to organize and run tests for your applications
 
 </Alert>
 
 <Alert type="info">
-
 
 Get your CI/CD set up in no time with the built-in [CI/CD scaffold](/docs/how-to-guides/scaffolding/ci-cd).
 
@@ -74,16 +69,7 @@ Usually, these tests are reasonably fast to run, and sometimes, even the fastest
 
 The following diagram, sometimes called the [Testing Trophy](https://testingjavascript.com/), shows all four types of tests we've just explained.
 
-<!-- vale off -->
-
-<img
-  src={Environments2}
-  className="no-shadow"
-  style={{ marginBottom: 20 }}
-  alt="Environments."
-/>
-
-<!-- vale on -->
+![Environments.](./assets/testing_trophy.png)
 
 ## Running Tests In a CI/CD Workflow
 
@@ -105,16 +91,7 @@ Finally, end-to-end (E2E) tests should be run last, as they almost always requir
 
 The following diagram shows the recommended order in which different types of tests can be run in a CI/CD workflow:
 
-<!-- vale off -->
-
-<img
-  src={Environments}
-  className="no-shadow"
-  style={{ marginBottom: 20 }}
-  alt="Environments."
-/>
-
-<!-- vale on -->
+![Environments.](./assets/ci_cd_tests_order.png)
 
 ### Points of Execution
 
@@ -160,12 +137,11 @@ Note that, in order to deploy these ephemeral environments, we suggest a separat
 
 Also, since we're using a single cloud (AWS) account, in which we might have multiple ephemeral environments deployed at the same time (because of multiple active PRs), upon [deploying](/docs/how-to-guides/deployment/deploy-your-project) the project, we suggest that the name of the environment is dynamically generated. Even better, the name of the environment can be inherited from the PR number, which should we should be able to retrieve while our CI/CD workflow is running.
 
-<Alert type="warning">
+<Alert type="warning" title="CAUTION">
 
 When we talk about multiple environment deployments, it's important to note that we're talking about deploying multiple copies of our project, both in terms of the application code and, more importantly, needed cloud infrastructure resources.
 
 In some cases, doing this can [incur additional cost](/docs/key-topics/ci-cd/environments#multiple-environments-and-extra-costs).
-
 
 </Alert>
 
