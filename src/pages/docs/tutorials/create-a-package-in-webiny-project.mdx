@@ -4,11 +4,8 @@ description: Learn how to share code by creating a package in a Webiny project
 ---
 
 import { Alert } from "@/components/Alert"
-import image from "./assets/how-to-create-a-package/yarn-init.png"
 
-<Alert type="success">
-
- What You’ll Learn
+<Alert type="success" title="What You’ll Learn">
 
 - how to create a new package in a Webiny project
 - how to organize files in a Webiny project
@@ -126,15 +123,7 @@ yarn init
 
 Once we execute the above command, we will be presented with a couple of questions as shown below:
 
-<!-- vale off -->
-
-<img
-  src={image}
-  style={{ marginBottom: 20 }}
-  alt="yarn init"
-/>
-
-<!-- vale on -->
+![yarn init](./assets/how-to-create-a-package/yarn-init.png)
 
 <Alert type="info">
 
@@ -395,7 +384,6 @@ You don't need to know all the configurations.
 But, if you're interested feel free to check the full configuration [file](https://github.com/webiny/webiny-examples/blob/master/create-package-in-monorepo/.babel.react.js).
 
 </Alert>
-
 
 ### `tsconfig.build.json`
 Every Webiny project prioritizes [TypeScript](https://www.typescriptlang.org/).

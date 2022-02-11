@@ -4,13 +4,8 @@ description: Webiny Page Builder performance benchmark.
 ---
 
 import { Alert } from "@/components/Alert"
-import Image1 from "./assets/pb-deliver-a-page/response-time.png"
-import Image2 from "./assets/pb-deliver-a-page/throughput.png"
 
-
-<Alert type="success">
-
- What you’ll learn
+<Alert type="success" title="What you’ll learn">
 
 - the performance of Webiny Page Builder
 
@@ -22,9 +17,7 @@ import Image2 from "./assets/pb-deliver-a-page/throughput.png"
 | -------------- | ----------------------: | -------------------: |
 | 2,274,117      |                     267 |                3,613 |
 
-<Alert type="info">
-
- **What this means?**
+<Alert type="info" title="What this means?">
 
 Requests per second is a number that helps you calculate how many users you can actually serve. The other part of that calculation is to know how your users behave. How fast they navigate between pages in this case.
 
@@ -42,23 +35,13 @@ We are sending 1,000 users to the website with a ramp up period of 25s, meaning 
 
 ### Response times
 
-<img
-  src={Image1}
-  className="no-shadow"
-  style={{ marginBottom: 20 }}
-  alt="Page Builder benchmark - Response time"
-/>
+![Page Builder benchmark - Response time](./assets/pb-deliver-a-page/response-time.png)
 
 Average response time is 267ms, while 95% of all the requests were delivered with a response time not greater than 805ms (p95).
 
 ### Throughput
 
-<img
-  src={Image2}
-  className="no-shadow"
-  style={{ marginBottom: 20 }}
-  alt="Page Builder benchmark - Throughput"
-/>
+![Page Builder benchmark - Throughput](./assets/pb-deliver-a-page/throughput.png)
 
 Average throughput was 3,613 req/sec, while at peak the system handled more than 6,500 req/sec. From the picture you can see that the pattern was more or less consistent, especially after the first 2 minutes have elapsed.
 

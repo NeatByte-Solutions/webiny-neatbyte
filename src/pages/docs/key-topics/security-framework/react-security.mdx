@@ -4,11 +4,8 @@ description: Learn how security works in Webiny React applications.
 ---
 
 import { Alert } from "@/components/Alert"
-import reactIdPAPI from "../assets/security-framework/react-idp-api.png";
 
-<Alert type="success">
-
-What you'll learn
+<Alert type="success" title="What you'll learn">
 
 - how security works in the context of a React application
 
@@ -20,9 +17,8 @@ If you just want to jump straight into the code, take a look at the [Securing Yo
 
 </Alert>
 
-<Alert type="warning">
+<Alert type="warning" title="Important">
 
-Important
 This article is a continuation of the previous two articles about Webiny Security Framework. If you haven't already, please do read the [Introduction](/docs/key-topics/security-framework/introduction) and [API Security](/docs/key-topics/security-framework/api-security) articles before continuing.
 
 </Alert>
@@ -33,12 +29,7 @@ The source of identity information for the React application is your Identity Pr
 
 Let's use the following diagram to analyze the order of operations that are going on once you start your React application that requires authentication:
 
-<img
-  src={reactIdPAPI}
-  className="no-shadow"
-  style={{ marginBottom: 20 }}
-  alt="React Authentication and Authorization using Webiny Security Framework"
-/>
+![React Authentication and Authorization using Webiny Security Framework](../assets/security-framework/react-idp-api.png)
 
 Once your application has started, it will render a login form (this can be your custom form or the one provided by your IdP's React SDK). A user submits his credentials to the IdP (`1`). If credentials are valid, IdP will return some basic identity information and a JWT token (`2`).
 

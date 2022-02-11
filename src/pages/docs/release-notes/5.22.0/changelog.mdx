@@ -3,13 +3,6 @@ title: Webiny 5.22.0 Changelog
 description: See what's new in Webiny version 5.22.0.
 ---
 
-import multiplePreValue from "./assets/multiple-predefined-values.png";
-import singlePreValue from "./assets/single-predefined-values.png";
-import selSinglePreValue from "./assets/selected-single-predefined-values.png";
-import selMultiplePreValue from "./assets/selected-multiple-predefined-values.png";
-import themeManager from "../../enterprise/theme-manager/tenant-themes.png";
-import oktaLogin from "../../enterprise/okta-integration/okta-login.png";
-
 # Changes
 
 The major focus of this release was the upgrade of Webpack to version 5. It's been long overdue, and it's finally done. Along the way we also upgraded many of the underlying dependencies. Another area of improvement was the Headless CMS. 
@@ -42,27 +35,19 @@ Upon creating a text or number field with the **Use predefined values** option e
 
 How it looks when creating a model field:
 
-<img src={singlePreValue} alt="Predefined single value" />
-
-
+![Predefined single value](./assets/single-predefined-values.png)
 
 How it looks when creating an entry:
 
-<img src={selSinglePreValue}   style={{ margin: "0 auto" }}
- alt="Predefined single selected value" />
-
+![Predefined single selected value](./assets/selected-single-predefined-values.png)
 
 Also, in case the **Use as list of...** option is enabled, multiple initially selected values can be set too.
 
-<img src={multiplePreValue} alt="Predefined multiple values" />
-
+![Predefined multiple values](./assets/multiple-predefined-values.png)
 
 How it looks when creating the entry:
 
-<img src={selMultiplePreValue} 
-  style={{ margin: "0 auto" }}
- alt="Predefined single selected value" />
-
+![Predefined single selected value](./assets/selected-multiple-predefined-values.png)
 
 When creating new content entry in the Admin app, be aware that if you unmark all the checkboxes or radio buttons, the field's value will end up being empty. To prevent that from happening, you can enable the **Required** field validator.
 
@@ -88,7 +73,7 @@ As a side note, we're thinking about moving all the babel configuration away fro
 
 ### Fine-Grained Cache Control on Files Uploaded to S3 ([#2180](https://github.com/webiny/webiny-js/pull/2180))
 
-This one was contributed by [Scott Stanton](https://github.com/snstanton) :raised_hands: :heart:. When we build Admin and Website apps, we deploy static assets to S3 using a custom function (not Pulumi), to make it much faster. Now it's possible to specify cache control settings on individual files, by passing in a map of patterns and the cache control string you want to apply to the files that match the given pattern.
+This one was contributed by [Scott Stanton](https://github.com/snstanton) &#128588 &#129505. When we build Admin and Website apps, we deploy static assets to S3 using a custom function (not Pulumi), to make it much faster. Now it's possible to specify cache control settings on individual files, by passing in a map of patterns and the cache control string you want to apply to the files that match the given pattern.
 
 This can be used in `apps/admin/cli/deploy.ts` and `apps/website/cli/deploy.ts` when calling the `uploadFolderToS3` function.
 
@@ -98,12 +83,10 @@ This can be used in `apps/admin/cli/deploy.ts` and `apps/website/cli/deploy.ts` 
 
 Theme Manager is a new module which hooks into your multi-tenant project and the Page Builder, and allows you to have multiple themes which can be assigned to individual tenants. Once assigned, individual tenants can pick a theme they want to use for their website.
 
-<img src={themeManager} alt="Assign Themes to Tenants" />
-
+![Assign Themes to Tenants](../../enterprise/theme-manager/tenant-themes.png)
 
 ### Okta Integration for Multi-Tenant Projects
 
 By default, Webiny uses AWS Cognito as its IdP. With this release, we're adding support for [Okta](https://www.okta.com/), especially for multi-tenant projects, where you can control access to tenants by assigning them to different Okta Applications. 
 
-<img src={oktaLogin} alt="Okta Login" />
-
+![Okta Login](../../enterprise/okta-integration/okta-login.png)

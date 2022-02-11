@@ -4,14 +4,8 @@ description: Webiny Headless CMS performance benchmark.
 ---
 
 import { Alert } from "@/components/Alert"
-import Image1 from "./assets/hc-write-api/response-time-d.png"
-import Image2 from "./assets/hc-write-api/response-time-e.png"
-import Image3 from "./assets/hc-write-api/throughput-d.png"
-import Image4 from "./assets/hc-write-api/throughput-e.png"
 
-<Alert type="success">
-
- What you’ll learn
+<Alert type="success" title="What you’ll learn">
 
 - performance of write operations on Webiny Headless CMS
 - optimization suggestions
@@ -20,10 +14,7 @@ import Image4 from "./assets/hc-write-api/throughput-e.png"
 
 ## Results
 
-import SummarySvg from "./assets/hc-write-api/summary.svg";
-
-<img src={SummarySvg} alt="image" style={{margin : "0 auto" }}/>
-
+![image](./assets/hc-write-api/summary.svg)
 
 | Test   | Records inserted | Avg. response time (ms) | p95 response time (ms) | Throughput (req/sec) |
 | ------ | ---------------: | ----------------------: | ---------------------: | -------------------: |
@@ -98,9 +89,7 @@ mutation {
 
 The variables are replaced with real values during the test by Apache JMeter.
 
-<Alert type="info">
-
- Content model structure
+<Alert type="info" title="Content model structure">
 
 You can view the full content model structure and relations between different models on [this link here](https://raw.githubusercontent.com/webiny/benchmark/main/static/content-model-graph.png).
 
@@ -135,9 +124,7 @@ Webiny writes in Elasticsearch via a DynamoDB stream, which is an asynchronous p
 
 Although Elasticsearch is not part of the main request, the service can still be overwhelmed if there is a lot of data that needs to be synced from DynamoDB into Elasticsearch in a short period of time.
 
-<Alert type="info">
-
- About DynamoDB stream
+<Alert type="info" title="About DynamoDB stream">
 
 The stream details, such as `batchSize` and `maximumBatchingWindowInSeconds` can be adjusted inside [`api/pulumi/elasticSearch.ts`](https://github.com/webiny/webiny-js/blob/next/api/pulumi/elasticSearch.ts#L95).
 
@@ -161,43 +148,23 @@ We only extracted the charts for the last 2 tests as most charts showed the same
 
 #### Test D
 
-<img
-  src={Image1}
-  className="no-shadow"
-  style={{ marginBottom: 20 }}
-  alt="Headless CMS benchmark - Response time"
-/>
+![Headless CMS benchmark - Response time](./assets/hc-write-api/response-time-d.png)
 
 The response time was mostly consistent, with the exception around the 14:21 mark. At that point the response times spiked for a few seconds but then leveled off to the previous performance and stayed stable for next 5 minutes, until the end of the test.
 
 #### Test E
 
-<img
-  src={Image2}
-  className="no-shadow"
-  style={{ marginBottom: 20 }}
-  alt="Headless CMS benchmark - Response time"
-/>
+![Headless CMS benchmark - Response time](./assets/hc-write-api/response-time-e.png)
 
 ### Throughput
 
 #### Test D
 
-<img
-  src={Image3}
-  className="no-shadow"
-  style={{ marginBottom: 20 }}
-  alt="Headless CMS benchmark - Throughput"
-/>
+![Headless CMS benchmark - Throughput](./assets/hc-write-api/throughput-d.png)
 
 #### Test E
 
-<img
-  src={Image4}
-  className="no-shadow"
-  style={{ marginBottom: 20 }}
-  alt="Headless CMS benchmark - Throughput"
-/>
+![Headless CMS benchmark - Throughput](./assets/hc-write-api/throughput-e.png)
 
 In line to what we see in the response times, we see a drop in the throughput around the same time.
 
@@ -247,10 +214,7 @@ The cost of serverless components has been calculated based on their usage. The 
 
 ### Cost per 10k requests
 
-import CostPerRequestSvg from "./assets/hc-write-api/cost-per-request.svg";
-
-<img src={CostPerRequestSvg} alt="image" style={{margin : "0 auto"}}/>
-
+![image](./assets/hc-write-api/cost-per-request.svg)
 
 | Test   |      Hits |                     Total cost |            Cost per 10k requests |
 | ------ | --------: | -----------------------------: | -------------------------------: |

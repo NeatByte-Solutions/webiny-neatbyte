@@ -5,9 +5,7 @@ description: Learn how to add custom commands to the Webiny CLI.
 
 import { Alert } from "@/components/Alert"
 
-<Alert type="success">
-
- What you'll learn
+<Alert type="success" title="What you'll learn">
 
 - how to create a new Webiny CLI command
 - how to override existing commands
@@ -98,9 +96,7 @@ yarn webiny drink coffee
 yarn webiny drink water
 ```
 
-<Alert type="info">
-
- Moving the Code To a Separate File
+<Alert type="info" title="Moving the Code To a Separate File">
 
 Inserting new plugins directly into the `webiny.project.js` works, but overtime, may become crowded. Feel free to move this code into a separate file, for example `scripts/drinkCommand.js`, and use the `webiny.project.js` just to call the necessary `require` statements.
 

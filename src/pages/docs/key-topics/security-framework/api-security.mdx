@@ -4,11 +4,8 @@ description: Learn how security works in Webiny API.
 ---
 
 import { Alert } from "@/components/Alert"
-import requestLifecycleImage from "../assets/security-framework/request-lifecycle.png";
 
-<Alert type="success">
-
-What you'll learn
+<Alert type="success" title="What you'll learn">
 
 - how security hooks into API request lifecycle
 - hooks and plugins provided by Webiny Security Framework
@@ -29,7 +26,6 @@ This article uses terms like authentication, authorization, identity, and permis
 
 </Alert>
 
-
 WSF itself, just as any other Webiny application, is a collection of plugins. When these plugins are registered into the application, WSF hooks into some request lifecycle hooks. By doing so, it adds new tools and introduces new hooks to allow developers write plugins for them.
 
 The term _hook_ is just used to denote that, at a certain point in time, plugins of that type will be processed (e.g., `context` hook means that plugins of type `context` will be processed).
@@ -38,12 +34,7 @@ The term _hook_ is just used to denote that, at a certain point in time, plugins
 
 To visualize the process of authentication, authorization, and better understand _when_ things are being executed, let's analyze the following diagram:
 
-<img
-  src={requestLifecycleImage}
-  className="no-shadow"
-  style={{ marginBottom: 20 }}
-  alt="Request Lifecycle with Webiny Security Framework"
-/>
+![Request Lifecycle with Webiny Security Framework](../assets/security-framework/request-lifecycle.png)
 
 The lifecycle of any request begins by invoking a Lambda function (`1`). Once invoked, function handler runs a series of hooks (`2`).
 
@@ -87,9 +78,7 @@ WSF only requires a couple of properties to work:
 
 Your actual identity object can contain a lot more information which you can use in your authorization plugins or business logic. WSF, however, will only require the properties described above.
 
-<Alert type="info">
-
-Identity vs. User
+<Alert type="info" title="Identity vs. User">
 
 Keep in mind that `identity` and `user` are not the same thing. A `user` is a superset of `identity`, meaning, it will have a lot more information associated with it. That information is often related to your project's business logic (user profile, payment info, addresses).
 

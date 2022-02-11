@@ -5,9 +5,7 @@ description: Overview of security strategy
 
 import { Alert } from "@/components/Alert"
 
-<Alert type="success">
-
-What You’ll Learn
+<Alert type="success" title="What You’ll Learn">
 
 - how we approach security
 - additional security recommendations
@@ -41,9 +39,7 @@ No single change made to our codebase skips these checks.
 
 Webiny is designed to run on top of the AWS cloud at the moment, with support for other clouds coming at a later point.
 
-<Alert type="info">
-
-Webiny Architecture
+<Alert type="info" title="Webiny Architecture">
 
 To learn more about Webiny's architecture, check out [this article](/docs/key-topics/cloud-infrastructure/introduction).
 
@@ -51,7 +47,7 @@ To learn more about Webiny's architecture, check out [this article](/docs/key-to
 
 The serverless services Webiny uses as part of its architecture are fault-tolerant by design. The only exception is Elasticsearch. In the Webiny production deployment stack, Elasticsearch is automatically deployed in multiple AZs, making it highly-available. Any public access, in both VPC and non-VPC deployment is restricted.
 
-<Alert type="info"> Update coming soon
+<Alert type="info" title="Update coming soon"> 
 
 We're soon to release an update that allows you to use different databases to replace Elasticsearch.
 
@@ -61,7 +57,7 @@ With Webiny there are zero servers you need to manage, reducing the risk of a se
 
 Webiny ships with 2 infrastructure stacks by default, a development one and a production one.
 
-<Alert type="warning"> Use the right stack
+<Alert type="warning" title="Use the right stack"> 
 
 We highly recommend that you use the production stack for all your projects running production traffic.
 
@@ -91,9 +87,7 @@ All the data inside DynamoDB is encrypted in transit and at rest by default.
 
 All the data inside Elasticsearch is encrypted at transit only, by default.
 
-<Alert type="info">
-
-Elasticsearch Encrypt at rest
+<Alert type="info" title="Elasticsearch Encrypt at rest">
 
 For production cases, we recommend you also encrypt data at rest in Elasticsearch. Ensure you have a proper key management strategy in place beforehand otherwise it could lead to making your data inaccessible. For more info visit: https://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/encryption-at-rest.html
 
@@ -101,9 +95,7 @@ For production cases, we recommend you also encrypt data at rest in Elasticsearc
 
 The data inside S3 bucket by default is not encrypted, is set to be publicly accessible and versioning is turned off. Public access is only allowed on the `list` command. Write operations need to be signed with a security token to be allowed. We advise that you adjust these parameters to the needs of your project accordingly.
 
-<Alert type="info">
-
-Making S3 private
+<Alert type="info" title="Making S3 private">
 
 If needed you can restrict access to the S3 buckets by modifying the ACL policy inside the Pulumi infrastructure files. At the moment if you make the S3 bucket private to non-authorized users, images embedded in the Page Builder and other places will not be displayed and potentially the Admin app might be made inaccessible. Please contact us in case you need to make your S3 completely private.
 
