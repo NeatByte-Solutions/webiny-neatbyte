@@ -5,10 +5,7 @@ description: Learn how to add plugins to various sections of Webiny.
 
 import { Alert } from "@/components/Alert"
 
-
-<Alert type="success">
-
- What you'll learn
+<Alert type="success" title="What you'll learn">
 
 - how to add plugins to various parts of Webiny
 - how to best organize your plugins
@@ -42,9 +39,7 @@ The plugins entry files for these applications can be found at the following loc
 
 To register a new plugin, you need to navigate to the appropriate plugins entry file, and add your plugin to the end of the array that is being registered into the [PluginsContainer](/docs/key-topics/plugins#plugins-container).
 
-<Alert type="success">
-
- Organize your plugins
+<Alert type="success" title="Organize your plugins">
 
 We always recommend creating a dedicated file, or even a folder, to hold your custom plugins.
 
@@ -138,9 +133,7 @@ If not, you'll need to [deploy](/docs/how-to-guides/deployment/deploy-your-proje
 
 </Alert>
 
-<Alert type="info">
-
- IMPORTANT!
+<Alert type="info" title="IMPORTANT!">
 
 Even though this process looks very similar to how we register plugins into React applications, there's a big difference between the two. React applications have one single global `PluginsContainer`, while API applications create a new one to handle each individual invocation (HTTP request).
 

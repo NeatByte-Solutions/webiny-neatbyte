@@ -4,11 +4,8 @@ description: Learn how are React application files served via the deployed cloud
 ---
 
 import { Alert } from '@/components/Alert'
-import image from "./images/webiny_admin_page_visit.png"
 
-<Alert type="success">
-
- What you’ll learn
+<Alert type="success" title="What you’ll learn">
 
 - how are React application files served via the deployed cloud infrastructure
 
@@ -16,22 +13,11 @@ import image from "./images/webiny_admin_page_visit.png"
 
 ## Diagram
 
-<!-- vale off -->
-
-<img
-  src={image}
-  className="no-shadow"
-  style={{ marginBottom: 20 }}
-  alt="Webiny Cloud Infrastructure - Admin Area - Serving Application Files"
-/>
-
-<!-- vale on -->
+![Webiny Cloud Infrastructure - Admin Area - Serving Application Files](./images/webiny_admin_page_visit.png)
 
 ## Description
 
-<!-- vale off -->
 The diagram shows how HTTP requests travel through the deployed cloud infrastructure and how files are returned back to the client. This happens repeatedly as the user opens and navigates through the **Admin Area** React application. Note that, when talking about the API HTTP requests that the **Admin Area** React application issues, those are still issued to the Amazon CloudFront distribution that's deployed as part of the [API project application](/docs/key-topics/cloud-infrastructure/api/overview).
-<!-- vale on -->
 
 ## Steps
 

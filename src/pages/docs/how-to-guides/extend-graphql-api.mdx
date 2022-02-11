@@ -5,11 +5,7 @@ description: Learn how to use GraphQL plugins in order to expand your GraphQL AP
 
 import { Alert } from "@/components/Alert"
 
-import listBooksQuery from "./extend-graphql-api/list-books-query.png";
-
-<Alert type="success">
-
- What you'll learn
+<Alert type="success" title="What you'll learn">
 
 - the two separate GraphQL APIs that are included by default in every Webiny project
 - how to use the [`GraphQLSchemaPlugin`](https://github.com/webiny/webiny-js/blob/v5.11.0/packages/handler-graphql/src/plugins/GraphQLSchemaPlugin.ts#L10) in order to extend an existing GraphQL API
@@ -122,10 +118,7 @@ Having [the plugin](https://github.com/webiny/webiny-examples/blob/master/extend
 
 Executing the query should give us the following result:
 
-<img
-  alt={"Executing the new `listBooks` Query via API Playground"}
-  src={listBooksQuery}
-/>
+![Executing the new listBooks Query via API Playground](./extend-graphql-api/list-books-query.png)
 
 <Alert type="success">
 

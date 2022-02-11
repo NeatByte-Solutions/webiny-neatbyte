@@ -5,9 +5,7 @@ description: Introduction to the Cloud Infrastructure key topic, which explains 
 
 import { Alert } from '@/components/Alert'
 
-<Alert type="success">
-
- What you’ll learn
+<Alert type="success" title="What you’ll learn">
 
 - what are the default project applications, included in a newly created Webiny project
 - what is the most complex project application, in terms of deployed cloud infrastructure
@@ -18,12 +16,9 @@ import { Alert } from '@/components/Alert'
 
 By default, a Webiny project contains three [project applications](/docs/key-topics/project-organization/project-applications):
 
-<!-- vale off -->
-
 1. **API** (`./api`) - your project's GraphQL API
 2. **Admin Area** (`./apps/admin`) - your administration area
 3. **Website** (`./apps/website`) - your public website
-<!-- vale on -->
 
 In order for these applications to actually work, a set of cloud infrastructure resources needs to be deployed into the cloud (your AWS account).
 

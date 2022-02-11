@@ -4,11 +4,8 @@ description: Learn about the necessary cloud infrastructure resources on which t
 ---
 
 import { Alert } from '@/components/Alert'
-import image from "./images/webiny_api_fm_upload.png"
 
-<Alert type="success">
-
- What you’ll learn
+<Alert type="success" title="What you’ll learn">
 
 - how file uploads are handled by the deployed cloud infrastructure and application code
 
@@ -16,15 +13,7 @@ import image from "./images/webiny_api_fm_upload.png"
 
 ## Diagram
 
-<!-- vale off -->
-
-<img
-  src={image}
-  style={{ marginBottom: 20 }}
-  alt="Webiny Cloud Infrastructure - API - File Upload"
-/>
-
-<!-- vale on -->
+![Webiny Cloud Infrastructure - API - File Upload](./images/webiny_api_fm_upload.png)
 
 <Alert type="info">
 
@@ -38,9 +27,7 @@ The diagram shows what happens every time a client tries to upload a binary file
 
 To provide file upload functionality, the File Manager application relies on a method called **pre-signed POST payload**. Once certain conditions are met, the method enables uploading files directly to an S3 bucket, which is significantly more efficient than having the file travel through multiple cloud infrastructure resources.
 
-<Alert type="info">
-
- Learn more
+<Alert type="info" title="Learn more">
 
 If you want to learn more, feel free to check out [a blog post](https://www.webiny.com/blog/upload-files-to-aws-s3-using-pre-signed-post-data-and-a-lambda-function-7a9fb06d56c1) we wrote on this exact subject and which explains the process in detail.
 
