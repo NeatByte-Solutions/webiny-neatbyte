@@ -3,13 +3,9 @@ title: Serving Pages
 description: Learn how the prerendered pages are statically served to actual website visitors.
 ---
 
-
 import { Alert } from '@/components/Alert'
-import image from "./images/webiny_website_visit.png"
 
-<Alert type="success">
-
- What you’ll learn
+<Alert type="success" title="What you’ll learn">
 
 - how the previously prerendered pages are statically served to actual website visitors
 
@@ -17,16 +13,7 @@ import image from "./images/webiny_website_visit.png"
 
 ## Diagram
 
-<!-- vale off -->
-
-<img
-  src={image}
-  className="no-shadow"
-  style={{ marginBottom: 20 }}
-  alt="Webiny Cloud Infrastructure - Website - Serving Pages"
-/>
-
-<!-- vale on -->
+![Webiny Cloud Infrastructure - Website - Serving Pages](./images/webiny_website_visit.png)
 
 ## Description
 
@@ -64,4 +51,3 @@ By default, all of the files that are served via the `/static/*` path are cached
 **What is the `static` folder anyways?**
 
 The Website React application is actually a [create-react-app](https://create-react-app.dev/) application, which, upon creating a production build, places all of the static files (JS, CSS, images, ...) into this folder.
-

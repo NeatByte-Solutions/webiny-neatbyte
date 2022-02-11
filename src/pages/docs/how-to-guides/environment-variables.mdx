@@ -4,11 +4,8 @@ description: Learn what are environment variables and how you can assign them.
 ---
 
 import { Alert } from "@/components/Alert"
-import image from "./assets/environment-variables/error-overlay.png"
 
-<Alert type="success">
-
- What you'll learn
+<Alert type="success" title="What you'll learn">
 
 - what are environment variables
 - how you can assign environment variables in your project applications
@@ -37,17 +34,13 @@ As mentioned, backend development often involves deploying our code changes into
 
 We can use environment variables upon deploying our project applications and underlying cloud infrastructure resources. For example, we might want to pass a specific value to one or more AWS Lambda functions, a specific configuration param to a cloud infrastructure resource, AWS credentials, and more.
 
-<Alert type="info">
-
- Project Applications
+<Alert type="info" title="Project Applications">
 
 Learn more about project applications and project organization in general, in the [Project Applications and Packages](/docs/key-topics/project-organization/project-applications-and-packages) key topic.
 
 </Alert>
 
-<Alert type="info">
-
- Deploy Your Project
+<Alert type="info" title="Deploy Your Project">
 
 Check out the [Deploy Your Project](/docs/how-to-guides/deployment/deploy-your-project) guide to learn more about the [`deploy`](/docs/how-to-guides/deployment/deploy-your-project#the-deploy-command) command and how to deploy your entire Webiny project. Also, if you'd like to learn more about the deployment process in general, you can also visit our [Deployment](/docs/key-topics/deployment/introduction) key topics section.
 
@@ -138,9 +131,7 @@ this.functions = {
 (...)
 ```
 
-<Alert type="info">
-
- Cloud Infrastructure
+<Alert type="info" title="Cloud Infrastructure">
 
 Read more about the cloud infrastructure resources that get deployed into your AWS account in our [Cloud Infrastructure](/docs/key-topics/cloud-infrastructure/introduction) key topics section.
 
@@ -198,9 +189,7 @@ By default, every Webiny projects contains two frontend project applications, **
 
 For frontend applications, environment variables need to be handled in their respective `start` and `build` commands. In a Webiny project, these can be found in the `webiny.config.ts` file, which is the essential configuration file of every package that a project application may hold.
 
-<Alert type="info">
-
- Project Applications
+<Alert type="info" title="Project Applications">
 
 Learn more about project applications and project organization in general, in the [Project Applications and Packages](/docs/key-topics/project-organization/project-applications-and-packages) key topic.
 
@@ -302,21 +291,12 @@ You must redeploy your backend project application after updating the environmen
 
 </Alert>
 
-
 ### Visual Feedback
 The `DEBUG` environment variable can also be used within your frontend (React) applications.
 
 If set to `true`, all errors detected in the application runtime will be presented within a clear error report, with all of the relevant information like the error message and a complete stack trace:
 
-<!-- vale off -->
-
-<img
-    style={{ marginBottom: 20 }}
-    src={image}
-    alt="Error overlay in debug mode"
-/>
-
-<!-- vale on -->
+![Error overlay in debug mode](./assets/environment-variables/error-overlay.png)
 
 The `DEBUG` environment variable can be set via the application's `webiny.config.ts` config file, for example, [`apps/admin/code/webiny.config.ts`](https://github.com/webiny/webiny-js/blob/next/apps/admin/code/webiny.config.ts) or [`apps/website/code/webiny.config.ts`](https://github.com/webiny/webiny-js/blob/next/apps/website/code/webiny.config.ts):
 
@@ -324,7 +304,6 @@ The `DEBUG` environment variable can be set via the application's `webiny.config
 // Make sure to use the `REACT_APP_` prefix
 process.env.REACT_APP_DEBUG = "true";
 ```
-
 
 ## Enable Webiny Version Header Environment Variable
 
@@ -342,7 +321,6 @@ When the environment variable is set to true it will add the `x-webiny-version` 
 ```yaml
 x-webiny-version: 5.21.0
 ```
-
 
 ## FAQ
 

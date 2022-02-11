@@ -4,11 +4,8 @@ description: Learn about the necessary cloud infrastructure resources on which t
 ---
 
 import { Alert } from '@/components/Alert'
-import image from "./images/webiny_api_gql_request.png"
 
-<Alert type="success">
-
- What you’ll learn
+<Alert type="success" title="What you’ll learn">
 
 - how GraphQL HTTP requests are handled by the deployed cloud infrastructure and application code
 
@@ -16,15 +13,7 @@ import image from "./images/webiny_api_gql_request.png"
 
 ## Diagram
 
-<!-- vale off -->
-
-<img
-  src={image}
-  style={{ marginBottom: 20 }}
-  alt="Webiny Cloud Infrastructure - API - GraphQL Requests"
-/>
-
-<!-- vale on -->
+![Webiny Cloud Infrastructure - API - GraphQL Requests](./images/webiny_api_gql_request.png)
 
 :::info
 For brevity, the diagram doesn't include network-level cloud infrastructure resources, like region, VPC, availability zones, and so on. Check out the [Default VPC](/docs/key-topics/cloud-infrastructure/api/overview-vpc-default) and [Custom VPC](/docs/key-topics/cloud-infrastructure/api/overview-vpc-custom) topics if you're interested in that aspect of the deployed cloud infrastructure.
