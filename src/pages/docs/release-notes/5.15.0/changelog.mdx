@@ -9,9 +9,7 @@ import { Alert } from "@/components/Alert"
 
 This document highlights the most important fixes, improvements, and features, that were introduced in Webiny `5.15.0`.
 
-<Alert type="info">
-
- How To Upgrade?
+<Alert type="info" title="How To Upgrade?">
 
 Please check the [Webiny 5.15.0 migration guide](/docs/release-notes/5.15.0/upgrade-guide) for the upgrade steps.
 
@@ -23,14 +21,11 @@ The majority of changes that were introduced in this release are related to the 
 
 </Alert>
 
-<Alert type="success">
- 
-  Amazon DynamoDB-only version of Webiny
+<Alert type="success" title="Amazon DynamoDB-only version of Webiny">
 
 [In case you missed it](/docs/key-topics/cloud-infrastructure/api/introduction), at the moment, Webiny relies on both [Amazon DynamoDB](https://aws.amazon.com/dynamodb/) and [Amazon OpenSearch Service](https://aws.amazon.com/opensearch-service/the-elk-stack/what-is-elasticsearch/) databases in order to store and retrieve data. And while this is definitely a good choice for larger projects, for smaller and mid-sized projects, we'll be introducing an Amazon DynamoDB-only version of Webiny. For now there are no official estimates when this will be available, but we can definitely say that a very large amount of work has already been done.
 
 </Alert>
-
 
 ## Page Builder
 
@@ -59,10 +54,8 @@ meta {
 ##### Changes In Menu Schema:
 * the type `PbMenu` `items` input and output are an array of JSON objects
 
-
 ### Prerendering
 We extracted prerendering logic into separate file, [`@webiny/api-page-builder/prerendering`](https://github.com/webiny/webiny-js/tree/next/packages/api-page-builder/src/prerendering), so it is now imported into [`api/code/graphql/src/index.ts`](https://github.com/webiny/webiny-js/blob/next/packages/cwp-template-aws/template/api/code/graphql/src/index.ts#L11) file. If you do not want to use prerendering of pages, feel free to remove the referenced import statement.
-
 
 ## Elasticsearch
 
@@ -78,7 +71,6 @@ There are new `ElasticsearchBodyModifierPlugin` and `ElasticsearchSortModifierPl
 For Page Builder check out `PageElasticsearchBodyModifierPlugin` and `PageElasticsearchSortModifierPlugin` classes.
 
 For File Manager check out  `FileElasticsearchBodyModifierPlugin` and `FileElasticsearchSortModifierPlugin` classes.
-
 
 ## Headless CMS
 

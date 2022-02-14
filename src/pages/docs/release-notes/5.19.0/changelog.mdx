@@ -4,8 +4,6 @@ description: See what's new in Webiny version 5.19.0.
 ---
 
 import { Alert } from "@/components/Alert"
-import pageBuilderBtnAction from "./images/page-builder-btn-action.png";
-import truncationFixed from "./images/truncation-fixed.png";
 
 # Changes
 
@@ -21,7 +19,7 @@ In attempt to make things a bit more stable, we've decided to put a lock on the 
 
 </Alert>
 
-<Alert type="success">
+<Alert type="info">
 
 For existing projects that are being upgraded to `5.19.0`, the `resolutions` property will be updated via the [`webiny upgrade`](/docs/release-notes/5.19.0/upgrade-guide#2-run-the-upgrade-command) command.
 
@@ -69,9 +67,7 @@ yarn webiny deploy api --env dev --no-deploy
 
 Previously, if you were to add multiline logs in your cloud infrastructure (Pulumi) code, the [`webiny watch`](/docs/how-to-guides/use-watch-command/#can-i-use-the-webiny-watch-command-to-start-a-watch-process-on-frontend-react-apps) command's terminal output would get truncated. This has now been addressed, so you can freely add any additional multiline logs that you might need.
 
-
-<img src={truncationFixed} alt="The highlight of this release - the new Amazon DynamoDB-only version of Webiny!" />
-
+![The highlight of this release - the new Amazon DynamoDB-only version of Webiny!](./images/truncation-fixed.png)
 
 ## Page Builder
 
@@ -81,8 +77,7 @@ Prior to this release, we could say the default Button page element was a bit "b
 
 Thanks to [**@econtentmaps**](https://github.com/econtentmaps), the Button page element can now also be configured to execute a piece of code (a click handler) that you previously registered via the new [`PbButtonElementClickHandlerPlugin`](https://github.com/webiny/webiny-js/blob/v5/packages/app-page-builder/src/types.ts#L260) plugin.
 
-<img src={pageBuilderBtnAction} alt="The highlight of this release - the new Amazon DynamoDB-only version of Webiny!" />
-
+![The highlight of this release - the new Amazon DynamoDB-only version of Webiny!](./images/page-builder-btn-action.png)
 
 Here are a couple of quick examples that show how to use this new plugin type:
 
@@ -144,7 +139,6 @@ Here is an example of the GraphQL Query for it:
 	}
 }
 ```
-
 
 ### Uppercase and Lowercase Field Validators With Space ([#2080](https://github.com/webiny/webiny-js/pull/2080))
 

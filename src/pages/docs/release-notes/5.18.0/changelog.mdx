@@ -4,17 +4,12 @@ description: See what's new in Webiny version 5.18.0.
 ---
 
 import { Alert } from "@/components/Alert"
-import webinyDynamoDb from "./images/webiny+dynamodb.png";
-import pulumiCliJsonIssue from "./images/pulumi-cli-json-issue.png";
-
 
 # Changes
 
 This document highlights the most important fixes, improvements, and features, that were introduced in Webiny `5.18.0`.
 
-<Alert type="info">
-
- How To Upgrade?
+<Alert type="info" title="How To Upgrade?">
 
 Please check the [Webiny 5.18.0 migration guide](/docs/release-notes/5.18.0/upgrade-guide) for the upgrade steps.
 
@@ -22,9 +17,7 @@ Please check the [Webiny 5.18.0 migration guide](/docs/release-notes/5.18.0/upgr
 
 ## DynamoDB-only Version of Webiny Serverless CMS
 
-
-<img src={webinyDynamoDb} alt={"The highlight of this release - the new Amazon DynamoDB-only version of Webiny!"} />
-
+![The highlight of this release - the new Amazon DynamoDB-only version of Webiny!](./images/webiny+dynamodb.png)
 
 The highlight of this release - the new Amazon DynamoDB-only version of Webiny Serverless CMS!
 
@@ -91,9 +84,7 @@ For more information on this change, make sure to check out the [Additional Info
 
 Previously, when invoking the Pulumi CLI via the [`webiny pulumi`](/docs/key-topics/webiny-cli#yarn-webiny-pulumi-folder---env-env----command) command and passing the `--json` flag to it, the final output would still include informative messages:
 
-
-<img src={pulumiCliJsonIssue} alt="Inappropriate output of the 'webiny pulumi' command." />
-
+![Inappropriate output of the webiny pulumi command.](./images/pulumi-cli-json-issue.png)
 
 Eventually, this would make it impossible to parse the output of the command, so we've ensured that whenever the `--json` flag is passed, that no additional informative messages are returned, only the actual JSON.
 
@@ -132,7 +123,7 @@ If you're interested in all changes we made, please consult the linked pull requ
 - `ContentModelGroupPlugin` → [`CmsGroupPlugin`](https://github.com/webiny/webiny-js/blob/next/packages/api-headless-cms/src/content/plugins/CmsGroupPlugin.ts#L8)
 - `CmsModelFieldToStoragePlugin` → [`StorageTransformPlugin`](https://github.com/webiny/webiny-js/blob/next/packages/api-headless-cms/src/content/plugins/storage/StorageTransformPlugin.ts#L26)
 
-<Alert type="success">
+<Alert type="info">
 
 In case you used some of the types mentioned here, please update them in your application code. For additional questions, please don't hesitate to send as a message in our community [Slack](https://www.webiny.com/slack) channel.
 

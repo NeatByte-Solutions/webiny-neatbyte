@@ -5,9 +5,7 @@ description: Learn how to upgrade Webiny from 5.16.0 to 5.17.0.
 
 import { Alert } from "@/components/Alert"
 
-<Alert type="success">
-
- What you’ll learn
+<Alert type="success" title="What you’ll learn">
 
 - how to upgrade Webiny from 5.16.0 to 5.17.0
 
@@ -115,7 +113,6 @@ Although the new security layer takes the old `security-authentication` and `sec
 To see an example of an up-to-date authentication plugin, see the official implementation of a [Cognito authentication plugin](https://github.com/webiny/webiny-js/blob/v5.17.0/packages/api-security-cognito/src/index.ts#L19-L36). As you will find, we no longer need a dedicated plugin, but instead, we register an authentication function directly into the `security` app, which lives on the `context` object. Same goes for [authorization plugins](https://github.com/webiny/webiny-js/blob/v5.17.0/packages/api-security/src/plugins/apiKeyAuthorization.ts).
 
 This way, it's much easier to group your functionality into one `ContextPlugin` plugin, and hook into all the parts of the system you want to extend.
-
 
 ### Migrating the `UserPlugin` Plugin
 

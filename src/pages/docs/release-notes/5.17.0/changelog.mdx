@@ -3,20 +3,12 @@ title: Webiny 5.17.0 Changelog
 description: See what's new in Webiny version 5.17.0.
 ---
 import { Alert } from "@/components/Alert"
-import revisionsMenu from "./assets/revisions-menu.png";
-import tenantManager from "./assets/tenant-manager.png";
-import oktaLogin from "./assets/okta-login.png";
-import eventsAutocomplete from "./assets/events-autocomplete.png";
-import accessManagement from "./assets/access-management.png";
-import gridWidth from "./assets/grid-witdh.gif";
 
 # Changes
 
 This document highlights the most important fixes, improvements, and features, that were introduced in Webiny `5.17.0`.
 
-<Alert type="info">
-
- How To Upgrade?
+<Alert type="info" title="How To Upgrade?">
 
 Please check the [Webiny 5.17.0 migration guide](/docs/release-notes/5.17.0/upgrade-guide) for the upgrade steps.
 
@@ -36,7 +28,7 @@ On top of that, we've migrated user profiles to use IdP `sub` (a real ID) instea
 
 In the Admin Area project application, we've slightly rearranged menu items to reflect these changes in security and user profiles. We now have an _Access Management_ section, which contains API Keys and Groups (which are IdP agnostic), and then there's a dedicated _Admin Users_ section, which is dedicated to the Cognito Admin Users implemention:
 
-<img src={accessManagement} alt='Access Management and Admin Users now have separate sections in the main navigation.'/>
+![Access Management and Admin Users now have separate sections in the main navigation.](./assets/access-management.png)
 
 Keep in mind that Access Management will always be there, no matter what IdP you use. But Admin Users you see here is our default implementation of users using the Cognito IdP. If you use Okta, or any other IdP, there may be an entirely different implementation of user management, which you can implement yourself.
 
@@ -46,7 +38,7 @@ We've developed a new mechanism of publishing and subscribing to events, to prev
 
 Instead of creating a new plugin type for every entity or event, events are defined on the application level (in the `context` object) and are easily discoverable in any IDE:
 
-<img src={eventsAutocomplete} alt='Discover application events by typing "on" to filter out event topics.'/>
+![Discover application events by typing on to filter out event topics.](./assets/events-autocomplete.png)
 
 This greatly simplifies the process of subscribing to multiple events across the system, using a simple `ContextPlugin` plugin:
 
@@ -66,9 +58,7 @@ new ContextPlugin(context => {
 });
 ```
 
-<Alert type="info">
-
- Why this change?
+<Alert type="info" title="Why this change?">
 
 There's one **major** benefit of adding functionality to your system like this: you don't have to drill the `context` object all the way to the place where plugins are invoked. With this approach, apps remain free of the notion of `context` and can be reused and instantiated in separate Lambda functions, that may not even be GraphQL. Utilizing Javascript's [lexical scope](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures), all functions that you attach to existing apps via the `ContextPlugin`, will have access to the `context`, without apps even knowing that it exists.
 
@@ -88,39 +78,37 @@ The new system of events is not yet propagated through all the Webiny applicatio
 
 Our GraphQL API and Admin Area application now officially support multi-tenancy, with a new Tenant Manager module. This allows you to build SaaS-like applications, where tenants have their data completely isolated from each other, using one deployment of Webiny.
 
-<img src={tenantManager} alt="Tenant Manager module allows you to create new tenants and switch between them."/>
-
+![Tenant Manager module allows you to create new tenants and switch between them.](./assets/tenant-manager.png)
 
 ### Okta Integration
 
 Webiny can now be integrated with Okta IdP for both the GraphQL API and Admin Area app. You have full control over your Okta configuration and how you perform authentication and authorization. With extensive set of events in our new security layer, you can configure any authentication/authorization flow imaginable.
 
-<img src={oktaLogin} alt="Okta login using Okta's React SDK."/>
+![Okta login using Okta's React SDK.](./assets/okta-login.png)
 
 ## Other
 
 ### Sort Settings for Pages List Element ([#1997](https://github.com/webiny/webiny-js/pull/1997))
 
-In one of the recent releases, we did some updates to the Page Builder GraphQL schema, to use the same naming convention and parameter types across similar queries within Webiny. With that, we've broken the Pages List element within our Page Builder. :cry:
+In one of the recent releases, we did some updates to the Page Builder GraphQL schema, to use the same naming convention and parameter types across similar queries within Webiny. With that, we've broken the Pages List element within our Page Builder. &#128546
 
-Big shout out to [@dibenso](https://github.com/dibenso) who discovered and fixed this bug :raised_hands: :heart:
+Big shout out to [@dibenso](https://github.com/dibenso) who discovered and fixed this bug &#128588 &#129505
 
 ### Menu Component Positioning ([#2006](https://github.com/webiny/webiny-js/pull/2006))
 
 Menu component now positions correctly when rendered at the bottom of the view, and is not being cut off by `overflow: hidden` parent element.
 
-<img src={revisionsMenu} alt="Menu now changes direction depending on its location in the view."/>
+![Menu now changes direction depending on its location in the view.](./assets/revisions-menu.png)
 
-Shout out to [@econtentmaps](https://github.com/econtentmaps) for reporting this one :beers:
-
+Shout out to [@econtentmaps](https://github.com/econtentmaps) for reporting this one &#127867
 
 ### Grid/Cell Element Width in the PB Editor ([#1412](https://github.com/webiny/webiny-js/issues/1412))
 
 In the Page Builder Editor, setting the width of a grid to 50% would make the width of a child cell also be 50% (which is relative to the parent grid, resulting in a wrong final size). This is now fixed, and grid cells are no longer affected by changes of width on the parent grid element.
 
-<img src={gridWidth} alt="gridWidth"/>
+![gridWidth](./assets/grid-witdh.gif)
 
-This one was also reported by [@econtentmaps](https://github.com/econtentmaps) :raised_hands: :rocket:
+This one was also reported by [@econtentmaps](https://github.com/econtentmaps) &#128588 &#128640
 
 ### React Form Component
 
