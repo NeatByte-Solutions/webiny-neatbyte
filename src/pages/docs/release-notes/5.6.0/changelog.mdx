@@ -4,19 +4,12 @@ description: See what's new in Webiny version 5.6.0.
 ---
 
 import { Alert } from "@/components/Alert"
-import pbNavigatorDemo from "./pb-navigator-block-reorder.gif";
-import pbElementVisibilitySettingDemo from "./pb-navigator-visibility.gif";
-import cmsContentModelGroupsChanging from "./cms-content-model-groups-changing.gif";
-import cmsRefMultipleModels from "./cms-ref-multiple-models.png";
-import cliWatchBrowserDemo from "./cli-watch-browser-demo.gif";
 
 # Changes
 
 This document highlights the most important fixes, improvements, and features, that were introduced in Webiny `5.6.0`.
 
-<Alert type="info">
-
- How To Upgrade?
+<Alert type="info" title="How To Upgrade?">
 
 Please check the [Webiny 5.6.0 migration guide](/docs/release-notes/5.6.0/upgrade-guide) for the upgrade steps.
 
@@ -32,7 +25,7 @@ Within a single reference field, you can now reference content entries that are 
 
 For example, here we are adding the **Published Work** reference field to the existing **Author** content model. Notice how we've picked not one, but three different content models in the **Content Models** field: **Book**, **Video**, and **Music**.
 
-<img alt="Reference Field - Adding Multiple Different Content Models" src={cmsRefMultipleModels}/>
+![Reference Field - Adding Multiple Different Content Models](./cms-ref-multiple-models.png)
 
 This means that, while managing authors, users will be able to select multiple book, video, and music entries, all referenced via the single **Published Work** reference field.
 
@@ -42,7 +35,7 @@ Upon creating a content model, users are required to select a content model grou
 
 To address this issue, in the Headless CMS content model editor, a new form field was added to the settings section, allowing us to change the group if needed.
 
-<img alt="Changing Content Model Groups" src={cmsContentModelGroupsChanging}/>
+![Changing Content Model Groups](./cms-content-model-groups-changing.gif)
 
 ## Page Builder
 
@@ -50,7 +43,7 @@ To address this issue, in the Headless CMS content model editor, a new form fiel
 
 Now, you can set the visibility of an element using the _Visibility setting_ in the page editor sidebar.
 
-<img alt="Webiny Page Builder visibility element setting" src={pbElementVisibilitySettingDemo}/>
+![Webiny Page Builder visibility element setting](./pb-navigator-visibility.gif)
 
 ### Added Navigator in the Editor([#1579](https://github.com/webiny/webiny-js/pull/1579))
 
@@ -60,8 +53,7 @@ You can also:
 - select and unhide elements that are set hidden previously
 - quickly jump between elements
 
-<img  alt="Webiny Page Builder navigator demo" src={pbNavigatorDemo} />
-
+![Webiny Page Builder navigator demo](./pb-navigator-block-reorder.gif)
 
 ## Webiny CLI
 
@@ -73,7 +65,7 @@ Upon running the `webiny watch` command, by simply appending the `--browser outp
 
 The following video shows the new improvement in action:
 
-<img  alt="Webiny Watch Command - Browser Output" src={cliWatchBrowserDemo} />
+![Webiny Watch Command - Browser Output](./cli-watch-browser-demo.gif)
 
 <Alert type="info">
 

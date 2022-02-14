@@ -9,9 +9,7 @@ import { Alert } from "@/components/Alert"
 
 This document highlights the most important fixes, improvements, and features, that were introduced in Webiny `5.12.0`.
 
-<Alert type="info">
-
- How To Upgrade?
+<Alert type="info" title="How To Upgrade?">
 
 Make sure you didn't miss the **[5.11.1](/docs/release-notes/5.11.1/changelog)** release, which was an urgent security hotfix! You **must** apply that upgrade before moving on to **5.12.0**.
 
@@ -23,7 +21,7 @@ Please check the [Webiny 5.12.0 migration guide](//docs/release-notes/5.12.0/upg
 
 ### Webiny UI Composer ([#1800](https://github.com/webiny/webiny-js/pull/1800))
 
-We finally have a way to build UI, ship it to you, and allow you to modify every part of it using minimum amount of code! :tada: At some point in the future, this will even allow us to replace entire UI libraries! :star-struck:
+We finally have a way to build UI, ship it to you, and allow you to modify every part of it using minimum amount of code! &#127881 At some point in the future, this will even allow us to replace entire UI libraries! &#129321
 
 Since React is a declarative tool, once a view is defined, you can't modify it from the outside. Especially if it's encapsulated inside another component. You can't change input labels, validation rules, position of elements, apply conditional rendering, add more UI elements to it, etc., if you don't have access to the original code. When you use React components from `npm` packages, you get a black box. So how did we solve the problem?
 

@@ -13,9 +13,7 @@ import headlessCmsPermissionUI2 from "./headless-cms-permission-ui-2.png";
 
 This document highlights the most important fixes, improvements, and features, that were introduced in Webiny `5.5.0`.
 
-<Alert type="info">
-
- How To Upgrade?
+<Alert type="info" title="How To Upgrade?">
 
 Please check the [Webiny 5.5.0 migration guide](/docs/release-notes/5.5.0/upgrade-guide) for the upgrade steps.
 
@@ -52,22 +50,25 @@ This is not ideal for a couple of reasons:
 
 From now on, you'll be able to just run the `yarn webiny watch api --env {your-environment}` command and start coding! The command will automatically start watching all of the relevant packages (no matter where they’re located in your Webiny project) and also re-deploy only relevant cloud infrastructure resources (e.g. a single Lambda function), as needed.
 
-<img alt='Webiny CLI - The New "watch" Command' src={watchCommand}/>
+![Webiny CLI - The New watch Command](./watch-command-webiny.gif)
 
 #### Logs
 
 And there's more! By simply appending the `--logs` argument to the `webiny watch` command, you also gain the ability to stream all logs from your application code (Lambda functions), directly to your terminal:
 
-<img alt="Webiny CLI - Streaming Logs To Your Terminal" src={watchCommandLogs} />
-
+![Webiny CLI - Streaming Logs To Your Terminal](./watch-command-webiny-logs.png)
 
 This basically means **no more digging** through [Amazon CloudWatch](https://aws.amazon.com/cloudwatch/) logs while developing or debugging your backend application code.
 
-<Alert type="info">
-
- Learn More
+<Alert type="info" title="Learn More">
 
 To learn more about the new `webiny watch` command, check out the newly added [Use the Watch Command](/docs/how-to-guides/use-watch-command) guide.
+
+</Alert>
+
+<Alert type="warning" title="Using Windows and GitBash?">
+
+If on Windows and using [GitBash](https://www.atlassian.com/git/tutorials/git-bash), please note that you'll have to update it to at least to version <code>2.27.0</code>, as this version introduces the support for pseudo consoles (you will be asked whether you want this enabled in the installation process). Otherwise, upon starting the <code>webiny watch</code> command, you might be receiving broken output in your terminal.
 
 </Alert>
 
@@ -75,8 +76,7 @@ To learn more about the new `webiny watch` command, check out the newly added [U
 
 The new `webiny workspaces tree` command gives you an overview of all packages that exist within your Webiny project and how they depend on each other.
 
-<img alt='Webiny CLI - The New "webiny workspaces tree" Command' src={treeCommand} />
-
+![Webiny CLI - The New webiny workspaces tree Command](./tree-command.png)
 
 For additional information and usage examples, simply type the following command in your terminal of choice:
 
@@ -92,12 +92,9 @@ This release introduces an upgrade to CMS permissions. It includes changes in pe
 
 Now you have to define access to specific content model groups first, and based on that, the list of available content models gets updated. The navigation in the Admin Area is also improved by introducing this configuration flow.
 
-<img  alt="Headless CMS - permission selector UI" src={headlessCmsPermissionUI1} />
+![Headless CMS - permission selector UI](./headless-cms-permission-ui-1.png)
 
-<img   alt="Headless CMS - permission selector UI"
-  src={headlessCmsPermissionUI2}
-  style={{ marginTop: -25 }} />
-
+![Headless CMS - permission selector UI](./headless-cms-permission-ui-2.png)
 
 ### Rich Text Content Renderer ([#1566](https://github.com/webiny/webiny-js/pull/1566))
 
@@ -155,7 +152,7 @@ Note that, if upgrading to version `5.5.0`, there are a couple of [manual steps]
 
 This release introduces a couple of changes on a project level. Most of these are required by the newly introduced `watch` command.
 
-<Alert type="info">
+<Alert type="info" >
 
 All the changes can be automatically applied in your existing Webiny project via the new `webiny upgrade` command. Please take a look at the [upgrade guide](/docs/release-notes/5.5.0/upgrade-guide) for more information.
 
@@ -179,9 +176,7 @@ Because these files change on every deploy, and that interferes with the new `we
 .pulumi/apps/website/.pulumi
 ```
 
-<Alert type="danger">
-
- CI/CD workflows
+<Alert type="danger" title="CI/CD workflows">
 
 We've seen some users storing the `.pulumi` folders in an internal Amazon S3 bucket in their CI/CD workflows. So, if you're using this approach, make sure to take the new location of the `.pulumi` folders into consideration and adjust your CI/CD logic accordingly.
 
