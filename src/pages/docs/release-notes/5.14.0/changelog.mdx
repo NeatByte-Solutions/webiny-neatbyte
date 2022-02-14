@@ -10,9 +10,7 @@ import pagePreviewNotWorking from "./page-preview-not-working.png"
 
 This document highlights the most important fixes, improvements, and features, that were introduced in Webiny `5.14.0`.
 
-<Alert type="info">
-
- How To Upgrade?
+<Alert type="info" title="How To Upgrade?">
 
 Please check the [Webiny 5.14.0 migration guide](/docs/release-notes/5.14.0/upgrade-guide) for the upgrade steps.
 
@@ -24,7 +22,7 @@ Please check the [Webiny 5.14.0 migration guide](/docs/release-notes/5.14.0/upgr
 
 In some cases, previewing draft pages via the Page Builder editor would not work, because, in the page preview URL, the `__tenant` query parameter wouldn't be set correctly. You might have noticed the weird `[object Object]` value assigned to it.
 
-<img alt="Page Builder Editor - Page Preview Not Working" src={pagePreviewNotWorking}/>
+![Page Builder Editor - Page Preview Not Working](./page-preview-not-working.png)
 
 This has now been addressed, page previewing should work correctly.
 
@@ -72,4 +70,4 @@ In Webiny 5.7.0 we introduced an [ApolloDynamicLink](/docs/release-notes/5.7.0/c
 
 Recently, we discovered that, when data is returned from Apollo cache, it does not process apollo-client links, at all. This behaviour breaks the results returned from cache, if you're using `AddQuerySelectionPlugin` to add new selection sets to the GraphQL queries.
 
-With this release, we're introducing an extended `InMemoryCache` class which _does_ process `AddQuerySelectionPlugin` plugins to construct the correct query. Luckily, Apollo uses classes which allowed us to fix the issue without dirty hacks or forks! :rocket: :tada:
+With this release, we're introducing an extended `InMemoryCache` class which _does_ process `AddQuerySelectionPlugin` plugins to construct the correct query. Luckily, Apollo uses classes which allowed us to fix the issue without dirty hacks or forks! &#128640	&#127881
