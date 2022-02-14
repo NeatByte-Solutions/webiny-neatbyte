@@ -3,9 +3,6 @@ title: Webiny 5.3.0 Changelog
 description: See what's new in Webiny version 5.3.0.
 ---
 
-import cliReporting from "./cli-reporting.png";
-import searchBarCms from "./search-bar-cms.png";
-
 # Changes
 
 This document highlights the most important fixes, improvements, and features, that were introduced in Webiny `5.3.0`.
@@ -23,7 +20,7 @@ A couple of fixes were implemented on the search bar, located in the content ent
 - if a search term was typed into the search bar's input, switching to a different content entries section via the main menu no longer causes an infinite redirect loop in the browser
 - results don't disappear when clearing up the search bar's input
 
-<img alt="Headless CMS - Fixed Search Bar" src={searchBarCms}/>
+![Headless CMS - Fixed Search Bar](./search-bar-cms.png)
 
 ## Webiny CLI
 
@@ -33,8 +30,7 @@ We've noticed that, in certain cases, it can get a bit hard to understand the er
 
 So, from now on, whenever there's a chance to provide additional information about the received error, we provide it, along with a link to a helpful resource, like an article on our docs website. For example:
 
-<img alt="Webiny CLI - Improved Error Reporting" src={cliReporting}/>
-
+![Webiny CLI - Improved Error Reporting](./cli-reporting.png)
 
 ## `create-webiny-project`
 
