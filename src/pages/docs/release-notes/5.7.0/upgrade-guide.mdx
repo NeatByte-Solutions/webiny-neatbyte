@@ -5,9 +5,7 @@ description: Learn how to upgrade Webiny from 5.6.0 to 5.7.0.
 
 import { Alert } from "@/components/Alert"
 
-<Alert type="success">
-
- What you’ll learn
+<Alert type="success" title="What you’ll learn">
 
 - how to upgrade Webiny from 5.6.0 to 5.7.0
 
@@ -61,9 +59,7 @@ Also change the `graphqlPlugins({ debug: process.env.DEBUG })` to `graphqlPlugin
 
 As you can see, we now use a configuration object to explicitly pass `plugins` and other parameters required by the Lambda handler factory package. The `http: { debug }` will be passed all the way to the internal [@webiny/handler-http](https://github.com/webiny/webiny-js/blob/v5.7.0/packages/handler-http/src/index.ts#L56) package which will handle the errors for us.
 
-<Alert type="info">
-
- NOT SURE WHAT TO DO?
+<Alert type="info" title="NOT SURE WHAT TO DO?">
 
 If unsure what the final result should look like, please see [the original file](https://github.com/webiny/webiny-js/blob/v5.7.0/packages/cwp-template-aws/template/api/code/graphql/src/index.ts) for a complete example.
 
@@ -86,9 +82,7 @@ export const handler = createHandler({
 });
 ```
 
-<Alert type="info">
-
- NOT SURE WHAT TO DO?
+<Alert type="info" title="NOT SURE WHAT TO DO?">
 
 If unsure what the final result should look like, please see [the original file](https://github.com/webiny/webiny-js/blob/v5.7.0/packages/cwp-template-aws/template/api/code/headlessCMS/src/index.ts) for a complete example.
 

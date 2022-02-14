@@ -4,17 +4,12 @@ description: See what's new in Webiny version 5.9.0.
 ---
 
 import { Alert } from "@/components/Alert"
-import securityPackages from "./security-packages.png";
-import webpackError from "./webpack-error.png";
-import scaffolds from "./scaffolds.gif";
 
 # Changes
 
 This document highlights the most important fixes, improvements, and features, that were introduced in Webiny `5.9.0`.
 
-<Alert type="info">
-
- How To Upgrade?
+<Alert type="info" title="How To Upgrade?">
 
 Please check the [Webiny 5.9.0 migration guide](/docs/release-notes/5.9.0/upgrade-guide) for the upgrade steps.
 
@@ -26,7 +21,7 @@ Please check the [Webiny 5.9.0 migration guide](/docs/release-notes/5.9.0/upgrad
 
 For this release, we've gone through a complete overhaul of the existing **GraphQL API Package** and **Admin Area Package**. The following are some of the most important changes we made.
 
-<img alt="Improved Scaffolding" src={scaffolds}/>
+![Improved Scaffolding](./scaffolds.gif)
 
 <Alert type="success">
 
@@ -86,7 +81,7 @@ This is no longer the case. Everything happens automatically, which we believe w
 
 Previously, if Webpack threw an error during AWS Lambda function code builds, you'd get a wall of irrelevant and meaningless stack output, and you'd have to scroll through dozens of lines to get to the top of it, to see the actual error. With this release, AWS Lambda function code builds will only print the relevant error information:
 
-<img alt="AWS Lambda Function Build Error" src={webpackError}/>
+![AWS Lambda Function Build Error](./webpack-error.png)
 
 ## Security
 
@@ -96,8 +91,7 @@ Security layer in Webiny consists of plugins spread across several packages. Up 
 
 This is an overview of all new packages. As you can see, it's now easy to follow the API/React counterparts and get an idea of what each one of them does:
 
-<img alt="API and React Security Packages" src={securityPackages} style={{margin: "0 auto"}}/>
-
+![API and React Security Packages](./security-packages.png)
 
 If you're building a custom user signup flow, this will now help you see how the Admin Area users work. Feel free to borrow the ideas for your own apps.
 

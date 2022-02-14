@@ -4,16 +4,12 @@ description: See what's new in Webiny version 5.7.0.
 ---
 
 import { Alert } from "@/components/Alert"
-import cicdScaffold from "./ci-cd-scaffold.gif";
-import errorOverlay from "./error-overlay.png";
 
 # Changes
 
 This document highlights the most important fixes, improvements, and features, that were introduced in Webiny `5.7.0`.
 
-<Alert type="info">
-
- How To Upgrade?
+<Alert type="info" title="How To Upgrade?">
 
 Please check the [Webiny 5.7.0 migration guide](/docs/release-notes/5.7.0/upgrade-guide) for the upgrade steps.
 
@@ -25,7 +21,7 @@ Please check the [Webiny 5.7.0 migration guide](/docs/release-notes/5.7.0/upgrad
 
 With this release, we're introducing a brand new CI/CD scaffold, which will set up a CI/CD workflow for your Webiny project in no time!
 
-<img alt="New CI/CD Scaffold" src={cicdScaffold} />
+![New CI/CD Scaffold](./ci-cd-scaffold.gif)
 
 Currently, you can set up your CI/CD via [GitHub Actions](https://github.com/features/actions) only. But note that in the future, we would certainly like to bring support for more providers, depending on the interest from the community.
 
@@ -53,8 +49,7 @@ This improvement will be very useful because without it, upon experiencing deplo
 
 From now on, when `DEBUG=true` is set in your `<projectRoot>/.env` file, React apps will be able to render a proper error overlay with details about GraphQL operation and actual error that was thrown.
 
-<img alt="GraphQL Error Overlay" src={errorOverlay} />
-
+![GraphQL Error Overlay](./error-overlay.png)
 
 ## Other
 

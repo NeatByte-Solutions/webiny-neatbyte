@@ -4,12 +4,8 @@ description: Learn how to upgrade Webiny from 5.10.0 to 5.11.0.
 ---
 
 import { Alert } from "@/components/Alert"
-import firstDeployAfterUpgrade from "./upgrade-guide/first-deploy-after-upgrade.png";
-import pulumiCliError from "./upgrade-guide/pulumi-cli-error.png";
 
-<Alert type="success">
-
- What you’ll learn
+<Alert type="success" title="What you’ll learn">
 
 - how to upgrade Webiny from 5.10.0 to 5.11.0
 
@@ -92,7 +88,7 @@ Once you've run the above shown `webiny upgrade` command, the existing Pulumi CL
 
 Furthermore, during the first deployment, in case you didn't make any changes that would affect the deployment, you should only see a change in `provider` for each cloud infrastructure resource:
 
-<img src={firstDeployAfterUpgrade} alt="First Deploy After Upgrade"/>
+![First Deploy After Upgrade](./upgrade-guide/first-deploy-after-upgrade.png)
 
 In order to test this out, we suggest you use the `--preview` flag, which will enable you to see all of the changes that will be performed in the new deployment, for example:
 
@@ -118,8 +114,6 @@ If it turns out that multiple package versions are being used, then try running 
 
 A couple of times, we've seen the following error starting to occur, after a Webiny project was upgraded to 5.11.0:
 
-<img src={pulumiCliError} alt="Pulumi CLI Error"/>
-
+![Pulumi CLI Error](./upgrade-guide/pulumi-cli-error.png)
 
 We've discovered that this issue can be resolved by simply removing Pulumi CLI as a globally installed tool. For example, if you were using MacOS and installed the Pulumi CLI via [Homebrew](https://brew.sh/), then uninstalling it via `brew uninstall pulumi` would solve the shown issue.
-

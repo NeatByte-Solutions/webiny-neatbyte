@@ -4,16 +4,12 @@ description: See what's new in Webiny version 5.11.0.
 ---
 
 import { Alert } from "@/components/Alert"
-import objectField from "./objectField.gif";
-import patternValidators from "./patternValidators.png";
 
 # Changes
 
 This document highlights the most important fixes, improvements, and features, that were introduced in Webiny `5.11.0`.
 
-<Alert type="info">
-
- How To Upgrade?
+<Alert type="info" title="How To Upgrade?">
 
 Please check the [Webiny 5.11.0 migration guide](/docs/release-notes/5.11.0/upgrade-guide) for the upgrade steps.
 
@@ -25,7 +21,7 @@ Please check the [Webiny 5.11.0 migration guide](/docs/release-notes/5.11.0/upgr
 
 The new `object` field allows you to build nested data structures and also have those data structures be repeatable (like an array of nested objects). It supports nesting, so you can nest objects within other objects. Object field respects all the rules and behaviors of all the other existing fields (`ref` field, `richText` field, etc.). You also get a full GraphQL Schema auto-complete on your nested fields.
 
-<img alt="Model Data Using the Object Field" src={objectField}/>
+![Model Data Using the Object Field](./objectField.gif)
 
 > NOTE: at this point, we do not support filtering of data based on the values within the object field. However, we do plan to add support for that type of querying in the future.
 
@@ -39,10 +35,9 @@ Read API now always returns the latest published content entry, no matter which 
 
 Pattern validators are now visible in the Form Builder editor, when configuring individual form fields. Besides, we also fixed the setup of the `website` app, and those field validators are now working properly when the form is being submitted.
 
-<img alt="Pattern Field Validators in the Form Editor" src={patternValidators}/>
+![Pattern Field Validators in the Form Editor](./patternValidators.png)
 
-
-Shout out to [Karthick Raja](https://github.com/karthick3018) for getting the ball rolling on this issue! :rocket: :heart:
+Shout out to [Karthick Raja](https://github.com/karthick3018) for getting the ball rolling on this issue! &#128640 &#129505
 
 ## Security
 
