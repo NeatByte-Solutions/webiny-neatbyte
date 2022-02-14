@@ -9,7 +9,10 @@ module.exports.withTableOfContents = () => {
     for (let nodeIndex = 0; nodeIndex < tree.children.length; nodeIndex++) {
       let node = tree.children[nodeIndex]
 
-      if (node.type === 'heading' && [2, 3, 4].includes(node.depth)) {
+      if (
+        node.type === 'heading' &&
+        [2, 3, 4].includes(node.depth)
+      ) {
         let level = node.depth
         let title = node.children
           .filter(
@@ -57,9 +60,24 @@ module.exports.withTableOfContents = () => {
               .map((n) => n.value)
               .join('')
         } else {
+          console.log(node.children?.children);
           node.value = `<${component} ${stringifyProps(props)}>${node.children
-            .map(({ value }) => value)
-            .join('')}</${component}>`
+            .map((children) => {
+              // if (!children?.children) return children.value;
+              // children.children.map((child) => {
+              //   if (child.type === "link") console.log("LINK");
+              //   else return child.value; 
+              // }).join('')
+              if(children.type === "link") {
+                const linkProps = {
+                  href: children.url
+                }
+                return `<a ${stringifyProps(linkProps)}>Url</a>`
+              }
+              if(children.type === "inlineCode") return `<code>${children.value}</code>`
+              else return children.value;
+            })
+            .join(' ')}</${component}>`
         }
 
         if (level === 2) {
