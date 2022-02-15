@@ -12,12 +12,13 @@ module.exports.withTableOfContents = () => {
       if (node.type === 'heading' && [2, 3, 4].includes(node.depth)) {
         let level = node.depth
         let title = node.children
-          .filter(
-            (n, i, a) =>
-              n.type === 'text' &&
-              (a[i - 1]?.type !== 'jsx' || !a[i - 1]?.value.startsWith('<small'))
-          )
-          .map((n) => n.value)
+          .map((children) => {
+            if (children.type === 'link') {
+              return children.children[0].value
+            } else {
+              return children.value
+            }
+          })
           .join('')
         let slug = slugify(title)
 
@@ -57,15 +58,6 @@ module.exports.withTableOfContents = () => {
               .map((n) => n.value)
               .join('')
         } else {
-          props.id = node.children
-            .map((children) => {
-              if (children.type === 'link') {
-                return children.children[0].value
-              } else {
-                return children.value
-              }
-            })
-            .join('')
           node.value = `<${component} ${stringifyProps(props)}>${node.children
             .map((children) => {
               if (children.type === 'link') {
