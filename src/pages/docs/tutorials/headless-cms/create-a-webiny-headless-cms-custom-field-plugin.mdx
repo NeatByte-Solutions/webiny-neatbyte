@@ -55,33 +55,35 @@ We will start by creating a field type plugin (`CmsEditorFieldTypePlugin`) to de
 1. Create `fields/secretText` directory in `apps/admin/code/src/plugins/headlessCMS`.
 2. Create a file [`secretTextFieldPlugin.tsx`](https://github.com/webiny/webiny-examples/blob/master/headless-cms/custom-field-plugin/ui/secretTextFieldPlugin.tsx) in the newly created directory.
   ```tsx apps/admin/code/src/plugins/headlessCMS/fields/secretText/secretTextFieldPlugin.tsx
-  import React from 'react'
-  import { CmsEditorFieldTypePlugin } from '@webiny/app-headless-cms/types'
+  import React from "react";
+  import { CmsEditorFieldTypePlugin } from "@webiny/app-headless-cms/types";
 
-  const TextIcon: React.FunctionComponent = () => <i>icon</i>
+  const TextIcon: React.FunctionComponent = () => <i>icon</i>;
 
-  export default (): CmsEditorFieldTypePlugin => ({
-    type: 'cms-editor-field-type',
-    name: 'cms-editor-field-type-secret-text',
+  const plugin: CmsEditorFieldTypePlugin = {
+    type: "cms-editor-field-type",
+    name: "cms-editor-field-type-secret-text",
     field: {
-      type: 'secret-text',
-      label: 'Secret Text',
-      description: 'Store encrypted text into the database.',
+      type: "secret-text",
+      label: "Secret Text",
+      description: "Store encrypted text into the database.",
       icon: <TextIcon />,
       allowMultipleValues: false,
       allowPredefinedValues: false,
-      multipleValuesLabel: 'Use as a list of text values',
+      multipleValuesLabel: "Use as a list of text values",
       createField() {
         return {
-          type: 'secret-text',
+          type: "secret-text",
           validation: [],
           renderer: {
-            name: '',
-          },
-        }
-      },
-    },
-  })
+            name: ""
+          }
+        };
+      }
+    }
+  };
+
+  export default plugin;
   ```
 
 3. Import this new plugin in `apps/admin/code/src/plugins/headlessCms.ts`.
@@ -98,7 +100,7 @@ We will start by creating a field type plugin (`CmsEditorFieldTypePlugin`) to de
       // Rest of the plugins
       (...)
       objectFieldRenderer,
-      secretTextFieldPlugin()
+      secretTextFieldPlugin
   ];
   ```
 
@@ -168,7 +170,7 @@ As our next step, we'll define a renderer for our new field. The renderer determ
       // Rest of the plugins
       (...)
       objectFieldRenderer,
-      secretTextFieldPlugin(),
+      secretTextFieldPlugin,
       secretTextFieldRendererPlugin()
   ];
   ```
@@ -238,7 +240,7 @@ Cool, so far, we are done with the UI part of the custom field. In the next step
       plugins: [
       // Rest of the plugins
       (...)
-      elasticsearchDataGzipCompression(),
+      scaffoldsPlugins(),
       secretTextFieldPlugin
       (...)
   });
@@ -282,23 +284,25 @@ As a first step, we will encrypt data before storing it in the database.
 Create a file [`secretTextFieldStoragePlugin.ts`](https://github.com/webiny/webiny-examples/blob/master/headless-cms/custom-field-plugin/api/secretTextFieldStoragePlugin.ts) in `api/code/headlessCMS/src/fields/secretText` directory.
 
 ```ts api/code/headlessCMS/src/fields/secretText/secretTextFieldStoragePlugin.ts
-import { CmsModelFieldToStoragePlugin } from '@webiny/api-headless-cms/types'
-import cryptr from 'cryptr'
+import { StorageTransformPlugin } from "@webiny/api-headless-cms/content/plugins/storage/StorageTransformPlugin";
+import cryptr from "cryptr";
 
-export default (): CmsModelFieldToStoragePlugin<String> => ({
-  type: 'cms-model-field-to-storage',
-  name: 'cms-model-field-to-storage-address',
-  fieldType: 'secret-text',
-  async toStorage({ value }) {
-    const encryptText = new cryptr('myTotallySecretKey').encrypt(value)
+const plugin = new StorageTransformPlugin({
+  fieldType: "secret-text",
+  toStorage: async ({ value, field }) => {
+    const encryptText = new cryptr("myTotallySecretKey").encrypt(value);
     return {
-      value: encryptText,
-    }
+      value: encryptText
+    };
   },
-  async fromStorage({ value }) {
-    return value.value
-  },
-})
+  fromStorage: async ({ value, field }) => {
+    return value.value;
+  }
+});
+
+export default () => {
+  return plugin;
+};
 ```
 
 As a next step, import this new plugin in `api/code/headlessCMS/src/index.ts`.
@@ -332,14 +336,14 @@ In the next step, let's decrypt the data after we retrieve it.
 1. Open the `api/code/headlessCMS/src/fields/secretText/secretTextFieldStoragePlugin.ts` file.
 2. Update the `return` statement of `fromStorage` function with this:
   ```ts api/code/headlessCMS/src/fields/secretText/secretTextFieldStoragePlugin.ts {5}
-  export default (): CmsModelFieldToStoragePlugin<String> => ({
-      (...)
+  const plugin = new StorageTransformPlugin({
+    (...)
 
-      async fromStorage({ value }) {
-          return new cryptr('myTotallySecretKey').decrypt(value.value)
-      }
+    fromStorage: async ({ value, field }) => {
+      return new cryptr('myTotallySecretKey').decrypt(value.value)
+    }
 
-      (...)
+    (...)
   });
   ```
 
