@@ -197,6 +197,14 @@ export const documentationNav = [
   horizontalLine(),
   collapsable('Release Notes', [
     page('how-to-guides/upgrade-webiny'),
+    collapsable('5.23.0', [
+      page('release-notes/5.23.0/changelog'),
+      page('release-notes/5.23.0/upgrade-guide'),
+    ]),
+    collapsable('5.22.1', [
+      page('release-notes/5.22.1/changelog'),
+      page('release-notes/5.22.1/upgrade-guide'),
+    ]),
     collapsable('5.22.0', [
       page('release-notes/5.22.0/changelog'),
       page('release-notes/5.22.0/upgrade-guide'),
