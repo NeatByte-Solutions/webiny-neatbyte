@@ -144,12 +144,12 @@ module.exports = {
               marginBottom: '20px',
               marginTop: '20px',
             },
-            'ol li': {
+            'ol > li': {
               counterIncrement: 'cupcake',
               listStyle: 'none',
               position: 'relative',
             },
-            'ol li::before': {
+            'ol > li::before': {
               backgroundColor: '#fff',
               position: 'absolute',
               color: '#000',
