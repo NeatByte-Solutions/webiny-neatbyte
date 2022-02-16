@@ -69,6 +69,9 @@ module.exports = {
               fontSize: '1.375rem',
               lineHeight: '1.625rem',
             },
+            'h1 *, h2 *, h3 *, h4 *': {
+              fontSize: 'inherit !important',
+            },
             p: {
               fontSize: '0.875rem',
               lineHeight: '1.75rem',
@@ -105,7 +108,7 @@ module.exports = {
             'diagram-letter': {
               position: 'relative',
               color: '#FFFFFF',
-              fontSize: '0.8125rem',
+              fontSize: "0.8125rem",
               fontWeight: 'bold',
               textTransform: 'uppercase',
               marginLeft: '0.25rem',
@@ -314,6 +317,9 @@ module.exports = {
             h4: {
               fontSize: '1.75rem',
               lineHeight: '2.0625rem',
+            },
+            'h1 *, h2 *, h3 *, h4 *': {
+              fontSize: 'inherit !important',
             },
             p: {
               fontSize: '1rem',

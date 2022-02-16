@@ -61,55 +61,49 @@ export default [
 
 To start using the _Visibility element Settings_, you need to make the following changes:
 
-1. In your [`apps/admin/code/src/plugins/pageBuilder/editorPlugins.ts`](https://github.com/webiny/webiny-js/blob/next/apps/admin/code/src/plugins/pageBuilder/editorPlugins.ts#L138)
-file, add the `visibility` element settings editor plugin as shown below:
+1. In your [`apps/admin/code/src/plugins/pageBuilder/editorPlugins.ts`](https://github.com/webiny/webiny-js/blob/next/apps/admin/code/src/plugins/pageBuilder/editorPlugins.ts#L138) file, add the `visibility` element settings editor plugin as shown below:
+    ```diff-js apps/admin/code/src/plugins/pageBuilder/editorPlugins.ts
+    // Element settings
+    - import visibility from "@webiny/app-page-builder/editor/plugins/elementSettings/visibility";
+    (...)
 
-```diff-js apps/admin/code/src/plugins/pageBuilder/editorPlugins.ts
-// Element settings
-- import visibility from "@webiny/app-page-builder/editor/plugins/elementSettings/visibility";
-(...)
+    export default [
+      (...)
+      // Element settings
+    -  visibility,
+      (...)
+    ];
+    ```
 
-export default [
-  (...)
-  // Element settings
--  visibility,
-  (...)
-];
-```
+2. In your [`apps/admin/code/src/plugins/pageBuilder/renderPlugins.ts`](https://github.com/webiny/webiny-js/blob/next/apps/admin/code/src/plugins/pageBuilder/renderPlugins.ts#L72) file, add the `visibility` element settings render plugin as shown below:
+    ```diff-js apps/admin/code/src/plugins/pageBuilder/renderPlugins.ts
+    // Element settings
+    - import visibility from "@webiny/app-page-builder/render/plugins/elementSettings/visibility";
+    (...)
 
-2. In your [`apps/admin/code/src/plugins/pageBuilder/renderPlugins.ts`](https://github.com/webiny/webiny-js/blob/next/apps/admin/code/src/plugins/pageBuilder/renderPlugins.ts#L72)
-file, add the `visibility` element settings render plugin as shown below:
+    export default [
+      (...)
+      // Element settings
+    -  visibility,
+      (...)
+    ];
+    ```
 
-```diff-js apps/admin/code/src/plugins/pageBuilder/renderPlugins.ts
-// Element settings
-- import visibility from "@webiny/app-page-builder/render/plugins/elementSettings/visibility";
-(...)
+3. In your [`apps/website/code/src/plugins/pageBuilder.ts`](https://github.com/webiny/webiny-js/blob/next/apps/website/code/src/plugins/pageBuilder.ts#L88) file, add the `visibility` element settings render plugin as shown below:
+    ```diff-js apps/website/code/src/plugins/pageBuilder.ts
+    /**
+    * Page element settings plugins.
+    */
+    - import visibility from "@webiny/app-page-builder/render/plugins/elementSettings/visibility";
+    (...)
 
-export default [
-  (...)
-  // Element settings
--  visibility,
-  (...)
-];
-```
-
-3. In your [`apps/website/code/src/plugins/pageBuilder.ts`](https://github.com/webiny/webiny-js/blob/next/apps/website/code/src/plugins/pageBuilder.ts#L88)
-file, add the `visibility` element settings render plugin as shown below:
-
-```diff-js apps/website/code/src/plugins/pageBuilder.ts
-/**
- * Page element settings plugins.
- */
-- import visibility from "@webiny/app-page-builder/render/plugins/elementSettings/visibility";
-(...)
-
-export default [
-  (...)
-  // Page element settings
--  visibility,
-  (...)
-];
-```
+    export default [
+      (...)
+      // Page element settings
+    -  visibility,
+      (...)
+    ];
+    ```
 
 
 ## Upgrade Page Builder Theme Typography Styles
