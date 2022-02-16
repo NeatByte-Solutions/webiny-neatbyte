@@ -297,5 +297,10 @@ export const documentationNav = [
     page('contributing/documentation'),
     page('contributing/new-page-template'),
   ]),
+  collapsable('Enterprise', [
+    page('enterprise/multi-tenancy'),
+    page('enterprise/theme-manager'),
+    page('enterprise/okta-integration'),
+  ]),
   page('webiny-telemetry'),
 ]
