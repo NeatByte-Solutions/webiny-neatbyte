@@ -105,7 +105,7 @@ module.exports = {
             'diagram-letter': {
               position: 'relative',
               color: '#FFFFFF',
-              fontSize: "0.8125rem",
+              fontSize: '0.8125rem',
               fontWeight: 'bold',
               textTransform: 'uppercase',
               marginLeft: '0.25rem',
@@ -141,12 +141,12 @@ module.exports = {
               marginBottom: '20px',
               marginTop: '20px',
             },
-            'ol li': {
+            'ol > li': {
               counterIncrement: 'cupcake',
               listStyle: 'none',
               position: 'relative',
             },
-            'ol li::before': {
+            'ol > li::before': {
               backgroundColor: '#fff',
               position: 'absolute',
               color: '#000',

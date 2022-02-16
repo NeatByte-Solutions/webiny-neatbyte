@@ -48,15 +48,11 @@ By default, the `extensions` folder does not exist in the `apps` directory, so y
 ### Anatomy of Element Plugins
 
 To create a new page element, we need to register two sets of plugins:
-
 1. For the **Admin Area** application:
-
-- a plugin that defines how it's rendered in the page editor
-- a plugin that defines all the available settings and options for it
-
+   - a plugin that defines how it's rendered in the page editor
+   - a plugin that defines all the available settings and options for it
 2. For the **Website** application:
-
-- a plugin that defines how the page element is rendered on the actual page
+   - a plugin that defines how the page element is rendered on the actual page
 
 To better organize files, we'll write all the plugins needed for the **Admin Area** application and **Website** application in
 [`apps/extensions/pb-element-iframe/admin`](https://github.com/webiny/webiny-examples/tree/master/iframe-page-element/apps/extensions/pb-element-iframe/admin) and [`apps/extensions/pb-element-iframe/render`](https://github.com/webiny/webiny-examples/tree/master/iframe-page-element/apps/extensions/pb-element-iframe/render), respectively
