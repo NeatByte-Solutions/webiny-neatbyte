@@ -1,6 +1,17 @@
 import Link from 'next/link'
 import { InputFooter } from '@/components/InputFooter'
 
+const ArrowIcon = (
+  <svg width="6" height="11" viewBox="0 0 6 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path
+      d="M1 10.374L5.36871 5.57778L1.03281 0.625754"
+      className="stroke-dark-blue dark:stroke-white"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+  </svg>
+)
+
 export function Footer({ previous, next }) {
   return (
     <footer className="text-sm leading-6 my-[1.875rem] md:my-[3.75rem] text-dark-blue dark:text-white not-prose">
@@ -24,7 +35,6 @@ export function Footer({ previous, next }) {
             <Link href={next.link}>
               <a className="group flex items-center justify-end md:justify-start pl-[2.1875rem] border-l border-neutral-200">
                 {next.shortTitle || next.title}
-
                 <img
                   src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTgiIGhlaWdodD0iMTIiIHZpZXdCb3g9IjAgMCAxOCAxMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggb3BhY2l0eT0iMC41IiBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgZD0iTTExLjM1NzkgMTEuNzU2NEMxMS42ODUyIDEyLjA4MTIgMTIuMjE2MSAxMi4wODEyIDEyLjU0MzMgMTEuNzU2NEwxNy43NTQ0IDYuNTg3ODhDMTcuOTE4MSA2LjQyNTcxIDE4IDYuMjEyNjIgMTggNkMxOCA1Ljc4NzM1IDE3LjkxODEgNS41NzQzIDE3Ljc1NDQgNS40MTE5MUwxMi41NDMzIDAuMjQzMzcxQzEyLjIxNjkgLTAuMDgwMTEwNCAxMS42ODgxIC0wLjA4MTQwODQgMTEuMzYwNCAwLjI0MTIwMkMxMS4wMzIzIDAuNTYzODMxIDExLjAyOTIgMS4wODI3NCAxMS4zNTI5IDEuNDA4ODFMMTUuMDc1MyA1LjE1NzQ2TDAuODM4MzA0IDUuMTU3NDVDMC4zNzUyNDggNS4xNTc0NSA3LjcwMzQ2ZS0wOCA1LjU0MDAxIDcuMTU2MDVlLTA4IDUuOTk5MDZDNi42MDg0ZS0wOCA2LjQ1ODMxIDAuMzc1MjQ4IDYuODQwNjggMC44MzgzMDQgNi44NDA2OEwxNS4xMzc3IDYuODQwNjlMMTEuMzU3OSAxMC41ODUzQzExLjAzMDUgMTAuOTEgMTEuMDMwNSAxMS40MzE2IDExLjM1NzkgMTEuNzU2NFoiIGZpbGw9IiM5NEEzQjgiLz4KPC9zdmc+Cg=="
                   className="ml-3"
@@ -40,11 +50,7 @@ export function Footer({ previous, next }) {
       <div className="pt-[1.875rem] grid md:grid-cols-2 gap-y-[1.875rem] md:gap-y-0 md:gap-x-10">
         <div className="grid gap-y-1.5 text-[0.875rem] md:text-[1rem] leading-7">
           <div className="flex">
-            <img
-              src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNiIgaGVpZ2h0PSIxMSIgdmlld0JveD0iMCAwIDYgMTEiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxwYXRoIGQ9Ik0xIDEwLjM3NEw1LjM2ODcxIDUuNTc3NzhMMS4wMzI4MSAwLjYyNTc1NCIgc3Ryb2tlPSIjMzM0MTU1IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KPC9zdmc+Cg=="
-              className="mr-2.5 h-7 w-1.5"
-              alt="arrow"
-            />
+            <div className="mr-2.5 pt-2.5 h-7 w-1.5">{ArrowIcon}</div>
             <p>
               Questions? &nbsp;
               <a href="#" className="font-source-sans-pro text-orange underline hover:decoration-2">
@@ -53,11 +59,7 @@ export function Footer({ previous, next }) {
             </p>
           </div>
           <div className="flex">
-            <img
-              src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNiIgaGVpZ2h0PSIxMSIgdmlld0JveD0iMCAwIDYgMTEiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxwYXRoIGQ9Ik0xIDEwLjM3NEw1LjM2ODcxIDUuNTc3NzhMMS4wMzI4MSAwLjYyNTc1NCIgc3Ryb2tlPSIjMzM0MTU1IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KPC9zdmc+Cg=="
-              className="mr-2.5 h-7 w-1.5"
-              alt="arrow"
-            />
+            <div className="mr-2.5 pt-2.5 h-7 w-1.5">{ArrowIcon}</div>
             <p>
               Found a bug on the page, &nbsp;
               <a href="#" className="font-source-sans-pro text-orange underline hover:decoration-2">
@@ -66,11 +68,7 @@ export function Footer({ previous, next }) {
             </p>
           </div>
           <div className="flex">
-            <img
-              src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNiIgaGVpZ2h0PSIxMSIgdmlld0JveD0iMCAwIDYgMTEiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxwYXRoIGQ9Ik0xIDEwLjM3NEw1LjM2ODcxIDUuNTc3NzhMMS4wMzI4MSAwLjYyNTc1NCIgc3Ryb2tlPSIjMzM0MTU1IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KPC9zdmc+Cg=="
-              className="mr-2.5 h-7 w-1.5"
-              alt="arrow"
-            />
+            <div className="mr-2.5 pt-2.5 h-7 w-1.5">{ArrowIcon}</div>
             <p>
               Check out our &nbsp;
               <a href="#" className="font-source-sans-pro text-orange underline hover:decoration-2">
@@ -84,7 +82,9 @@ export function Footer({ previous, next }) {
             Join our developer newsletter
           </p>
           <InputFooter className="mt-2.5 mb-[0.3125rem]" />
-          <p className="text-[0.75rem] leading-[0.875rem] dark:text-light-grey-5">You can unsubscribe at any time.</p>
+          <p className="text-[0.75rem] leading-[0.875rem] dark:text-light-grey-5">
+            You can unsubscribe at any time.
+          </p>
         </div>
       </div>
     </footer>
