@@ -267,9 +267,9 @@ module.exports = {
         },
         dark: {
           css: {
-            color: theme('colors.slate.400'),
-            'h2, h3, h4, thead th': {
-              color: theme('colors.slate.200'),
+            color: theme('colors.white'),
+            'h1, h2, h3, h4, thead th': {
+              color: theme('colors.white'),
             },
             'h2 small, h3 small, h4 small': {
               color: theme('colors.slate.400'),
