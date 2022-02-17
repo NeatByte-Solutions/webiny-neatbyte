@@ -205,41 +205,7 @@ export function Header({ navIsOpen, onNavToggle }) {
           </Link>
           <Featured />
           <div className="relative hidden lg:flex items-center ml-auto">
-            <button
-              className="flex items-center justify-center w-8 h-8 focus:outline-none"
-              onClick={openDialog}
-            >
-              {!isOpen ? (
-                <svg
-                  width="19"
-                  height="20"
-                  viewBox="0 0 19 20"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    fillRule="evenodd"
-                    clipRule="evenodd"
-                    d="M13.8597 14.386L17.9474 18.4737L13.8597 14.386C10.9179 17.3279 6.14823 17.3279 3.20642 14.386C0.264525 11.4442 0.264525 6.6745 3.20642 3.7327C6.14823 0.790801 10.9179 0.790801 13.8597 3.7327C16.8016 6.6745 16.8016 11.4442 13.8597 14.386V14.386Z"
-                    stroke="#334155"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              ) : (
-                <svg
-                  width="18"
-                  height="18"
-                  viewBox="0 0 18 18"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path d="M17 1L1 17" stroke="#334155" strokeWidth="2" strokeLinecap="round" />
-                  <path d="M1 1L17 17" stroke="#334155" strokeWidth="2" strokeLinecap="round" />
-                </svg>
-              )}
-            </button>
+            <SearchButton className="text-slate-500 flex items-center justify-center hover:text-slate-600 dark:text-slate-400 dark:hover:text-slate-300" />
             <nav className="flex items-center h-[2.375rem] text-sm leading-6 font-semibold text-slate-700 dark:text-slate-200 border-l border-slate-200 ml-[1.875rem] pl-[1.875rem]">
               <ul className="flex space-x-8">
                 <NavItems />
@@ -285,140 +251,10 @@ export function Header({ navIsOpen, onNavToggle }) {
               </a>
             </div>
           </div>
-          <SearchButton className="ml-auto text-slate-500 -my-1 flex items-center justify-center hover:text-slate-600 lg:hidden dark:text-slate-400 dark:hover:text-slate-300">
-            <span className="sr-only">Search</span>
-            <svg
-              width="19"
-              height="20"
-              viewBox="0 0 19 20"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                fillRule="evenodd"
-                clipRule="evenodd"
-                d="M13.8597 14.386L17.9474 18.4737L13.8597 14.386C10.9179 17.3279 6.14823 17.3279 3.20642 14.386C0.264525 11.4442 0.264525 6.6745 3.20642 3.7327C6.14823 0.790801 10.9179 0.790801 13.8597 3.7327C16.8016 6.6745 16.8016 11.4442 13.8597 14.386V14.386Z"
-                stroke="#334155"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-          </SearchButton>
+          <SearchButton className="ml-auto text-slate-500 -my-1 flex items-center justify-center hover:text-slate-600 lg:hidden dark:text-slate-400 dark:hover:text-slate-300" />
           <NavPopover className="ml-[1.3781rem] -my-1" display="lg:hidden" />
         </div>
       </div>
-      <Dialog
-        as="div"
-        className={clsx('hidden lg:block fixed top-[3.375rem] z-50 inset-0')}
-        open={isOpen}
-        onClose={() => setIsOpen}
-      >
-        <Dialog.Overlay className="fixed top-[3.975rem] inset-0 bg-black/20 backdrop-blur-sm dark:bg-slate-900/80" />
-        <div
-          className={clsx(
-            'fixed z-40 top-16 hidden lg:flex items-center w-full h-[4.375rem] pl-[2.375rem] pr-[1.875rem] bg-white',
-            styles.searchHeader
-          )}
-        >
-          <button
-            type="button"
-            onClick={() => onNavToggle(!navIsOpen)}
-            className="text-slate-500 hover:text-slate-600 dark:text-slate-400 dark:hover:text-slate-300 mr-5 focus:outline-none"
-          >
-            <span className="sr-only">Navigation</span>
-            <svg
-              width="19"
-              height="20"
-              viewBox="0 0 19 20"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                fillRule="evenodd"
-                clipRule="evenodd"
-                d="M13.8597 14.386L17.9474 18.4737L13.8597 14.386C10.9179 17.3279 6.14823 17.3279 3.20642 14.386C0.264525 11.4442 0.264525 6.6745 3.20642 3.7327C6.14823 0.790801 10.9179 0.790801 13.8597 3.7327C16.8016 6.6745 16.8016 11.4442 13.8597 14.386V14.386Z"
-                stroke="#334155"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-          </button>
-          <input
-            type="text"
-            className={clsx(
-              'text-nav-directory text-black font-roboto w-full focus:outline-none pr-4',
-              styles.inputPlaceholder
-            )}
-            placeholder="Search..."
-          />
-          <div className="flex flex-row">
-            <button className="cursor-auto">
-              <svg
-                width="29"
-                height="29"
-                viewBox="0 0 29 29"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <rect
-                  x="0.5"
-                  y="0.5"
-                  width="27.8627"
-                  height="27.8627"
-                  rx="3.5"
-                  fill="white"
-                  stroke="#E5E5E5"
-                />
-                <g clip-path="url(#clip0_15_978)">
-                  <path
-                    opacity="0.5"
-                    d="M18.8236 8.15686C18.3244 8.15686 17.8456 8.35518 17.4926 8.70819C17.1396 9.0612 16.9413 9.53998 16.9413 10.0392V17.5686C16.9413 18.0679 17.1396 18.5466 17.4926 18.8996C17.8456 19.2527 18.3244 19.451 18.8236 19.451C19.3229 19.451 19.8016 19.2527 20.1547 18.8996C20.5077 18.5466 20.706 18.0679 20.706 17.5686C20.706 17.0694 20.5077 16.5906 20.1547 16.2376C19.8016 15.8846 19.3229 15.6863 18.8236 15.6863H11.2942C10.795 15.6863 10.3162 15.8846 9.96319 16.2376C9.61018 16.5906 9.41187 17.0694 9.41187 17.5686C9.41187 18.0679 9.61018 18.5466 9.96319 18.8996C10.3162 19.2527 10.795 19.451 11.2942 19.451C11.7934 19.451 12.2722 19.2527 12.6252 18.8996C12.9783 18.5466 13.1766 18.0679 13.1766 17.5686V10.0392C13.1766 9.53998 12.9783 9.0612 12.6252 8.70819C12.2722 8.35518 11.7934 8.15686 11.2942 8.15686C10.795 8.15686 10.3162 8.35518 9.96319 8.70819C9.61018 9.0612 9.41187 9.53998 9.41187 10.0392C9.41187 10.5384 9.61018 11.0172 9.96319 11.3702C10.3162 11.7232 10.795 11.9216 11.2942 11.9216H18.8236C19.3229 11.9216 19.8016 11.7232 20.1547 11.3702C20.5077 11.0172 20.706 10.5384 20.706 10.0392C20.706 9.53998 20.5077 9.0612 20.1547 8.70819C19.8016 8.35518 19.3229 8.15686 18.8236 8.15686Z"
-                    stroke="#000E1A"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </g>
-                <defs>
-                  <clipPath id="clip0_15_978">
-                    <rect
-                      width="12.549"
-                      height="12.549"
-                      fill="white"
-                      transform="translate(8.78442 7.52942)"
-                    />
-                  </clipPath>
-                </defs>
-              </svg>
-            </button>
-            <button className="ml-[0.38375rem] cursor-auto">
-              <svg
-                width="29"
-                height="29"
-                viewBox="0 0 29 29"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <rect
-                  x="0.5"
-                  y="0.5"
-                  width="28"
-                  height="28"
-                  rx="3.5"
-                  fill="white"
-                  stroke="#E5E5E5"
-                />
-                <path
-                  opacity="0.5"
-                  d="M11.7302 8.33087V19.7059H10.2224V8.33087H11.7302ZM18.5974 8.33087L13.8708 13.6356L11.2146 16.3934L10.9646 14.784L12.9646 12.5809L16.7849 8.33087H18.5974ZM17.1443 19.7059L12.9333 14.159L13.8318 12.9637L18.9412 19.7059H17.1443Z"
-                  fill="#000E1A"
-                />
-              </svg>
-            </button>
-          </div>
-        </div>
-      </Dialog>
     </>
   )
 }

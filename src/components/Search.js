@@ -7,9 +7,9 @@ import { DocSearchModal } from '@docsearch/react'
 import clsx from 'clsx'
 import { useActionKey } from '@/hooks/useActionKey'
 
-const INDEX_NAME = 'tailwindcss'
-const API_KEY = '5fc87cef58bb80203d2207578309fab6'
-const APP_ID = 'KNPXZI5B0M'
+const INDEX_NAME = 'webiny-js'
+const API_KEY = 'dd52f562d0728dab8423289926b5d055'
+const APP_ID = 'BH4D9OD16A'
 
 const SearchContext = createContext()
 
@@ -61,11 +61,7 @@ export function SearchProvider({ children }) {
           <DocSearchModal
             initialQuery={initialQuery}
             initialScrollY={window.scrollY}
-            searchParameters={{
-              facetFilters: 'version:v3',
-              distinct: 1,
-            }}
-            placeholder="Search documentation"
+            placeholder="Search..."
             onClose={onClose}
             indexName={INDEX_NAME}
             apiKey={API_KEY}
@@ -133,7 +129,15 @@ function Hit({ hit, children }) {
 export function SearchButton({ children, ...props }) {
   let searchButtonRef = useRef()
   let actionKey = useActionKey()
-  let { onOpen, onInput } = useContext(SearchContext)
+  let { onOpen, onClose, onInput, isOpen } = useContext(SearchContext)
+
+  const handleClick = () => {
+    if (isOpen) {
+      onClose()
+    } else {
+      onOpen()
+    }
+  }
 
   useEffect(() => {
     function onKeyDown(event) {
@@ -150,8 +154,39 @@ export function SearchButton({ children, ...props }) {
   }, [onInput, searchButtonRef])
 
   return (
-    <button type="button" ref={searchButtonRef} onClick={onOpen} {...props}>
-      {typeof children === 'function' ? children({ actionKey }) : children}
+    <button type="button" ref={searchButtonRef} onClick={handleClick} {...props}>
+      {typeof children === 'function' ? (
+        children({ actionKey })
+      ) : isOpen ? (
+        <svg
+          width="18"
+          height="18"
+          viewBox="0 0 18 18"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path d="M17 1L1 17" stroke="#334155" strokeWidth="2" strokeLinecap="round" />
+          <path d="M1 1L17 17" stroke="#334155" strokeWidth="2" strokeLinecap="round" />
+        </svg>
+      ) : (
+        <svg
+          width="19"
+          height="20"
+          viewBox="0 0 19 20"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            fillRule="evenodd"
+            clipRule="evenodd"
+            d="M13.8597 14.386L17.9474 18.4737L13.8597 14.386C10.9179 17.3279 6.14823 17.3279 3.20642 14.386C0.264525 11.4442 0.264525 6.6745 3.20642 3.7327C6.14823 0.790801 10.9179 0.790801 13.8597 3.7327C16.8016 6.6745 16.8016 11.4442 13.8597 14.386V14.386Z"
+            stroke="#334155"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
+      )}
     </button>
   )
 }
