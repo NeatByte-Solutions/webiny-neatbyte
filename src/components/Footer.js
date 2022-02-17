@@ -3,9 +3,9 @@ import { InputFooter } from '@/components/InputFooter'
 
 export function Footer({ previous, next }) {
   return (
-    <footer className="text-sm leading-6 my-[1.875rem] md:my-[3.75rem] text-dark-blue not-prose">
+    <footer className="text-sm leading-6 my-[1.875rem] md:my-[3.75rem] text-dark-blue dark:text-white not-prose">
       {(previous || next) && (
-        <div className="grid grid-cols-2 content-center w-full border-t border-b border-neutral-200 pt-2 md:pt-[1.4375rem] pb-2 md:pb-[1.8125rem] text-sm md:text-base font-semibold">
+        <div className="grid grid-cols-2 content-center w-full border-t border-b border-neutral-200 dark:border-neutral-200 dark:border-zinc-200 pt-2 md:pt-[1.4375rem] pb-2 md:pb-[1.8125rem] text-sm md:text-base font-semibold">
           {previous ? (
             <Link href={previous.link}>
               <a className="group flex items-center justify-start md:justify-end pr-[2.1875rem] border-r border-neutral-200">
@@ -84,7 +84,7 @@ export function Footer({ previous, next }) {
             Join our developer newsletter
           </p>
           <InputFooter className="mt-2.5 mb-[0.3125rem]" />
-          <p className="text-[0.75rem] leading-[0.875rem]">You can unsubscribe at any time.</p>
+          <p className="text-[0.75rem] leading-[0.875rem] dark:text-light-grey-5">You can unsubscribe at any time.</p>
         </div>
       </div>
     </footer>
