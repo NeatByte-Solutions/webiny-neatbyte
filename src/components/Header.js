@@ -5,7 +5,7 @@ import { Logo } from '@/components/Logo'
 import { Dialog } from '@headlessui/react'
 import { useEffect, useState } from 'react'
 import clsx from 'clsx'
-import { ThemeSelect, ThemeToggle } from './ThemeToggle'
+import { ThemeToggle } from './ThemeToggle'
 import styles from './Header.module.css'
 
 function Featured() {
@@ -86,8 +86,9 @@ export function NavPopover({ display = 'md:hidden', className, ...props }) {
           )}
         >
           <div className={styles.whiteCorner}></div>
-          <div className="mb-5">
-            <ThemeSelect />
+          <div className="flex justify-between mb-5 px-5">
+            Dark Theme
+            <ThemeToggle />
           </div>
           <ul className="space-y-5 px-5">
             <NavItems />
@@ -212,9 +213,6 @@ export function Header({ navIsOpen, onNavToggle }) {
               </ul>
             </nav>
             <div className="flex items-center h-[2.375rem] border-l border-slate-200 ml-[1.875rem] pl-[1.875rem] dark:border-slate-800">
-              <div className="flex items-center mr-5">
-                <ThemeToggle panelClassName="" />
-              </div>
               <a
                 href="https://github.com/webiny/webiny-js"
                 className="block text-slate-400 hover:text-slate-500 dark:hover:text-slate-300"
@@ -249,6 +247,9 @@ export function Header({ navIsOpen, onNavToggle }) {
                   />
                 </svg>
               </a>
+            </div>
+            <div className="flex items-center h-[2.375rem] border-l border-slate-200 ml-[1.875rem] pl-[1.875rem] dark:border-slate-800">
+              <ThemeToggle panelClassName="" />
             </div>
           </div>
           <SearchButton className="ml-auto text-slate-500 -my-1 flex items-center justify-center hover:text-slate-600 lg:hidden dark:text-slate-400 dark:hover:text-slate-300" />
