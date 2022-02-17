@@ -26,7 +26,7 @@ export function InputFooter({ className }) {
         type="email"
         placeholder="Your e-mail..."
         title="Please, Provide A Valid Email Address!"
-        className={inputFooterInput}
+        className={clsx(inputFooterInput, "dark:border-0")}
       />
     </form>
   )
