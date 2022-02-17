@@ -332,7 +332,7 @@
 }
 
 .DocSearch-Hit[aria-selected='true'] .DocSearch-Hit--Result {
-  @apply bg-[#fa5a28] dark:bg-[#fa5a28];
+  @apply bg-orange dark:bg-orange;
 }
 
 .DocSearch-Hit[aria-selected='true'] .DocSearch-Hit--Result .DocSearch-Hit-path {
@@ -349,7 +349,7 @@
 
 .DocSearch-Hits mark {
   background: none;
-  @apply text-[#fa5a28] font-semibold border-b-2 border-[#fa5a28] dark:text-white dark:border-0;
+  @apply text-orange font-semibold border-b-2 border-orange dark:text-white dark:border-0;
 }
 
 .DocSearch-Hit-path mark {
