@@ -11,8 +11,8 @@ import styles from './Header.module.css'
 function Featured() {
   return (
     <Link href="https://github.com/webiny/webiny-js">
-      <a className="ml-9 bg-white rounded-full py-2 px-3 hidden xl:flex items-center">
-        <span className="text-nav-link ml-2">
+      <a className="ml-9 bg-white dark:bg-dark-grey-3 rounded-full py-2 px-3 hidden xl:flex items-center">
+        <span className="text-nav-link dark:text-white ml-2">
           ⭐️ If you like Webiny, give it a star on GitHub! ⭐
         </span>
         <svg
@@ -25,7 +25,7 @@ function Featured() {
         >
           <path
             d="M1 10.748L5.36872 5.95182L1.03281 0.999808"
-            stroke="#334155"
+            className="stroke-dark-blue dark:stroke-white"
             strokeLinecap="round"
             strokeLinejoin="round"
           />
@@ -143,19 +143,19 @@ export function NavItems() {
     <>
       <li>
         <Link href="https://www.webiny.com/">
-          <a className="text-nav-subdirectory">Webiny Home</a>
+          <a className="text-nav-subdirectory dark:text-white">Webiny Home</a>
         </Link>
       </li>
       <li>
         <Link href="/docs/installation">
-          <a href="/docs/installation" className="text-nav-subdirectory">
+          <a href="/docs/installation" className="text-nav-subdirectory dark:text-white">
             Loremipsum
           </a>
         </Link>
       </li>
       <li>
         <Link href="/docs/installation">
-          <a className="text-nav-subdirectory">Dolor</a>
+          <a className="text-nav-subdirectory dark:text-white">Dolor</a>
         </Link>
       </li>
     </>
@@ -171,7 +171,7 @@ export function Header({ navIsOpen, onNavToggle }) {
     <>
       <div
         className={clsx(
-          'fixed top-0 z-40 w-full backdrop-blur flex-none transition-colors duration-500 lg:z-50 bg-smoke',
+          'fixed top-0 z-40 w-full backdrop-blur flex-none transition-colors duration-500 lg:z-50 bg-smoke dark:bg-dark-grey-2',
           styles.mainHeader
         )}
       >
@@ -194,7 +194,7 @@ export function Header({ navIsOpen, onNavToggle }) {
           </button>
           <Link href="/docs/installation">
             <a
-              className="flex-none w-[1.5925rem] lg:pr-[8.3875rem] lg:border-r border-border overflow-hidden lg:w-auto"
+              className="flex-none w-[1.5925rem] lg:pr-[8.3875rem] lg:border-r border-border dark:border-dark-grey overflow-hidden lg:w-auto"
               onContextMenu={(e) => {
                 e.preventDefault()
                 Router.push('/brand')
@@ -207,7 +207,7 @@ export function Header({ navIsOpen, onNavToggle }) {
           <Featured />
           <div className="relative hidden lg:flex items-center ml-auto">
             <SearchButton className="text-slate-500 flex items-center justify-center hover:text-slate-600 dark:text-slate-400 dark:hover:text-slate-300" />
-            <nav className="flex items-center h-[2.375rem] text-sm leading-6 font-semibold text-slate-700 dark:text-slate-200 border-l border-slate-200 ml-[1.875rem] pl-[1.875rem]">
+            <nav className="flex items-center h-[2.375rem] text-sm leading-6 font-semibold text-slate-700 dark:text-slate-200 border-l border-border dark:border-dark-grey ml-[1.875rem] pl-[1.875rem]">
               <ul className="flex space-x-8">
                 <NavItems />
               </ul>
@@ -222,7 +222,7 @@ export function Header({ navIsOpen, onNavToggle }) {
                   width="26"
                   height="26"
                   viewBox="0 0 16 16"
-                  fill="currentColor"
+                  className="fill-dark-blue dark:fill-white"
                   aria-hidden="true"
                 >
                   <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" />
@@ -237,13 +237,13 @@ export function Header({ navIsOpen, onNavToggle }) {
                   width="26"
                   height="26"
                   viewBox="0 0 26 26"
-                  fill="currentColor"
+                  className="fill-dark-blue dark:fill-white"
                   xmlns="http://www.w3.org/2000/svg"
                 >
                   <path d="M26 13C26 5.8203 20.1797 0 13 0C5.8203 0 0 5.8203 0 13C0 20.1797 5.8203 26 13 26C20.1797 26 26 20.1797 26 13Z" />
                   <path
                     d="M16.1121 6.23764C14.2677 6.28437 12.788 7.79407 12.788 9.65014C12.788 9.91733 12.8167 10.1785 12.8751 10.4288C10.0377 10.2863 7.5221 8.92721 5.83823 6.86164C5.54436 7.36561 5.37543 7.95268 5.37543 8.57893C5.37543 9.76322 5.97905 10.8074 6.89513 11.4194C6.33576 11.4015 5.80854 11.2474 5.34813 10.9917C5.34787 11.0059 5.34813 11.0214 5.34813 11.0359C5.34813 12.6897 6.5253 14.068 8.08723 14.3821C7.80079 14.4598 7.49907 14.5017 7.18763 14.5017C6.96739 14.5017 6.75385 14.4808 6.54543 14.4406C6.98016 15.7969 8.23933 16.7845 9.73303 16.8118C8.56462 17.7276 7.09479 18.273 5.49503 18.273C5.21974 18.273 4.94712 18.258 4.67993 18.2262C6.19119 19.1954 7.98468 19.7602 9.91243 19.7602C16.1922 19.7602 19.626 14.5581 19.626 10.0466C19.626 9.89868 19.6233 9.74993 19.6169 9.60333C20.2837 9.123 20.8626 8.52133 21.3199 7.83664C20.7082 8.10855 20.0503 8.29275 19.3595 8.37483C20.0648 7.9526 20.606 7.28379 20.861 6.48593C20.2013 6.87743 19.4706 7.16198 18.6926 7.31533C18.0701 6.65192 17.1825 6.23764 16.2005 6.23764C16.1711 6.23764 16.1414 6.23689 16.1121 6.23764Z"
-                    fill="white"
+                    className="fill-white dark:fill-dark-grey-3"
                   />
                 </svg>
               </a>

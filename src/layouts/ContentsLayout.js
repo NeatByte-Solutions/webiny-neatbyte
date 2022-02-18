@@ -95,16 +95,16 @@ const LikeIcon = (
     <path
       d="M15.1514 6.09082H11.458V2.28925C11.458 1.57717 10.8999 1 10.2113 1C9.83282 1 9.47406 1.17818 9.23776 1.48363L4.68896 7.36353H4.68958H4.68896V13.7271L6.53507 14.9998H14.2105C14.7595 14.9998 15.2419 14.623 15.3927 14.0764L16.9249 8.52424C17.2609 7.30498 16.3766 6.09082 15.1514 6.09082Z"
       className="stroke-dark-blue dark:stroke-white"
-      stroke-miterlimit="10"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeMiterlimit="10"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M4.68903 6.09123H0.996826V15.0002H4.68903V6.09123Z"
       className="stroke-dark-blue dark:stroke-white"
-      stroke-miterlimit="10"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeMiterlimit="10"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M2.84315 13.0911C3.18301 13.0911 3.45852 12.8062 3.45852 12.4547C3.45852 12.1033 3.18301 11.8184 2.84315 11.8184C2.50329 11.8184 2.22778 12.1033 2.22778 12.4547C2.22778 12.8062 2.50329 13.0911 2.84315 13.0911Z"
@@ -118,16 +118,16 @@ const DislikeIcon = (
     <path
       d="M2.55644 9.90909H6.24996V13.7107C6.24996 14.4228 6.80811 15 7.49673 15C7.87519 15 8.23395 14.8218 8.47026 14.5164L13.0192 8.63636H13.0185H13.0192V2.27273L11.173 1H3.49736C2.94906 1 2.4666 1.37673 2.31583 1.92336L0.783527 7.47564C0.446913 8.69491 1.33122 9.90909 2.55644 9.90909Z"
       className="stroke-dark-blue dark:stroke-white"
-      stroke-miterlimit="10"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeMiterlimit="10"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M13.0191 9.90909L16.7114 9.90909L16.7114 0.999997L13.0191 0.999997L13.0191 9.90909Z"
       className="stroke-dark-blue dark:stroke-white"
-      stroke-miterlimit="10"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeMiterlimit="10"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M14.8654 4.18198C15.2052 4.18198 15.4808 3.89707 15.4808 3.54562C15.4808 3.19417 15.2052 2.90926 14.8654 2.90926C14.5255 2.90926 14.25 3.19417 14.25 3.54562C14.25 3.89707 14.5255 4.18198 14.8654 4.18198Z"

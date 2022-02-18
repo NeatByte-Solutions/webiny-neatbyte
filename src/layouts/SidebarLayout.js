@@ -13,8 +13,8 @@ const Arrow = ({ className }) => {
     <path
       d="M1 11.0585L5.36871 6.26225L1.03281 1.31022"
       className={className}
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
   </svg>
 )};

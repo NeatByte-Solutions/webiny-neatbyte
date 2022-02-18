@@ -24,6 +24,8 @@ module.exports = {
         burgundy: '#D14343',
         purple: '#F3F6FF',
         'dark-grey': '#4E4E4E',
+        'dark-grey-2': '#33363B',
+        "dark-grey-3": "#1F2227",
         'light-grey': '#CBCBCB',
         'light-grey-2': '#959595',
         'light-grey-3': '#6D738A',

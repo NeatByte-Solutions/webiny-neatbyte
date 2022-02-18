@@ -6,8 +6,8 @@ const ArrowIcon = (
     <path
       d="M1 10.374L5.36871 5.57778L1.03281 0.625754"
       className="stroke-dark-blue dark:stroke-white"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
   </svg>
 )

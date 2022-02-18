@@ -165,8 +165,18 @@ export function SearchButton({ children, ...props }) {
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
         >
-          <path d="M17 1L1 17" stroke="#334155" strokeWidth="2" strokeLinecap="round" />
-          <path d="M1 1L17 17" stroke="#334155" strokeWidth="2" strokeLinecap="round" />
+          <path
+            d="M17 1L1 17"
+            className="stroke-dark-blue dark:stroke-white"
+            strokeWidth="2"
+            strokeLinecap="round"
+          />
+          <path
+            d="M1 1L17 17"
+            className="stroke-dark-blue dark:stroke-white"
+            strokeWidth="2"
+            strokeLinecap="round"
+          />
         </svg>
       ) : (
         <svg
@@ -180,7 +190,7 @@ export function SearchButton({ children, ...props }) {
             fillRule="evenodd"
             clipRule="evenodd"
             d="M13.8597 14.386L17.9474 18.4737L13.8597 14.386C10.9179 17.3279 6.14823 17.3279 3.20642 14.386C0.264525 11.4442 0.264525 6.6745 3.20642 3.7327C6.14823 0.790801 10.9179 0.790801 13.8597 3.7327C16.8016 6.6745 16.8016 11.4442 13.8597 14.386V14.386Z"
-            stroke="#334155"
+            className="stroke-dark-blue dark:stroke-white"
             strokeWidth="2"
             strokeLinecap="round"
             strokeLinejoin="round"
