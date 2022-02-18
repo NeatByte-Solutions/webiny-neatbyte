@@ -139,7 +139,7 @@ const DislikeIcon = (
 function WasThisArticleHelpful({ className }) {
   return (
     <div
-      className={`mt-[3.75rem] xl:mt-[2,5625rem] grid justify-items-center xl:justify-items-start text-dark-blue dark:text-white font-roboto ${className}`}
+      className={`mt-[3.75rem] xl:mt-[2,5625rem] mb-6 grid justify-items-center xl:justify-items-start text-dark-blue dark:text-white font-roboto ${className}`}
     >
       <div className="text-sidebar-right-title font-bold">Was this article helpful?</div>
       <div className="flex mt-[1.1875rem]">
@@ -259,9 +259,9 @@ export function ContentsLayout({ children, meta, classes, tableOfContents }) {
       </Footer>
 
       <div
-        className={`fixed z-20 top-[5.875rem] bottom-0 right-[max(0px,calc(50%-48.5rem))] 2xl:right-[max(0px,calc(50%-50rem))] w-[19.5rem] 2xl:w-[22rem] pl-[4.3125rem] pr-[1.8125rem] overflow-y-auto hidden xl:block ${scroll}`}
+        className={`fixed z-20 top-[4.15rem] bottom-0 right-[max(0px,calc(50%-48.5rem))] 2xl:right-[max(0px,calc(50%-50rem))] w-[19.5rem] 2xl:w-[22rem] pl-[4.3125rem] pr-[1.8125rem] overflow-y-auto hidden xl:block ${scroll}`}
       >
-        <div className="border-l-2 border-orange pl-5 pt-[0.3125rem] pb-2.5">
+        <div className="border-l-2 border-orange pl-5 pt-[0.3125rem] pb-2.5 mt-[1.725rem]">
           {toc.length > 0 && (
             <TableOfContents tableOfContents={toc} currentSection={currentSection} />
           )}
