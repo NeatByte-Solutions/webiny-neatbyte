@@ -17,6 +17,7 @@ module.exports = {
     extend: {
       colors: {
         'dark-blue': '#334155',
+        'dark-theme': '#1F2227',
         gray: '#000E1A',
         blue: '#01579B',
         nordic: '#002D39',
@@ -25,7 +26,8 @@ module.exports = {
         purple: '#F3F6FF',
         'dark-grey': '#4E4E4E',
         'dark-grey-2': '#33363B',
-        "dark-grey-3": "#1F2227",
+        'dark-grey-3': '#1F2227',
+        'dark-grey-4': '#2A2C31',
         'light-grey': '#CBCBCB',
         'light-grey-2': '#959595',
         'light-grey-3': '#6D738A',
@@ -293,6 +295,9 @@ module.exports = {
             },
             code: {
               color: theme('colors.slate.200'),
+            },
+            blockquote: {
+              color: theme('colors.white'),
             },
             pre: {
               boxShadow: 'inset 0 0 0 1px rgb(255 255 255 / 0.1)',

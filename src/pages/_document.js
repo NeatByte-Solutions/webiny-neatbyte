@@ -42,7 +42,7 @@ export default class Document extends NextDocument {
             }}
           />
         </Head>
-        <body className="antialiased text-slate-500 dark:text-slate-400">
+        <body className="antialiased text-slate-500 dark:text-slate-400 dark:bg-dark-theme">
           <Main />
           <NextScript />
           <script> </script>
