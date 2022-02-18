@@ -76,7 +76,7 @@ export function ThemeToggle() {
 
   return (
     <>
-      <button className="dark:hidden" onClick={() => setSetting('dark')}>
+      <button className="dark:hidden focus:outline-none" onClick={() => setSetting('dark')}>
         <svg
           width="49"
           height="26"
@@ -92,7 +92,7 @@ export function ThemeToggle() {
           />
         </svg>
       </button>
-      <button className="hidden dark:inline" onClick={() => setSetting('light')}>
+      <button className="hidden dark:inline focus:outline-none" onClick={() => setSetting('light')}>
         <svg
           width="49"
           height="26"
