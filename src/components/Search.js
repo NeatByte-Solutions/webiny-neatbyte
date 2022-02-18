@@ -34,6 +34,12 @@ export function SearchProvider({ children }) {
     [setIsOpen, setInitialQuery]
   )
 
+  useEffect(() => {
+    if (isOpen) {
+      onClose()
+    }
+  }, [router])
+
   useDocSearchKeyboardEvents({
     isOpen,
     onOpen,
