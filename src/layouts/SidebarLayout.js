@@ -5,9 +5,20 @@ import { useIsomorphicLayoutEffect } from '@/hooks/useIsomorphicLayoutEffect'
 import clsx from 'clsx'
 import { Dialog } from '@headlessui/react'
 
-import arrow from '@/img/menu-arrow.svg'
-
 import { scroll } from './SidebarLayout.module.css'
+
+const Arrow = ({ className }) => {
+  return (
+  <svg width="6" height="12" viewBox="0 0 6 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path
+      d="M1 11.0585L5.36871 6.26225L1.03281 1.31022"
+      className={className}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+)};
+export default Arrow;
 
 export const SidebarContext = createContext()
 
@@ -80,7 +91,7 @@ const NavTreeElement = forwardRef(({ element, depth = 0 }, ref) => {
 const HorizontalLine = () => {
   return (
     <div className="pr-[10px]">
-      <div className="border-b-[1px] border-neutral-200 w-full -ml-[10px]"></div>
+      <div className="border-b-[1px] border-neutral-200 dark:border-zinc-200 w-full -ml-[10px]"></div>
     </div>
   )
 }
@@ -103,15 +114,23 @@ const Collapsable = forwardRef(({ title, subElements = [], isActiveChild, depth 
         className="relative flex items-center cursor-pointer h-[30px] mt-[10px] mb-[8px]"
       >
         <div className={`${depth === 0 ? 'absolute left-[-15px] top-[9px]' : 'mr-[10px]'}`}>
-          <img src={arrow} className={showMenu ? 'rotate-90' : ''} alt="collapsable"></img>
+          <div className={showMenu ? 'rotate-90' : ''} alt="collapsable">
+            <Arrow className={clsx({
+              "stroke-dark-blue dark:stroke-white": depth === 0,
+              'stroke-light-grey-3 dark:stroke-light-grey-4':
+              (!showMenu && depth > 0 && !isActiveChild) ||
+              (!isActiveChild && showMenu && depth > 0),
+            })} />
+          </div>
         </div>
         <button
           className={clsx({
-            'font-bold text-nav-subdirectory text-dark-purple': isActiveChild && depth > 0,
-            'text-nav-subdirectory font-normal text-dark-purple':
+            'font-bold text-nav-subdirectory text-dark-purple dark:text-light-grey':
+              isActiveChild && depth > 0,
+            'text-nav-subdirectory font-normal text-dark-purple dark:text-light-grey':
               (!showMenu && depth > 0 && !isActiveChild) ||
               (!isActiveChild && showMenu && depth > 0),
-            'text-dark-blue font-semibold text-nav-directory': depth === 0,
+            'text-dark-blue dark:text-white font-semibold text-nav-directory': depth === 0,
           })}
         >
           {title}
@@ -132,15 +151,14 @@ const Page = forwardRef(({ title, link, isActive, depth = 0 }, ref) => {
       <Link href={link}>
         {/* first line */}
         <a
-          className={clsx(
-            'grid content-center block my-[15px] h-[30px] cursor-pointer',
-            {
-              'text-orange border-orange border-r-[2px] font-bold': isActive,
-              'hover:border-r-[2px] hover:text-dark-purple hover:border-orange/50': !isActive,
-              'text-dark-blue font-semibold text-nav-directory': depth === 0,
-              'my-[7px] text-nav-link': depth > 0,
-            }
-          )}
+          className={clsx('grid content-center block my-[15px] h-[30px] cursor-pointer', {
+            'text-orange border-orange border-r-[2px] font-bold': isActive,
+            'hover:border-r-[2px] hover:text-dark-purple hover:border-orange/50': !isActive,
+            'font-semibold text-nav-directory': depth === 0,
+            'my-[7px] text-nav-link': depth > 0,
+            'text-dark-blue dark:text-white': depth === 0 && !isActive,
+            'text-dark-blue dark:text-light-grey-2': depth > 0 && !isActive,
+          })}
         >
           {title}
         </a>
@@ -154,7 +172,8 @@ const Section = forwardRef(({ title, subElements = [], isActiveChild, depth = 0 
       <li className="flex items-center">
         <span
           className={clsx({
-            'my-[10px] uppercase text-dark-blue font-normal text-nav-subdirectory': !isActiveChild,
+            'my-[10px] uppercase text-dark-blue font-normal text-nav-subdirectory dark:text-light-grey':
+              !isActiveChild,
             'my-[10px] uppercase text-dark-blue font-semibold text-nav-subdirectory': isActiveChild,
           })}
         >
@@ -267,7 +286,7 @@ export function SidebarLayout({
         className="fixed z-50 inset-0 overflow-y-auto lg:hidden"
       >
         <Dialog.Overlay className="fixed inset-0 bg-black/20 backdrop-blur-sm dark:bg-slate-900/80" />
-        <div className="relative bg-white w-[21.25rem] max-w-[calc(100%-3rem)] p-6 dark:bg-slate-800 overflow-scroll h-full">
+        <div className="relative bg-white w-[21.25rem] max-w-[calc(100%-3rem)] p-6 dark:bg-dark-grey-2 overflow-scroll h-full">
           <button
             type="button"
             onClick={() => setNavIsOpen(false)}

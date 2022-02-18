@@ -46,7 +46,7 @@ function TableOfContents({ tableOfContents, currentSection }) {
               href={`#${section.slug}`}
               onClick={closeNav}
               className={`block font-semibold ${index > 0 ? 'mt-5' : ''} ${
-                isActive(section) ? 'text-orange' : 'text-dark-blue'
+                isActive(section) ? 'text-orange' : 'text-dark-blue dark:text-white'
               }`}
             >
               {section.title}
@@ -62,7 +62,7 @@ function TableOfContents({ tableOfContents, currentSection }) {
                     '',
                     isActive(subsection) && section.slug !== subsection.slug
                       ? 'text-orange'
-                      : 'text-[#798099]',
+                      : 'text-[#798099] dark:text-light-grey',
                     pageHasSubsections(subsection) ? 'font-bold' : 'font-normal'
                   )}
                 >
@@ -74,7 +74,9 @@ function TableOfContents({ tableOfContents, currentSection }) {
                   <a
                     href={`#${item.slug}`}
                     onClick={closeNav}
-                    className={isActive(item) ? 'text-orange' : 'text-[#798099]'}
+                    className={
+                      isActive(item) ? 'text-orange' : 'text-[#798099] dark:text-light-grey'
+                    }
                   >
                     {item.title}
                   </a>
@@ -88,27 +90,65 @@ function TableOfContents({ tableOfContents, currentSection }) {
   )
 }
 
+const LikeIcon = (
+  <svg width="18" height="16" viewBox="0 0 18 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path
+      d="M15.1514 6.09082H11.458V2.28925C11.458 1.57717 10.8999 1 10.2113 1C9.83282 1 9.47406 1.17818 9.23776 1.48363L4.68896 7.36353H4.68958H4.68896V13.7271L6.53507 14.9998H14.2105C14.7595 14.9998 15.2419 14.623 15.3927 14.0764L16.9249 8.52424C17.2609 7.30498 16.3766 6.09082 15.1514 6.09082Z"
+      className="stroke-dark-blue dark:stroke-white"
+      strokeMiterlimit="10"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M4.68903 6.09123H0.996826V15.0002H4.68903V6.09123Z"
+      className="stroke-dark-blue dark:stroke-white"
+      strokeMiterlimit="10"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M2.84315 13.0911C3.18301 13.0911 3.45852 12.8062 3.45852 12.4547C3.45852 12.1033 3.18301 11.8184 2.84315 11.8184C2.50329 11.8184 2.22778 12.1033 2.22778 12.4547C2.22778 12.8062 2.50329 13.0911 2.84315 13.0911Z"
+      className="fill-dark-blue dark:fill-white"
+    />
+  </svg>
+)
+
+const DislikeIcon = (
+  <svg width="18" height="16" viewBox="0 0 18 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path
+      d="M2.55644 9.90909H6.24996V13.7107C6.24996 14.4228 6.80811 15 7.49673 15C7.87519 15 8.23395 14.8218 8.47026 14.5164L13.0192 8.63636H13.0185H13.0192V2.27273L11.173 1H3.49736C2.94906 1 2.4666 1.37673 2.31583 1.92336L0.783527 7.47564C0.446913 8.69491 1.33122 9.90909 2.55644 9.90909Z"
+      className="stroke-dark-blue dark:stroke-white"
+      strokeMiterlimit="10"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M13.0191 9.90909L16.7114 9.90909L16.7114 0.999997L13.0191 0.999997L13.0191 9.90909Z"
+      className="stroke-dark-blue dark:stroke-white"
+      strokeMiterlimit="10"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M14.8654 4.18198C15.2052 4.18198 15.4808 3.89707 15.4808 3.54562C15.4808 3.19417 15.2052 2.90926 14.8654 2.90926C14.5255 2.90926 14.25 3.19417 14.25 3.54562C14.25 3.89707 14.5255 4.18198 14.8654 4.18198Z"
+      className="fill-dark-blue dark:fill-white"
+    />
+  </svg>
+)
+
 function WasThisArticleHelpful({ className }) {
   return (
     <div
-      className={`mt-[3.75rem] xl:mt-[2,5625rem] grid justify-items-center xl:justify-items-start text-dark-blue font-roboto ${className}`}
+      className={`mt-[3.75rem] xl:mt-[2,5625rem] grid justify-items-center xl:justify-items-start text-dark-blue dark:text-white font-roboto ${className}`}
     >
       <div className="text-sidebar-right-title font-bold">Was this article helpful?</div>
       <div className="flex mt-[1.1875rem]">
         <button className="h-9 w-[4.0625rem] border border-neutral-200 rounded flex items-center justify-center font-semibold text-sm leading-6 mr-2.5">
-          <img
-            src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTgiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAxOCAxNiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTE1LjE1MTQgNi4wOTA4MkgxMS40NThWMi4yODkyNUMxMS40NTggMS41NzcxNyAxMC44OTk5IDEgMTAuMjExMyAxQzkuODMyODIgMSA5LjQ3NDA2IDEuMTc4MTggOS4yMzc3NiAxLjQ4MzYzTDQuNjg4OTYgNy4zNjM1M0g0LjY4OTU4SDQuNjg4OTZWMTMuNzI3MUw2LjUzNTA3IDE0Ljk5OThIMTQuMjEwNUMxNC43NTk1IDE0Ljk5OTggMTUuMjQxOSAxNC42MjMgMTUuMzkyNyAxNC4wNzY0TDE2LjkyNDkgOC41MjQyNEMxNy4yNjA5IDcuMzA0OTggMTYuMzc2NiA2LjA5MDgyIDE1LjE1MTQgNi4wOTA4MloiIHN0cm9rZT0iIzMzNDE1NSIgc3Ryb2tlLW1pdGVybGltaXQ9IjEwIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KPHBhdGggZD0iTTQuNjg5MDMgNi4wOTEyM0gwLjk5NjgyNlYxNS4wMDAySDQuNjg5MDNWNi4wOTEyM1oiIHN0cm9rZT0iIzMzNDE1NSIgc3Ryb2tlLW1pdGVybGltaXQ9IjEwIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KPHBhdGggZD0iTTIuODQzMTUgMTMuMDkxMUMzLjE4MzAxIDEzLjA5MTEgMy40NTg1MiAxMi44MDYyIDMuNDU4NTIgMTIuNDU0N0MzLjQ1ODUyIDEyLjEwMzMgMy4xODMwMSAxMS44MTg0IDIuODQzMTUgMTEuODE4NEMyLjUwMzI5IDExLjgxODQgMi4yMjc3OCAxMi4xMDMzIDIuMjI3NzggMTIuNDU0N0MyLjIyNzc4IDEyLjgwNjIgMi41MDMyOSAxMy4wOTExIDIuODQzMTUgMTMuMDkxMVoiIGZpbGw9IiMzMzQxNTUiLz4KPC9zdmc+Cg=="
-            alt="like button"
-            className="mr-[0.375rem]"
-          />
+          <div className="mr-[0.375rem]">{LikeIcon}</div>
           Yes
         </button>
         <button className="h-9 w-[4.0625rem] border border-neutral-200 rounded flex items-center justify-center font-semibold text-sm leading-6">
-          <img
-            src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTgiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAxOCAxNiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTIuNTU2NDQgOS45MDkwOUg2LjI0OTk2VjEzLjcxMDdDNi4yNDk5NiAxNC40MjI4IDYuODA4MTEgMTUgNy40OTY3MyAxNUM3Ljg3NTE5IDE1IDguMjMzOTUgMTQuODIxOCA4LjQ3MDI2IDE0LjUxNjRMMTMuMDE5MiA4LjYzNjM2SDEzLjAxODVIMTMuMDE5MlYyLjI3MjczTDExLjE3MyAxSDMuNDk3MzZDMi45NDkwNiAxIDIuNDY2NiAxLjM3NjczIDIuMzE1ODMgMS45MjMzNkwwLjc4MzUyNyA3LjQ3NTY0QzAuNDQ2OTEzIDguNjk0OTEgMS4zMzEyMiA5LjkwOTA5IDIuNTU2NDQgOS45MDkwOVoiIHN0cm9rZT0iIzMzNDE1NSIgc3Ryb2tlLW1pdGVybGltaXQ9IjEwIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KPHBhdGggZD0iTTEzLjAxOTEgOS45MDkwOUwxNi43MTE0IDkuOTA5MDlMMTYuNzExNCAwLjk5OTk5N0wxMy4wMTkxIDAuOTk5OTk3TDEzLjAxOTEgOS45MDkwOVoiIHN0cm9rZT0iIzMzNDE1NSIgc3Ryb2tlLW1pdGVybGltaXQ9IjEwIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KPHBhdGggZD0iTTE0Ljg2NTQgNC4xODE5OEMxNS4yMDUyIDQuMTgxOTggMTUuNDgwOCAzLjg5NzA3IDE1LjQ4MDggMy41NDU2MkMxNS40ODA4IDMuMTk0MTcgMTUuMjA1MiAyLjkwOTI2IDE0Ljg2NTQgMi45MDkyNkMxNC41MjU1IDIuOTA5MjYgMTQuMjUgMy4xOTQxNyAxNC4yNSAzLjU0NTYyQzE0LjI1IDMuODk3MDcgMTQuNTI1NSA0LjE4MTk4IDE0Ljg2NTQgNC4xODE5OFoiIGZpbGw9IiMzMzQxNTUiLz4KPC9zdmc+Cg=="
-            alt="like button"
-            className="mr-[0.375rem]"
-          />
+          <div className="mr-[0.375rem]">{DislikeIcon}</div>
           No
         </button>
       </div>
@@ -197,13 +237,13 @@ export function ContentsLayout({ children, meta, classes, tableOfContents }) {
   let { prev, next } = usePrevNext()
 
   return (
-    <div className="max-w-3xl mx-auto mt-[5.25rem] md:mt-[5.875rem] mb-[1.875rem] md:mb-[3.75rem] xl:pt-10 xl:max-w-[53.6875rem] xl:ml-0 xl:mr-[15.5rem] 2xl:mr-[22rem] xl:px-10 xl:border border-neutral-200 rounded-[0.625rem]">
-      <PageHeader
-        title={meta.title}
-        description={meta.description}
-      />
+    <div className="max-w-3xl mx-auto mt-[5.25rem] md:mt-[5.875rem] mb-[1.875rem] md:mb-[3.75rem] xl:pt-10 xl:max-w-[53.6875rem] xl:ml-0 xl:mr-[15.5rem] 2xl:mr-[22rem] xl:px-10 xl:border border-neutral-200 dark:border-dark-grey rounded-[0.625rem]">
+      <PageHeader title={meta.title} description={meta.description} />
       <ContentsContext.Provider value={{ registerHeading, unregisterHeading }}>
-        <div id="content" className="relative z-20 prose md:prose-md prose-slate mt-8 dark:prose-dark">
+        <div
+          id="content"
+          className="relative z-20 prose md:prose-md prose-slate mt-8 dark:prose-dark"
+        >
           <MDXProvider components={{ Heading }}>{children}</MDXProvider>
         </div>
       </ContentsContext.Provider>
