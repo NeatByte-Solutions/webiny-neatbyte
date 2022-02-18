@@ -11,7 +11,11 @@ import styles from './Header.module.css'
 function Featured() {
   return (
     <Link href="https://github.com/webiny/webiny-js">
-      <a className="ml-9 bg-white dark:bg-dark-grey-3 rounded-full py-2 px-3 hidden xl:flex items-center">
+      <a
+        className="ml-9 bg-white dark:bg-dark-grey-3 rounded-full py-2 px-3 hidden xl:flex items-center"
+        target="_blank"
+        rel="noreferrer"
+      >
         <span className="text-nav-link dark:text-white ml-2">
           ⭐️ If you like Webiny, give it a star on GitHub! ⭐
         </span>
@@ -187,7 +191,7 @@ export function Header({ navIsOpen, onNavToggle }) {
               />
             </svg>
           </button>
-          <Link href="/docs/installation">
+          <Link href="/docs/webiny/introduction">
             <a
               className="flex-none w-[1.5925rem] lg:pr-[8.3875rem] lg:border-r border-border dark:border-dark-grey overflow-hidden lg:w-auto"
               onContextMenu={(e) => {
@@ -210,6 +214,8 @@ export function Header({ navIsOpen, onNavToggle }) {
             <div className="flex items-center h-[2.375rem] border-l border-slate-200 dark:border-dark-grey ml-[1.875rem] pl-[1.875rem] dark:border-dark-grey">
               <a
                 href="https://github.com/webiny/webiny-js"
+                target="_blank"
+                rel="noreferrer"
                 className="block text-slate-400 hover:text-slate-500 dark:hover:text-slate-300"
               >
                 <span className="sr-only">Webiny Docs on GitHub</span>
@@ -224,7 +230,9 @@ export function Header({ navIsOpen, onNavToggle }) {
                 </svg>
               </a>
               <a
-                href="/docs/installation"
+                href="https://twitter.com/WebinyCMS"
+                target="_blank"
+                rel="noreferrer"
                 className="ml-5 block text-slate-400 hover:text-slate-500 dark:hover:text-slate-300"
               >
                 <span className="sr-only">Webiny Docs on GitHub</span>
