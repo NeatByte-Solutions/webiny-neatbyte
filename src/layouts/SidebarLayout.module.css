@@ -5,9 +5,17 @@
 .scroll::-webkit-scrollbar-track {
   background: #f1f1f1;
   border-radius: 50px;
+
+  :global(.dark) & {
+    background: #424242;
+  }
 }
 
 .scroll::-webkit-scrollbar-thumb {
   background-color: #bfbfbf;
   border-radius: 50px;
+
+  :global(.dark) & {
+    background-color: #686868;
+  }
 }

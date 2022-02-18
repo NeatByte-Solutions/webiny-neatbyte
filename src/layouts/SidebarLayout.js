@@ -272,7 +272,7 @@ export function SidebarLayout({
       <Wrapper allowOverflow={allowOverflow}>
         <div className="max-w-[96.993rem] 2xl:max-w-[104rem] mx-auto pl-4 sm:pl-6 md:pl-8 2xl:pl-[5.43rem] pr-4 sm:pr-6 md:pr-8">
           <div
-            className={`hidden lg:block fixed z-20 inset-0 top-[4.15rem] right-auto w-[20.875rem] pb-10 pl-[18px] overflow-y-auto border-r border-neutral-200 ${scroll}`}
+            className={`hidden lg:block fixed z-20 inset-0 top-[4.15rem] right-auto w-[20.875rem] pb-10 pl-[18px] overflow-y-auto border-r border-neutral-200 dark:border-[#36383a] ${scroll}`}
           >
             <Nav nav={nav}>{sidebar}</Nav>
           </div>
