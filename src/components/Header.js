@@ -146,20 +146,8 @@ export function NavItems() {
   return (
     <>
       <li>
-        <Link href="https://www.webiny.com/">
+        <Link href="/">
           <a className="text-nav-subdirectory dark:text-white">Webiny Home</a>
-        </Link>
-      </li>
-      <li>
-        <Link href="/docs/installation">
-          <a href="/docs/installation" className="text-nav-subdirectory dark:text-white">
-            Loremipsum
-          </a>
-        </Link>
-      </li>
-      <li>
-        <Link href="/docs/installation">
-          <a className="text-nav-subdirectory dark:text-white">Dolor</a>
         </Link>
       </li>
     </>
@@ -173,7 +161,7 @@ export function Header({ navIsOpen, onNavToggle }) {
   }
   return (
     <>
-      <div className="fixed top-0 z-40 w-full backdrop-blur flex-none transition-colors duration-500 lg:z-50 bg-smoke dark:bg-dark-grey-2 shadow-[0_1px_0_rgb(229,229,229)] dark:shadow-[0_1px_0_rgb(78,78,78)]">
+      <div className="fixed top-0 z-40 w-full bg-smoke/90 backdrop-blur backdrop-opacity-80 supports-backdrop-blur:bg-white/95 flex-none transition-colors duration-500 lg:z-50 dark:bg-dark-grey-2 shadow-[0_1px_0_rgb(229,229,229)] dark:shadow-[0_1px_0_rgb(78,78,78)]">
         <div className="relative flex items-center h-[3.375rem] lg:h-16 pl-[0.875rem] md:pl-8 pr-[] md:pr-8">
           <button className="lg:hidden mr-5" onClick={() => onNavToggle(!navIsOpen)}>
             <svg

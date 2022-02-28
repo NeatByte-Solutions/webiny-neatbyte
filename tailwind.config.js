@@ -158,7 +158,7 @@ module.exports = {
             },
             ol: {
               counterReset: 'cupcake',
-              paddingLeft: '20px',
+              paddingLeft: '27px',
               marginBottom: '20px',
               marginTop: '20px',
             },
@@ -295,6 +295,8 @@ module.exports = {
             },
             code: {
               color: theme('colors.slate.200'),
+              boxShadow: 'none',
+              backgroundColor: 'transparent',
             },
             blockquote: {
               color: theme('colors.white'),
@@ -321,10 +323,6 @@ module.exports = {
             strong: {
               color: theme('colors.slate.200'),
             },
-            code: {
-              boxShadow: 'inset 0 0 0 1px #4E4E4E',
-              backgroundColor: '#33363B',
-            },
             thead: {
               color: theme('colors.slate.300'),
               borderBottomColor: 'rgb(148 163 184 / 0.2)',
@@ -338,6 +336,7 @@ module.exports = {
             'figure figcaption': {
               color: '#C1C2C4',
             },
+
           },
         },
         md: {
@@ -355,11 +354,11 @@ module.exports = {
               lineHeight: '2.625rem',
             },
             h3: {
-              fontSize: '2rem',
+              fontSize: '1.5rem',
               lineHeight: '2.375rem',
             },
             h4: {
-              fontSize: '1.75rem',
+              fontSize: '1.25rem',
               lineHeight: '2.0625rem',
             },
             'h1 *, h2 *, h3 *, h4 *': {
@@ -393,15 +392,16 @@ module.exports = {
       },
       fontSize: {
         'nav-directory': [
-          '1.126rem',
+          '1rem',
           {
             lineHeight: '1.3125rem',
           },
         ],
         'nav-subdirectory': [
-          '1rem',
+          '0.85rem',
           {
             lineHeight: '1.1875rem',
+            fontWeight: 500
           },
         ],
         'nav-link': [
@@ -417,7 +417,7 @@ module.exports = {
           },
         ],
         'sidebar-right-title': [
-          '1.375rem',
+          '1rem',
           {
             lineHeight: '1.5rem',
           },

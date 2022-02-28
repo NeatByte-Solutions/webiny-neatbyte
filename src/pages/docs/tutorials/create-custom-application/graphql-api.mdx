@@ -162,7 +162,7 @@ Adding the missing `coverImage` field can be done by making the following change
 
 So, for starters, let's open our [`Pin`](https://github.com/webiny/webiny-examples/blob/master/create-custom-application/03-graphql-api/pinterest-clone/api/code/graphql/src/plugins/scaffolds/pins/entities/Pin.ts#L10) entity and simply define the new attribute on it (parts of code removed for brevity):
 
-```ts pinterest-clone/api/code/graphql/src/plugins/scaffolds/pins/entities/Pin.ts {20}
+```diff-js ts pinterest-clone/api/code/graphql/src/plugins/scaffolds/pins/entities/Pin.ts
 // https://github.com/jeremydaly/dynamodb-toolbox
 import { Entity } from "dynamodb-toolbox";
 import table from "./table";
@@ -183,7 +183,7 @@ export default new Entity<PinEntity>({
     title: { type: "string" },
     description: { type: "string" },
     coverImage: { type: "string" },
-    createdOn: { type: "string" },
++   createdOn: { type: "string" },
     savedOn: { type: "string" },
 
     // Will store current version of Webiny, for example "5.9.1".

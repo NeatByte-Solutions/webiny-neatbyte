@@ -1,6 +1,6 @@
 ---
 title: Create a New Page Element
-description: Create a new Page Builder element.
+description: Tutorial on how to create a new element for Webiny Page Builder.
 ---
 
 import { Alert } from '@/components/Alert'
@@ -22,7 +22,7 @@ To achieve that, we can utilize a couple of simple plugins, which is what we'll 
 We’ll create a new page element that allows content creators to embed content using an `iframe`.
 Here's what the final result will look like:
 
-![Iframe page element](./assets/iframe-end.png)
+![Iframe page element](./assets/create-a-page-element/iframe-end.png)
 
 <Alert type="info">
 
@@ -102,14 +102,14 @@ You can check the Webiny version by running the `yarn webiny --version` command 
 
 - add `"apps/extensions/pb-element-iframe"` to `workspaces` packages inside [`package.json`](https://github.com/webiny/webiny-js/blob/3a2facb072af70b1f4d647ab23219a4c42e1bf74/package.json) in project root
 
-```json {project-root}/package.json {7}
+```diff-js json {project-root}/package.json
 (...)
 "workspaces": {
   "packages": [
     "apps/admin/code",
     "apps/website/code"
     // (...)
-    "apps/extensions/pb-element-iframe"
++    "apps/extensions/pb-element-iframe"
   ]
 // (...)
 }
@@ -153,7 +153,7 @@ After successfully performing the above-mentioned steps, the folder structure of
 
 Click the **plus** icon located on the left sidebar of the editor to access all the available page elements:
 
-![Iframe page element](./assets/iframe-add-element.png)
+![Iframe page element](./assets/create-a-page-element/iframe-add-element.png)
 
 As mentioned, this list of page elements can be expanded, and custom page elements can be created via plugins.
 Now let's create all the necessary plugins for the Admin Area application.
@@ -169,7 +169,7 @@ import styled from '@emotion/styled'
 import { PbEditorPageElementPlugin, DisplayMode } from '@webiny/app-page-builder/types'
 import { createInitialPerDeviceSettingValue } from '@webiny/app-page-builder/editor/plugins/elementSettings/elementSettingsUtils'
 
-import { ReactComponent as IFrameIcon } from './assets/iframe-icon.svg'
+import { ReactComponent as IFrameIcon } from './assets/create-a-page-element/iframe-icon.svg'
 import IframeEditor from './components/iframeEditor'
 
 const PreviewBox = styled('div')({
@@ -279,7 +279,7 @@ import React from 'react'
 import { css } from 'emotion'
 import styled from '@emotion/styled'
 import { ElementRoot } from '@webiny/app-page-builder/render/components/ElementRoot'
-import { ReactComponent as IFrameIcon } from '../assets/iframe-icon.svg'
+import { ReactComponent as IFrameIcon } from '../assets/create-a-page-element/iframe-icon.svg'
 
 const outerWrapper = css({
   boxSizing: 'border-box',
@@ -388,7 +388,7 @@ export default {
 
 As mentioned, this code will show the settings UI in sidebar and ask for the URL of the `iframe`, as shown below:
 
-![Iframe page element settings](./assets/drop-iframe-element.gif)
+![Iframe page element settings](./assets/create-a-page-element/drop-iframe-element.gif)
 
 ### Render Element Plugin
 
@@ -451,38 +451,38 @@ export default IFrame
 
 Along with the actual page, this plugin will also responsible for rendering the element in the page preview, as shown in the image below:
 
-![Page preview inside editor](./assets/preview.png)
+![Page preview inside editor](./assets/create-a-page-element/preview.png)
 
 ### Register Plugins in the Admin Area Application
 
 Now that we've created plugins for the `iframe` element, we need to register them in the Admin Area application to work.
 Let's make the following changes in `apps/admin/code/src/plugins/pageBuilder/editorPlugins.ts` file:
 
-```ts apps/admin/code/src/plugins/pageBuilder/editorPlugins.ts {4,7-8}
+```diff-js ts apps/admin/code/src/plugins/pageBuilder/editorPlugins.ts
 (...)
 
 // Import the `iframe` element and it's settings
-import iframeElement, { iframeSettings } from "@extensions/pb-element-iframe/admin";
++ import iframeElement, { iframeSettings } from "@extensions/pb-element-iframe/admin";
 
 export default [
-    iframeElement(),
-    iframeSettings,
-    // Rest of the plugins
-    (...)
++    iframeElement(),
++    iframeSettings,
+     // Rest of the plugins
+     (...)
 ];
 ```
 
 Also in `apps/admin/code/src/plugins/pageBuilder/renderPlugins.ts` file:
 
-```ts apps/admin/code/src/plugins/pageBuilder/renderPlugins.ts {4,8}
+```diff-js ts apps/admin/code/src/plugins/pageBuilder/renderPlugins.ts
 (...)
 
 // Import the `iframe` element
-import iframeElement from "@extensions/pb-element-iframe/render";
++ import iframeElement from "@extensions/pb-element-iframe/render";
 
 export default [
     // Elements
-    iframeElement(),
++   iframeElement(),
     // Rest of the plugins
     (...)
 ];
@@ -490,7 +490,7 @@ export default [
 
 After registering the plugins successfully, we should be able to see the `iframe` element in the Admin Area application, as shown below:
 
-![Editor Iframe page element](./assets/iframe-element.gif)
+![Editor Iframe page element](./assets/create-a-page-element/iframe-element.gif)
 
 <Alert type="success">
 
@@ -503,24 +503,24 @@ With the [`webiny watch`](/docs/how-to-guides/use-watch-command/) command up and
 In the Website application, we will reuse the [Render Element Plugin](#render-element-plugin) to render the `iframe` page element.
 To reuse the `Render Element Plugin`, simply register it by making the following changes in the `apps/website/code/src/plugins/pageBuilder.ts` file:
 
-```ts apps/website/code/src/plugins/pageBuilder.ts {5,10}
+```diff-js ts apps/website/code/src/plugins/pageBuilder.ts
 // Some code is removed for the sake of brevity.
 (...)
 
 // Import `iframe` element
-import iframeElement from "@extensions/pb-element-iframe/render";
++ import iframeElement from "@extensions/pb-element-iframe/render";
 
 export default [
     (...)
     // Page elements
-    iframeElement(),
++   iframeElement(),
     (...)
 ];
 ```
 
 After registering the plugins successfully, the page element should be visible in your Website application:
 
-![Page preview inside editor](../assets/page-builder/iframe-website.png)
+![Page preview inside editor](./assets/create-a-page-element/iframe-website.png)
 
 ## Conclusion
 

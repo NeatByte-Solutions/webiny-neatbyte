@@ -1,5 +1,5 @@
 ---
-title: How to Customize an Existing Page Builder Element
+title: Customize an Existing Element
 description: How to Customize an Existing Page Builder Element
 ---
 
@@ -63,7 +63,7 @@ For this tutorial, we only need to focus on the editor plugin.
 
 By default, the button element settings look as shown below:
 
-![default button element settings in editor sidebar](../assets/page-builder/default-button-settings.png)
+![default button element settings in editor sidebar](./assets/customize-an-existing-element/default-button-settings.png)
 
 ### Add Settings
 
@@ -75,7 +75,7 @@ As shown earlier, `settings` is a function that gets the `defaultSettings` of th
 
 </Alert>
 
-Let's make the following change:
+Let's make the following change.
 
 ```ts apps/admin/code/src/plugins/pageBuilder/editorPlugins.ts
 // Some code is removed for the sake of brevity.
@@ -106,7 +106,7 @@ Both are of type: [`PbEditorPageElementStyleSettingsPlugin`](/docs/references/pa
 
 After saving these changes, the `button` element settings will have `padding` and `width` settings as shown below:
 
-![updated button element settings in editor sidebar](../assets/page-builder/updated-button-settings.png)
+![updated button element settings in editor sidebar](./assets/customize-an-existing-element/updated-button-settings.png)
 
 Hurray!
 
@@ -114,7 +114,7 @@ The `padding` and `width` settings are now available to the `button` element. An
 
 Not really! If you try changing these settings in the editor no visible change will happen to the button element as shown below:
 
-![updated button element settings in editor sidebar](../assets/page-builder/no-change-button-settings.gif)
+![updated button element settings in editor sidebar](./assets/customize-an-existing-element/no-change-button-settings.gif)
 
 This is because the `button` element has specific styles applied to it in the theme ([`SCSS`](https://github.com/webiny/webiny-js/blob/next/apps/theme/pageBuilder/styles/elements/button.scss#L50) file)
 which overrides the styles applied by these settings via the editor.
@@ -152,14 +152,14 @@ And, we need to make the following changes to it:
 
 After saving these changes the previously applied changes will show in the editor.
 
-![change button element settings in editor sidebar](../assets/page-builder/change-button-settings.gif)
+![change button element settings in editor sidebar](./assets/customize-an-existing-element/change-button-settings.gif)
 
 All seems to work well, right? Let's see:
 
 Now that we have removed the `padding` property from the button element (`SCSS` file),
 a new button dropped into the page doesn't look good with the default settings as shown below:
 
-![default settings for a new button in editor](../assets/page-builder/default-settings-for-a-new-button.gif)
+![default settings for a new button in editor](./assets/customize-an-existing-element/default-settings-for-a-new-button.gif)
 
 We can fix this by adding the default values for both `padding` and `width` properties.
 
@@ -168,7 +168,7 @@ It is a function that gets the default value as the argument and returns the dat
 
 Let's see the example below:
 
-```ts {13-32} apps/admin/code/src/plugins/pageBuilder/editorPlugins.ts
+```diff-js ts apps/admin/code/src/plugins/pageBuilder/editorPlugins.ts
 import { set } from 'dot-prop-immutable'
 import { createInitialPerDeviceSettingValue } from '@webiny/app-page-builder/editor/plugins/elementSettings/elementSettingsUtils'
 import { DisplayMode } from '@webiny/app-page-builder/types'
@@ -181,26 +181,26 @@ button({
     'pb-editor-page-element-style-settings-padding',
     'pb-editor-page-element-style-settings-width',
   ],
-  create: (defaultValue) => {
-    // Set default value for the padding property
-    let elementData = set(
-      defaultValue,
-      'data.settings.padding',
-      createInitialPerDeviceSettingValue(
-        { advanced: true, top: '12px', right: '16px', bottom: '12px', left: '16px' },
-        DisplayMode.DESKTOP
-      )
-    )
-
-    // Set default value for the width property
-    elementData = set(
-      elementData,
-      'data.settings.width',
-      createInitialPerDeviceSettingValue({ value: '150px' }, DisplayMode.DESKTOP)
-    )
-
-    return elementData
-  },
++ create: (defaultValue) => {
++    // Set default value for the padding property
++    let elementData = set(
++      defaultValue,
++      'data.settings.padding',
++      createInitialPerDeviceSettingValue(
++        { advanced: true, top: '12px', right: '16px', bottom: '12px', left: '16px' }+,
++        DisplayMode.DESKTOP
++      )
++    )
++
++    // Set default value for the width property
++    elementData = set(
++      elementData,
++      'data.settings.width',
++      createInitialPerDeviceSettingValue({ value: '150px' }, DisplayMode.DESKTOP)
++    )
++
++    return elementData
++  },
 })
 
 //
@@ -216,7 +216,7 @@ The `create` function defines the initial value for element `settings` and `data
 
 Now if you drop a new `button` element to the editor it will look much better as shown below:
 
-![with default settings value for a new button in editor](../assets/page-builder/width-default-settings-value-for-button.gif)
+![with default settings value for a new button in editor](./assets/customize-an-existing-element/width-default-settings-value-for-button.gif)
 
 This is because now the `padding` and `width` settings have a default value for it.
 

@@ -40,7 +40,7 @@ export function Heading({
 
   return (
     <Component className={clsx('group flex whitespace-pre-wrap', className)} ref={ref} {...props}>
-      <span className="break-all">{children}</span>
+      <span>{children}</span>
       <a
         id={id}
         href={`#${id}`}

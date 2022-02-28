@@ -1,13 +1,16 @@
 import Head from 'next/head'
 
-export function Title({ suffix, children }) {
-  let title = children + (suffix ? ` - ${suffix}` : '')
+export function Title({ suffix, title, description }) {
+  //let title = children + (suffix ? ` - ${suffix}` : '')
+  let titleWithSuffix = title + (suffix ? ` - ${suffix}` : '');
 
   return (
     <Head>
-      <title key="title">{title}</title>
-      <meta key="twitter:title" name="twitter:title" content={title} />
-      <meta key="og:title" property="og:title" content={title} />
+      <title key="title">{titleWithSuffix}</title>
+      <meta key="twitter:title" name="twitter:title" content={titleWithSuffix} />
+      <meta key="og:title" property="og:title" content={titleWithSuffix} />
+      <meta name="description" content={description}/>
+      <meta property="og:description" content={description}/>
     </Head>
   )
 }

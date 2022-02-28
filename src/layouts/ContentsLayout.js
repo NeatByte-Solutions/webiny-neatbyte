@@ -6,6 +6,7 @@ import { MDXProvider } from '@mdx-js/react'
 
 import { SidebarLayout, SidebarContext } from '@/layouts/SidebarLayout'
 import { PageHeader } from '@/components/PageHeader'
+import { getParentNav } from '@/utils/getParentNav'
 import { Footer } from '@/components/Footer'
 import { Heading } from '@/components/Heading'
 
@@ -143,11 +144,11 @@ function WasThisArticleHelpful({ className }) {
     >
       <div className="text-sidebar-right-title font-bold">Was this article helpful?</div>
       <div className="flex mt-[1.1875rem]">
-        <button className="h-9 w-[4.0625rem] border border-neutral-200 rounded flex items-center justify-center font-semibold text-sm leading-6 mr-2.5">
+        <button className="h-9 w-[4.0625rem] border border-neutral-200 hover:border-orange rounded flex items-center justify-center font-semibold text-sm leading-6 mr-2.5">
           <div className="mr-[0.375rem]">{LikeIcon}</div>
           Yes
         </button>
-        <button className="h-9 w-[4.0625rem] border border-neutral-200 rounded flex items-center justify-center font-semibold text-sm leading-6">
+        <button className="h-9 w-[4.0625rem] border border-neutral-200 hover:border-orange rounded flex items-center justify-center font-semibold text-sm leading-6">
           <div className="mr-[0.375rem]">{DislikeIcon}</div>
           No
         </button>
@@ -233,12 +234,14 @@ export function ContentsLayout({ children, meta, classes, tableOfContents }) {
     ...tableOfContents,
   ]
 
+  const parents = getParentNav(useContext(SidebarContext).nav)
+
   const { currentSection, registerHeading, unregisterHeading } = useTableOfContents(toc)
   let { prev, next } = usePrevNext()
 
   return (
     <div className="max-w-3xl mx-auto mt-[5.25rem] md:mt-[5.875rem] mb-[1.875rem] md:mb-[3.75rem] xl:pt-10 xl:max-w-[53.6875rem] xl:ml-0 xl:mr-[15.5rem] 2xl:mr-[22rem] xl:px-10 xl:border border-neutral-200 dark:border-dark-grey rounded-[0.625rem]">
-      <PageHeader title={meta.title} description={meta.description} />
+      <PageHeader title={meta.title} description={meta.description} parents={parents} />
       <ContentsContext.Provider value={{ registerHeading, unregisterHeading }}>
         <div
           id="content"
@@ -261,11 +264,13 @@ export function ContentsLayout({ children, meta, classes, tableOfContents }) {
       <div
         className={`fixed z-20 top-[4.15rem] bottom-0 right-[max(0px,calc(50%-48.5rem))] 2xl:right-[max(0px,calc(50%-50rem))] w-[19.5rem] 2xl:w-[22rem] pl-[4.3125rem] pr-[1.8125rem] overflow-y-auto hidden xl:block ${scroll}`}
       >
+        {toc.length > 0 && (
         <div className="border-l-2 border-orange pl-5 pt-[0.3125rem] pb-2.5 mt-[1.725rem]">
-          {toc.length > 0 && (
+          
             <TableOfContents tableOfContents={toc} currentSection={currentSection} />
-          )}
+          
         </div>
+        )}
         <WasThisArticleHelpful />
       </div>
     </div>
