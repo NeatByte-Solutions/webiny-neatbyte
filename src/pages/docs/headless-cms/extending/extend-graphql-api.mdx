@@ -1,11 +1,11 @@
 ---
-title: Extend GraphQL API
+title: Extend the GraphQL API
 description: Learn how to extend the Headless CMS-related GraphQL types and operations.
 ---
 
 import { Alert } from '@/components/Alert'
-import myPostsModel from './extend-graphql-api/my-posts-model.png'
-import myPostsQuery from './extend-graphql-api/my-posts-query.png'
+import myPostsModel from './assets/extend-graphql-api/my-posts-model.png'
+import myPostsQuery from './assets/extend-graphql-api/my-posts-query.png'
 
 <Alert type="success" title="What you'll learn">
 
@@ -25,7 +25,7 @@ Let's say we wanted to extend our GraphQL schema with a custom `listMyPosts` que
 
 In other words, we want to return all content entries of the **Post** content model, where the `createdBy` points to the currently logged in user. For demonstration purposes, our **Post** content model will be very simple:
 
-![The Post Content Model](./extend-graphql-api/my-posts-model.png)
+![The Post Content Model](./assets/extend-graphql-api/my-posts-model.png)
 
 <Alert type="success">
 
@@ -113,15 +113,13 @@ With all the changes in place, we should be able to run the following GraphQL mu
 
 For example:
 
-![Using the listMyPosts Query](./extend-graphql-api/my-posts-query.png)
+![Using the listMyPosts Query](./assets/extend-graphql-api/my-posts-query.png)
 
 As we can see, the `listPosts` query returned a total of three posts. On the other hand, the `listMyPosts` only returned posts for the currently logged in user, which is the expected result.
 
 ## FAQ
 
-### Placeholder
-
-#### What is the `context` object and where are all of its properties coming from?
+### What is the `context` object and where are all of its properties coming from?
 
 In the shown examples, you may have noticed we were using the `context` object in GraphQL resolver functions. This object contains multiple different properties, mainly being defined from different Webiny applications that were imported in the Headless CMS GraphQL API's [`api/code/headlessCMS/src/index.ts`](https://github.com/webiny/webiny-examples/blob/master/headless-cms/extend-graphql-api/custom-queries/api/code/headlessCMS/src/index.ts) entrypoint file.
 

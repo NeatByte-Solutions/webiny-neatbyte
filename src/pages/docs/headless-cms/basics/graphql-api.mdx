@@ -1,5 +1,5 @@
 ---
-title: Headless CMS GraphQL API
+title: GraphQL API Overview
 description: Learn what is the Headless CMS GraphQL API, what are its main characteristics, and how to access it.
 ---
 
@@ -19,13 +19,13 @@ The Headless CMS Webiny application comes with a fully-fledged GraphQL API, whic
 
 The easiest way to explore it and try different things is via the API Playground, which's part of the Webiny Administration Area. To access it, simply open the main menu on the left side of the screen, and click on the API Playground:
 
-![Access API Playground via Main Menu](./graphql-api/api_playground_from_main_menu.png)
+![Access API Playground via Main Menu](./assets/graphql-api/api_playground_from_main_menu.png)
 
 <Alert type="info">
 
 If you want to learn how to use the Headless CMS GraphQL API via the built-in API Playground or
 programmatically, via a GraphQL client, make sure to check out the [Using the GraphQL
-API](/docs/how-to-guides/webiny-applications/headless-cms/using-graphql-api) guide.
+API](./using-graphql-api) guide.
 
 </Alert>
 
@@ -86,9 +86,9 @@ The Headless CMS GraphQL API sits behind a security layer that provides fine-gra
 - allow users to access only specific Headless CMS GraphQL API types (**manage**, **read**, **preview**)
 - allow users to access only specific content models, groups, and entries
 
-![Fine-grained Access Controls](./graphql-api/security-cms-form-1.png)
+![Fine-grained Access Controls](./assets/graphql-api/security-cms-form-1.png)
 
-![Fine-grained Access Controls](./graphql-api/security-cms-form-2.png)
+![Fine-grained Access Controls](./assets/graphql-api/security-cms-form-2.png)
 
 ## The GraphQL API URL Structure
 
@@ -133,11 +133,11 @@ You can find the URL of the Headless CMS GraphQL API via one of the following tw
 
 When you access the API Playground via the main menu in the Administration Area, at the top of the screen, in the URL bar, you will be able to see the URL for all three Headless CMS GraphQL API types.
 
-![API Playground](./graphql-api/api-playground.png)
+![API Playground](./assets/graphql-api/api-playground.png)
 
 Note that if you want to retrieve the URL for a different locale, you can switch to a different one via the locale selector, located in the top right corner of the screen.
 
-![Switch Locale via the Locale Selector](./graphql-api/api-playground-switch-locale.png)
+![Switch Locale via the Locale Selector](./assets/graphql-api/api-playground-switch-locale.png)
 
 <Alert type="info">
 
@@ -156,16 +156,14 @@ yarn webiny info --env dev
 
 Running the shown command should produce the following output:
 
-![Find Headless CMS GraphQL API URLs via Webiny CLI](./graphql-api/api-url-webiny-cli.png)
+![Find Headless CMS GraphQL API URLs via Webiny CLI](./assets/graphql-api/api-url-webiny-cli.png)
 
 Note that with this method, you will still need to manually replace the `{LOCALE_CODE}` with an actual locale code. A list of all available locales can be found in the Administration Area, in the **Locales** section of the I18N Webiny application.
 
-![Webiny I18N Application - Locales Section](./graphql-api/i18n-locales-section.png)
+![Webiny I18N Application - Locales Section](./assets/graphql-api/i18n-locales-section.png)
 
 ## FAQ
 
-### Placeholder
+### When using the API Playground, is my access limited in any way?
 
-#### When using the API Playground, is my access limited in any way?
-
-You can only access content models, groups, and entries to which you have access, which is based on the security group your user account belongs to. To learn more about how to use the Headless CMS GraphQL API, visit the [Using the GraphQL API](/docs/how-to-guides/webiny-applications/headless-cms/using-graphql-api) guide.
+You can only access content models, groups, and entries to which you have access, which is based on the security group your user account belongs to. To learn more about how to use the Headless CMS GraphQL API, visit the [Using the GraphQL API](./using-graphql-api) guide.

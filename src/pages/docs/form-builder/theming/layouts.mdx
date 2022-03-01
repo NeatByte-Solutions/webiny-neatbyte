@@ -1,6 +1,6 @@
 ---
-title: Form Builder Theme - Layouts
-description: In this article, we'll learn about the Form Builder theme layouts
+title: Layouts
+description: Basics of Form Builder theme layouts.
 ---
 
 import { Alert } from '@/components/Alert'
@@ -28,11 +28,11 @@ Feel free to organize the code to your liking, import custom CSS, fonts, or even
 
 Be default, every form has a default layout, which can be changed via the form settings. In the Form Builder, click on the settings icon in the top right corner:
 
-![Webiny form settings button](./images/webiny-fb-form-settings-button.png)
+![Webiny form settings button](./assets/webiny-fb-form-settings-button.png)
 
 You should then see the following screen, and the "Layout" field at the bottom of the general settings form:
 
-![Webiny form settings button](./images/webiny-fb-form-settings.png)
+![Webiny form settings button](./assets/webiny-fb-form-settings.png)
 
 <Alert type="info">
 
@@ -114,7 +114,7 @@ If needed, feel free to edit the file to your liking, or just create a copy and,
 You can add a new form layout in the Form Builder app in these two simple steps:
 
 1. create a React component that contains all the logic related to the layout
-2. then, register it as a [`form-layout`](/docs/references/form-builder/plugins#form-layout) plugin
+2. then, register it as a [`form-layout`](../references/plugins#form-layout) plugin
 
 ### Create Layout Component
 
@@ -181,7 +181,7 @@ Also, make the following style changes to make our layout stand apart:
 ### Register the New Form Layout
 
 Now that you have your newly created React component in place,
-let's register a new [`form layout`](/docs/references/form-builder/plugins#form-layout) plugin:
+let's register a new [`form layout`](../references/plugins#form-layout) plugin:
 
 ```ts {2,14-22} apps/theme/formBuilder/index.ts
 import DefaultFormLayout from './layouts/DefaultFormLayout'
@@ -211,4 +211,5 @@ export default [
 
 After making these changes head over to the Form Builder app and try using your newly added form layout.
 
-![Webiny form builder preview](./images/webiny-theme-form-layout.gif)
+![Webiny form builder preview](./assets/webiny-theme-form-layout.gif)
+

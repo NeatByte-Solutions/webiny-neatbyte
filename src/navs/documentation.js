@@ -26,6 +26,24 @@ export const documentationNav = [
     ]),
   ]),
   horizontalLine(),
+  collapsable('Headless CMS', [
+    section('Basics', [
+      page('headless-cms/basics/graphql-api'),
+      page('headless-cms/basics/using-graphql-api'),
+    ]),
+    section('Extending functionality', [
+      page('headless-cms/extending/content-models-via-code'),
+      page('headless-cms/extending/custom-field-type'),
+      page('headless-cms/extending/customize-entry-form-layout'),
+      page('headless-cms/extending/extend-graphql-api'),
+      page('headless-cms/extending/render-rich-text-content'),
+    ]),
+    section('References', [
+      page('headless-cms/references/lifecycle-events'),
+      page('headless-cms/references/plugins'),
+      page('headless-cms/references/storage-transform-plugin'),
+    ]),
+  ]),
   collapsable('Page Builder', [
     section('Theming', [
       page('page-builder/theming/introduction'),
@@ -43,6 +61,13 @@ export const documentationNav = [
       page('page-builder/references/lifecycle-events'),
       page('page-builder/references/plugins'),
     ]),
+  ]),
+  collapsable('Form Builder', [
+    section('Theming', [
+      page('form-builder/theming/introduction'),
+      page('form-builder/theming/layouts'),
+    ]),
+    section('References', [page('form-builder/references/plugins')]),
   ]),
 
   horizontalLine(),
@@ -107,13 +132,7 @@ export const documentationNav = [
       page('how-to-guides/webiny-applications/headless-cms/using-graphql-api'),
       page('how-to-guides/webiny-applications/headless-cms/extend-graphql-api'),
       page('tutorials/headless-cms/create-a-webiny-headless-cms-custom-field-plugin'),
-      page('how-to-guides/webiny-applications/headless-cms/content-model-plugins'),
-      page('key-topics/headless-cms/lifecycle-events'),
-      page('how-to-guides/webiny-applications/headless-cms/create-a-content-model-form-layout'),
-      page('how-to-guides/webiny-applications/headless-cms/rendering-rich-text'),
-      collapsable('Plugins', [
-        page('serverless-cms/headless-cms/plugins/storage-transform-plugin'),
-      ]),
+      collapsable('Plugins', []),
     ]),
     collapsable('Page Builder', [
       page('webiny-overview/serverless-cms/apps/page-builder'),

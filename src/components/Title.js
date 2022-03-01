@@ -1,7 +1,6 @@
 import Head from 'next/head'
 
 export function Title({ suffix, title, description }) {
-  //let title = children + (suffix ? ` - ${suffix}` : '')
   let titleWithSuffix = title + (suffix ? ` - ${suffix}` : '');
 
   return (

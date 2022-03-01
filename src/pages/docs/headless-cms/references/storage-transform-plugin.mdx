@@ -3,7 +3,7 @@ id: storage-transform-plugin
 title: Storage Transform Plugin
 sidebar_label: Storage Transform Plugin
 keywords: ['webiny', 'headless cms', 'storage transform plugin']
-description: Learn about StorageTransformPlugin
+description: Learn about `StorageTransformPlugin` and when to use it.
 ---
 
 import { Alert } from '@/components/Alert'
@@ -31,13 +31,13 @@ For example, the time in format `15:45:59` is not usable when filtering, so we t
 
 When storing the data (create, update and createFrom) the plugin's `toStorage` is executed just after the `onBefore` lifecycle events and before actual call to the storage operations.
 
-![storing the data flow](./assets/storage-transform-plugin-storing-the-data.png)
+![storing the data flow](./assets/storage-transform-plugin/storing-the-data.png)
 
 ### Fetching The Data
 
 When fetching the entries the plugin's `fromStorage` is executed in the GraphQL resolvers, just before the output of the field value. We decided to have it like this because of possible unnecessary calls to `fromStorage` if we executed it just after fetching the data from the database.
 
-![fetching the data flow](./assets/storage-transform-plugin-fetching-the-data.png)
+![fetching the data flow](./assets/storage-transform-plugin/fetching-the-data.png)
 
 #### Why Execute `fromStorage` Just Before The Output?
 

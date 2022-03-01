@@ -360,6 +360,61 @@
     "source": "/docs/key-topics/webiny-applications/themes/form-builder/layouts",
     "destination": "/docs/how-to-guides/webiny-applications/themes/form-builder/layouts",
     "permanent": true
+  },
+  {
+    "source": "/docs/key-topics/webiny-applications/headless-cms/graphql-api",
+    "destination": "/docs/headless-cms/basics/graphql-api",
+    "permanent": true
+  },
+  {
+    "source": "/docs/how-to-guides/webiny-applications/headless-cms/using-graphql-api",
+    "destination": "/docs/headless-cms/basics/using-graphql-api",
+    "permanent": true
+  },
+  {
+    "source": "/docs/how-to-guides/webiny-applications/headless-cms/extend-graphql-api",
+    "destination": "/docs/headless-cms/extending/extend-graphql-api",
+    "permanent": true
+  },
+  {
+    "source": "/docs/tutorials/headless-cms/create-a-webiny-headless-cms-custom-field-plugin",
+    "destination": "/docs/headless-cms/extending/custom-field-type",
+    "permanent": true
+  },
+  {
+    "source": "/docs/how-to-guides/webiny-applications/headless-cms/content-model-plugins",
+    "destination": "/docs/headless-cms/extending/define-content-models-via-code",
+    "permanent": true
+  },
+  {
+    "source": "/docs/key-topics/headless-cms/lifecycle-events",
+    "destination": "/docs/headless-cms/references/lifecycle-events",
+    "permanent": true
+  },
+  {
+    "source": "/docs/how-to-guides/webiny-applications/headless-cms/create-a-content-model-form-layout",
+    "destination": "/docs/headless-cms/extending/customize-entry-form-layout",
+    "permanent": true
+  },
+  {
+    "source": "/docs/how-to-guides/webiny-applications/headless-cms/rendering-rich-text",
+    "destination": "/docs/headless-cms/extending/render-rich-text-content",
+    "permanent": true
+  },
+  {
+    "source": "/docs/serverless-cms/headless-cms/plugins/storage-transform-plugin",
+    "destination": "/docs/headless-cms/references/storage-transform-plugin",
+    "permanent": true
+  },
+  {
+    "source": "/docs/how-to-guides/webiny-applications/themes/form-builder/introduction",
+    "destination": "/docs/form-builder/theming/introduction",
+    "permanent": true
+  },
+  {
+    "source": "/docs/how-to-guides/webiny-applications/themes/form-builder/layouts",
+    "destination": "/docs/form-builder/theming/layouts",
+    "permanent": true
   }
   
 ]

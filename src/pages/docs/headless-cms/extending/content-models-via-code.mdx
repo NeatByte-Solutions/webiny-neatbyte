@@ -1,6 +1,6 @@
 ---
-title: Define Content Models via Plugins
-description: Learn how to define content models and content model groups via plugins.
+title: Define Content Models via Code
+description: Learn how to define content models and content model groups through code.
 ---
 
 import { Alert } from '@/components/Alert'
@@ -25,7 +25,7 @@ Content models and content model groups can be defined in two ways.
 
 The most straightforward way to define content models and content model groups would be via the Admin Area application, via the Content Model Editor and the Content Model Groups module. This is especially suitable for users that are not developers, and just want to manage everything in a quick and easy way.
 
-![Defining Content Models and Content Model Groups via the Admin Area Application](./content-models-plugins/content-models-group-editor.png)
+![Defining Content Models and Content Model Groups via the Admin Area Application](./assets/content-models-plugins/content-models-group-editor.png)
 
 ### Using Plugins
 
@@ -112,7 +112,7 @@ Do note that you will also need to import the newly created [`api/code/headlessC
 
 Once registered, we should end up with the following two items in our Admin Area main menu:
 
-![Product and E-Commerce Items in the Admin Area Main Menu](./content-models-plugins/basics-plugins-work.png)
+![Product and E-Commerce Items in the Admin Area Main Menu](./assets/content-models-plugins/basics-plugins-work.png)
 
 As shown in the example, the [`CmsGroupPlugin`](https://github.com/webiny/webiny-js/blob/v5.21.0/packages/api-headless-cms/src/content/plugins/CmsGroupPlugin.ts#L4) receives a [`CmsContentModel`](https://github.com/webiny/webiny-js/blob/v5.21.0/packages/api-headless-cms/src/types.ts#L282) object upon instantiation. It lets us define all of the content model's properties, like its name, ID (`modelId`), a content model group to which it belongs to, and most importantly, all of the fields that it consists of.
 
@@ -126,7 +126,7 @@ All available [field types (`type`)](https://github.com/webiny/webiny-js/tree/v5
 
 <Alert type="success">
 
-Want to learn how to create your own custom field type? Check out the [Create a Field Plugin](/docs/how-to-guides/webiny-applications/headless-cms/create-a-webiny-headless-cms-field-plugin) how-to guide.
+Want to learn how to create your own custom field type? Check out the [Create a Custom Field Type](./custom-field-type) how-to guide.
 
 </Alert>
 
@@ -171,33 +171,31 @@ In Admin Area, user's current local is sent with every issued HTTP request, via 
 
 ## FAQ
 
-### Placeholder
-
-#### Can content models (and groups) defined via plugins be edited via Admin Area?
+### Can content models (and groups) defined via plugins be edited via Admin Area?
 
 Content models and content model groups that were defined via plugins cannot be edited via Admin Area (via the Content Model Editor and Content Model Groups module). All of the changes need to be done within the application code.
 
-#### Are there any differences when it comes to security controls?
+### Are there any differences when it comes to security controls?
 
 When it comes to security, both ways of defining content models and content model groups have access to the same features and follow the same security-related built-in mechanisms. In other words, via the Security application, you can still decide which users have access to particular content models and content model groups that were defined via plugins, and which don't.
 
-#### Can I convert a content model that was defined via Admin Area into a plugin (and vice-versa)?
+### Can I convert a content model that was defined via Admin Area into a plugin (and vice-versa)?
 
 You can, but it will require a bit of manual work. For example, if you wanted to convert a content model that was defined via Admin Area into a plugin, you would have to find it directly in the database, and copy the data into your application code and try to fit it into the [`CmsModelPlugin`](https://github.com/webiny/webiny-js/blob/v5.21.0/packages/api-headless-cms/src/content/plugins/CmsModelPlugin.ts#L4) plugin.
 
 If you're doing this and require additional assistance, feel free to contact us over our community [Slack](https://www.webiny.com/slack).
 
-#### What's the difference between the `id` and `fieldId` properties in the [`CmsModelPlugin`](https://github.com/webiny/webiny-js/blob/v5.21.0/packages/api-headless-cms/src/content/plugins/CmsModelPlugin.ts#L4) plugin?
+### What's the difference between the `id` and `fieldId` properties in the [`CmsModelPlugin`](https://github.com/webiny/webiny-js/blob/v5.21.0/packages/api-headless-cms/src/content/plugins/CmsModelPlugin.ts#L4) plugin?
 
 Both `id` and `fieldId` fields represent unique IDs of the field. We can assign any string value to them, but, for easier maintenance, we suggest you use a [camelCase](https://en.wikipedia.org/wiki/Camel_case) version of the actual name of the field. So, if the name of the field was **Author Name**, then we'd use `authorName` as the `id` and `fieldId`.
 
-There is a difference in how these two IDs are used internally within Headless CMS' application code, but this is more important when a content model is defined regularly, via the [Content Model Editor](/docs/how-to-guides/webiny-applications/headless-cms/content-model-plugins#via-the-admin-area). In case where a content model is defined via a plugin, we can simply use the same value for both fields.
+There is a difference in how these two IDs are used internally within Headless CMS' application code, but this is more important when a content model is defined regularly, via the [Content Model Editor](#via-the-admin-area). In case where a content model is defined via a plugin, we can simply use the same value for both fields.
 
-#### What are the values that I can pass to the `icon` property of the [`CmsGroupPlugin`](https://github.com/webiny/webiny-js/blob/v5.21.0/packages/api-headless-cms/src/content/plugins/CmsGroupPlugin.ts#L4) plugin?
+### What are the values that I can pass to the `icon` property of the [`CmsGroupPlugin`](https://github.com/webiny/webiny-js/blob/v5.21.0/packages/api-headless-cms/src/content/plugins/CmsGroupPlugin.ts#L4) plugin?
 
 When defining content model groups via Admin Area, we pick its icon via a simple drop-down menu:
 
-![Content Model Groups Form - Icon Selector](./content-models-plugins/faq-icon-selector.png)
+![Content Model Groups Form - Icon Selector](./assets/content-models-plugins/faq-icon-selector.png)
 
 On the other hand, when defining content model groups via a plugin, we need to specify the icon manually, by setting the same string value that would be set once an icon was picked from the above seen drop-down menu.
 

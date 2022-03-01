@@ -157,7 +157,7 @@ module.exports = {
               backgroundColor: '#D14343',
             },
             ol: {
-              counterReset: 'cupcake',
+              counterReset: 'cupcake calc(var(--start) - 1)',
               paddingLeft: '27px',
               marginBottom: '20px',
               marginTop: '20px',
@@ -167,11 +167,11 @@ module.exports = {
               listStyle: 'none',
               position: 'relative',
             },
-            'ol > li::before': {
+            'ol li::before': {
+              content:'counter(cupcake)',
               backgroundColor: '#fff',
               position: 'absolute',
               color: '#000',
-              content: `counters(cupcake, '.') ' '`,
               border: '1px solid #E5E5E5',
               padding: '1px 7px 0px 8px',
               borderRadius: '999px',

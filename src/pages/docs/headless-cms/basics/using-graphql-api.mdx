@@ -18,7 +18,7 @@ The Headless CMS Webiny application comes with a fully-fledged GraphQL API, whic
 
 <Alert type="info">
 
-To learn more about the Headless CMS GraphQL API, different API types, support for multiple locales, and more, make sure to check out the [Headless CMS GraphQL API](/docs/key-topics/webiny-applications/headless-cms/graphql-api) key topic.
+To learn more about the Headless CMS GraphQL API, different API types, support for multiple locales, and more, make sure to check out the [Headless CMS GraphQL API](./graphql-api) key topic.
 
 </Alert>
 
@@ -26,11 +26,11 @@ To learn more about the Headless CMS GraphQL API, different API types, support f
 
 The easiest way to explore Headless CMS GraphQL API and try different things is via the API Playground, which is part of the Webiny Administration Area. To access it, simply open the main menu on the left side of the screen, and click on the API Playground:
 
-![Access API Playground via Main Menu](./using-graphql-api/api_playground_from_main_menu.png)
+![Access API Playground via Main Menu](./assets/using-graphql-api/api_playground_from_main_menu.png)
 
 The API Playground enables you to easily access all three Headless CMS GraphQL API types (**read**, **manage**, **preview**). It also enables you to access content in different locales, which you can pick via the locale selector, located in the top right corner of the screen.
 
-![Switch Locale via the Locale Selector](./using-graphql-api/api-playground-switch-locale.png)
+![Switch Locale via the Locale Selector](./assets/using-graphql-api/api-playground-switch-locale.png)
 
 <Alert type="info">
 
@@ -63,7 +63,7 @@ yarn webiny info --env dev
 
 <Alert type="info">
 
-Note that the URL is different for different combinations of Headless CMS GraphQL API types and locales. To learn more about how the Headless CMS GraphQL URL is structured and where to find it, please check out the [Headless CMS GraphQL API](/docs/key-topics/webiny-applications/headless-cms/graphql-api#the-graphql-api-url-structure) key topic.
+Note that the URL is different for different combinations of Headless CMS GraphQL API types and locales. To learn more about how the Headless CMS GraphQL URL is structured and where to find it, please check out the [Headless CMS GraphQL API](./graphql-api#the-graphql-api-url-structure) key topic.
 
 </Alert>
 
@@ -93,33 +93,31 @@ Check your GraphQL client's documentation in order to ensure that the API token 
 
 API Tokens are created via the Security Webiny application, by opening the **API Keys** section:
 
-![Security - API Keys](./using-graphql-api/security-api-keys.png)
+![Security - API Keys](./assets/using-graphql-api/security-api-keys.png)
 
 Once selected, we're redirected to the API Keys section, where we can create new or update existing API keys. But most importantly, we get fine-grained control over which operations our API keys can, or cannot, perform. For example, the following selection allows API key users to access the **read** Headless CMS GraphQL API, but they can only perform queries with the **Pizza** content entries:
 
-![Fine-grained Access Controls](./using-graphql-api/security-api-keys-form-1.png)
+![Fine-grained Access Controls](./assets/using-graphql-api/security-api-keys-form-1.png)
 
-![Fine-grained Access Controls](./using-graphql-api/security-api-keys-form-2.png)
+![Fine-grained Access Controls](./assets/using-graphql-api/security-api-keys-form-2.png)
 
 Once the API token has been created, you should see it in the user interface, for example:
 
-![Copy the API Token](./using-graphql-api/api-token-value.png)
+![Copy the API Token](./assets/using-graphql-api/api-token-value.png)
 
 From there, you can easily grab it by clicking on the **Copy** button, located on the right side of the API token, and paste it in an appropriate place, somewhere where your GraphQL client can access it.
 
 ## FAQ
 
-### Placeholder
-
-#### When using the API Playground, is my access limited in any way?
+### When using the API Playground, is my access limited in any way?
 
 You can only access content models, groups, and entries to which you have access, which is based on the security group your user account belongs to.
 
-#### Am I allowed to use an API key in a public-facing application?
+### Am I allowed to use an API key in a public-facing application?
 
 As long as the API key contains correct set of permissions, meaning no sensitive operations can be performed with it, you are free to do that.
 
-#### What is the "Bearer" keyword?
+### What is the "Bearer" keyword?
 
 From this [Stack Exchange question](https://security.stackexchange.com/a/120244):
 

@@ -1,8 +1,5 @@
 ---
-id: create-a-content-model-form-layout
-title: Create a Custom Form Layout for Headless CMS Content Model
-sidebar_label: Create a Content Model Form Layout Plugin
-keywords: ['headless cms', 'reactjs', 'form', 'layout', 'content model']
+title: Customize Entry Form Layout
 description: How to create a custom form layout for content model data entry.
 ---
 
@@ -30,7 +27,7 @@ Custom form layouts will also come in handy if you need to show or hide certain 
 
 ## Plugin Type
 
-There's only one plugin you need to implement to create a custom form layout: [CmsContentFormRendererPlugin](/docs/references/headless-cms/plugins#cms-content-form-renderer).
+There's only one plugin you need to implement to create a custom form layout: [CmsContentFormRendererPlugin](../references/plugins#cms-content-form-renderer).
 Plugins of this type require a `modelId` (to match the model in your Headless CMS), and a `render` function which returns a React element which will be rendered instead of the default grid based layout.
 
 ## Simple Layout
@@ -110,11 +107,11 @@ export default (): CmsContentFormRendererPlugin => ({
 
 Here's what a default layout looks like:
 
-![Default form layout](../../assets/headless-cms/create-a-content-model-form-layout/defaultLayout.png)
+![Default form layout](./assets/customize-entry-form/defaultLayout.png)
 
 Once we import the plugin and register it in our `admin` app, we get our custom layout:
 
-![Custom form layout](../../assets/headless-cms/create-a-content-model-form-layout/customLayout.png)
+![Custom form layout](./assets/customize-entry-form/customLayout.png)
 
 You can see the `Recipe` tab is hidden. That's because we don't have the necessary permission to view it.
 
@@ -122,34 +119,34 @@ You can see the `Recipe` tab is hidden. That's because we don't have the necessa
 
 Using form data you can also render other UI elements, or even show/hide fields depending on the value of some other field. In the following example, we show a warning if the price is less than `20` and number of ingredients is greater than `6`:
 
-```tsx {3,8,13,18-27} pizzaLayout.tsx
+```diff-js pizzaLayout.tsx
 import React from 'react'
 import { CmsContentFormRendererPlugin } from '@webiny/app-headless-cms/types'
-import { Alert } from '@webiny/ui/Alert'
++ import { Alert } from '@webiny/ui/Alert'
 import { Grid, Cell } from '@webiny/ui/Grid'
 import { Tabs, Tab } from '@webiny/ui/Tabs'
 import { useSecurity } from '@webiny/app-security'
 
-const PizzaLayout = ({ fields, data }) => {
++ const PizzaLayout = ({ fields, data }) => {
   const { identity } = useSecurity()
   const bakeryPermission = identity.getPermission('bakery')
   const canEditRecipe = true //bakeryPermission && bakeryPermission.canEditRecipe === true;
 
-  const priceTooLow = data.price < 20 && data.numberOfIngredients > 6
++ const priceTooLow = data.price < 20 && data.numberOfIngredients > 6
 
   return (
     <Tabs>
       <Tab label="General">
-        {priceTooLow && (
-          <Grid>
-            <Cell span={12}>
-              <Alert type={'warning'} title={'Please double-check your input'}>
-                The price of <strong>{data.price}</strong> seems too low for a pizza with over{' '}
-                <strong>6</strong> ingredients.
-              </Alert>
-            </Cell>
-          </Grid>
-        )}
++       {priceTooLow && (
++         <Grid>
++           <Cell span={12}>
++             <Alert type={'warning'} title={'Please double-check your input'}>
++               The price of <strong>{data.price}</strong> seems too low for a pizza with over{' '}
++               <strong>6</strong> ingredients.
++             </Alert>
++           </Cell>
++         </Grid>
++       )}
         <Grid>
           <Cell span={12}>{fields.name}</Cell>
         </Grid>
@@ -185,4 +182,4 @@ export default (): CmsContentFormRendererPlugin => ({
 
 Using this approach, you can add a nice touch to your UI and guide the content editor with additional logic, validate the input, and add other helpful elements which would otherwise be really difficult to define on the content model itself:
 
-![Custom UI elements](../../assets/headless-cms/create-a-content-model-form-layout/customElements.png)
+![Custom UI elements](./assets/customize-entry-form/customElements.png)
